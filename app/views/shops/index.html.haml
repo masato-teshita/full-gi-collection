@@ -1,0 +1,24 @@
+.header
+  .header-top
+    %p.app-icon
+      古着navi
+    .menu
+      %ul.menu-list
+        %li.menu-list__history
+          行った古着屋
+        %li.menu-list__bookmark
+          保存済み
+        %li.menu-list__mypage
+          マイページ
+  .top-message-box
+    古着屋探しは「古着navi」
+  .search-form
+    .search-box
+      .search-box__explanation
+        エリア・キーワードから探す
+      %input.search-content.search-box__area{name: "area", placeholder: " エリア[例：下北沢]"}
+      %input.search-content.search-box__keyword{name: "keyword", placeholder: " キーワード[例：yohji yamamoto]"} 
+      %input.search-box__submit{type: "submit", name: "search", value: "検 索"}
+.wrapper
+  = render "search_content"
+  = render "side_bar"
