@@ -1,0 +1,117 @@
+.header {
+  width: 100%;
+  min-width: 1080px;
+  height: 96px;
+  padding: 0 160px 0;
+  background-color: white;
+  &__top {
+    background-color: red;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .page-name {
+      color: gray;
+      font-size: 12px;
+    }
+    .menu {
+      .menu-list {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 60px;
+        line-height: 60px;
+        .menu-option {
+          margin: 10px;
+          height: 100%;
+          & a {
+            color: white;
+          }
+        }
+        .user-nav {
+          display: flex;
+          align-items: center;
+          position: relative;
+          height: 60px;
+          top: 5px;
+          margin-left: 30px;
+          font-size: 1em;
+          cursor: pointer;
+          .user-nav-icon {
+            object-fit: cover;
+            width: 54px;
+            height: 54px;
+            border-radius: 6px;
+            &:after {
+              content: '▼';
+              color: white;
+              font-size: 4px;
+              margin-left: 50px;
+            }
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+          .user-nav-popup {
+            display: none;
+            width: 128px;
+            position: absolute;
+            top: 36px;
+            border-top: 1px solid #d8d8d8;
+            border-left: 1px solid #d8d8d8;
+            border-right: 1px solid #d8d8d8;
+            box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
+            .user-nav-option {
+              padding-left: 16px;
+              line-height: 40px;
+              background-color: gray;
+              height: 40px;
+              text-align: left;
+              border-bottom: 1px solid #d8d8d8;
+              &:before {
+                content: "▶︎";
+                color: white;
+                font-size: 8px;
+              }
+            }
+          }
+        } 
+      }  
+    }
+  }
+  &__bottom {
+    background-color: blue;
+    width: 100%;
+    height: 56px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    .app-icon {
+      font-size: 32px;
+      color: gray;
+    }
+    .search-form {
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 24px;
+      .search-box {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        .search-content {
+          height: 40px;
+          width: 36%;
+        }
+        &__submit {
+          background-color: gray;
+          color: white;
+          height: 40px;
+          width: 56px;
+        }
+      }
+    }
+  }
+}

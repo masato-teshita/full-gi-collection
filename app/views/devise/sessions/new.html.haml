@@ -1,0 +1,13 @@
+%h2 ログイン
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .field
+    = f.label "メールアドレス"
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "ログイン"
+  .field
+    = f.label "パスワード"
+    %br/
+    = f.password_field :password, autocomplete: "current-password"
+  .actions
+    = f.submit "ログイン"
+= render "devise/shared/links"
