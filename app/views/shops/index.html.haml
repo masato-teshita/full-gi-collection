@@ -1,24 +1,46 @@
-.header
-  .header-top
-    %p.app-icon
-      古着navi
-    .menu
-      %ul.menu-list
-        %li.menu-list__history
-          行った古着屋
-        %li.menu-list__bookmark
-          保存済み
-        %li.menu-list__mypage
-          マイページ
-  .top-message-box
-    古着屋探しは「古着navi」
-  .search-form
-    .search-box
-      .search-box__explanation
-        エリア・キーワードから探す
-      %input.search-content.search-box__area{name: "area", placeholder: " エリア[例：下北沢]"}
-      %input.search-content.search-box__keyword{name: "keyword", placeholder: " キーワード[例：yohji yamamoto]"} 
-      %input.search-box__submit{type: "submit", name: "search", value: "検 索"}
-.wrapper
-  = render "search_content"
-  = render "side_bar"
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title FurugiNavi
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  %body
+    .home-header
+      .home-header-top
+        %p.app-icon
+          古着navi
+        .menu
+          %ul.menu-list
+            %li.menu-option
+              = link_to '行った古着屋', "#"
+              -# ログインしてなければ、ログイン画面にリダイレクト
+            %li.menu-option
+              = link_to '保存済み', "#"
+              -# ログインしてなければ、ログイン画面にリダイレクト
+            -if user_signed_in?
+              %li.menu-option
+                = link_to 'マイページ', user_path(current_user)
+              %li.menu-option.user-nav
+                %img{src: "IMG_1596.jpg", alt: "User icon", class: "user-nav-icon js-user-nav"}
+                %ul.user-nav-popup
+                  %li.user-nav-option
+                    = link_to '設定', edit_user_registration_path
+                  %li.user-nav-option
+                    = link_to 'ログアウト', destroy_user_session_path, method: :delete
+            - else
+              %li.menu-option
+                = link_to 'ログイン', new_user_session_path
+      .top-message-box
+        古着屋探しは「古着navi」
+      .search-form
+        .search-box
+          .search-box__explanation
+            エリア・キーワードから探す
+          %input.search-content.search-box__area{name: "area", placeholder: " エリア[例：下北沢]"}
+          %input.search-content.search-box__keyword{name: "keyword", placeholder: " キーワード[例：yohji yamamoto]"} 
+          %input.search-box__submit{type: "submit", name: "search", value: "検 索"}
+    .wrapper
+      = render "search_content"
+      = render "side_bar"

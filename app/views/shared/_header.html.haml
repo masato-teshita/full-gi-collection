@@ -1,0 +1,35 @@
+.header
+  .header__top
+    .page-name
+      [page name]
+    .menu
+      %ul.menu-list
+        %li.menu-option
+          = link_to '行った古着屋', "#"
+          -# ログインしてなければ、ログイン画面にリダイレクト
+        %li.menu-option
+          = link_to '保存済み', "#"
+          -# ログインしてなければ、ログイン画面にリダイレクト
+        -if user_signed_in?
+          %li.menu-option
+            = link_to 'マイページ', user_path(current_user)
+          %li.menu-option.user-nav
+            %img{src: "IMG_1596.jpg", alt: "User icon", class: "user-nav-icon js-user-nav"}
+            %ul.user-nav-popup
+              %li.user-nav-option
+                = link_to '設定', edit_user_registration_path
+              %li.user-nav-option
+                = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+          %li.menu-option
+            = link_to 'ログイン', new_user_session_path
+  .header__bottom
+    %p.app-icon
+      古着navi
+  .search-form
+    = form_for search_shops_path do |f|
+      .search-box
+        = f.text_field :area, placeholder: ' エリア[例：下北沢]', class: 'search-content search-box__area'
+        = f.text_field :keyword, placeholder: ' キーワード[例：yohji yamamoto]', class: 'search-content search-box__keyword'
+        = f.submit class: 'search-box__submit' do
+          %i.fas.fa-search 

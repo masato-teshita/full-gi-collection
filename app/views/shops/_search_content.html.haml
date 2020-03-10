@@ -78,7 +78,7 @@
             ストリート
           .top-genre__store-count
             86件
-      %ul.genre-list
+      %ul.genre-list.clearfix
         %li.all-genre
           アメカジ
         %li.all-genre
@@ -93,6 +93,8 @@
           原宿系
         %li.all-genre
           サーフ
+    .search-genre__all
+      = link_to 'ジャンル一覧へ', "#", class: 'genre-all-link'
   .search-brand
     %h2.search-brand__title ブランドから探す
     .search-brand__area
@@ -140,4 +142,6 @@
           ANN DEMEULEMEESTER
         %li.all-brand
           Y-3
+    .search-brand__all
+      = link_to 'ブランド一覧へ', "#", class: 'brand-all-link'
 
