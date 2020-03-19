@@ -1,15 +1,35 @@
 class ShopsController < ApplicationController
-  before_action :move_to_index, except: [:index, :search]
+  before_action :move_to_index, except: [:index]
+
   def index
-    render layout: false
+    if params[:user_id].presence
+      @user = User.find(params[:user_id])
+      @shops = Shop.all.order(created_at: "DESC")
+      render "users/shops"
+    else
+      @shops = Shop.all.order(created_at: "DESC")
+    end
   end
 
-  def search
-    @shops = Shop.search(params[:keyword])
+  def new
+    @shop = Shop.new
+  end
+
+  def create
+    Shop.create!(shop_params)
+  end
+
+  def show
+    @shop = Shop.find(params[:id])
+    @wom = Wom.new
   end
 
   private
+  def shop_params
+    params.require(:shop).permit(:name, :image, :outline)
+  end
+
   def move_to_index
-    redirect_to action: :index unless user_signed_in?
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
