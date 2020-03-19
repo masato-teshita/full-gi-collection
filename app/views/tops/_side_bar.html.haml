@@ -1,0 +1,68 @@
+.top-side
+  .data-count-container
+    %ul.data-counts
+      %li.data-count
+        .data-count__store
+          722
+        .data-count__unit
+          店舗
+      %li.data-count.data-count-middle
+        .data-count__history
+          216
+        .data-count__unit
+          口コミ
+      %li.data-count
+        .data-count__photo
+          513
+        .data-count__unit
+          写真
+  .user-info-container
+    .user-info
+      - if user_signed_in?
+        .user-top-info
+          = link_to user_path(current_user), class: 'user-link' do
+            .user-top-info__user-icon
+              %img{src: "IMG_1596.jpg", alt: "No image", class: "user-img"}
+            .user-top-info__user-name
+              壮 さん
+        %ul.user-action-data
+          %li.act-data
+            .act-data__store
+              = link_to '行ったお店', user_shops_path(current_user)
+            .act-data__store-count
+              12  
+          %li.act-data
+            .act-data__history
+              = link_to '口コミ一覧', user_woms_path(current_user)
+            .act-data__history-count
+              8
+          %li.act-data
+            .act-data__bookmark
+              = link_to '保存したお店', user_shops_path(current_user)
+            .act-data__bookmark-count
+              22
+        
+    .user-bookmark-store
+      %h4.user-bookmark-store__title
+        保存したお店
+      %ul.bookmark-stores
+        %li.bookmark-store
+          %img{src: "buzzstore_mitaka.jpg", alt: "No image", class: "bookmark-store__img"}
+          .bookmark-store__data
+            .bookmark-store__data__name
+              = link_to 'BAZZSTORE 三鷹北口店', "#"
+            .bookmark-store__data__tag
+              吉祥寺
+            .bookmark-store__data__eval
+              3.52
+        %li.bookmark-store
+          %img{src: "buzzstore_shibuya.jpg", alt: "No image", class: "bookmark-store__img"}
+          .bookmark-store__data
+            .bookmark-store__data__name
+              = link_to 'BAZZSTORE 渋谷ファイヤー通り店', "#"
+            .bookmark-store__data__tag
+              渋谷
+            .bookmark-store__data__eval
+              3.34
+      .user-boookmark-list
+        = link_to '保存したお店一覧へ', "#", class: "bookmark-list-link"
