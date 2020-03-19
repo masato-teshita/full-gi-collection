@@ -1,1 +1,23 @@
-<ユーザマイページ>
+- breadcrumb :user, @user
+= render "layouts/breadcrumbs"
+
+.user-wrap
+  = render 'header'
+  .user-body
+    .user-self-intro
+      初めまして！
+      古着が好きで、特にブランド古着を集めています。
+      ヨウジヤマモトやイッセイミヤケなど、モード系のドメブラが大好きです！
+      下北沢や原宿などによく出没します。
+      よろしくお願いいたします！
+    %ul.user-action-info
+      %li.user-action-wrap
+        .title
+          口コミ数
+        .nums
+          1件
+      %li.user-action-wrap
+        .title
+          保存したお店
+        .nums
+          3件
