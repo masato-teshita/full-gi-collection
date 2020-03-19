@@ -4,4 +4,6 @@ class User < ApplicationRecord
   has_many :shop_users
   has_many :shops, through: :shop_users
   has_many :woms
+
+  mount_uploader :image, ImageUploader
 end
