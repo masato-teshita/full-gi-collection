@@ -1,0 +1,89 @@
+- breadcrumb :show_shop, @shop
+= render "layouts/breadcrumbs"
+
+.action-modal-wrapper
+.action-modal
+  .wom-form
+    .wom-form-header
+      .modal-title
+        口コミを投稿する
+      %i.fas.fa-times.modal-times
+    = form_for [@shop, @wom] do |f|
+      .wom-form-body
+        .shop-name
+          = @shop.name
+        .visit-type-select
+          .select-msg 
+            口コミ対象を選択してください
+          .secet-form
+            = f.radio_button :visit_type, '購入', id: 'visit-type-buy'
+            = f.label '購入', for: 'visi-type-buy'
+            = f.radio_button :visit_type, '売却', id: 'visit-type-sell'
+            = f.label '売却', for: 'visi-type-cell'
+        .input-rate
+          = f.label :rate, '評価'
+          = f.number_field :rate, step: '0.1', placeholder: '点数を入力してください'
+        .wom-title
+          = f.text_field :title, placeholder: '口コミのタイトルを入力してください', class: 'wom-title-field'
+        .wom-content
+          = f.text_area :content, placeholder: '口コミ本文を入力してください', class: 'wom-content-field'
+      .wom-form-footer
+        .visit-date
+          = f.label :visit_date, '訪問日'
+          = date_field_tag :visit_date
+        .send-btn
+          = f.submit '登録', class: 'wom-send-btn'
+  .bookmark-notif
+    .bookmark-notif-header
+      .modal-title
+        ショップの保存
+      %i.fas.fa-times.modal-times
+    .shop-name
+      = @shop.name
+    .notif-msg
+      %p 保存しました！
+    .bookmark-link
+      = link_to '保存済み一覧へ', user_shops_path(current_user.id)
+
+.shop-wrapper
+  .shop-header
+    .info-wrap
+      .shop-name
+        = @shop.name
+      .shop-top-info
+        .shop-top-info__rate
+          .star-rating
+            ★★★★★
+          .shop-rating
+            3.52
+        .shop-top-info__woms
+          %i.fas.fa-comment-dots<>
+          2 件
+        .shop-top-info__bookmarks
+          %i.fas.fa-bookmark.fa-lg<>
+          17 件
+      .shop-bottom-info
+        エリア： 渋谷　　　　ジャンル：　ブランド古着
+    .action-wrap
+      .action-btn.wom-post-btn
+        行った
+      .action-btn.bookmark-btn
+        保存
+  .shop-body
+    %ul.shop-menu-bar
+      %li.shop-menu.first-menu
+        トップ
+      %li.shop-menu
+        取扱商品
+      %li.shop-menu
+        口コミ
+      %li.shop-menu
+        地図
+    .shop-content
+      .shop-content__top
+        = image_tag @shop.image.url, class: 'shop-img'
+        = @shop.outline
+      .shop-content__items
+      .shop-content__woms
+      .shop-content__map
+

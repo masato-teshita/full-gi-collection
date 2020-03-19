@@ -1,0 +1,2 @@
+module Shops::SearchesHelper
+end
