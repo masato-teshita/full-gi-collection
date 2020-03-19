@@ -1,0 +1,27 @@
+.user-header
+  .user-header__cover
+    %img{src: '/assets/furugi-top.jpeg', class: 'cover-img'}
+  .user-header__content
+    .user-img-form
+      = form_for @user do |f|
+        =f.label :image do
+          .user-icon
+            = user_image_present?(@user)
+        =f.file_field :image, class: 'img-field', id: 'user-img'
+    .content-wrap
+      .user-name
+        = "#{@user.name}さん のマイページ"
+      %ul.user-nav-bar
+        %li.user-nav.first-nav
+          = link_to(user_path(current_user), class: 'user-nav-link') do
+            %span.user-nav-name トップ
+        %li.user-nav
+          = link_to(user_woms_path(current_user), class: 'user-nav-link') do
+            %span.user-nav-name 行ったお店
+        %li.user-nav
+          = link_to(user_shops_path(current_user), class: 'user-nav-link') do
+            %span.user-nav-name 保存済み
+        %li.user-nav
+          = link_to(edit_user_registration_path(current_user), class: 'user-nav-link') do
+            %span.user-nav-name 設定
+.user-header-line
