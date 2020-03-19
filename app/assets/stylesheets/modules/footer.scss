@@ -1,0 +1,54 @@
+.footer {
+  width: 100%;
+  min-width: 1280px;
+  height: 128px;
+  background-color: whitesmoke;
+  .footer-wrap {
+    height: 128px;
+    &__top {
+      padding: 0 240px 0;
+      height: 50%;
+      display: flex;
+      align-items: center;  
+      text-align: center;
+      border-bottom: solid 1px lightgray;
+      .languege-list {
+        color: gray;
+        font-size: 12px;
+        width: 32%;
+        min-width: 320px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        .languege-title {
+          width: 16%;
+        }  
+        .languege {
+          padding: 0 8px;
+          & a {
+            text-decoration: none;
+            &:hover {
+              color: orange;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+    &__bottom {
+      padding: 0 240px 0;
+      color: gray;
+      height: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .servise-icon {
+        font-size: 20px;
+      }
+      .copylight {
+        font-size: 10px;
+        text-align: right;
+      }
+    }
+  }
+}
