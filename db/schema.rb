@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200308144644) do
+ActiveRecord::Schema.define(version: 20200316114557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,11 @@ ActiveRecord::Schema.define(version: 20200308144644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "area_id"
+    t.integer  "genre_id"
     t.index ["area_id"], name: "index_shops_on_area_id", using: :btree
+    t.index ["genre_id"], name: "index_shops_on_genre_id", using: :btree
+    t.index ["image"], name: "index_shops_on_image", unique: true, using: :btree
+    t.index ["name"], name: "index_shops_on_name", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,18 +80,22 @@ ActiveRecord::Schema.define(version: 20200308144644) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "image"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   create_table "woms", force: :cascade do |t|
     t.text     "content",    null: false
-    t.float    "point",      null: false
+    t.float    "rate",       null: false
     t.string   "visit_type", null: false
     t.integer  "user_id"
     t.integer  "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "title",      null: false
+    t.string   "image"
+    t.date     "visit_date", null: false
     t.index ["shop_id"], name: "index_woms_on_shop_id", using: :btree
     t.index ["user_id"], name: "index_woms_on_user_id", using: :btree
   end
@@ -99,6 +107,7 @@ ActiveRecord::Schema.define(version: 20200308144644) do
   add_foreign_key "shop_users", "shops"
   add_foreign_key "shop_users", "users"
   add_foreign_key "shops", "areas"
+  add_foreign_key "shops", "genres"
   add_foreign_key "woms", "shops"
   add_foreign_key "woms", "users"
 end
