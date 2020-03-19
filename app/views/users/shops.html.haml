@@ -1,0 +1,5 @@
+- breadcrumb :user_shops, @user
+= render "layouts/breadcrumbs"
+.user-wrap
+  = render 'users/header'
+= render 'shop', shops: @shops
