@@ -430,17 +430,51 @@
       }
     }
     .action-wrap {
-      // width: px;
       padding: 8px 16px;
       background-color: ivory;
       display: flex;
       align-items: center;
+      #woms-count-0 {
+        border: solid 1px lightgray;
+        color: black;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+          border: solid 1px orange;
+          color: orange;
+        }
+        &:hover a {
+          color: orange;
+        }
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
+      #users-count-0 {
+        border: solid 1px lightgray;
+        color: black;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.8;
+          border: solid 1px orange;
+          color: orange;
+        }
+        &:hover a {
+          color: orange;
+        }
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
       .action-btn {
         text-align: center;
         height: 32px;
         width: 96px;
+        border: solid 1px orange;
+        color: orange;
         background-color: white;
-        border: solid 1px lightgray;
         border-radius: 4px;
         padding: 4px;
         margin: 4px;

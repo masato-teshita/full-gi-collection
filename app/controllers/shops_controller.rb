@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :move_to_index, except: [:index]
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     if params[:user_id].presence
@@ -22,6 +22,8 @@ class ShopsController < ApplicationController
   def show
     @shop = Shop.find(params[:id])
     @wom = Wom.new
+    @woms = @shop.woms
+    @users = @shop.users
   end
 
   private

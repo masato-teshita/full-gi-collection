@@ -6,15 +6,11 @@ $(function(){
 });
 
 $(function() {
-  $('.action-btn').on('click', function() {
+  $('.wom-post-btn').on('click', function() {
     $('.action-modal-wrapper').show();
     $('.action-modal').show();
     $().show();
-    if ($(this).hasClass('wom-post-btn')) {
-      $('.wom-form').show();
-    } else {
-      $('.bookmark-notif').show();
-    }
+    $('.wom-form').show();
   });
 });
 
