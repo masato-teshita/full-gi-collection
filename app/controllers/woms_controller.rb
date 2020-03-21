@@ -5,8 +5,10 @@ class WomsController < ApplicationController
       @woms = Wom.where(user_id: current_user).order(created_at: "DESC")
       render "users/woms"
     else
-      shop = Shop.find(params[:shop_id])
-      @woms = shop.woms.where.not(rate: nil)
+      @shop = Shop.find(params[:shop_id])
+      @woms = @shop.woms.where.not(rate: nil)
+      @wom = Wom.new
+      @users = @shop.users
       render template: 'shops/woms'
     end
   end
