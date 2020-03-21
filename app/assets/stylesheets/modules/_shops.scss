@@ -214,6 +214,63 @@
           font-size: 12px;
           margin-bottom: 8px;
         }
+        .select-form {
+          display: flex;
+          justify-content: center;
+          .select-box {
+            margin: 0px 8px;
+            #visit-type-buy {
+              display: none;
+            }
+            #visit-type-sell {
+              display: none;
+            }
+            .radio-btn-buy {
+              &:checked + .select-box__buy {
+                border: 2px solid orange;
+                color: orange;
+              }
+            }
+            .radio-btn-sell {
+              &:checked + .select-box__sell {
+                border: 2px solid orange;
+                color: orange;
+              }
+            }
+            &__buy {
+              border: 2px solid gray;
+              display: inline-block;
+              padding: 4px;
+              width: 80px;
+              border-radius: 4px;
+              .btn-label {
+                cursor: pointer;
+                &::after {
+                  display: block;
+                  content: '購入';
+                }
+              }
+            }
+            &__sell {
+              margin: 0px 4px;
+              display: inline-block;
+              padding: 4px;
+              width: 80px;
+              border: 2px solid gray;
+              border-radius: 4px;
+              .btn-label {
+                cursor: pointer;
+                &:hover {
+
+                }
+                &::after {
+                  display: block;
+                  content: '売却';
+                }
+              }
+            }
+          }
+        }
       }
       .input-rate {
         padding: 8px 0;
@@ -282,7 +339,7 @@
     }
   }
   .bookmark-notif {
-    // display: none;
+    display: none;
     text-align: center;
     .bookmark-notif-header {
       background-color: lightgray;
