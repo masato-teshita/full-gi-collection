@@ -1,3 +1,17 @@
 - breadcrumb :shop_woms, @shop
 = render "layouts/breadcrumbs"
-= render 'woms/woms', woms: @woms
+= render "shops/modal"
+.shop-wrapper
+  = render "shops/header"
+  .shop-body
+    %ul.shop-menu-bar
+      %li.shop-menu
+        = link_to '店舗トップ', shop_path(@shop.id)
+      %li.shop-menu
+        取扱商品
+      %li.selected-menu
+        = link_to '口コミ', shop_woms_path(@shop.id)
+      %li.shop-menu
+        地図
+    .shop-content
+      = render 'woms/woms', woms: @woms

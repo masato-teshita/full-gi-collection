@@ -1,0 +1,98 @@
+.woms-wrapper{
+  padding: 0 24px;
+  .woms-search-form {
+    font-size: 12px;
+    background-color: whitesmoke;
+    border: solid 1px lightgray;
+    .search-form-title {
+      padding: 8px 16px;
+    }
+    .search-menu {
+      display: flex;
+      justify-content: center;
+      li {
+        width: 24%;
+        height: 48px;
+        border-top: solid 1px lightgray;
+        border-right: solid 1px lightgray;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        .wom-type {
+          margin: 0 auto;
+        }  
+      }
+      .first-type {
+        border-left: solid 1px lightgray;
+      }
+      .selected-type {
+        background-color: white;
+        color: orange;
+        border-bottom: solid 1px white;
+        border-top: solid 1px orange;
+      }
+    }
+  }
+  .woms-list {
+    .woms-box {
+      margin: 16px 0;
+      border: solid 1px lightgray;
+      border-radius: 6px;
+      &__user-info {
+        padding: 12px;
+        display: flex;
+        .user-icon-img {
+          background-color: red;
+          object-fit: cover;
+          width: 36px;
+          height: 36px;
+          border-radius: 4px;
+          margin-right: 8px;
+        }
+        .user-name {
+          font-size: 12px;
+        }
+      }
+      &__rate {
+        padding: 0 12px;
+        border-bottom: solid 1px whitesmoke;
+        .rate-container {
+          border-top: solid 1px whitesmoke;
+          padding: 8px 0;
+          display: flex;
+          font-size: 20px;
+          .star-rating {
+            margin-left: 12px;
+          }
+          .wom-rate {
+            margin-left: 8px;
+            color: rgb(230, 0, 0);
+            font-weight: bold;
+          }
+        }
+      }
+      &__body {
+        padding: 12px;
+        .content-visit-date {
+          margin-bottom: 8px;
+          font-size: 12px;
+        }
+        .content-title {
+          display: inline-block;
+          margin-bottom: 16px;
+          font-size: 20px;
+          border-bottom: dotted 1px black;
+        }
+        .content-text {
+
+        }
+      }
+    }
+  }
+}
+.fa-tshirt {
+  color: cornflowerblue;
+}
+.fa-yen-sign {
+  color: goldenrod;
+}

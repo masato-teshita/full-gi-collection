@@ -1,15 +1,48 @@
 .woms-wrapper
   .woms-search-form
+    .search-form-title
+      口コミタイプで探す
+    %ul.search-menu
+      %li.first-type.selected-type
+        .wom-type
+          %i.far.fa-comments
+          %span 全ての口コミ
+      %li
+        .wom-type
+          %i.fas.fa-tshirt
+          %span 購入の口コミ
+      %li
+        .wom-type
+          %i.fas.fa-yen-sign
+          %span 売却の口コミ
   .woms-list
     - @woms.each do |wom|
       .woms-box
         .woms-box__user-info
-          = wom.user.name
+          = user_image_present?(wom.user)
+          .user-name
+            = "#{wom.user.name} さんの口コミ"
         .woms-box__rate
-          = wom.rate
+          .rate-container
+            .visit_type
+              = visit_type(wom)
+              = wom.visit_type
+            %div{ id: "star-rate-#{wom.id}", class: "star-rating"}
+            .wom-rate
+              = wom.rate
+            :javascript
+              $("#star-rate-#{wom.id}").raty({
+                size: 36,
+                starOff: "#{asset_path('star-off.png')}",
+                starOn: "#{asset_path('star-on.png')}",
+                starHalf: "#{asset_path('star-half.png')}", 
+                half: true,
+                readOnly: true,
+                score: "#{wom.rate}",
+              });
         .woms-box__body
           .content-visit-date
-            = wom.visit_date
+            = "#{wom.visit_date.strftime('%Y/%m')}訪問"
           .content-title
             = wom.title
           .content-text
