@@ -15,14 +15,20 @@
         .visit-type-select
           .select-msg 
             口コミ対象を選択してください
-          .secet-form
-            = f.radio_button :visit_type, '購入', id: 'visit-type-buy'
-            = f.label '購入', for: 'visi-type-buy'
-            = f.radio_button :visit_type, '売却', id: 'visit-type-sell'
-            = f.label '売却', for: 'visi-type-cell'
-        .input-rate
+          .select-form
+            .select-box
+              = f.radio_button :visit_type, '購入', id: 'visit-type-buy', class: 'radio-btn-buy'
+              .select-box__buy
+                = f.label :visit_type, for: 'visit-type-buy' do
+                  .btn-label
+            .select-box
+              = f.radio_button :visit_type, '売却', id: 'visit-type-sell', class: 'radio-btn-sell'
+              .select-box__sell
+                = f.label :visit_type, for: 'visit-type-sell' do
+                  .btn-label
+        #star.input-rate
           = f.label :rate, '評価'
-          = f.number_field :rate, step: '0.1', placeholder: '点数を入力してください'
+          = f.hidden_field :rate, id: :review_star
         .wom-title
           = f.text_field :title, placeholder: '口コミのタイトルを入力してください', class: 'wom-title-field'
         .wom-content
@@ -30,9 +36,18 @@
       .wom-form-footer
         .visit-date
           = f.label :visit_date, '訪問日'
-          = date_field_tag :visit_date
+          = date_field_tag :visit_date, required: 'required'
         .send-btn
           = f.submit '登録', class: 'wom-send-btn'
+    :javascript
+      $('#star').raty({
+        size: 40,
+        starOff: "#{asset_path('star-off.png')}",
+        starOn: "#{asset_path('star-on.png')}",
+        starHalf: "#{asset_path('star-half.png')}",
+        scoreName: 'wom[rate]', 
+        half: true, 
+      });
   .bookmark-notif
     .bookmark-notif-header
       .modal-title
@@ -86,4 +101,3 @@
       .shop-content__items
       .shop-content__woms
       .shop-content__map
-
