@@ -20,6 +20,13 @@ crumb :show_shop do |shop|
   parent :shops
 end
 
+# shop#woms
+crumb :shop_woms do |shop|
+  shop = Shop.find(params[:shop_id])
+  link "#{shop.name} の口コミ一覧", shop_woms_path(shop)
+  parent :show_shop, shop
+end
+
 # shop#edit
 crumb :edit_shop do |shop|
   link "Edit #{shop.name}", edit_shop_path(shop)

@@ -2,10 +2,12 @@ class WomsController < ApplicationController
   def index
     if params[:user_id].presence
       @user = User.find(params[:user_id])
-      @woms = Wom.all.order(created_at: "DESC")
+      @woms = Wom.where(user_id: current_user).order(created_at: "DESC")
       render "users/woms"
     else
-      @shops = Shop.all
+      shop = Shop.find(params[:shop_id])
+      @woms = shop.woms.where.not(rate: nil)
+      render template: 'shops/woms'
     end
   end
   

@@ -1,0 +1,16 @@
+.woms-wrapper
+  .woms-search-form
+  .woms-list
+    - @woms.each do |wom|
+      .woms-box
+        .woms-box__user-info
+          = wom.user.name
+        .woms-box__rate
+          = wom.rate
+        .woms-box__body
+          .content-visit-date
+            = wom.visit_date
+          .content-title
+            = wom.title
+          .content-text
+            = wom.content
