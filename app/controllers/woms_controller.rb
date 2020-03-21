@@ -10,8 +10,7 @@ class WomsController < ApplicationController
   end
   
   def create
-    # binding.pry
-    Wom.create(wom_params)
+    @wom = Wom.create(wom_params)
   end
 
   private
