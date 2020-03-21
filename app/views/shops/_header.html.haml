@@ -1,0 +1,37 @@
+.shop-header
+  .info-wrap
+    .shop-name
+      = @shop.name
+    .shop-top-info
+      .shop-top-info__rate
+        .star-rating
+          ★★★★★
+        .shop-rating
+          3.52
+      .shop-top-info__woms
+        %i.fas.fa-comment-dots<>
+        = "#{@woms.count} 件"
+      .shop-top-info__bookmarks
+        %i.fas.fa-bookmark.fa-lg<>
+        = "#{@users.count} 件"
+    .shop-bottom-info
+      = "エリア：    ジャンル： #{@shop.show_genres}"
+  .action-wrap
+    - if user_signed_in?
+      %div{ id: "woms-count-#{@shop.show_user_woms(current_user)}", class: "action-btn wom-post-btn" }
+        %i.fas.fa-user-check.fa-lg
+        - if @shop.show_user_woms(current_user) != "0"
+          = @shop.show_user_woms(current_user)
+        %span 行った
+      %div{ id: "users-count-#{@users.count}", class: "action-btn bookmark-btn"}
+        %i.fas.fa-bookmark.fa-lg
+        %span 保存
+    - else
+      #woms-count-0.action-btn
+        = link_to new_user_session_path do
+          %i.fas.fa-user-check.fa-lg
+          %span 行った
+      #users-count-0.action-btn
+        = link_to new_user_session_path do
+          %i.fas.fa-bookmark.fa-lg
+          %span 保存
