@@ -24,6 +24,9 @@ class WomsController < ApplicationController
 
   def create
     wom = Wom.create(wom_params)
+    if History.where.not(user_id: params[:user_id]).where.not(shop_id: params[:shop_id])
+      History.create!(user_id: current_user.id, shop_id: params[:shop_id])
+    end
     redirect_to shop_woms_path(params[:shop_id])
   end
 
