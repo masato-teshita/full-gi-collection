@@ -1,68 +1,37 @@
-.woms-wrapper
-  .woms-search-form
-    .search-form-title
-      口コミタイプで探す
-    %ul.search-menu
-      %li.first-type.selected-all
-        .wom-type
-          = form_tag(woms_searches_path, method: :get, class: 'wom-search-form all') do
-            = hidden_field_tag :visit_type, ''
-            = hidden_field_tag :shop_id, @shop.id
-            = button_tag type: 'submit', class: 'wom-search-btn' do
-              %i.far.fa-comments
-              %span 全ての口コミ
-      %li.buy-type
-        .wom-type
-          = form_tag(woms_searches_path, method: :get, class: 'wom-search-form buy') do
-            = hidden_field_tag :visit_type, '購入'
-            = hidden_field_tag :shop_id, @shop.id
-            = button_tag type: 'submit', class: 'wom-search-btn' do
-              %i.fas.fa-tshirt
-              %span 購入の口コミ
-      %li.sell-type
-        .wom-type
-          = form_tag(woms_searches_path, method: :get, class: 'wom-search-form sell') do
-            = hidden_field_tag :visit_type, '売却'
-            = hidden_field_tag :shop_id, @shop.id
-            = button_tag type: 'submit', class: 'wom-search-btn' do
-              %i.fas.fa-yen-sign
-              %span 売却の口コミ
-  .woms-paginate
-    .woms-count
-      %i 全
-      %i.num= "#{@all_woms.count}"
-      %i 件
-    = paginate(@woms)
-  .woms-list
-    - @woms.each do |wom|
-      .woms-box
-        .woms-box__user-info
+.woms-list
+  - woms.each do |wom|
+    .woms-box
+      .woms-box__wom-info
+        .user-info
           = user_image_present?(wom.user)
           .user-name
-            = "#{wom.user.name} さんの口コミ"
-        .woms-box__rate
-          .rate-container
-            .visit_type
-              = visit_type(wom)
-              = wom.visit_type
-            %div{ id: "star-rate-#{wom.id}", class: "star-rating"}
-            .wom-rate
-              = wom.rate
-            :javascript
-              $("#star-rate-#{wom.id}").raty({
-                size: 36,
-                starOff: "#{asset_path('star-off.png')}",
-                starOn: "#{asset_path('star-on.png')}",
-                starHalf: "#{asset_path('star-half.png')}", 
-                half: true,
-                readOnly: true,
-                score: "#{wom.rate}",
-              });
-        .woms-box__body
-          .content-visit-date
-            = wom_visit_date(wom)
-          .content-title
-            = wom.title
-          .content-text
-            = wom.content
-    = paginate(@woms)
+            %span= "#{wom.user.name} さんの口コミ"
+        - if wom.user_id == current_user.id && user_signed_in?
+          .user-action
+            = link_to '編集', edit_shop_wom_path(wom.shop_id, wom.id)
+            = link_to '削除', shop_wom_path(wom.shop_id, wom.id), method: :delete, id: 'item-delete-btn'
+      .woms-box__rate
+        .rate-container
+          .visit_type
+            = visit_type(wom)
+            = wom.visit_type
+          %div{ id: "star-rate-#{wom.id}", class: "star-rating"}
+          .wom-rate
+            = wom.rate
+          :javascript
+            $("#star-rate-#{wom.id}").raty({
+              size: 36,
+              starOff: "#{asset_path('star-off.png')}",
+              starOn: "#{asset_path('star-on.png')}",
+              starHalf: "#{asset_path('star-half.png')}", 
+              half: true,
+              readOnly: true,
+              score: "#{wom.rate}",
+            });
+      .woms-box__body
+        .content-visit-date
+          = wom_visit_date(wom)
+        .content-title
+          = wom.title
+        .content-text
+          = wom.content

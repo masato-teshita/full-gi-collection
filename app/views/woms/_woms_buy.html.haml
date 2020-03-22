@@ -1,4 +1,7 @@
 .woms-wrapper
+  .woms-post-btn
+    = link_to(new_shop_wom_path(@shop.id), class: 'post-btn') do
+      %span 口コミを投稿する
   .woms-search-form
     .search-form-title
       口コミタイプで探す
@@ -33,36 +36,4 @@
       %i.num= "#{@all_woms.count}"
       %i 件
     = paginate(@woms)
-  .woms-list
-    - @woms.each do |wom|
-      .woms-box
-        .woms-box__user-info
-          = user_image_present?(wom.user)
-          .user-name
-            = "#{wom.user.name} さんの口コミ"
-        .woms-box__rate
-          .rate-container
-            .visit_type
-              = visit_type(wom)
-              = wom.visit_type
-            %div{ id: "star-rate-#{wom.id}", class: "star-rating"}
-            .wom-rate
-              = wom.rate
-            :javascript
-              $("#star-rate-#{wom.id}").raty({
-                size: 36,
-                starOff: "#{asset_path('star-off.png')}",
-                starOn: "#{asset_path('star-on.png')}",
-                starHalf: "#{asset_path('star-half.png')}", 
-                half: true,
-                readOnly: true,
-                score: "#{wom.rate}",
-              });
-        .woms-box__body
-          .content-visit-date
-            = wom_visit_date(wom)
-          .content-title
-            = wom.title
-          .content-text
-            = wom.content
-    = paginate(@woms)
+  = render 'woms/woms', woms: @woms
