@@ -18,4 +18,21 @@ class Shop < ApplicationRecord
       Shop.all.order(:created_at, "DESC")
     end
   end
+
+  def show_user_woms(user)
+    if user.present?
+      user_woms = woms.where(user_id: user.id)
+      user_woms_count = user_woms.count
+    else
+      return "0"
+    end
+  end
+
+  def show_genres
+    shop_genres = []
+    genres.each do |genre|
+      shop_genres << genre.name
+    end
+    return shop_genres.join(' ')
+  end
 end

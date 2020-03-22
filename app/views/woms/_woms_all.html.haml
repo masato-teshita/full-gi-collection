@@ -1,0 +1,39 @@
+.woms-wrapper
+  .woms-post-btn
+    = link_to(new_shop_wom_path(@shop.id), class: 'post-btn') do
+      %span 口コミを投稿する
+  .woms-search-form
+    .search-form-title
+      口コミタイプで探す
+    %ul.search-menu
+      %li.first-type.selected-all
+        .wom-type
+          = form_tag(woms_searches_path, method: :get, class: 'wom-search-form all') do
+            = hidden_field_tag :visit_type, ''
+            = hidden_field_tag :shop_id, @shop.id
+            = button_tag type: 'submit', class: 'wom-search-btn' do
+              %i.far.fa-comments
+              %span 全ての口コミ
+      %li.buy-type
+        .wom-type
+          = form_tag(woms_searches_path, method: :get, class: 'wom-search-form buy') do
+            = hidden_field_tag :visit_type, '購入'
+            = hidden_field_tag :shop_id, @shop.id
+            = button_tag type: 'submit', class: 'wom-search-btn' do
+              %i.fas.fa-tshirt
+              %span 購入の口コミ
+      %li.sell-type
+        .wom-type
+          = form_tag(woms_searches_path, method: :get, class: 'wom-search-form sell') do
+            = hidden_field_tag :visit_type, '売却'
+            = hidden_field_tag :shop_id, @shop.id
+            = button_tag type: 'submit', class: 'wom-search-btn' do
+              %i.fas.fa-yen-sign
+              %span 売却の口コミ
+  .woms-paginate
+    .woms-count
+      %i 全
+      %i.num= "#{@all_woms.count}"
+      %i 件
+    = paginate(@woms)
+  = render 'woms/woms', woms: @woms

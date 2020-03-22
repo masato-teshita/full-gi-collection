@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   namespace :shops do
     resources :searches, only: [:index]
   end
+  namespace :woms do
+    resources :searches, only: [:index]
+  end
   resources :users, only: [:index, :show, :edit, :update] do
     resources :woms, only: [:index, :new, :create, :show]
     resources :shops, only: [:index]
   end
   resources :shops, only: [:index, :show, :new, :create] do
-    resources :woms, only: [:index, :create]
+    resources :woms
   end
   resources :areas
   resources :genres
