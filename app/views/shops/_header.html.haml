@@ -19,7 +19,7 @@
           });
       .shop-top-info__woms
         %i.fas.fa-comment-dots<>
-        = "#{@woms.count} 件"
+        = "#{@woms.where.not(rate: nil).count} 件"
       .shop-top-info__bookmarks
         %i.fas.fa-bookmark.fa-lg<>
         = "#{@users.count} 件"

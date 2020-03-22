@@ -9,7 +9,9 @@
             -# = "#{shop.area.name} ／ #{shop.genre.name}"
           .top-info__action
             .action-icon.action-icon-left
-              %i.fas.fa-user-check.fa-lg
+              %i{ class: "fas fa-user-check fa-lg user-count-#{shop.show_user_woms(current_user)}"}
+              - if shop.show_user_woms(current_user) != 0
+                %span= shop.show_user_woms(current_user)
             .action-icon
               %i.fas.fa-bookmark.fa-lg
         .bottom-info
@@ -29,21 +31,27 @@
             .bottom-info-right__overview
               = shop.outline
             .bottom-info-right__rating
-              .shop-star-rating
-                .empty-star
-                  ★★★★★
-                .filled-star
-                  ★★★★★
+              %div{ id: "star-rate-#{shop.id}", class: 'star-rating'}
               .shop-rating
-                3.52
+                = shop.woms.average(:rate).to_f.round(2)
+              :javascript
+                $('#star-rate-#{shop.id}').raty({
+                  size: 40,
+                  starOff: "#{asset_path('star-off.png')}",
+                  starOn: "#{asset_path('star-on.png')}",
+                  starHalf: "#{asset_path('star-half.png')}",
+                  half: true,
+                  readOnly: true,
+                  score: "#{shop.woms.average(:rate).to_f.round(2)}",
+                });
               .shop-wom-count
                 %i.fas.fa-comment-dots<>
-                12件
+                = "#{shop.woms.where.not(rate: nil).count}件"
             .bottom-info-right__top-wom
               .wom-info
                 .wom-info__title
-                  買取査定が非常に良心的
+                  = last_wom_title(shop)
                 .wom-info__user
-                  by 古着大好きマン
+                  = "by #{last_wom_user(shop)}"
               .wom-content
-                初めて買取をしてもらったが、ヨウジやマルジェラなど、相場以上で買い取ってくだ…
+                = last_wom_content(shop)

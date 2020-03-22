@@ -36,6 +36,9 @@
           width: 48px;
           text-align: center;
           line-height: 36px;
+          .user-count-0 {
+            color: gray;
+          }
         }
         .action-icon-left {
           border-right: solid 1px lightgray;
@@ -92,10 +95,9 @@
           padding: 8px 0;
           display: flex;
           align-items: center;
-          .shop-star-rating {
+          .star-rating {
             position: relative;
             display: inline-block;
-            font-size: 24px;
             .filled-star {
               position: absolute;
               top: 0;
@@ -109,9 +111,10 @@
             }
           }
           .shop-rating {
+            padding: 0 8px;
+            color: rgb(230, 0, 0);
             font-size: 20px;
             font-weight: bold;
-            margin: 0 8px;
           }
           .shop-wom-count {
             margin-left: 8px;
