@@ -5,6 +5,7 @@ class Woms::SearchesController < ApplicationController
     @all_woms = Wom.search(params[:visit_type], params[:shop_id])
     @wom = Wom.new
     @users = @shop.users
+    @visit_type = params[:visit_type]
     render template: 'shops/woms'
   end
 end

@@ -3,7 +3,7 @@
     .search-form-title
       口コミタイプで探す
     %ul.search-menu
-      %li.first-type.selected-all
+      %li.first-type
         .wom-type
           = form_tag(woms_searches_path, method: :get, class: 'wom-search-form all') do
             = hidden_field_tag :visit_type, ''
@@ -19,7 +19,7 @@
             = button_tag type: 'submit', class: 'wom-search-btn' do
               %i.fas.fa-tshirt
               %span 購入の口コミ
-      %li.sell-type
+      %li.sell-type.selected-sell
         .wom-type
           = form_tag(woms_searches_path, method: :get, class: 'wom-search-form sell') do
             = hidden_field_tag :visit_type, '売却'

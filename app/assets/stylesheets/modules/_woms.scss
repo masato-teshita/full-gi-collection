@@ -30,16 +30,56 @@
               cursor: pointer;
             }  
           }
-        }  
+        } 
       }
       .first-type {
         border-left: solid 1px lightgray;
+        &:hover {
+          border-top: solid 1px orange;
+          & span {
+            color: orange;
+          }
+        }
       }
-      .selected-type {
+      .buy-type {
+        &:hover {
+          border-top: solid 1px cornflowerblue;
+          & span {
+            color: cornflowerblue;
+          }
+        }
+      }
+      .sell-type {
+        &:hover {
+          border-top: solid 1px goldenrod;
+          & span {
+            color: goldenrod;
+          }
+        } 
+      }
+      .selected-all {
         background-color: white;
-        color: orange;
         border-bottom: solid 1px white;
         border-top: solid 1px orange;
+      & span {
+          color: orange;
+        }
+      }
+      .selected-buy {
+        background-color: white;
+        border-bottom: solid 1px white;
+        border-top: solid 1px cornflowerblue;
+      & span {
+          color: cornflowerblue;
+        }
+      }
+      .selected-sell {
+        background-color: white;
+        border-bottom: solid 1px white;
+        border-top: solid 1px goldenrod;
+      & span {
+          color: goldenrod;
+        }
       }
     }
   }

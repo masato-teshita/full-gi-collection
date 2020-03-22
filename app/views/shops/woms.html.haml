@@ -18,4 +18,9 @@
         = link_to('#', class: 'shop-menu-link') do
           %span.shop-menu-name 地図
     .shop-content
-      = render 'woms/woms', woms: @woms
+      - if @visit_type == "購入"
+        = render 'woms/woms_buy', woms: @woms
+      - elsif @visit_type == "売却"
+        = render 'woms/woms_sell', woms: @woms
+      - else
+        = render 'woms/woms', woms: @woms
