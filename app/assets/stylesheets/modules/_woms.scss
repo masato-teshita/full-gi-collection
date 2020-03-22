@@ -33,6 +33,18 @@
       }
     }
   }
+  .woms-paginate {
+    font-size: 12px;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .woms-count {
+      .num {
+        font-size: 16px;
+      }
+    }
+  }
   .woms-list {
     .woms-box {
       margin: 16px 0;
@@ -88,6 +100,10 @@
         }
       }
     }
+  }
+  .pagination {
+    font-size: 12px;
+    text-align: right;
   }
 }
 .fa-tshirt {
