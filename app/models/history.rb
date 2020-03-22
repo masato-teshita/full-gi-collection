@@ -1,4 +1,4 @@
 class History < ApplicationRecord
   belongs_to :user
-  has_one :shop
+  belongs_to :shop
 end

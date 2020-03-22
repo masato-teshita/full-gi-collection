@@ -1,7 +1,7 @@
 class Shop < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :area, optional: true
-  belongs_to :history, optional: true
+  has_many :historis
   has_many :woms
   has_many :shop_genres
   has_many :shop_brands
