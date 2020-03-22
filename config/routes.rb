@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :shops, only: [:index]
   end
   resources :shops, only: [:index, :show, :new, :create] do
-    resources :woms, only: [:index, :create]
+    resources :woms
   end
   resources :areas
   resources :genres
