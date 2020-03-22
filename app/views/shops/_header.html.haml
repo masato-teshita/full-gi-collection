@@ -18,8 +18,9 @@
             score: "#{@shop.woms.average(:rate).to_f.round(2)}",
           });
       .shop-top-info__woms
-        %i.fas.fa-comment-dots<>
-        = "#{@woms.where.not(rate: nil).count} 件"
+        = link_to(shop_woms_path(@shop.id)) do
+          %i.fas.fa-comment-dots<>
+          = "#{@woms.where.not(rate: nil).count} 件"
       .shop-top-info__bookmarks
         %i.fas.fa-bookmark.fa-lg<>
         = "#{@users.count} 件"
@@ -28,10 +29,11 @@
   .action-wrap
     - if user_signed_in?
       %div{ id: "woms-count-#{@shop.show_user_woms(current_user)}", class: "action-btn wom-post-btn" }
-        %i.fas.fa-user-check.fa-lg
-        - if @shop.show_user_woms(current_user) != "0"
-          = @shop.show_user_woms(current_user)
-        %span 行った
+        = link_to(new_shop_wom_path(@shop.id), class: 'wom-post-link') do
+          %i.fas.fa-user-check.fa-lg
+          - if @shop.show_user_woms(current_user) != 0
+            %span= @shop.show_user_woms(current_user)
+          %span.wom-post-name 行った
       %div{ id: "users-count-#{@users.count}", class: "action-btn bookmark-btn"}
         %i.fas.fa-bookmark.fa-lg
         %span 保存
