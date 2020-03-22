@@ -1,6 +1,5 @@
 - breadcrumb :shop_woms, @shop
 = render "layouts/breadcrumbs"
-= render "shops/modal"
 .shop-wrapper
   = render "shops/header"
   .shop-body
@@ -23,4 +22,4 @@
       - elsif @visit_type == "売却"
         = render 'woms/woms_sell', woms: @woms
       - else
-        = render 'woms/woms', woms: @woms
+        = render 'woms/woms_all', woms: @woms
