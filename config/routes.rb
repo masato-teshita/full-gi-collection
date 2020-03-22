@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   namespace :shops do
     resources :searches, only: [:index]
   end
+  namespace :woms do
+    resources :searches, only: [:index]
+  end
   resources :users, only: [:index, :show, :edit, :update] do
     resources :woms, only: [:index, :new, :create, :show]
     resources :shops, only: [:index]
