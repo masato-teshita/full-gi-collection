@@ -5,16 +5,28 @@
     %ul.search-menu
       %li.first-type.selected-type
         .wom-type
-          %i.far.fa-comments
-          %span 全ての口コミ
+          = form_tag(woms_searches_path, method: :get, class: 'wom-search-form') do
+            = hidden_field_tag :visit_type, ''
+            = hidden_field_tag :shop_id, @shop.id
+            = button_tag type: 'submit', class: 'wom-search-btn' do
+              %i.far.fa-comments
+              %span 全ての口コミ
       %li
         .wom-type
-          %i.fas.fa-tshirt
-          %span 購入の口コミ
+          = form_tag(woms_searches_path, method: :get, class: 'wom-search-form') do
+            = hidden_field_tag :visit_type, '購入'
+            = hidden_field_tag :shop_id, @shop.id
+            = button_tag type: 'submit', class: 'wom-search-btn' do
+              %i.fas.fa-tshirt
+              %span 購入の口コミ
       %li
         .wom-type
-          %i.fas.fa-yen-sign
-          %span 売却の口コミ
+          = form_tag(woms_searches_path, method: :get, class: 'wom-search-form') do
+            = hidden_field_tag :visit_type, '売却'
+            = hidden_field_tag :shop_id, @shop.id
+            = button_tag type: 'submit', class: 'wom-search-btn' do
+              %i.fas.fa-yen-sign
+              %span 売却の口コミ
   .woms-paginate
     .woms-count
       %i 全
