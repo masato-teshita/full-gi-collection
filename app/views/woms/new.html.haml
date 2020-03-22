@@ -1,0 +1,64 @@
+- breadcrumb :shop_wom_new, @shop
+= render "layouts/breadcrumbs"
+.shop-wrapper
+  = render "shops/header"
+  .shop-body
+    %ul.shop-menu-bar
+      %li.shop-menu
+        = link_to(shop_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 店舗トップ
+      %li.shop-menu
+        = link_to('#', class: 'shop-menu-link') do
+          %span.shop-menu-name 取扱商品
+      %li.shop-menu#selected-menu
+        = link_to(shop_woms_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 口コミ
+      %li.shop-menu
+        = link_to('#', class: 'shop-menu-link') do
+          %span.shop-menu-name 地図
+    .shop-content
+      .wom-post-form
+        .form-box
+          .wom-form-header
+            .form-title
+              %span 口コミを投稿する
+          = form_for [@shop, @wom] do |f|
+            .wom-form-body
+              .visit-type-select
+                .select-msg 
+                  %span 口コミ対象を選択してください
+                .select-form
+                  .select-box
+                    = f.radio_button :visit_type, '購入', id: 'visit-type-buy', class: 'radio-btn-buy'
+                    .select-box__buy
+                      = f.label :visit_type, for: 'visit-type-buy' do
+                        .btn-label
+                          %i.fas.fa-tshirt
+                  .select-box
+                    = f.radio_button :visit_type, '売却', id: 'visit-type-sell', class: 'radio-btn-sell'
+                    .select-box__sell
+                      = f.label :visit_type, for: 'visit-type-sell' do
+                        .btn-label
+                          %i.fas.fa-yen-sign
+              #star.input-rate
+                = f.label :rate, '評価'
+                = f.hidden_field :rate, id: :review_star
+              .wom-title
+                = f.text_field :title, placeholder: '口コミのタイトルを入力してください', class: 'wom-title-field'
+              .wom-content
+                = f.text_area :content, placeholder: '口コミ本文を入力してください', class: 'wom-content-field'
+            .wom-form-footer
+              .visit-date
+                = f.label :visit_date, '訪問日'
+                = date_field_tag :visit_date, required: 'required'
+              .send-btn
+                = f.submit '登録', class: 'wom-send-btn'
+          :javascript
+            $('#star').raty({
+              size: 40,
+              starOff: "#{asset_path('star-off.png')}",
+              starOn: "#{asset_path('star-on.png')}",
+              starHalf: "#{asset_path('star-half.png')}",
+              scoreName: 'wom[rate]', 
+              half: true
+            });
