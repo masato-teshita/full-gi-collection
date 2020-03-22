@@ -5,7 +5,7 @@ class Wom < ApplicationRecord
     if visit_type != ""
       Wom.where('(visit_type = ?) AND (shop_id = ?)', "#{visit_type}", "#{shop_id}")
     else
-      Wom.where('shop_id = ?', "#{shop_id}")
+      Wom.where(shop_id: "#{shop_id}").where.not(rate: nil)
     end
   end
 end
