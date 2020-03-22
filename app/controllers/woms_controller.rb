@@ -7,7 +7,7 @@ class WomsController < ApplicationController
     else
       @shop = Shop.find(params[:shop_id])
       @all_woms = @shop.woms.where.not(rate: nil)
-      @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(3)
+      @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
       @wom = Wom.new
       @users = @shop.users
       render template: 'shops/woms'

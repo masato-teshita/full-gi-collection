@@ -1,11 +1,11 @@
 class Wom < ApplicationRecord
   belongs_to :user
   belongs_to :shop
-  def self.search(search)
-    if search
-      Wom.where('visit_type LIKE(?)', "%#{search}%")
+  def self.search(visit_type, shop_id)
+    if visit_type != ""
+      Wom.where('(visit_type = ?) AND (shop_id = ?)', "#{visit_type}", "#{shop_id}")
     else
-      Wom.all.order(:created_at, "DESC")
+      Wom.where('shop_id = ?', "#{shop_id}")
     end
   end
 end
