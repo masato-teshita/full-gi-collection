@@ -490,21 +490,44 @@
   }
   .shop-body {
     .shop-menu-bar {
-      display: flex; 
+      display: flex;
       border-top: solid 1px lightgray;
       border-bottom: solid 1px lightgray;
       border-right: solid 1px lightgray;
-      li.first-menu {
-        background-color: gray;
-        color: white;
-      }
       .shop-menu {
-        text-align: center;
-        line-height: 48px;
         height: 48px;
         width: 25%;
-        background-color: whitesmoke;
         border-left: solid 1px lightgray;
+        cursor: pointer;
+        background: -moz-linear-gradient(bottom, whitesmoke, #FFF);
+        background: -webkit-linear-gradient(bottom, whitesmoke, #FFF);
+        background: linear-gradient(to top, whitesmoke, #FFF);
+        &:hover {
+          background: -moz-linear-gradient(top, whitesmoke, #FFF);
+          background: -webkit-linear-gradient(top, whitesmoke, #FFF);
+          background: linear-gradient(to bottom, whitesmoke, #FFF);
+        }
+        .shop-menu-link {
+          height: 48px;
+          width: 100%;
+          text-decoration: none;
+          color: black;  
+          text-align: center;
+          display: flex;
+          align-items: center;
+          .shop-menu-name {
+            display: table-cell;
+            vertical-align: middle;
+            width: 100%;
+          }
+        }
+      }
+      #selected-menu {
+        background: none;
+        background-color: gray;
+        a {
+          color: white;
+        }
       }
     }
     .shop-content {
