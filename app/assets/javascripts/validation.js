@@ -2,10 +2,10 @@ $(function() {
   $('form').on('submit', function() {
     var array = []
     var error_msg = ""
-    var radioval = $("input[name='visit_type']:checked").val();
-    var rate = $('.rate-field').val();
-    var title = $('.wom-title-field').val();
-    var content = $('.wom-content-field').val();
+    var radioval = $('input[name="wom[visit_type]"]:checked').val();
+    var rate = $('input[name="wom[rate]"]').last().val();
+    var title = $('input[name="wom[title]"]').val();
+    var content = $('textarea[name="wom[content]"]').val();
     array.push(radioval)
     array.push(rate)
     array.push(title)
@@ -13,7 +13,6 @@ $(function() {
 
     $.each(array, function(index, value) {
       if(value) {
-        console.log('ファッ')
       } else {
         switch(index) {
           case 0:
@@ -32,13 +31,11 @@ $(function() {
       }
     })
 
-    console.log(error_msg)
-
     if(error_msg) {
       error_msg = "未入力項目があります。" + error_msg
       alert(error_msg);
+      error_msg =""
       return false;
     } 
-    return false;
   });
 });
