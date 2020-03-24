@@ -74,8 +74,8 @@ crumb :user_shops do |user|
   parent :user
 end
 
-# user/woms#index
-crumb :user_woms do |user|
+# user/history#index
+crumb :user_histories do |user|
   link "行ったお店一覧"
   parent :user
 end

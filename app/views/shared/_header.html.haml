@@ -5,7 +5,7 @@
       -if user_signed_in?
         %ul.menu-list
           %li.menu-option
-            = link_to '行ったお店', user_woms_path(current_user)
+            = link_to '行ったお店', user_histories_path(current_user)
           %li.menu-option
             = link_to '保存済み', user_shops_path(current_user)              
           %li.menu-option

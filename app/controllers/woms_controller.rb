@@ -23,8 +23,19 @@ class WomsController < ApplicationController
   end
 
   def create
-    wom = Wom.create(wom_params)
-    redirect_to shop_woms_path(params[:shop_id])
+    @wom = Wom.new(wom_params)
+    @shop = Shop.find(params[:shop_id])
+    @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
+    @all_woms = @shop.woms.where.not(rate: nil)
+    @users = @shop.users
+    if @wom.save
+      if History.where.not(user_id: params[:user_id]).where.not(shop_id: params[:shop_id])
+        History.create!(user_id: current_user.id, shop_id: params[:shop_id])
+      end
+      redirect_to shop_woms_path(params[:shop_id])
+    else
+      render :new
+    end
   end
 
   def edit

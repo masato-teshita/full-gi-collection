@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'histories/index'
+
   devise_for :users
   root "tops#index"
   namespace :shops do
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update] do
     resources :woms, only: [:index, :new, :create, :show]
     resources :shops, only: [:index]
+    resources :histories, only: [:index, :create]
   end
   resources :shops, only: [:index, :show, :new, :create] do
     resources :woms
@@ -17,4 +20,5 @@ Rails.application.routes.draw do
   resources :areas
   resources :genres
   resources :brands
+  
 end

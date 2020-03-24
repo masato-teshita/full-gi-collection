@@ -24,6 +24,7 @@
               %span 口コミを編集する
           = form_for [@shop, @wom] do |f|
             .wom-form-body
+              = render 'layouts/error_messages', model: f.object
               .visit-type-select
                 .select-msg 
                   %span 口コミ対象を選択してください

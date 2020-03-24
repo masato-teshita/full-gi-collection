@@ -1,0 +1,57 @@
+.shop-list
+  - histories.each do |history|
+    .shop
+      = link_to shop_path(history.shop_id) do
+        .top-info
+          .top-info__name
+            = history.shop.name
+          .top-info__area-genre
+            -# = "#{shop.area.name} ／ #{shop.genre.name}"
+          .top-info__action
+            .action-icon.action-icon-left
+              %i{ class: "fas fa-user-check fa-lg user-count-#{history.shop.show_user_woms(current_user)}"}
+              - if history.shop.show_user_woms(current_user) != 0
+                %span= history.shop.show_user_woms(current_user)
+            .action-icon
+              %i.fas.fa-bookmark.fa-lg
+        .bottom-info
+          .bottom-info-left
+            .bottom-info-left__top-cover
+              = image_tag history.shop.image.url, alt: 'no image', class: 'top-cover-img'
+            %ul.bottom-info-left__items
+              %li.cover-item
+                = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
+              %li.cover-item
+                = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
+              %li.cover-item
+                = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
+              %li.cover-item
+                = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
+          .bottom-info-right
+            .bottom-info-right__overview
+              = history.shop.outline
+            .bottom-info-right__rating
+              %div{ id: "star-rate-#{history.shop_id}", class: 'star-rating'}
+              .shop-rating
+                = history.shop.woms.average(:rate).to_f.round(2)
+              :javascript
+                $('#star-rate-#{history.shop_id}').raty({
+                  size: 40,
+                  starOff: "#{asset_path('star-off.png')}",
+                  starOn: "#{asset_path('star-on.png')}",
+                  starHalf: "#{asset_path('star-half.png')}",
+                  half: true,
+                  readOnly: true,
+                  score: "#{history.shop.woms.average(:rate).to_f.round(2)}",
+                });
+              .shop-wom-count
+                %i.fas.fa-comment-dots<>
+                = "#{history.shop.woms.where.not(rate: nil).count}件"
+            .bottom-info-right__top-wom
+              .wom-info
+                .wom-info__title
+                  = last_wom_title(history.shop)
+                .wom-info__user
+                  = "by #{last_wom_user(history.shop)}"
+              .wom-content
+                = last_wom_content(history.shop)

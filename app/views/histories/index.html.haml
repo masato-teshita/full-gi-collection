@@ -1,0 +1,9 @@
+- breadcrumb :user_histories, @user
+= render "layouts/breadcrumbs"
+.user-wrap
+  = render 'users/header'
+- if @histories.count != 0
+  = render 'histories', histories: @histories
+- else
+  
+  %span まだ行ったお店は登録されていません。

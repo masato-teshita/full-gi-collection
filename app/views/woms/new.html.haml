@@ -24,35 +24,37 @@
               %span 口コミを投稿する
           = form_for [@shop, @wom] do |f|
             .wom-form-body
+              .err-msg
+                = render 'layouts/error_messages', model: f.object
               .visit-type-select
                 .select-msg 
                   %span 口コミ対象を選択してください
                 .select-form
                   .select-box
-                    = f.radio_button :visit_type, '購入', id: 'visit-type-buy', class: 'radio-btn-buy'
+                    = f.radio_button :visit_type, '購入', id: 'visit-type-buy', class: 'radio-btn-buy require visit-type-btn'
                     .select-box__buy
                       = f.label :visit_type, for: 'visit-type-buy' do
                         .btn-label
                           %i.fas.fa-tshirt
                   .select-box
-                    = f.radio_button :visit_type, '売却', id: 'visit-type-sell', class: 'radio-btn-sell'
+                    = f.radio_button :visit_type, '売却', id: 'visit-type-sell', class: 'radio-btn-sell require visit-type-btn'
                     .select-box__sell
                       = f.label :visit_type, for: 'visit-type-sell' do
                         .btn-label
                           %i.fas.fa-yen-sign
               #star.input-rate
                 = f.label :rate, '評価'
-                = f.hidden_field :rate, id: :review_star
+                = f.hidden_field :rate, id: :review_star, class: 'require rate-field'
               .wom-title
-                = f.text_field :title, placeholder: '口コミのタイトルを入力してください', class: 'wom-title-field'
+                = f.text_field :title, placeholder: '口コミのタイトルを入力してください', class: 'wom-title-field require'
               .wom-content
-                = f.text_area :content, placeholder: '口コミ本文を入力してください', class: 'wom-content-field'
+                = f.text_area :content, placeholder: '口コミ本文を入力してください', class: 'wom-content-field require'
             .wom-form-footer
               .visit-date
                 = f.label :visit_date, '訪問日'
                 = date_field_tag :visit_date, required: 'required'
               .send-btn
-                = f.submit '登録', class: 'wom-send-btn'
+                = f.submit '登録', type: 'submit', class: 'wom-send-btn'
           :javascript
             $('#star').raty({
               size: 40,
@@ -60,5 +62,6 @@
               starOn: "#{asset_path('star-on.png')}",
               starHalf: "#{asset_path('star-half.png')}",
               scoreName: 'wom[rate]', 
+              score: "#{@wom.rate}",
               half: true
             });
