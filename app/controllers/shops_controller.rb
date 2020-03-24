@@ -24,6 +24,7 @@ class ShopsController < ApplicationController
     @wom = Wom.new
     @woms = @shop.woms
     @users = @shop.users
+    @clip = @shop.clip
   end
 
   private
