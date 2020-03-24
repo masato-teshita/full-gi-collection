@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      wom: 口コミ
+    attributes:
+      wom:
+        title: 口コミのタイトル
+        rate: 評価
+        content: 口コミ本文
+        visit_type: 口コミ対象
