@@ -80,6 +80,12 @@ crumb :user_histories do |user|
   parent :user
 end
 
+# user/clip#index
+crumb :user_clips do |user|
+  link "保存済み一覧"
+  parent :user
+end
+
 # devise/registrations#new
 
 # devise/registrations#edit
