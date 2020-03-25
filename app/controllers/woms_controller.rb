@@ -9,7 +9,8 @@ class WomsController < ApplicationController
       @all_woms = @shop.woms.where.not(rate: nil)
       @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
       @wom = Wom.new
-      @users = @shop.users
+      @clips = @shop.clips
+      @clip = Clip.where(user_id: current_user).where(shop_id: @shop.id)
       render template: 'shops/woms'
     end
   end
