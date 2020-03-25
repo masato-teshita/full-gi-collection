@@ -5,15 +5,20 @@ class ClipsController < ApplicationController
   end
 
   def create
-    shop = Shop.find(params[:shop_id])
-    clip = Clip.new(user_id: current_user, shop_id: shop.id)
-    if clip.save
-      redirect_to shop_path(shop.id)
+    @shop = Shop.find(params[:shop_id])
+    @clips = @shop.clips
+    @clip = Clip.new(user_id: current_user.id, shop_id: @shop.id)
+    @all_woms = @shop.woms.where.not(rate: nil)
+    @wom = Wom.new
+    @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
+    if @clip.save!
+      redirect_to shop_path(@shop.id)
     end
   end
 
   def destroy
-    clip = Clip.where(user_id: current_user).where(shop_id: params[:shop_id])
+    clip = Clip.find_by(user_id: current_user, shop_id: params[:shop_id])
     clip.destroy
+    redirect_to shop_path(params[:shop_id])
   end
 end
