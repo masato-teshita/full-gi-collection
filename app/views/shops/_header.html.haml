@@ -1,3 +1,7 @@
+.modal-wrapper
+  #target_msg_box.modal-box
+    .modal-inner
+      %span 保存しました！
 .shop-header
   .info-wrap
     .shop-name
@@ -23,26 +27,34 @@
           = "#{@woms.where.not(rate: nil).count} 件"
       .shop-top-info__bookmarks
         %i.fas.fa-bookmark.fa-lg<>
-        = "#{@users.count} 件"
+        = "#{@clips.count} 件"
     .shop-bottom-info
       = "エリア：    ジャンル： #{@shop.show_genres}"
   .action-wrap
     - if user_signed_in?
       %div{ id: "woms-count-#{@shop.show_user_woms(current_user)}", class: "action-btn wom-post-btn" }
-        = link_to(new_shop_wom_path(@shop.id), class: 'wom-post-link') do
+        = link_to(new_shop_wom_path(@shop.id), class: 'action-link') do
           %i.fas.fa-user-check.fa-lg
           - if @shop.show_user_woms(current_user) != 0
             %span= @shop.show_user_woms(current_user)
-          %span.wom-post-name 行った
-      %div{ id: "users-count-#{@users.count}", class: "action-btn bookmark-btn"}
-        %i.fas.fa-bookmark.fa-lg
-        %span 保存
+          %span.action-name 行った
+      - if @clip.present?
+        #clip-count-1.action-btn.bookmark-btn
+          = link_to(user_clip_path(current_user, @clip.id, shop_id: @shop.id), method: :delete, class: 'action-link', id: 'clip-delete') do
+            %i.fas.fa-bookmark.fa-lg
+            %span.action-name 保存
+            %input{name: 'clip_path', type: 'hidden', value: user_clip_path(current_user, @clip.id, shop_id: @shop.id), class: 'clip_path'}
+      - else
+        #clip-count-0.action-btn.bookmark-btn
+          = link_to(user_clips_path(current_user, shop_id: @shop.id), method: :post, class: 'action-link', id: 'clip-post') do
+            %i.fas.fa-bookmark.fa-lg
+            %span.action-name 保存
     - else
       #woms-count-0.action-btn
-        = link_to new_user_session_path do
+        = link_to(new_user_session_path, class: 'action-link') do
           %i.fas.fa-user-check.fa-lg
-          %span 行った
-      #users-count-0.action-btn
-        = link_to new_user_session_path do
+          %span.action-name 行った
+      #clip-count-0.action-btn
+        = link_to(new_user_session_path, class: 'action-link') do
           %i.fas.fa-bookmark.fa-lg
-          %span 保存
+          %span.action-name 保存
