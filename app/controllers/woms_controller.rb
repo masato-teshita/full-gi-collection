@@ -20,7 +20,7 @@ class WomsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
     @all_woms = @shop.woms.where.not(rate: nil)
-    @users = @shop.users
+    @clips = @shop.clips
   end
 
   def create
