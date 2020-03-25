@@ -16,6 +16,10 @@ end
 
 # shop#show
 crumb :show_shop do |shop|
+  if shop.present?
+  else
+    shop = Shop.find(params[:shop_id])
+  end
   link shop.name, shop
   parent :shops
 end
