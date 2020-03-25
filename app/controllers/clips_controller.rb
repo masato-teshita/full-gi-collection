@@ -12,7 +12,9 @@ class ClipsController < ApplicationController
     @wom = Wom.new
     @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
     if @clip.save!
-      redirect_to shop_path(@shop.id)
+      respond_to do |format|
+        format.html { redirect_to shop_path(@shop.id) }
+      end
     end
   end
 

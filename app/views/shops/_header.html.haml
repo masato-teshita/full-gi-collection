@@ -43,12 +43,13 @@
           = link_to(user_clip_path(current_user, @clip.id, shop_id: @shop.id), method: :delete, class: 'action-link', id: 'clip-delete') do
             %i.fas.fa-bookmark.fa-lg
             %span.action-name 保存
-            %input{name: 'clip_path', type: 'hidden', value: user_clip_path(current_user, @clip.id, shop_id: @shop.id), class: 'clip_path'}
       - else
         #clip-count-0.action-btn.bookmark-btn
-          = link_to(user_clips_path(current_user, shop_id: @shop.id), method: :post, class: 'action-link', id: 'clip-post') do
+          = link_to('', method: :post, class: 'action-link', id: 'clip-post') do
             %i.fas.fa-bookmark.fa-lg
             %span.action-name 保存
+            %input{name: 'clip-path', type: 'hidden', value: current_user.id, class: 'clip-path'}
+            %input{name: 'shop-id', type: 'hidden', value: @shop.id, class: 'shop-id'}
     - else
       #woms-count-0.action-btn
         = link_to(new_user_session_path, class: 'action-link') do
