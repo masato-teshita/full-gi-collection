@@ -23,8 +23,8 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @wom = Wom.new
     @woms = @shop.woms
-    @users = @shop.users
-    @clip = @shop.clip
+    @clip = Clip.find_by(user_id: current_user, shop_id: @shop.id)
+    @clips = @shop.clips
   end
 
   private
