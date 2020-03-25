@@ -30,6 +30,15 @@ class Shop < ApplicationRecord
     end
   end
 
+  def show_user_clips(user)
+    if user.present?
+      user_clips = clips.where(user_id: user.id)
+      user_clips_count = user_clips.count
+    else
+      return "0"
+    end
+  end
+
   def show_genres
     shop_genres = []
     genres.each do |genre|
