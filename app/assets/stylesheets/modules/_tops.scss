@@ -198,22 +198,33 @@
         .top-areas {
           display: flex;
           .top-area {
-            height: 48px;
-            line-height: 48px;
-            padding: 0 16px 0;
-            margin: 4px;
-            border: solid 1px lightgray;
-            border-radius: 4px;
-            box-shadow: 0 0 4px lightgray;
-            cursor: pointer;
-            display: flex;
-            &__name {
-              font-size: 16px;
-              margin-right: 8px;
-              font-weight: bold;
+            .top-area-link {
+              display: flex;
+              align-items: center;
+              height: 48px;
+              padding: 0 16px 0;
+              margin: 4px;
+              border: solid 1px lightgray;
+              border-radius: 4px;
+              box-shadow: 0 0 4px lightgray;
+              cursor: pointer;
+              .top-area-box {
+                .top-area-name {
+                  font-size: 16px;
+                  font-weight: bold;
+                }
+                .top-area-shop-count {
+                  font-size: 12px;
+                }
+              }
             }
-            &__store-count {
-              font-size: 12px;
+            & a {
+              text-decoration: none;
+              color: black;
+              &:hover {
+                color: orange;
+                text-decoration: underline;
+              }
             }
           }
         }
