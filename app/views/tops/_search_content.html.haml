@@ -1,60 +1,25 @@
 .top-main
   .search-area
     %h2.search-area__title
-      エリアから探す
+      %span エリアから探す
     .search-area__area
       .selected-area
         .selected-area__name
-          東京
+          %span 東京
         .selected-area__store-count
-          722件
+          %span= "#{@shops.count}件"
       %ul.top-areas
-        %li.top-area
-          .top-area__name
-            下北沢
-          .top-area__store-count
-            112件
-        %li.top-area
-          .top-area__name
-            原宿
-          .top-area__store-count
-            98件
-        %li.top-area
-          .top-area__name
-            高円寺
-          .top-area__store-count
-            74件
-        %li.top-area
-          .top-area__name
-            渋谷
-          .top-area__store-count
-            37件
-        %li.top-area
-          .top-area__name
-            表参道
-          .top-area__store-count
-            35件
+        - @top_areas.each do |top_area|
+          %li.top-area
+            = link_to(shops_searches_path(area_id: top_area.id), class: 'top-area-link') do
+              .top-area-box
+                %span.top-area-name= top_area.name
+                %span.top-area-shop-count= "#{top_area.shops.count}件"
       %ul.area-list.clearfix
-        %li.all-area
-          下北沢
-        %li.all-area
-          渋谷
-        %li.all-area
-          原宿
-        %li.all-area
-          吉祥寺・三鷹
-        %li.all-area
-          高円寺
-        %li.all-area
-          池袋・高田馬場
-        %li.all-area
-          新宿・代々木・大久保
-        %li.all-area
-          恵比寿
-        %li.all-area
-          代官山
-        %li.all-area
-          表参道
+        - @areas.each do |area|
+          %li.all-area
+            = link_to(shops_searches_path(area_id: area.id), class: 'area-link') do
+              %span= area.name
   .search-genre
     %h2.search-genre__title
       ジャンルから探す
