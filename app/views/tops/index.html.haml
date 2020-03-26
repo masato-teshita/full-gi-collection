@@ -18,7 +18,7 @@
                 %ul.menu-list
                   -if user_signed_in?
                     %li.menu-option
-                      = link_to '行った古着屋', user_woms_path(current_user)
+                      = link_to '行った古着屋', user_histories_path(current_user)
                     %li.menu-option
                       = link_to '保存済み', user_shops_path(current_user)              
                     %li.menu-option
