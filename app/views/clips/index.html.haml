@@ -1,0 +1,9 @@
+- breadcrumb :user_clips, @user
+= render "layouts/breadcrumbs"
+.user-wrap
+  = render 'users/header'
+- if @clips.count != 0
+  = render 'clips', clips: @clips
+- else
+  
+  %span 保存したお店は登録されていません。

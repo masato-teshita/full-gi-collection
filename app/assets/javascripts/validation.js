@@ -1,5 +1,5 @@
 $(function() {
-  $('form').on('submit', function() {
+  $('form.new_wom').on('submit', function() {
     var array = []
     var error_msg = ""
     var radioval = $('input[name="wom[visit_type]"]:checked').val();

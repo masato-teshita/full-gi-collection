@@ -16,6 +16,10 @@ end
 
 # shop#show
 crumb :show_shop do |shop|
+  if shop.present?
+  else
+    shop = Shop.find(params[:shop_id])
+  end
   link shop.name, shop
   parent :shops
 end
@@ -77,6 +81,12 @@ end
 # user/history#index
 crumb :user_histories do |user|
   link "行ったお店一覧"
+  parent :user
+end
+
+# user/clip#index
+crumb :user_clips do |user|
+  link "保存済み一覧"
   parent :user
 end
 
