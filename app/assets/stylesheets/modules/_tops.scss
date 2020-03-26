@@ -1,14 +1,21 @@
-* {
-  box-sizing: border-box;
-}
 
+
+.home-main {
+  .home-wrapper {
+    min-width: 1080px;
+    margin: 0 auto;
+  }  
+}
 .home-header {
   width: 100%;
-  min-width: 1080px;
   height: 600px;
   padding: 0 64px 0;
   background-image: url("furugi-top.jpeg");
   background-size: cover;
+  .home-header-content {
+    max-width: 1600px;    
+    margin: 0 auto;
+  }
   .home-header-top {
     width: 100%;
     height: 80px;
@@ -154,6 +161,8 @@
 }
 
 .top-wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
   display: flex;
   padding: 24px 64px;
   min-width: 1080px;
