@@ -1,57 +1,61 @@
 .shop-list
-  - shops.each do |shop|
-    .shop
-      = link_to shop_path(shop.id) do
-        .top-info
-          .top-info__name
-            = shop.name
-          .top-info__area-genre
-            -# = "#{shop.area.name} ／ #{shop.genre.name}"
-          .top-info__action
-            .action-icon.action-icon-left
-              %i{ class: "fas fa-user-check fa-lg wom-count-#{shop.show_user_woms(current_user)}"}
-              - if shop.show_user_woms(current_user) != 0
-                %span= shop.show_user_woms(current_user)
-            .action-icon
-              %i{ class: "fas fa-bookmark fa-lg clip-count-#{shop.show_user_clips(current_user)}"}
-        .bottom-info
-          .bottom-info-left
-            .bottom-info-left__top-cover
-              = image_tag shop.image.url, alt: 'no image', class: 'top-cover-img'
-            %ul.bottom-info-left__items
-              %li.cover-item
-                = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
-              %li.cover-item
-                = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
-              %li.cover-item
-                = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
-              %li.cover-item
-                = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
-          .bottom-info-right
-            .bottom-info-right__overview
-              = shop.outline
-            .bottom-info-right__rating
-              %div{ id: "star-rate-#{shop.id}", class: 'star-rating'}
-              .shop-rating
-                = shop.woms.average(:rate).to_f.round(2)
-              :javascript
-                $('#star-rate-#{shop.id}').raty({
-                  size: 40,
-                  starOff: "#{asset_path('star-off.png')}",
-                  starOn: "#{asset_path('star-on.png')}",
-                  starHalf: "#{asset_path('star-half.png')}",
-                  half: true,
-                  readOnly: true,
-                  score: "#{shop.woms.average(:rate).to_f.round(2)}",
-                });
-              .shop-wom-count
-                %i.fas.fa-comment-dots<>
-                = "#{shop.woms.where.not(rate: nil).count}件"
-            .bottom-info-right__top-wom
-              .wom-info
-                .wom-info__title
-                  = last_wom_title(shop)
-                .wom-info__user
-                  = "by #{last_wom_user(shop)}"
-              .wom-content
-                = last_wom_content(shop)
+  - if shops.count != 0
+    - shops.each do |shop|
+      .shop
+        = link_to shop_path(shop.id) do
+          .top-info
+            .top-info__name
+              = shop.name
+            .top-info__area-genre
+              -# = "#{shop.area.name} ／ #{shop.genre.name}"
+            .top-info__action
+              .action-icon.action-icon-left
+                %i{ class: "fas fa-user-check fa-lg user-count-#{shop.show_user_woms(current_user)}"}
+                - if shop.show_user_woms(current_user) != 0
+                  %span= shop.show_user_woms(current_user)
+              .action-icon
+                %i.fas.fa-bookmark.fa-lg
+          .bottom-info
+            .bottom-info-left
+              .bottom-info-left__top-cover
+                = image_tag shop.image.url, alt: 'no image', class: 'top-cover-img'
+              %ul.bottom-info-left__items
+                %li.cover-item
+                  = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
+                %li.cover-item
+                  = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
+                %li.cover-item
+                  = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
+                %li.cover-item
+                  = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
+            .bottom-info-right
+              .bottom-info-right__overview
+                = shop.outline
+              .bottom-info-right__rating
+                %div{ id: "star-rate-#{shop.id}", class: 'star-rating'}
+                .shop-rating
+                  = shop.woms.average(:rate).to_f.round(2)
+                :javascript
+                  $('#star-rate-#{shop.id}').raty({
+                    size: 40,
+                    starOff: "#{asset_path('star-off.png')}",
+                    starOn: "#{asset_path('star-on.png')}",
+                    starHalf: "#{asset_path('star-half.png')}",
+                    half: true,
+                    readOnly: true,
+                    score: "#{shop.woms.average(:rate).to_f.round(2)}",
+                  });
+                .shop-wom-count
+                  %i.fas.fa-comment-dots<>
+                  = "#{shop.woms.where.not(rate: nil).count}件"
+              .bottom-info-right__top-wom
+                .wom-info
+                  .wom-info__title
+                    = last_wom_title(shop)
+                  .wom-info__user
+                    = "by #{last_wom_user(shop)}"
+                .wom-content
+                  = last_wom_content(shop)
+  - else
+    .no-lesult
+      %span 検索に該当する店舗は登録されていません。
