@@ -1,37 +1,38 @@
 .header
-  .header__top
-    .page-name
-    .menu
-      -if user_signed_in?
-        %ul.menu-list
-          %li.menu-option
-            = link_to '行ったお店', user_histories_path(current_user)
-          %li.menu-option
-            = link_to '保存済み', user_clips_path(current_user)              
-          %li.menu-option
-            = link_to 'マイページ', user_path(current_user)
-        .user-nav
-          %img{src: "/IMG_1596.jpg", alt: "User icon", class: "user-nav-icon js-user-nav"}
-          %ul.user-nav-popup
-            %li.user-nav-option
-              = link_to '設定', edit_user_registration_path
-            %li.user-nav-option
-              = link_to 'ログアウト', destroy_user_session_path, method: :delete
-      - else
-        %ul.menu-list
-          %li.menu-option
-            = link_to '行ったお店', new_user_session_path
-          %li.menu-option
-            = link_to '保存済み', new_user_session_path
-          %li.menu-option
-            = link_to 'ログイン', new_user_session_path
-  .header__bottom
-    .app-icon
-      = link_to '古着navi', root_path 
-    .search-form
-      = form_tag(shops_searches_path, method: :get) do
-        .search-box
-          = text_field_tag :area, "", placeholder: 'エリア[例：下北沢]', class: 'search-content search-box__area'
-          = text_field_tag :keyword, "", placeholder: 'キーワード[例：yohji yamamoto]', class: 'search-content search-box__keyword'
-          = button_tag type: 'submit', class: 'search-box__submit' do
-            %i.fas.fa-search.fa-2x
+  .header-wrapper
+    .header-wrapper__top
+      .page-name
+      .menu
+        -if user_signed_in?
+          %ul.menu-list
+            %li.menu-option
+              = link_to '行ったお店', user_histories_path(current_user)
+            %li.menu-option
+              = link_to '保存済み', user_shops_path(current_user)              
+            %li.menu-option
+              = link_to 'マイページ', user_path(current_user)
+          .user-nav
+            %img{src: "/IMG_1596.jpg", alt: "User icon", class: "user-nav-icon js-user-nav"}
+            %ul.user-nav-popup
+              %li.user-nav-option
+                = link_to '設定', edit_user_registration_path
+              %li.user-nav-option
+                = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+          %ul.menu-list
+            %li.menu-option
+              = link_to '行ったお店', new_user_session_path
+            %li.menu-option
+              = link_to '保存済み', new_user_session_path
+            %li.menu-option
+              = link_to 'ログイン', new_user_session_path
+    .header-wrapper__bottom
+      .app-icon
+        = link_to '古着navi', root_path 
+      .search-form
+        = form_tag(shops_searches_path, method: :get) do
+          .search-box
+            = text_field_tag :area, "", placeholder: 'エリア[例：下北沢]', class: 'search-content search-box__area'
+            = text_field_tag :keyword, "", placeholder: 'キーワード[例：yohji yamamoto]', class: 'search-content search-box__keyword'
+            = button_tag type: 'submit', class: 'search-box__submit' do
+              %i.fas.fa-search.fa-2x
