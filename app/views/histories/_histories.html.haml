@@ -13,7 +13,7 @@
               - if history.shop.show_user_woms(current_user) != 0
                 %span= history.shop.show_user_woms(current_user)
             .action-icon
-              %i.fas.fa-bookmark.fa-lg
+              %i{ class: "fas fa-bookmark fa-lg clip-count-#{history.shop.show_user_clips(current_user)}"}
         .bottom-info
           .bottom-info-left
             .bottom-info-left__top-cover
