@@ -6,7 +6,7 @@
           .top-info__name
             = history.shop.name
           .top-info__area-genre
-            -# = "#{shop.area.name} ／ #{shop.genre.name}"
+            = "#{history.shop.area.name} ／ #{history.shop.show_genres}"
           .top-info__action
             .action-icon.action-icon-left
               %i{ class: "fas fa-user-check fa-lg user-count-#{history.shop.show_user_woms(current_user)}"}
