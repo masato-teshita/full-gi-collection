@@ -29,7 +29,10 @@
         %i.fas.fa-bookmark.fa-lg<>
         = "#{@clips.count} 件"
     .shop-bottom-info
-      = "エリア：    ジャンル： #{@shop.show_genres}"
+      %span エリア：
+      %span.shop-bottom-info-show= @shop.area.name
+      %span ジャンル：
+      %span.shop-bottom-info-show= @shop.show_genres
   .action-wrap
     - if user_signed_in?
       %div{ id: "woms-count-#{@shop.show_user_woms(current_user)}", class: "action-btn wom-post-btn" }
