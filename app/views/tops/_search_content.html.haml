@@ -22,42 +22,22 @@
               %span= area.name
   .search-genre
     %h2.search-genre__title
-      ジャンルから探す
+      %span ジャンルから探す
     .search-genre__area
       %ul.top-genres
-        %li.top-genre
-          %img{src: "/assets/genre-m-mode.jpg", class: "top-genre__img", alt: "genre image1"}
-          .top-genre__name
-            モード
-          .top-genre__store-count
-            127件
-        %li.top-genre
-          %img{src: "/assets/genre-m-kirecaj.jpg", class: "top-genre__img", alt: "genre image2"}
-          .top-genre__name
-            キレカジ
-          .top-genre__store-count
-            101件
-        %li.top-genre
-          %img{src: "/assets/genre-m-street.jpg", class: "top-genre__img", alt: "genre image3"}
-          .top-genre__name
-            ストリート
-          .top-genre__store-count
-            86件
+        - @top_genres.each do |top_genre|
+          %li.top-genre
+            = link_to(shops_searches_path(genre_id: top_genre.id), class: 'top-genre-link') do
+              = image_tag "/#{top_genre.image}", class: 'top-genre__img'
+              .top-genre__name
+                %span= top_genre.name
+              .top-genre__store-count
+                %span= "#{top_genre.shops.count}件"
       %ul.genre-list.clearfix
-        %li.all-genre
-          アメカジ
-        %li.all-genre
-          スポーティ
-        %li.all-genre
-          ロック
-        %li.all-genre
-          トラッド
-        %li.all-genre
-          フォーマル
-        %li.all-genre
-          原宿系
-        %li.all-genre
-          サーフ
+        - @genres.each do |genre|
+          %li.all-genre
+            = link_to(shops_searches_path(genre_id: genre.id), class: 'genre-link') do
+              %span= genre.name
     .search-genre__all
       = link_to 'ジャンル一覧へ', genres_path, class: 'genre-all-link'
   .search-brand
