@@ -202,6 +202,10 @@
       .shop-bottom-info {
         padding: 8px 0;
         font-size: 12px;
+        .shop-bottom-info-show {
+          color: gray;
+          margin-right: 16px;
+        }
       }
     }
     .action-wrap {
