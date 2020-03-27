@@ -266,6 +266,9 @@
             & a:hover {
               color: black;
               text-decoration: underline;
+              & img {
+                opacity: 0.5;
+              }
             }
             .top-genre-link {
               margin: 8px 8px 8px 0;
@@ -280,9 +283,6 @@
               object-fit: cover;
               height: 136px;
               width: 136px;
-            }
-            &__img:hover {
-              opacity: 0.5;
             }
             &__name {
               width: 100%;
@@ -356,7 +356,9 @@
             width: 136px;
             cursor: pointer;
             &__img {
+              object-fit: cover;
               height: 136px;
+              width: 136px;
             }
             &__img:hover {
               opacity: 0.5;
@@ -366,19 +368,26 @@
         .brand-list {
           width: 100%;
           .all-brand {
-            color: rgb(66, 66, 66);
-            padding: 6px 16px;
-            margin: 4px 8px 4px 0;
-            border: solid 1px lightgray;
-            border-radius: 4px;
-            box-shadow: 0 0 4px lightgray;
-            float: left;
-            white-space:nowrap;
-            font-size: 12px;
-            cursor: pointer;
-          }
-          .all-brand:hover {
-            opacity: 0.5;
+            .brand-link {
+              color: rgb(66, 66, 66);
+              padding: 6px 16px;
+              margin: 4px 8px 4px 0;
+              border: solid 1px lightgray;
+              border-radius: 4px;
+              box-shadow: 0 0 4px lightgray;
+              float: left;
+              white-space:nowrap;
+              font-size: 12px;
+              cursor: pointer;
+            }
+            & a {
+              text-decoration: none;
+              color: black;
+              &:hover {
+                color: orange;
+                text-decoration: underline;
+              }
+            }
           }
         }
       }
