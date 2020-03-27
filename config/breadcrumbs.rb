@@ -9,8 +9,8 @@ crumb :shops do
 end
 
 # shop/searches#index
-crumb :search_shops do
-  link "検索結果"
+crumb :search_shops do |keyword|
+  link "#{keyword}古着屋"
   parent :shops
 end
 
