@@ -41,7 +41,7 @@
               古着屋探しは「古着navi」
             .search-form
               .form-explanation
-                エリア・キーワードから探す
+                %h2 エリア・キーワードから探す
               .search-box
                 = form_tag(shops_searches_path, method: :get) do
                   = text_field_tag :area, "", placeholder: "エリア[例：下北沢]", class: "search-box__content left-content"
