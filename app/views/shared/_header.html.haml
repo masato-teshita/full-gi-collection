@@ -32,7 +32,7 @@
       .search-form
         = form_tag(shops_searches_path, method: :get) do
           .search-box
-            = text_field_tag :area, "", placeholder: 'エリア[例：下北沢]', class: 'search-content search-box__area'
-            = text_field_tag :keyword, "", placeholder: 'キーワード[例：yohji yamamoto]', class: 'search-content search-box__keyword'
+            = text_field_tag :area, "", placeholder: 'エリア[例：下北沢]', value: @area, class: 'search-content search-box__area'
+            = text_field_tag :keyword, "", placeholder: 'キーワード[例：yohji yamamoto]', value: @searched_word, class: 'search-content search-box__keyword'
             = button_tag type: 'submit', class: 'search-box__submit' do
               %i.fas.fa-search.fa-2x
