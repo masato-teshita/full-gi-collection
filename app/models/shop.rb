@@ -13,12 +13,23 @@ class Shop < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  def self.search(search)
-    if search
-      Shop.where('outline LIKE(?)', "%#{search}%")
-    else
-      Shop.all.order(:created_at, "DESC")
-    end
+  scope :shop_includes, -> do
+    includes(:area).includes(:genres).includes(:brands)
+  end
+
+  def self.search(area, search)
+    shops = []
+    keyword_shops = Shop.shop_includes
+                    .where('shops.name ilike ? OR shops.outline ilike ?', "%#{search}%", "%#{search}%")
+                    .where('areas.name ilike ?', "%#{area}%").references(:area)
+    brand_shops = Shop.shop_includes
+                    .where('brands.name ilike ?', "%#{search}%").references(:brands)
+                    .where('areas.name ilike ?', "%#{area}%").references(:area)
+    genre_shops = Shop.shop_includes
+                    .where('genres.name ilike ?', "%#{search}%").references(:genres)
+                    .where('areas.name ilike ?', "%#{area}%").references(:area)
+    shops.concat(keyword_shops).concat(brand_shops).concat(genre_shops)
+    shops.uniq
   end
 
   def show_user_woms(user)
@@ -46,4 +57,12 @@ class Shop < ApplicationRecord
     end
     return shop_genres.join(' ')
   end
+
+  def get_genres
+    shop_genres = []
+    genres.each do |genre|
+      shop_genres << genre.name
+    end
+  end
+
 end
