@@ -10,7 +10,7 @@ end
 
 # shop/searches#index
 crumb :search_shops do |keyword|
-  link "#{keyword}古着屋"
+  link keyword
   parent :shops
 end
 
