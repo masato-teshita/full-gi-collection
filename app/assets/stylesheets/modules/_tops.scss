@@ -114,16 +114,19 @@
     padding: 0 40px 0;
     overflow: hidden;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     font-size: 0;
     .form-explanation {
-      width: 22%;
-      font-size: 16px;
+      width: 20%;
+      min-width: 154px;
+      max-width: 216px;
       margin-right: 24px;
+      font-size: 16px;
     }
     .search-box {
       height: 56px;
-      width: 100%;
+      width: calc(100% - 104px);
       border: solid 1px gray;
       border-radius: 6px;
       position: relative;
@@ -138,6 +141,9 @@
         padding: 0 8px;
         border: none;
         outline: none;
+        &:focus {
+          border-bottom: solid 3px gray;
+        }
       }
       &__submit {
         background-color: gray;
@@ -158,6 +164,40 @@
       }
     }
   }
+  #area-search-result {
+    display: none;
+    margin: -20px 0 0 0;
+    background-color: white;
+    border: solid 1px whitesmoke;
+    box-shadow: 2px 2px 2px whitesmoke;
+    height: 54px;
+    position: relative;
+    .candidate-area-list {
+      position: absolute;
+      top: 15%;
+      display: flex;
+      text-align: center;
+      .candidate-area {
+        padding: 8px 16px;
+        margin: 0 8px;
+        border: 1px solid whitesmoke;
+        background-color: whitesmoke;
+        font-size: 12px;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+      .no-result {
+        padding: 8px 16px;
+        margin: 0 8px;
+        border: 1px solid whitesmoke;
+        background-color: whitesmoke;
+        font-size: 12px;
+      }
+    }
+  }
+
 }
 
 .top-wrapper {
