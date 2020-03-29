@@ -173,9 +173,9 @@
     background-color: white;
     border: solid 1px lightgray;
     box-shadow: 2px 2px 2px lightgray;
-    height: auto;
+    position: relative;
+    z-index: 2;
     .candidate-list {
-      height: auto;
       display: flex;
       flex-wrap: wrap;
       text-align: center;
