@@ -2,7 +2,7 @@ class BrandsController < ApplicationController
   def index
     keyword = params[:keyword]
     return nil if keyword == ""
-    brands = Brand.where(['name ilike ?', "%#{keyword}%"]).limit(10)
+    brands = Brand.where(['name ilike ?', "%#{keyword}%"]).order(:name).limit(10)
     genres = Genre.where(['name ilike ?', "%#{keyword}%"])
     shops = Shop.where(['name ilike ?', "%#{keyword}%"])
     @keywords = brands + genres + shops
