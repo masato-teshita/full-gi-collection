@@ -45,10 +45,10 @@
               .search-box
                 = form_tag(shops_searches_path, method: :get) do
                   = text_field_tag :area, "", placeholder: "エリア[例：下北沢]", autocomplete: :off, class: "search-box__content left-content", id: 'area-search-field'
-                  = text_field_tag :keyword, "", placeholder: "キーワード[例：yohji yamamoto]", class: "search-box__content", id: 'keyword-field'
-                  = button_tag '検 索', type: 'submit', class: 'search-box__submit'
-            #area-search-result
-              .candidate-area-list
+                  = text_field_tag :keyword, "", placeholder: "キーワード[例：yohji yamamoto]", autocomplete: :off, class: "search-box__content", id: 'keyword-field'
+                  = button_tag '検 索', type: 'submit', class: 'search-box__submit', id: 'search-submit-btn'
+            #search-result
+              .candidate-list
         .top-wrapper
           = render "tops/search_content"
           = render "tops/side_bar"
