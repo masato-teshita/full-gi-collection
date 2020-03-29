@@ -171,18 +171,18 @@
     display: none;
     margin: -20px 0 0 0;
     background-color: white;
-    border: solid 1px whitesmoke;
-    box-shadow: 2px 2px 2px whitesmoke;
-    height: 54px;
-    position: relative;
+    border: solid 1px lightgray;
+    box-shadow: 2px 2px 2px lightgray;
+    height: auto;
     .candidate-list {
-      position: absolute;
-      top: 15%;
+      height: auto;
       display: flex;
+      flex-wrap: wrap;
       text-align: center;
       .candidate {
+        display: inline;
         padding: 8px 16px;
-        margin: 0 8px;
+        margin: 4px 8px;
         border: 1px solid whitesmoke;
         background-color: whitesmoke;
         font-size: 12px;
@@ -193,7 +193,7 @@
       }
       .no-result {
         padding: 8px 16px;
-        margin: 0 8px;
+        margin: 4px 8px;
         border: 1px solid whitesmoke;
         background-color: whitesmoke;
         font-size: 12px;

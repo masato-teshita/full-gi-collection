@@ -149,20 +149,17 @@
       display: none;
       margin: -13px 0 0 0;
       background-color: white;
-      border: solid 1px whitesmoke;
-      box-shadow: 2px 2px 2px whitesmoke;
-      height: 100%;
-      min-height: 36px;
+      border: solid 1px lightgray;
+      box-shadow: 2px 2px 2px lightgray;
       position: relative;
+      z-index: 2;
       .candidate-list {
-        position: absolute;
-        top: 5%;
         display: flex;
+        flex-wrap: wrap;
         text-align: center;
         .candidate {
-          max-height: 34px;
           padding: 6px 8px;
-          margin: 0 8px;
+          margin: 4px 8px;
           border: 1px solid whitesmoke;
           background-color: whitesmoke;
           font-size: 8px;
