@@ -19,16 +19,33 @@ class Shop < ApplicationRecord
 
   def self.search(area, search)
     shops = []
-    keyword_shops = Shop.shop_includes
-                    .where('shops.name ilike ? OR shops.outline ilike ?', "%#{search}%", "%#{search}%")
-                    .where('areas.name ilike ?', "%#{area}%").references(:area)
-    brand_shops = Shop.shop_includes
-                    .where('brands.name ilike ?', "%#{search}%").references(:brands)
-                    .where('areas.name ilike ?', "%#{area}%").references(:area)
-    genre_shops = Shop.shop_includes
-                    .where('genres.name ilike ?', "%#{search}%").references(:genres)
-                    .where('areas.name ilike ?', "%#{area}%").references(:area)
-    shops.concat(keyword_shops).concat(brand_shops).concat(genre_shops)
+    splid_words = search.split(/[[:blank:]]+/)
+    if splid_words.length == 0
+      keyword_shops = Shop.shop_includes
+                      .where('shops.name ilike ? OR shops.outline ilike ?', "%#{search}%", "%#{search}%")
+                      .where('areas.name ilike ?', "%#{area}%").references(:area)
+      brand_shops = Shop.shop_includes
+                      .where('brands.name ilike ?', "%#{search}%").references(:brands)
+                      .where('areas.name ilike ?', "%#{area}%").references(:area)
+      genre_shops = Shop.shop_includes
+                      .where('genres.name ilike ?', "%#{search}%").references(:genres)
+                      .where('areas.name ilike ?', "%#{area}%").references(:area)
+      shops.concat(keyword_shops).concat(brand_shops).concat(genre_shops)
+    else
+      splid_words.each do |search|
+        next if search == ""
+        keyword_shops = Shop.shop_includes
+                        .where('shops.name ilike ? OR shops.outline ilike ?', "%#{search}%", "%#{search}%")
+                        .where('areas.name ilike ?', "%#{area}%").references(:area)
+        brand_shops = Shop.shop_includes
+                        .where('brands.name ilike ?', "%#{search}%").references(:brands)
+                        .where('areas.name ilike ?', "%#{area}%").references(:area)
+        genre_shops = Shop.shop_includes
+                        .where('genres.name ilike ?', "%#{search}%").references(:genres)
+                        .where('areas.name ilike ?', "%#{area}%").references(:area)
+        shops += shops.concat(keyword_shops).concat(brand_shops).concat(genre_shops)
+      end
+    end
     shops.uniq
   end
 
