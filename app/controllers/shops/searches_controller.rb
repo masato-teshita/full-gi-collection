@@ -27,10 +27,11 @@ class Shops::SearchesController < ApplicationController
       @result = "#{@keyword} #{@shops.count}件"
     elsif @searched_word.present?
       @shops = Shop.search(@area, @searched_word)
-      @keyword = "#{@searched_word}' を含む古着屋"
+      @keyword = "'#{@searched_word}' を含む古着屋"
       @result = "#{@keyword} #{@shops.count}件"
     else
       redirect_to shops_path
     end
+    
   end
 end
