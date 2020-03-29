@@ -2,12 +2,10 @@ class ShopsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
+    @shops = Shop.all.order(created_at: "DESC")
     if params[:user_id].presence
       @user = User.find(params[:user_id])
-      @shops = Shop.all.order(created_at: "DESC")
       render "users/shops"
-    else
-      @shops = Shop.all.order(created_at: "DESC")
     end
   end
 

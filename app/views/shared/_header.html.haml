@@ -27,12 +27,15 @@
             %li.menu-option
               = link_to 'ログイン', new_user_session_path
     .header-wrapper__bottom
-      .app-icon
-        = link_to '古着navi', root_path 
       .search-form
-        = form_tag(shops_searches_path, method: :get) do
-          .search-box
-            = text_field_tag :area, "", placeholder: 'エリア[例：下北沢]', class: 'search-content search-box__area'
-            = text_field_tag :keyword, "", placeholder: 'キーワード[例：yohji yamamoto]', class: 'search-content search-box__keyword'
-            = button_tag type: 'submit', class: 'search-box__submit' do
-              %i.fas.fa-search.fa-2x
+        .app-icon
+          = link_to '古着navi', root_path 
+        .search-box
+          = form_tag(shops_searches_path, method: :get) do
+            .search-container
+              = text_field_tag :area, "", placeholder: 'エリア[例：下北沢]', autocomplete: :off, value: @area, class: 'search-content search-container__area', id: 'area-search-field-hd' 
+              = text_field_tag :keyword, "", placeholder: 'キーワード[例：yohji yamamoto]', value: @searched_word, autocomplete: :off, class: 'search-content search-container__keyword', id: 'keyword-field-hd'
+              = button_tag type: 'submit', class: 'search-container__submit', id: 'search-submit-btn-hd' do
+                %i.fas.fa-search.fa-2x
+    #search-result-hd
+      .candidate-list

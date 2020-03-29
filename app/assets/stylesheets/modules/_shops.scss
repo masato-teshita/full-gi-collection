@@ -206,6 +206,12 @@
           color: gray;
           margin-right: 16px;
         }
+        .shop-genre {
+          display: inline-block;
+          .genre-list {
+            display: flex;
+          }
+        }
       }
     }
     .action-wrap {

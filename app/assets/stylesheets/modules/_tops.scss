@@ -114,16 +114,19 @@
     padding: 0 40px 0;
     overflow: hidden;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     font-size: 0;
     .form-explanation {
-      width: 22%;
-      font-size: 16px;
+      width: 20%;
+      min-width: 154px;
+      max-width: 216px;
       margin-right: 24px;
+      font-size: 16px;
     }
     .search-box {
       height: 56px;
-      width: 100%;
+      width: calc(100% - 104px);
       border: solid 1px gray;
       border-radius: 6px;
       position: relative;
@@ -138,6 +141,9 @@
         padding: 0 8px;
         border: none;
         outline: none;
+        &:focus {
+          border-bottom: solid 3px gray;
+        }
       }
       &__submit {
         background-color: gray;
@@ -151,6 +157,9 @@
         position: absolute;
         top: 0;
         right: 0;
+        &:focus {
+          outline: solid 4px lightgray;
+        }
         &:hover {
           cursor: pointer;
           opacity: 0.8;
@@ -158,6 +167,40 @@
       }
     }
   }
+  #search-result {
+    display: none;
+    margin: -20px 0 0 0;
+    background-color: white;
+    border: solid 1px lightgray;
+    box-shadow: 2px 2px 2px lightgray;
+    height: auto;
+    .candidate-list {
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      text-align: center;
+      .candidate {
+        display: inline;
+        padding: 8px 16px;
+        margin: 4px 8px;
+        border: 1px solid whitesmoke;
+        background-color: whitesmoke;
+        font-size: 12px;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+      .no-result {
+        padding: 8px 16px;
+        margin: 4px 8px;
+        border: 1px solid whitesmoke;
+        background-color: whitesmoke;
+        font-size: 12px;
+      }
+    }
+  }
+
 }
 
 .top-wrapper {
@@ -449,14 +492,17 @@
           width: 100%;
           display: flex;
           align-items: center;
-          & :hover {
-            opacity: 0.8;
-            color: orange;
-          }
           .user-link {
             display: inline-block;
             display: flex;
             align-items: center;
+            &:hover {
+              opacity: 0.8;
+              color: orange;
+              span {
+                color: orange;
+              }
+            }
           }
           &__user-icon {
             width: 70px;
@@ -465,7 +511,7 @@
             border: solid 1px lightgray;
             border-radius: 6px;
             background-color: white;
-            .user-img {
+            .user-icon-img {
               object-fit: cover;
               width: 64px;
               height: 64px;
@@ -505,24 +551,38 @@
           .bookmark-store {
             padding: 4px 0;
             border-top: solid 1px lightgray;
-            display: flex;
-            align-items: center;
-            &__img {
-              object-fit: cover;
-              width: 64px;
-              height: 64px;
+            a:hover {
+              text-decoration: none;
             }
-            &__data {
-              margin-left: 16px;
-              font-size: 12px;
-              &__tag {
-                color: gray;
-                font-size: 10px;
+            a:hover .on-dec{
+              color: orange;
+              text-decoration: underline;
+            }
+            .clip-shop-link {
+              display: flex;
+              align-items: center;
+              &:hover{
+                .clip-shop-img {
+                  opacity: 0.8;
+                }
               }
-              &__eval {
-                color: rgb(230, 0, 0);
-                font-size: 14px;
-                font-weight: bold;
+              .clip-shop-img {
+                object-fit: cover;
+                width: 64px;
+                height: 64px;
+              }
+              .clip-shop-data {
+                margin-left: 16px;
+                font-size: 12px;
+                &__tag {
+                  color: gray;
+                  font-size: 10px;
+                }
+                &__eval {
+                  color: rgb(230, 0, 0);
+                  font-size: 14px;
+                  font-weight: bold;
+                }
               }
             }
           }

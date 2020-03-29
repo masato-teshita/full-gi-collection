@@ -30,9 +30,13 @@
         = "#{@clips.count} 件"
     .shop-bottom-info
       %span エリア：
-      %span.shop-bottom-info-show= @shop.area.name
+      = link_to(@shop.area.name, shops_searches_path(area_id: @shop.area.id), class: 'shop-bottom-info-show')
       %span ジャンル：
-      %span.shop-bottom-info-show= @shop.show_genres
+      .shop-genre
+        %ul.genre-list
+          - @shop.get_genres.each do |genre|
+            %li
+              = link_to(genre.name, shops_searches_path(genre_id: genre.id), class: 'shop-bottom-info-show')
   .action-wrap
     - if user_signed_in?
       %div{ id: "woms-count-#{@shop.show_user_woms(current_user)}", class: "action-btn wom-post-btn" }
@@ -43,7 +47,7 @@
           %span.action-name 行った
       - if @clip.present?
         #clip-count-1.action-btn.bookmark-btn
-          = link_to(user_clip_path(current_user, @clip.id, shop_id: @shop.id), method: :delete, class: 'action-link', id: 'clip-delete') do
+          = link_to(user_clip_path(current_user, @clip, shop_id: @shop.id), method: :delete, class: 'action-link', id: 'clip-delete') do
             %i.fas.fa-bookmark.fa-lg
             %span.action-name 保存
       - else
