@@ -157,6 +157,9 @@
         position: absolute;
         top: 0;
         right: 0;
+        &:focus {
+          outline: solid 4px lightgray;
+        }
         &:hover {
           cursor: pointer;
           opacity: 0.8;
@@ -164,7 +167,7 @@
       }
     }
   }
-  #area-search-result {
+  #search-result {
     display: none;
     margin: -20px 0 0 0;
     background-color: white;
@@ -172,12 +175,12 @@
     box-shadow: 2px 2px 2px whitesmoke;
     height: 54px;
     position: relative;
-    .candidate-area-list {
+    .candidate-list {
       position: absolute;
       top: 15%;
       display: flex;
       text-align: center;
-      .candidate-area {
+      .candidate {
         padding: 8px 16px;
         margin: 0 8px;
         border: 1px solid whitesmoke;
