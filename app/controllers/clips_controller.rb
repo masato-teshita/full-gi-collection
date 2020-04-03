@@ -1,7 +1,7 @@
 class ClipsController < ApplicationController
   def index
-    @user = current_user
-    @clips = Clip.where(user_id: current_user).order(created_at: "DESC").page(params[:page]).per(10)
+    @user = User.find(params[:user_id])
+    @clips = Clip.where(user_id: @user).order(created_at: "DESC").page(params[:page]).per(10)
   end
 
   def create
