@@ -3,45 +3,52 @@
 .user-wrap
   = render 'users/header'
   #account-page.account-page
-    .account-page__inner.clearfix
+    .account-page__inner
       .account-page__inner--left.account-page__header    
-        登録情報の編集
+        %h2 設定
+        %h5 登録情報の編集
       .account-page__inner--right.user-form
-        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = form_for(resource, as: resource_name, url: edit_registration_path(resource_name), html: { method: :put }) do |f|
           = render "devise/shared/error_messages", resource: resource
           .field
             .field-label
-              = f.label :email
+              = f.label 'ニックネーム'
             .field-input
-              = f.email_field :email, autofocus: true, autocomplete: "email"
-            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-              %div
-                Currently waiting confirmation for: #{resource.unconfirmed_email}
+              = f.text_field :name, placeholder: @user.name
           .field
             .field-label
-              = f.label :password
-              %i (leave blank if you don't want to change it)
+              = f.label '自己紹介'
+            .field-input
+              = f.text_area :introduction, placeholder: @user.introduction, class: 'text-area'
+          .field
+            .field-label
+              = f.label '背景画像'
+            .field-input
+              = f.file_field :cover_image, value: @user.cover_image.filename, class: 'cover-img', id: 'user-cover-img'
+              .user-cover
+                = user_cover_image_present?(@user)
+          .field
+            .field-label
+              = f.label 'メールアドレス'
+            .field-input
+              = f.email_field :email, autocomplete: "email"
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %div
+              Currently waiting confirmation for: #{resource.unconfirmed_email}
+          .field
+            .field-label
+              = f.label '新しいパスワード'
             .field-input
               = f.password_field :password, autocomplete: "new-password"
-              - if @minimum_password_length
-                %br/
-                %em
-                  = @minimum_password_length
-                  characters minimum
           .field
             .field-label
-              = f.label :password_confirmation
+              = f.label '新しいパスワード(確認)'
             .field-input
               = f.password_field :password_confirmation, autocomplete: "new-password"
           .field
             .field-label
-              = f.label :current_password
-              %i (we need your current password to confirm your changes)
+              = f.label '現在のパスワード'
             .field-input
               = f.password_field :current_password, autocomplete: "current-password"
           .actions
-            = f.submit "Update"
-          %h3 Cancel my account
-          %p
-            Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-          = link_to "Back", :back
+            = f.submit "更新", class: 'btn'
