@@ -5,19 +5,20 @@
   = render 'header'
   .user-body
     .user-self-intro
-      初めまして！
-      古着が好きで、特にブランド古着を集めています。
-      ヨウジヤマモトやイッセイミヤケなど、モード系のドメブラが大好きです！
-      下北沢や原宿などによく出没します。
-      よろしくお願いいたします！
+      %span= @user.introduction
     %ul.user-action-info
       %li.user-action-wrap
         .title
-          口コミ数
-        .nums
-          1件
+          %span 口コミ数
+        .woms
+          %span= "#{@user.woms.count}件"
       %li.user-action-wrap
         .title
-          保存したお店
-        .nums
-          3件
+          %span 行ったお店
+        .histories
+          %span= "#{@user.histories.count}件"
+      %li.user-action-wrap
+        .title
+          %span 保存したお店
+        .clips
+          %span= "#{@user.clips.count}件"
