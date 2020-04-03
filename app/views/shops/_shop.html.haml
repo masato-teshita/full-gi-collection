@@ -11,7 +11,7 @@
             .top-info__action
               .action-icon.action-icon-left
                 %i{ class: "fas fa-user-check fa-lg user-count-#{shop.show_user_woms(current_user)}"}
-                - if shop.show_user_woms(current_user) != 0
+                - if user_signed_in? && shop.show_user_woms(current_user) != 0
                   %span= shop.show_user_woms(current_user)
               .action-icon
                 %i{ class: "fas fa-bookmark fa-lg clip-count-#{shop.show_user_clips(current_user)}"}
