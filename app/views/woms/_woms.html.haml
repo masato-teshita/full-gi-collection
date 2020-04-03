@@ -5,8 +5,10 @@
         .user-info
           = user_image_present?(wom.user)
           .user-name
-            %span= "#{wom.user.name} さんの口コミ"
-        - if wom.user_id == current_user.id && user_signed_in?
+            = link_to user_path(wom.user.id), class: 'user-link' do
+              = "#{wom.user.name} さん"
+            %span の口コミ
+        - if user_signed_in? && wom.user_id == current_user.id
           .user-action
             = link_to '編集', edit_shop_wom_path(wom.shop_id, wom.id)
             = link_to '削除', shop_wom_path(wom.shop_id, wom.id), method: :delete, id: 'item-delete-btn'
