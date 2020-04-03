@@ -1,8 +1,9 @@
 class ShopsController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @shops = Shop.all.order(created_at: "DESC")
+    @shops = Shop.all.order(created_at: "DESC").page(params[:page]).per(10)
     if params[:user_id].presence
       @user = User.find(params[:user_id])
       render "users/shops"

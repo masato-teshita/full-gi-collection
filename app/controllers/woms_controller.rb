@@ -1,4 +1,5 @@
 class WomsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
     if params[:user_id].presence
       @user = User.find(params[:user_id])
@@ -44,7 +45,7 @@ class WomsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
     @all_woms = @shop.woms.where.not(rate: nil)
-    @users = @shop.users
+    @clips = @shop.clips
   end
 
   def update
@@ -58,6 +59,7 @@ class WomsController < ApplicationController
     wom.destroy
     redirect_to shop_woms_path(params[:shop_id])
   end
+
   private
   def wom_params
     params.require(:wom).permit(:title, :content, :rate, :visit_type, :visit_date).merge(user_id: current_user.id, shop_id: params[:shop_id])

@@ -1,4 +1,5 @@
 class BrandsController < ApplicationController
+  skip_before_action :authenticate_user!
   def index
     keyword = params[:keyword]
     return nil if keyword == ""
