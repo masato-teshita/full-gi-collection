@@ -12,3 +12,26 @@ $(function() {
     $('.wrapper').height(h_def)
   }
 });
+
+$(function() {
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('#user-cover-img-prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('#user-cover-img').change(function() {
+    readURL(this);
+  });
+});
+
+$(function() {
+  $('#user-img').on('change', function(e) {
+    if (e.target.files[0]) {
+      $(this).parents('form').submit();
+    }
+  })
+})

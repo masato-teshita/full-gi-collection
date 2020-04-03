@@ -22,6 +22,7 @@
       .menu {
         display: flex;
         position: relative;
+        align-items: center;
         .menu-list {
           display: flex;
           align-items: center;
@@ -32,19 +33,22 @@
           }
         }
         .user-nav {
-          margin: 6px 8px 0 -4px ;
+          margin: 0px 8px 0px -4px ;
           cursor: pointer;
+          display: flex;
+          align-items: center;
+          &:after {
+            content: '▼';
+            color: gray;
+            font-size: 4px;
+            margin-left: 2px;
+          }
           .user-nav-icon {
             height: 32px;
             width: 32px;
             border-radius: 6px;
             margin-left: 10px;
             object-fit: cover;
-            &::after {
-              content: '▼';
-              color: gray;
-              font-size: 4px;
-            }
             &:hover {
               opacity: 0.8;
             }
@@ -53,7 +57,8 @@
             display: none;
             width: 128px;
             position: absolute;
-            top: 36px;
+            top: 34px;
+            right: -76px;
             border-top: 1px solid #d8d8d8;
             border-left: 1px solid #d8d8d8;
             border-right: 1px solid #d8d8d8;

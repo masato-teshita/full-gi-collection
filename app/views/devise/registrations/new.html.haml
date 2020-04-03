@@ -1,7 +1,7 @@
 #account-page.account-page
   .account-page__inner.clearfix
     .account-page__inner--left.account-page__header
-      %h2 Create Account
+      %h2 アカウント作成
       %h5 新規アカウントの作成
       = render "devise/shared/links"
     .account-page__inner--right.user-form
@@ -9,24 +9,24 @@
         = devise_error_messages!
         .field
           .field-label
-            = f.label :name
+            = f.label 'ニックネーム'
           .field-input
             = f.text_field :name, autofocus: true
         .field
           .field-label
-            = f.label :email
+            = f.label 'メールアドレス'
           .field-input
             = f.email_field :email
         .field
           .field-label
-            = f.label :password
-            %i (英数字8文字以上)
+            = f.label 'パスワード'
+            %i (英数字6文字以上)
           .field-input
             = f.password_field :password, autocomplete: "off"
         .field
           .field-label
-            = f.label :password_confirmation
+            = f.label 'パスワード(確認)'
           .field-input
             = f.password_field :password_confirmation, autocomplete: "off"
         .actions
-          = f.submit "Create Account", class: 'btn'
+          = f.submit "アカウント作成", class: 'btn'

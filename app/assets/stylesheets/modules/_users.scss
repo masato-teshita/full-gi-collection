@@ -1,8 +1,7 @@
 .account-page {
   .account-page__inner {
-    width: 960px;
     margin: 60px auto;
-    padding: 60px;
+    padding: 40px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -22,7 +21,7 @@
     h2 {
       margin-bottom: 10px;
       letter-spacing: 3px;
-      font-size: 40px;
+      font-size: 24px;
       font-weight: 200;
 
       &:after {
@@ -54,8 +53,9 @@
     .field-label {
       padding: 10px 0;
       letter-spacing: 1px;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 200;
+      margin-right: 24px;
 
       i {
         font-size: 11px;
@@ -63,12 +63,30 @@
     }
 
     .field-input {
+      font-size: 12px;
       input {
         width: 100%;
-        padding: 10px;
+        padding: 4px 8px;
         letter-spacing: 1px;
       }
+      .text-area {
+        padding: 4px;
+        width: 100%;
+        height: 7em;
+      }
     }
+  }
+
+  .user-cover {
+    overflow: hidden;
+  }
+  #user-cover-img-prev {
+    object-fit: cover;
+    height: 60px;
+    width: 100%;
+    -ms-filter: blur(6px);
+    filter: blur(6px);
+    overflow: hidden;
   }
 
   .btn {
@@ -172,6 +190,24 @@
       .user-img-form {
         position: absolute;
         margin-top: -30px;
+        .edit_user {
+          position: relative;
+          &:hover {
+            .delete-img-btn {
+              opacity: 0.8;
+            }
+          }
+        .delete-img-btn {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            z-index: 2;
+            opacity: 0;
+            &:hover {
+              opacity: 1;
+            }
+          }  
+        }
         .user-icon {
           cursor: pointer;
           width: 98px;
@@ -187,6 +223,7 @@
             height: 88px;
             margin: 0 auto;
             border-radius: 4px;
+            position: relative;
           }
         }
         .img-field {
@@ -273,14 +310,15 @@
     }
   }
   .user-body {
+    height: 100%;
     margin: 32px 0;
     padding: 32px 32px;
     display: flex;
-    justify-content: space-between;
-    height: calc(100vh - 464px);
+    justify-content: space-around;
     background-color: oldlace;
     .user-self-intro {
       height: 240px;
+      width: 60%;
       padding: 16px;
       white-space: pre-wrap;
       background-color: white;

@@ -1,27 +1,34 @@
 .user-header
   .user-header__cover
-    %img{src: '/assets/furugi-top.jpeg', class: 'cover-img'}
+    = user_cover_icon_present?(@user)
   .user-header__content
-    .user-img-form
-      = form_for @user do |f|
-        =f.label :image do
-          .user-icon
-            = user_image_present?(@user)
-        =f.file_field :image, class: 'img-field', id: 'user-img'
+    - if user_signed_in? && @user.id == current_user.id
+      .user-img-form
+        = form_for @user do |f|
+          = f.submit value: '削除', name: 'delete_img', data: { confirm: 'アイコンを削除しますか？'}, class: 'delete-img-btn' if @user.image.present?
+          = f.label :image, class: 'user-icon-label' do
+            .user-icon
+              = user_image_present?(@user)
+          = f.file_field :image, class: 'img-field', id: 'user-img'
+    - else
+      .user-img-form
+        .user-icon
+          = user_image_present?(@user)
     .content-wrap
       .user-name
         = "#{@user.name}さん のマイページ"
       %ul.user-nav-bar
         %li.user-nav.first-nav
-          = link_to(user_path(current_user), class: 'user-nav-link') do
+          = link_to(user_path(@user), class: 'user-nav-link') do
             %span.user-nav-name トップ
         %li.user-nav
-          = link_to(user_histories_path(current_user), class: 'user-nav-link') do
+          = link_to(user_histories_path(@user), class: 'user-nav-link') do
             %span.user-nav-name 行ったお店
         %li.user-nav
-          = link_to(user_clips_path(current_user), class: 'user-nav-link') do
+          = link_to(user_clips_path(@user), class: 'user-nav-link') do
             %span.user-nav-name 保存済み
-        %li.user-nav
-          = link_to(edit_user_registration_path(current_user), class: 'user-nav-link') do
-            %span.user-nav-name 設定
+        - if user_signed_in? && @user.id == current_user.id
+          %li.user-nav
+            = link_to(edit_user_registration_path(@user), class: 'user-nav-link') do
+              %span.user-nav-name 設定
 .user-header-line

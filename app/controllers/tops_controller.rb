@@ -1,4 +1,5 @@
 class TopsController < ApplicationController
+  skip_before_action :authenticate_user!
   def index
     @shop = Shop.new
     @shops = Shop.all.order(:id)

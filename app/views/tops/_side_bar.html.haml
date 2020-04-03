@@ -6,19 +6,14 @@
           %span= @shops.count
         .data-count__unit
           %span 店舗
-      %li.data-count.data-count-middle
+      %li.data-count.data-count-right
         .data-count__wom
           %span= @woms.count
         .data-count__unit
           %span 口コミ
-      %li.data-count
-        .data-count__photo
-          %span 513
-        .data-count__unit
-          %span 写真
   .user-info-container
     - if user_signed_in?
-      .user-info
+      .top-container.user-info
         .user-top-info
           = link_to user_path(current_user), class: 'user-link' do
             .user-top-info__user-icon
@@ -53,3 +48,10 @@
                     %span= clip.shop.woms.average(:rate).to_f.round(2)
         .user-boookmark-list
           = link_to '保存したお店一覧へ', user_clips_path(current_user), class: "bookmark-list-link"
+    - else
+      .top-container
+        %h2 新規会員登録
+        .explain-login
+          %span ログインすると、古着navi上でお店を保存したり、行ったお店を管理できるようになります。
+        .sign-up-box
+          = link_to '会員登録', new_user_registration_path, class: 'link-btn'

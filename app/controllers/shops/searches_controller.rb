@@ -1,4 +1,5 @@
 class Shops::SearchesController < ApplicationController
+  skip_before_action :authenticate_user!
   def index
     area_id = params[:area_id]
     genre_id = params[:genre_id]

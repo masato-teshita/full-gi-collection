@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :clips
 
   mount_uploader :image, ImageUploader
+  mount_uploader :cover_image, ImageUploader
 end

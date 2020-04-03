@@ -5,5 +5,5 @@
 - if @clips.count != 0
   = render 'clips', clips: @clips
 - else
-  
-  %span 保存したお店は登録されていません。
+  .no-clip
+    %span 保存したお店は登録されていません。

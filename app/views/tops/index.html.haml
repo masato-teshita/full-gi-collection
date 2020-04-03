@@ -13,7 +13,7 @@
           .home-header-content
             .home-header-top
               %p.app-icon
-                古着navi
+                %span 古着navi
               .menu
                 %ul.menu-list
                   -if user_signed_in?
@@ -23,8 +23,8 @@
                       = link_to '保存済み', user_shops_path(current_user)              
                     %li.menu-option
                       = link_to 'マイページ', user_path(current_user)
-                    %li.menu-option.user-nav
-                      %img{src: "IMG_1596.jpg", alt: "User icon", class: "user-nav-icon js-user-nav"}
+                    %li.menu-option.user-nav.js-user-nav
+                      = user_icon_present?(current_user)
                       %ul.user-nav-popup
                         %li.user-nav-option
                           = link_to '設定', edit_user_registration_path

@@ -158,6 +158,12 @@
     text-decoration: none;
   }
 }
+.no-history {
+  padding: 32px 0;
+}
+.no-clip {
+  padding: 32px 0;
+}
 // Shop詳細
 .shop-wrapper {
   .shop-header {
@@ -342,7 +348,9 @@
           display: block;
         }
       }
-
+      .shop-outline {
+        padding: 24px;
+      }
     }
   }
 }

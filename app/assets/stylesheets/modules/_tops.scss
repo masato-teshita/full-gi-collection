@@ -47,29 +47,30 @@
           position: relative;
           height: 60px;
           top: 5px;
-          margin-left: 30px;
           font-size: 1em;
           cursor: pointer;
+          &:hover .user-nav-icon {
+            opacity: 0.8;
+          }
+          &:after {
+            content: '▼';
+            color: white;
+            font-size: 4px;
+            margin-left: 2px;
+          }
           .user-nav-icon {
             object-fit: cover;
             width: 54px;
             height: 54px;
             border-radius: 6px;
-            &:after {
-              content: '▼';
-              color: white;
-              font-size: 4px;
-              margin-left: 50px;
-            }
-            &:hover {
-              opacity: 0.8;
-            }
+            background-color: white;
+            border: solid 2px gray;
           }
           .user-nav-popup {
             display: none;
             width: 128px;
             position: absolute;
-            top: 36px;
+            top: 56px;
             border-top: 1px solid #d8d8d8;
             border-left: 1px solid #d8d8d8;
             border-right: 1px solid #d8d8d8;
@@ -464,15 +465,15 @@
       .data-counts {
         margin: 0 auto;
         display: flex;
-        .data-count-middle {
+        .data-count-right {
           border-left: solid 1px lightgray;
-          border-right: solid 1px lightgray;
         }
         .data-count {
           padding: 0 24px;
           color: rgb(56, 56, 56);
           font-size: 22px;
           font-weight: bold;
+          text-align: center;
           &__unit {
             font-size: 12px;
             text-align: center;
@@ -484,10 +485,32 @@
       background-color: oldlace;
       padding: 16px;
       width: 100%;
-      .user-info {
+      .top-container {
         padding: 16px;
         background-color: white;
         border: solid 1px lightgray;
+        .explain-login {
+          margin: 8px 0;
+          font-size: 12px;
+          color: gray;
+        }
+        .sign-up-box {
+          height: 40px;
+          margin: 12px;
+          padding: 1em 2em;
+          text-align: center;
+          .link-btn {
+            font-size: 12px;
+            padding: 1em 2em;
+            text-decoration: none;
+            color: #FFF;
+            background: #03A9F4;/*色*/
+            border: solid 1px #0f9ada;/*線色*/
+            border-radius: 4px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+            text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+          }
+          }
         .user-top-info {
           width: 100%;
           display: flex;
