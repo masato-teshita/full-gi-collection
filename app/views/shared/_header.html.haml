@@ -11,8 +11,8 @@
               = link_to '保存済み', user_clips_path(current_user)              
             %li.menu-option
               = link_to 'マイページ', user_path(current_user)
-          .user-nav
-            %img{src: "/IMG_1596.jpg", alt: "User icon", class: "user-nav-icon js-user-nav"}
+          .user-nav.js-user-nav
+            = user_icon_present?(current_user)
             %ul.user-nav-popup
               %li.user-nav-option
                 = link_to '設定', edit_user_registration_path
