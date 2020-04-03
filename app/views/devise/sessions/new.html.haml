@@ -6,6 +6,11 @@
       = render "devise/shared/links"
     .account-page__inner--right.user-form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        - if flash.any?
+          #error_explanation
+            %ul
+              - flash.each do |name, msg|
+                %li= content_tag :div, msg, id: "flash_#{name}", class: '' if msg.is_a?(String)
         .field
           .field-label
             = f.label "メールアドレス"
@@ -14,7 +19,7 @@
           .field
             .field-label
               = f.label "パスワード"
-              %i (英数字8文字以上)
+              %i (英数字6文字以上)
             .field-input
               = f.password_field :password, autocomplete: "off"
           .actions
