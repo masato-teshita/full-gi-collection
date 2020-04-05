@@ -24,6 +24,12 @@ describe Wom do
       expect(wom.errors[:title]).to include("を入力してください")
     end
 
+    it "contentがない場合は登録できないこと" do
+      wom = build(:wom, content: "")
+      wom.valid?
+      expect(wom.errors[:content]).to include("を入力してください")
+    end
+
   end
 
 end
