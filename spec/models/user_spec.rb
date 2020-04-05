@@ -48,6 +48,13 @@ describe User do
       user = build(:user, password: "123456", password_confirmation: "123456")
       expect(user).to be_valid
     end
+
+    it "passwordが5文字以下であれば登録できないこと" do
+      user = build(:user, password: "12345", password_confirmation: "12345")
+      user.valid?
+      expect(user.errors[:password]).to include("パスワードは6文字以上に設定して下さい。")
+    end
+
   end
 
 end
