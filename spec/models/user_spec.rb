@@ -12,6 +12,11 @@ describe User do
       expect(user.errors[:name]).to include("ユーザー名が入力されていません。")
     end
 
+    it "emailがない場合は登録できないこと" do
+      user = build(:user, email: "")
+      user.valid?
+      expect(user.errors[:email]).to include("メールアドレスが入力されていません。")
+    end
   end
 
 end
