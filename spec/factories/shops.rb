@@ -1,7 +1,7 @@
 FactoryBot.define do
   
   factory :shop do
-    sequence(:name) {Faker::Name.name}
-    sequence(:outline) {Faker::Lorem.sentence}
+    name {Faker::Restaurant.name}
+    created_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
   end
 end
