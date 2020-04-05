@@ -30,7 +30,27 @@ describe WomsController, type: :controller do
           subject
           expect(response).to redirect_to(shop_woms_path(shop.id))
         end
-      end      
+      end
+
+      ###ログインしている状態かつ、口コミの保存に失敗した場合
+      context 'can not save' do
+        let(:invalid_params) {{user_id: user.id, shop_id: shop.id, wom: attributes_for(:wom, content: nil)}}
+
+        subject {
+          post :create,
+          params: invalid_params
+        }
+
+        it 'does not count up' do
+          expect{subject}.not_to change(Wom, :count)
+        end
+
+        it 'renders new' do
+          subject
+          expect(response).to render_template :new
+        end
+      end
+      
     end
   end
 end
