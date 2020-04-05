@@ -1,4 +1,7 @@
 ja:
+  errors:
+    format:
+      "%{message}"
   activerecord:
     models:
       wom: 口コミ
@@ -8,26 +11,6 @@ ja:
         rate: 評価
         content: 口コミ本文
         visit_type: 口コミ対象
-ja:
-  activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            email:
-              taken: "は既に使用されています。"
-              blank: "が入力されていません。"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
-              invalid: "は有効でありません。"
-            password:
-              taken: "は既に使用されています。"
-              blank: "が入力されていません。"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
-              invalid: "は有効でありません。"
-              confirmation: "が内容とあっていません。"
-    attributes:
       user:
         current_password: "現在のパスワード"
         name: ニックネーム
@@ -35,6 +18,26 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              taken: "この%{attribute}は既に使用されています。"
+              blank: "%{attribute}が入力されていません。"   
+            email:
+              taken: "この%{attribute}は既に使用されています。"
+              blank: "%{attribute}が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+            password:
+              taken: "は既に使用されています。"
+              blank: "%{attribute}が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
+              confirmation: "が内容とあっていません。"
     models:
       user: "ユーザ"
   devise:
