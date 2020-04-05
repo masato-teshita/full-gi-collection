@@ -23,6 +23,12 @@ describe User do
       user.valid?
       expect(user.errors[:password]).to include("パスワードが入力されていません。")
     end
+
+    it "passwordが存在しても、password_confirmationがない場合は登録できないこと" do
+      user = build(:user, password_confirmation: "")
+      user.valid?
+      expect(user.errors[:password_confirmation]).to include("パスワード(確認)の入力が一致しません")
+    end
   end
 
 end
