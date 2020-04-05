@@ -40,19 +40,18 @@ describe User do
       end
   
       it "重複したnameが存在する場合は登録できないこと" do
-        user = create(:user)
-        another_user = build(:user, email: "test2@teshita.com")
+        user = create(:user, name: "teshita")
+        another_user = build(:user, name: "teshita")
         another_user.valid?
         expect(another_user.errors[:name]).to include("このユーザー名は既に使用されています。")
       end
   
       it "重複したemailが存在する場合は登録できないこと" do
-        user = create(:user)
-        another_user = build(:user, name: "teshita2")
+        user = create(:user, email: "test@teshita.com")
+        another_user = build(:user, email: "test@teshita.com")
         another_user.valid?
         expect(another_user.errors[:email]).to include("このメールアドレスは既に使用されています。")
       end
-  
   
       it "passwordが5文字以下であれば登録できないこと" do
         user = build(:user, password: "12345", password_confirmation: "12345")
