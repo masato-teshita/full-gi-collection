@@ -13,10 +13,10 @@ ja:
         visit_type: 口コミ対象
       user:
         current_password: "現在のパスワード"
-        name: ニックネーム
+        name: ユーザー名
         email: "メールアドレス"
         password: "パスワード"
-        password_confirmation: "確認用パスワード"
+        password_confirmation: "パスワード(確認)"
         remember_me: "次回から自動的にログイン"
     errors:
       models:
@@ -34,10 +34,11 @@ ja:
             password:
               taken: "は既に使用されています。"
               blank: "%{attribute}が入力されていません。"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
-              invalid: "は有効でありません。"
-              confirmation: "が内容とあっていません。"
+              too_short: "%{attribute}は%{count}文字以上に設定して下さい。"
+              too_long: "%{attribute}は%{count}文字以下に設定して下さい。"
+              invalid: "%{attribute}は有効でありません。"
+            password_confirmation:
+              confirmation: "パスワード(確認)の入力が一致しません"
     models:
       user: "ユーザ"
   devise:
