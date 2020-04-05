@@ -18,6 +18,12 @@ describe Wom do
       expect(wom.errors[:rate]).to include("を入力してください")
     end
 
+    it "titleがない場合は登録できないこと" do
+      wom = build(:wom, title: "")
+      wom.valid?
+      expect(wom.errors[:title]).to include("を入力してください")
+    end
+
   end
 
 end
