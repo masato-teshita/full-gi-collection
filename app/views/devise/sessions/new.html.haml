@@ -7,10 +7,13 @@
     .account-page__inner--right.user-form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         - if flash.any?
-          #error_explanation
+          .error_explanation
             %ul
               - flash.each do |name, msg|
-                %li= content_tag :div, msg, id: "flash_#{name}", class: '' if msg.is_a?(String)
+                %li.devise-alert
+                  %div= content_tag :div, msg, id: "flash_#{name}", class: '' if msg.is_a?(String)
+                  .error-close-btn
+                    %i.fas.fa-times
         .field
           .field-label
             = f.label "メールアドレス"
