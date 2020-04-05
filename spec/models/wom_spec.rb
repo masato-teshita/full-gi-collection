@@ -12,6 +12,12 @@ describe Wom do
       expect(wom.errors[:visit_type]).to include("を入力してください")
     end
 
+    it "rateがない場合は登録できないこと" do
+      wom = build(:wom, rate: "")
+      wom.valid?
+      expect(wom.errors[:rate]).to include("を入力してください")
+    end
+
   end
 
 end
