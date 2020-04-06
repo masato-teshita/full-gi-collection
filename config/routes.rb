@@ -35,8 +35,8 @@ Rails.application.routes.draw do
   resources :shops, only: [:index, :show, :new, :create] do
     resources :woms
   end
-  resources :areas
-  resources :genres
-  resources :brands
+  resources :areas, only: :index
+  resources :genres, only: :index
+  resources :brands, only: :index
   resources :readies, only: :index
 end
