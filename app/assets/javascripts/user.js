@@ -35,3 +35,10 @@ $(function() {
     }
   })
 })
+
+//ユーザーログイン・作成画面でのアラートの「×」ボタンを押した時の処理
+$(function() {
+  $('.error-close-btn').on('click', function() {
+    $(this).parents('.devise-alert').remove();
+  })
+})

@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_root, except: [:index, :show]
 
   def index
     @shops = Shop.all.order(created_at: "DESC").page(params[:page]).per(10)
@@ -31,7 +31,7 @@ class ShopsController < ApplicationController
     params.require(:shop).permit(:name, :image, :outline)
   end
 
-  def move_to_index
-    redirect_to new_user_session_path unless user_signed_in?
+  def move_to_root    
+    redirect_to root_path unless user_signed_in? && current_user.admin?
   end
 end

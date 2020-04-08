@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :histories
   has_many :clips
 
+  validates :name, presence: true
+  validates :name, uniqueness: true
+
   mount_uploader :image, ImageUploader
   mount_uploader :cover_image, ImageUploader
 end

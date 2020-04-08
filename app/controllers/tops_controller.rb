@@ -1,7 +1,6 @@
 class TopsController < ApplicationController
   skip_before_action :authenticate_user!
   def index
-    @shop = Shop.new
     @shops = Shop.all.order(:id)
     @woms = Wom.all
     @top_areas = Area.limit(5).order_by_shops

@@ -11,6 +11,8 @@ class Shop < ApplicationRecord
   has_many :brands, through: :shop_brands
   has_many :users, through: :shop_users
 
+  validates :name, presence: true
+
   mount_uploader :image, ImageUploader
 
   scope :shop_includes, -> do
