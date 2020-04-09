@@ -27,9 +27,11 @@
                       = user_icon_present?(current_user)
                       %ul.user-nav-popup
                         %li.user-nav-option
-                          = link_to '設定', edit_user_registration_path
+                          = link_to(edit_user_registration_path, class: 'option-link')do
+                            %span.option-link-name 設定
                         %li.user-nav-option
-                          = link_to 'ログアウト', destroy_user_session_path, method: :delete
+                          = link_to(destroy_user_session_path, method: :delete, class: 'option-link')do
+                            %span.option-link-name ログアウト
                   - else
                     %li.menu-option
                       = link_to '行った古着屋', new_user_session_path
