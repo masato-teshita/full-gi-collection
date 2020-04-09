@@ -1,8 +1,20 @@
-$(function(){
+$(document).on('click', function(e) {
+  if ($(e.target).closest('.js-user-nav').length) {
+    $(this).find('ul').show();
+  } else {
+    $('.user-nav-popup').hide();
+  }
+})
+$(function() {
+  
   $('.js-user-nav').on('click',function(){
-    $(this).find('ul').slideToggle();
-    });
+    
+  });
 });
+
+$(function() {
+  $()
+})
 
 $(function() {
   $('#clip-post').on('click', function(e){
