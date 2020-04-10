@@ -5,16 +5,6 @@ $(document).on('click', function(e) {
     $('.user-nav-popup').hide();
   }
 })
-$(function() {
-  
-  $('.js-user-nav').on('click',function(){
-    
-  });
-});
-
-$(function() {
-  $()
-})
 
 $(function() {
   $('#clip-post').on('click', function(e){
