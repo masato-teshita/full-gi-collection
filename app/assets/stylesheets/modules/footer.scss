@@ -1,24 +1,21 @@
 .footer {
-  width: 100%;
   min-width: 1280px;
+  width: 100%;
   padding: 0 240px 0;
-  background-color: whitesmoke;
-  overflow: hidden;
+  background-color: $menu-color-whitesmoke;
   .footer-wrap {
     height: 128px;
     &__top {
+      @include up-down-center;
       height: 50%;
-      display: flex;
-      align-items: center;  
+      border-bottom: $border-style-inner;
       text-align: center;
-      border-bottom: solid 1px lightgray;
       .languege-list {
-        color: gray;
-        font-size: 12px;
+        @include up-down-center;
         width: 320px;
         margin: 0 auto;
-        display: flex;
-        align-items: center;
+        color: $menu-color-gray;
+        font-size: $fSize-content;
         .languege-title {
           width: 16%;
         }  
@@ -35,11 +32,10 @@
       }
     }
     &__bottom {
-      color: gray;
-      height: 50%;
-      display: flex;
-      align-items: center;
+      @include up-down-center;
       justify-content: space-between;
+      height: 50%;
+      color: $menu-color-gray;
       .servise-icon {
         font-size: 20px;
       }
