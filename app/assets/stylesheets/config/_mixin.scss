@@ -37,3 +37,21 @@
     }
   }
 }
+
+@mixin content-hover {
+  &:hover {
+    opacity: 0.8;
+    color: orange;
+    border: $border-style-hover;
+  }
+}
+
+@mixin action-link {
+  &:hover a {
+    color: orange;
+  }
+  a {
+    text-decoration: none;
+    color: gray;
+  }
+}
