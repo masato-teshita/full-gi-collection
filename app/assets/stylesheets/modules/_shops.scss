@@ -3,71 +3,69 @@
   padding-top: 24px;
   .shop {
     &:hover a .top-info__name {
+      color: $color-action;
       text-decoration: underline;
-      color: orange;
     }
     &:hover div .bottom-info-left__top-cover {
-      border: solid 1px orange;
+      border: $border-style-hover;
     }
     .top-info {
-      height: 50px;
-      display: flex;
-      align-items: center;
+      @include up-down-center;
       position: relative;
-      border-top: solid 2px gray;
-      border-bottom: solid 1px gray;
+      height: 50px;
       padding: 0 16px;
+      border-top: solid 2px gray;
+      border-bottom: $border-style-default;
       &__name {
         font-weight: bold;
       }
       &__area-genre {
         margin-left: 12px;
-        font-size: 12px;
-        color: black;
+        color: $color-default;
+        font-size: $fSize-content;
       }
       &__action {
-        color: orange;
+        @include up-down-center;
         position: absolute;
         right: 0;
-        display: flex;
-        align-items: center;
+        color: $color-action;
         .action-icon {
-          height: 32px;
           width: 48px;
-          text-align: center;
+          height: 32px;
           line-height: 36px;
+          text-align: center;
           & span {
-            font-size: 12px;
+            font-size: $fSize-content;
           }
           .user-count-0 {
-            color: gray;
+            color: $color-no-action;
           }
           .clip-count-0 {
-            color: gray;
+            color: $color-no-action;
           }
         }
         .action-icon-left {
-          border-right: solid 1px lightgray;
+          border-right: $border-style-inner;
         }
       }
     }
     .bottom-info {
-      padding: 16px;
       display: flex;
-      color: black;
+      padding: 16px;
+      color: $color-default;
       .bottom-info-left {
         &__top-cover {
           width: 146px;
           height: 146px;
           padding: 4px;
-          border: solid 1px gray;
+          border: $border-style-default;
           .top-cover-img {
-            object-fit: cover;
             width: 136px;
             height: 136px;
+            object-fit: cover;
             margin: 0 auto;
             &:hover {
-              opacity: 0.8;
+              opacity: $hover-opacity;
             }
           }
         }
@@ -77,9 +75,9 @@
           .cover-item {
             margin-right: 6px;
             .cover-item-img {
-              object-fit: cover;
               width: 32px;
               height: 32px;
+              object-fit: cover;
             }
             &:hover {
               opacity: 0.5;
@@ -88,43 +86,31 @@
         }
       }
       .bottom-info-right {
-        font-size: 12px;
         padding: 8px 16px;
+        font-size: $fSize-content;
         &__overview {
-          height: 32px;
-          overflow: hidden;
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2;
+          height: 32px;
+          overflow: hidden;
         }
         &__rating {
+          @include up-down-center;
           padding: 8px 0;
-          display: flex;
-          align-items: center;
           .star-rating {
-            position: relative;
             display: inline-block;
-            .filled-star {
-              position: absolute;
-              top: 0;
-              left: 0;
-              overflow: hidden;
-              color: #ffcc33;
-              white-space: nowrap;
-            }
-            .empty-star {
-              color: #ccc;
-            }
+            position: relative;
           }
           .shop-rating {
             padding: 0 8px;
-            color: rgb(230, 0, 0);
+            color: $color-rate;
             font-size: 20px;
             font-weight: bold;
           }
           .shop-wom-count {
             margin-left: 8px;
-            color: gray;
+            color: $color-no-action;
             text-decoration: underline;
             i {
               margin-right: 4px;
@@ -132,23 +118,23 @@
           }
         }
         &__top-wom {
-          background-color: floralwhite;
           padding: 12px;
+          background-color: floralwhite;
           .wom-info {
             display: flex;
             &__title {
+              margin-right: 8px;
               border-bottom: dotted 1px;
               font-weight: bold;
-              margin-right: 8px;
             }
             &__user {
-              color: gray;
+              color: $color-no-action;
               font-size: 9px;
             }
           }
           .wom-content {
-            color: gray;
             padding: 8px 0;
+            color: $color-no-action;
           }
         }
       }
@@ -167,34 +153,31 @@
 // Shop詳細
 .shop-wrapper {
   .shop-header {
-    border-top: solid 1px lightgray;
-    padding: 8px 0;
-    display: flex;
+    @include up-down-center;
     justify-content: space-between;
-    align-items: center;
+    padding: 8px 0;
+    border-top: $border-style-inner;
     .info-wrap {
       width: 100%;
       .shop-name {
-        font-size: 24px;
+        font-size: $fSize-h2;
         font-weight: bold;
       }
       .shop-top-info {
+        @include up-down-center;
         border-bottom: dotted 1px lightgray;
-        display: flex;
-        align-items: center;
-        font-size: 12px;
-        color: gray;
+        color: $color-no-action;
+        font-size: $fSize-content;
         &__rate {
-          display: flex;
-          align-items: center;
+          @include up-down-center;
           .star-rating {
             color: #ffcc33;
-            font-size: 24px;
+            font-size: $fSize-h2;
           }
           .shop-rating {
             padding: 0 8px;
-            color: rgb(230, 0, 0);
-            font-size: 24px;
+            color: $color-rate;
+            font-size: $fSize-h2;
             font-weight: bold;
           }
         }
@@ -207,9 +190,9 @@
       }
       .shop-bottom-info {
         padding: 8px 0;
-        font-size: 12px;
+        font-size: $fSize-content;
         .shop-bottom-info-show {
-          color: gray;
+          color: $color-no-action;
           margin-right: 16px;
         }
         .shop-genre {
@@ -221,71 +204,46 @@
       }
     }
     .action-wrap {
+      @include up-down-center;
       padding: 8px 16px;
       background-color: ivory;
-      display: flex;
-      align-items: center;
       #woms-count-0 {
-        border: solid 1px lightgray;
-        color: gray;
+        border: $border-style-inner;
+        color: $color-no-action;
         cursor: pointer;
-        &:hover {
-          opacity: 0.8;
-          border: solid 1px orange;
-          color: orange;
-        }
-        &:hover a {
-          color: orange;
-        }
-        a {
-          text-decoration: none;
-          color: gray;
-        }
+        @include content-hover;
+        @include action-link;
+
       }
       #clip-count-0 {
-        border: solid 1px lightgray;
-        color: gray;
+        border: $border-style-inner;
+        color: $color-no-action;
         cursor: pointer;
-        &:hover {
-          opacity: 0.8;
-          border: solid 1px orange;
-          color: orange;
-        }
-        &:hover a {
-          color: orange;
-        }
-        a {
-          text-decoration: none;
-          color: gray;
-        }
+        @include content-hover;
+        @include action-link;
       }
       .action-btn {
-        text-align: center;
-        height: 32px;
         width: 96px;
-        border: solid 1px orange;
-        color: orange;
-        background-color: white;
-        border-radius: 4px;
+        height: 32px;
         margin: 4px;
+        border: $border-style-hover;
+        border-radius: 4px;
+        background-color: white;
+        color: $color-action;
         font-size: 14px;
+        text-align: center;
         cursor: pointer;
-        &:hover {
-          opacity: 0.8;
-          color: orange;
-          border: solid 1px orange;
-        }
+        @include content-hover;
         a {
           text-decoration: none;
-          color: orange;
+          color: $color-action;
         }
         .action-link {
-          height: 32px;
+          @include up-down-center;
           width: 96px;
+          height: 32px;
           padding: 4px;
           text-align: center;
-          display: flex;
-          align-items: center;
           .action-name {
             display: table-cell;
             vertical-align: middle;
@@ -299,13 +257,13 @@
   .shop-body {
     .shop-menu-bar {
       display: flex;
-      border-top: solid 1px lightgray;
-      border-bottom: solid 1px lightgray;
-      border-right: solid 1px lightgray;
+      border-top: $border-style-inner;
+      border-bottom: $border-style-inner;
+      border-right: $border-style-inner;
       .shop-menu {
-        height: 48px;
         width: 25%;
-        border-left: solid 1px lightgray;
+        height: 48px;
+        border-left: $border-style-inner;
         cursor: pointer;
         background: -moz-linear-gradient(bottom, whitesmoke, #FFF);
         background: -webkit-linear-gradient(bottom, whitesmoke, #FFF);
@@ -316,13 +274,12 @@
           background: linear-gradient(to bottom, whitesmoke, #FFF);
         }
         .shop-menu-link {
-          height: 48px;
+          @include up-down-center;
           width: 100%;
-          text-decoration: none;
-          color: black;  
+          height: 48px;
+          color: $color-default;  
           text-align: center;
-          display: flex;
-          align-items: center;
+          text-decoration: none;
           .shop-menu-name {
             display: table-cell;
             vertical-align: middle;
@@ -342,10 +299,10 @@
       padding: 20px 0;
       &__top {
         .shop-img {
-          object-fit: cover;
+          display: block;
           width: 640px;
           height: 360px;
-          display: block;
+          object-fit: cover;
         }
       }
       .shop-outline {
@@ -357,30 +314,29 @@
 
 #modalWrap {
 	display: none;
-	background: none;
-	width: 100%;
-	height: 100%;
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 100;
+	width: 100%;
+	height: 100%;
 	overflow: hidden;
 }
 .modal-box {
+	display: none;
 	position: fixed;
-	width: 85%;
-	max-width: 420px;
-	height: 0;
-	top: 0;
+  top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
+	max-width: 420px;
+	width: 85%;
+	height: 0;
+	z-index: 1000;
 	margin: auto;
 	overflow: hidden;
-	opacity: 1;
-	display: none;
 	border-radius: 3px;
-	z-index: 1000;
+	opacity: 1;
 }
 .modal-inner {
 	padding: 10px;
