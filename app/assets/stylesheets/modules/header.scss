@@ -1,31 +1,28 @@
 .header {
   width: 100%;
   height: 96px;
+  border-bottom: $border-style-inner;
   background-color: white;
-  border-bottom: solid 1px lightgray;
   .header-wrapper {
-    margin: 0 auto;
-    padding: 0 240px 0;
     max-width: 1600px;
     min-width: 1280px;
-      &__top {
+    margin: 0 auto;
+    padding: 0 240px 0;
+    &__top {
+      @include up-down-center;
+      justify-content: space-between;
       width: 100%;
       height: 40px;
       padding-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       .page-name {
-        color: gray;
-        font-size: 12px;
+        color: $menu-color-gray;
+        font-size: $fSize-content;
       }
       .menu {
-        display: flex;
+        @include up-down-center;
         position: relative;
-        align-items: center;
         .menu-list {
-          display: flex;
-          align-items: center;
+          @include up-down-center;
           justify-content: flex-end;
           font-size: 14px;
           .menu-option {
@@ -33,51 +30,47 @@
           }
         }
         .user-nav {
+          @include up-down-center;
           margin: 0px 8px 0px -4px ;
+          color: $menu-color-gray;
           cursor: pointer;
-          display: flex;
-          align-items: center;
-          &:after {
-            content: '▼';
-            color: gray;
-            font-size: 4px;
-            margin-left: 2px;
-          }
+          @include after-triangle;
           .user-nav-icon {
-            height: 32px;
             width: 32px;
-            border-radius: 6px;
+            height: 32px;
             margin-left: 10px;
+            margin-right: 4px;
+            border-radius: 6px;
             object-fit: cover;
             &:hover {
-              opacity: 0.8;
+              opacity: $hover-opacity;
             }
           }
           .user-nav-popup {
             display: none;
-            width: 128px;
             position: absolute;
             top: 34px;
             right: -76px;
-            border-top: 1px solid #d8d8d8;
-            border-left: 1px solid #d8d8d8;
-            border-right: 1px solid #d8d8d8;
-            box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
+            width: 128px;
+            font-size: $fSize-content;
+            border-top: $border-style-menu;
+            border-left: $border-style-menu;
+            border-right: $border-style-menu;
+            box-shadow: $shadow-menu;
             .user-nav-option {
-              font-size: 12px;
-              padding-left: 16px;
-              line-height: 32px;
-              background-color: gray;
               height: 32px;
+              line-height: 32px;
+              border-bottom: $border-style-menu;
+              background-color: gray;
               text-align: left;
-              border-bottom: 1px solid #d8d8d8;
-              & a {
-                color: white;
-              }
-              &:before {
-                content: "▶︎";
-                color: white;
-                font-size: 8px;
+              .option-link {
+                @include up-down-center;
+                width: 100%;
+                height: 100%;
+                padding-left: 16px;
+                color: $menu-color-white;
+                text-align: center;
+                @include before-triangle;
               }
             }
           }
@@ -88,15 +81,14 @@
       width: 100%;
       height: 56px;
       .search-form {
-        font-size: 12px;
-        width: 100%;
-        display: flex;
+        @include up-down-center;
         justify-content: space-between;
-        align-items: center;
+        width: 100%;
+        font-size: $fSize-content;
         .app-icon {
-          font-size: 32px;
-          color: gray;
           width: 160px;
+          color: $menu-color-gray;
+          font-size: 32px;
           & a:hover {
             text-decoration: none;
           }
@@ -104,12 +96,11 @@
         .search-box {
           width: calc(100% - 160px);
           .search-container {
-            margin: 0 auto;
-            width: 100%;
+            @include up-down-center;
             min-width: 640px;
-            display: flex;
-            align-items: center;
-            border: solid 1px gray;
+            width: 100%;
+            margin: 0 auto;
+            border: $border-style-default;
             border-radius: 4px;
             &__area {
               border-radius: 4px 0 0 4px;
@@ -118,29 +109,29 @@
               border-right: none;
             }
             .search-content {
-              height: 36px;
               width: calc((100% - 56px)/2);
+              height: 36px;
+              padding: 0 8px;
               border-top: none;
               border-bottom: none;
               border-left: none;
-              border-right: solid 1px lightgray;
+              border-right: $border-style-inner;
               outline: none;
-              padding: 0 8px;
               &:focus {
                 border-bottom: solid 2px gray;
               }  
             }
             &__submit {
-              background-color: gray;
-              color: white;
-              height: 36px;
               width: 56px;
+              height: 36px;
               border: none;
               border-radius: 0 3px 3px 0;
               outline: none;
+              background-color: gray;
+              color: white;
               cursor: pointer;
               &:hover {
-                opacity: 0.8;
+                opacity: $hover-opacity;
               }
               &:focus {
                 outline: solid 3px lightgray;
@@ -152,20 +143,20 @@
     }
     #search-result-hd {
       display: none;
-      margin: -13px 0 0 0;
-      background-color: white;
-      border: solid 1px lightgray;
-      box-shadow: 2px 2px 2px lightgray;
       position: relative;
       z-index: 2;
+      margin: -13px 0 0 0;
+      border: $border-style-inner;
+      box-shadow: 2px 2px 2px lightgray;
+      background-color: white;
       .candidate-list {
         display: flex;
         flex-wrap: wrap;
         text-align: center;
         .candidate {
-          padding: 6px 8px;
           margin: 4px 8px;
-          border: 1px solid whitesmoke;
+          padding: 6px 8px;
+          border: $border-style-candidate;
           background-color: whitesmoke;
           font-size: 8px;
           cursor: pointer;
@@ -174,9 +165,9 @@
           }
         }
         .no-result {
-          padding: 6px 12px;
           margin: 0 8px;
-          border: 1px solid whitesmoke;
+          padding: 6px 12px;
+          border: $border-style-candidate;
           background-color: whitesmoke;
           font-size: 8px;
         }
@@ -186,9 +177,10 @@
   
     a {
       text-decoration: none;
-      color: gray;
+      color: $menu-color-gray;
       &:hover {
         text-decoration: underline;
       }
     }
-  }  }
+  }  
+}
