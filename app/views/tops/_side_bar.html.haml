@@ -44,8 +44,19 @@
                     %span.on-dec= clip.shop.name
                   .clip-shop-data__tag
                     %span= clip.shop.area.name
-                  .clip-shop-data__eval
+                  .clip-shop-data__rate
+                    %span{ id: "star-rate-#{clip.shop_id}", class: 'star-rating'}
                     %span= clip.shop.woms.average(:rate).to_f.round(2)
+                  :javascript
+                    $('#star-rate-#{clip.shop_id}').raty({
+                      size: 36,
+                      starOff: "#{asset_path('star-off.png')}",
+                      starOn: "#{asset_path('star-on.png')}",
+                      starHalf: "#{asset_path('star-half.png')}",
+                      half: true,
+                      readOnly: true,
+                      score: "#{clip.shop.woms.average(:rate).to_f.round(2)}",
+                    });
         .user-boookmark-list
           = link_to '保存したお店一覧へ', user_clips_path(current_user), class: "bookmark-list-link"
     - else

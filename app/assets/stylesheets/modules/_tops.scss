@@ -447,7 +447,6 @@
           width: 100%;
           .user-link {
             @include up-down-center;
-            display: inline-block;
             &:hover {
               color: orange;
               opacity: $hover-opacity;
@@ -529,10 +528,14 @@
                   color: gray;
                   font-size: 10px;
                 }
-                &__eval {
+                &__rate {
                   color: $color-rate;
                   font-size: 14px;
                   font-weight: bold;
+                  .star-rating {
+                    vertical-align: bottom;
+                    font-size: 2px;
+                  }
                 }
               }
             }
