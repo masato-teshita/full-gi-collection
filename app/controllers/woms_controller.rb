@@ -1,35 +1,22 @@
 class WomsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :set_shop, only: [:index, :new, :create, :edit]
+  before_action :set_new_wom, only: [:index, :new]
+  before_action :set_wom, only: [:edit, :destroy]
+  before_action :set_woms, only: [:index, :new, :create, :edit]
+  before_action :set_all_woms, only: [:index, :new, :create, :edit]
+  before_action :set_clips, only: [:index, :new, :create, :edit]
+
   def index
-    if params[:user_id].presence
-      @user = User.find(params[:user_id])
-      @woms = Wom.where(user_id: current_user).order(created_at: "DESC")
-      render "users/woms"
-    else
-      @shop = Shop.find(params[:shop_id])
-      @all_woms = @shop.woms.where.not(rate: nil)
-      @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
-      @wom = Wom.new
-      @clips = @shop.clips
-      @clip = Clip.where(user_id: current_user).where(shop_id: @shop.id)
-      render template: 'shops/woms'
-    end
+    @clip = Clip.where(user_id: current_user).where(shop_id: @shop.id)
+    render template: 'shops/woms'
   end
 
   def new
-    @wom = Wom.new
-    @shop = Shop.find(params[:shop_id])
-    @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
-    @all_woms = @shop.woms.where.not(rate: nil)
-    @clips = @shop.clips
   end
 
   def create
     @wom = Wom.new(wom_params)
-    @shop = Shop.find(params[:shop_id])
-    @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
-    @all_woms = @shop.woms.where.not(rate: nil)
-    @clips = @shop.clips
     if @wom.save
       if History.where.not(user_id: params[:user_id]).where.not(shop_id: params[:shop_id])
         History.create!(user_id: current_user.id, shop_id: params[:shop_id])
@@ -41,11 +28,6 @@ class WomsController < ApplicationController
   end
 
   def edit
-    @wom = Wom.find(params[:id])
-    @shop = Shop.find(params[:shop_id])
-    @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
-    @all_woms = @shop.woms.where.not(rate: nil)
-    @clips = @shop.clips
   end
 
   def update
@@ -55,13 +37,39 @@ class WomsController < ApplicationController
   end
 
   def destroy
-    wom = Wom.find(params[:id])
-    wom.destroy
-    redirect_to shop_woms_path(params[:shop_id])
+    if @wom.destroy
+      redirect_to shop_woms_path(params[:shop_id])
+    else
+      render :index
+    end
   end
 
   private
   def wom_params
-    params.require(:wom).permit(:title, :content, :rate, :visit_type, :visit_date).merge(user_id: current_user.id, shop_id: params[:shop_id])
+    params.require(:wom).permit(:title, :content, :rate, :visit_type).merge(user_id: current_user.id, shop_id: params[:shop_id], visit_date: params[:visit_date])
+  end
+
+  def set_shop
+    @shop = Shop.find(params[:shop_id])
+  end
+
+  def set_new_wom
+    @wom = Wom.new
+  end
+
+  def set_wom
+    @wom = Wom.find(params[:id])
+  end
+
+  def set_woms
+    @woms = @shop.woms.where.not(rate: nil).order("created_at DESC").page(params[:page]).per(10)
+  end
+
+  def set_all_woms
+    @all_woms = @shop.woms.where.not(rate: nil)
+  end
+
+  def set_clips
+    @clips = @shop.clips
   end
 end
