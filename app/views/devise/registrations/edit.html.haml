@@ -52,3 +52,6 @@
               = f.password_field :current_password, autocomplete: "current-password"
           .actions
             = f.submit "更新", class: 'btn'
+        -# .user-delete-link
+        -#   = link_to user_registration_path, method: :delete, data: {confirm: "退会しますか？"} do
+        -#     %span 退会する

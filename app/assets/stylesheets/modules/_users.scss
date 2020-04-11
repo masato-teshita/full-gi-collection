@@ -11,9 +11,14 @@
       width: 50%;
     }
     &:after {
+      display: block;
       clear: both;
       content: "";
-      display: block;
+    }
+    .user-delete-link {
+      height: 50px;
+      margin-top: 20px;
+      text-align: right;
     }
   }
 
@@ -25,17 +30,17 @@
       font-weight: 200;
 
       &:after {
-        content: '';
         display: block;
         width: 60px;
         margin-top: 5px;
-        border-bottom: 1px solid #38aef0;
+        border-bottom: $border-style-btn;
+        content: '';
       }
     }
 
     h5 {
       margin-bottom: 20px;
-      font-size: 14px;
+      font-size: $fSize-h5;
       font-weight: 200;
     }
 
@@ -43,7 +48,7 @@
       margin-top: 20px;
       color: #fff;
       background-color: #ccc;
-      font-size: 14px;
+      font-size: $fSize-h5;
     }
   }
 
@@ -51,28 +56,28 @@
     margin-bottom: 10px;
 
     .field-label {
+      margin-right: 24px;
       padding: 10px 0;
       letter-spacing: 1px;
       font-size: 12px;
       font-weight: 200;
-      margin-right: 24px;
 
       i {
-        font-size: 11px;
+        font-size: $fSize-content;
       }
     }
 
     .field-input {
-      font-size: 12px;
+      font-size: $fSize-content;
       input {
         width: 100%;
         padding: 4px 8px;
         letter-spacing: 1px;
       }
       .text-area {
-        padding: 4px;
         width: 100%;
         height: 7em;
+        padding: 4px;
       }
     }
   }
@@ -81,36 +86,36 @@
     overflow: hidden;
   }
   #user-cover-img-prev {
-    object-fit: cover;
+    overflow: hidden;
     height: 60px;
     width: 100%;
+    object-fit: cover;
     -ms-filter: blur(6px);
     filter: blur(6px);
-    overflow: hidden;
   }
 
   .btn {
     display: inline-block;
     height: 50px;
-    padding: 0 30px;
     line-height: 50px;
-    letter-spacing: 1px;
-    text-align: center;
+    padding: 0 30px;
     border: none;
     border-radius: 2px;
+    letter-spacing: 1px;
+    text-align: center;
   }
 
   input[type='submit'] {
     float: left;
     margin-top: 20px;
+    background-color: $color-btn;
     color: #fff;
-    background-color: #38aef0;
   }
 
   .field-label {
     .field_with_errors {
       display: inline-block;
-      color: #d65f4c;
+      color: $color-error;
       font-weight: 400;
     }
   }
@@ -118,7 +123,6 @@
   .field-input {
     .field_with_errors {
       position: relative;
-
       &:after {
         content: '';
         display: block;
@@ -127,7 +131,7 @@
         right: 0;
         bottom: 0;
         width: 5px;
-        background-color: #d65f4c;
+        background-color: $color-error;
       }
     }
   }
@@ -135,10 +139,10 @@
 
 .user-wrap {
   .user-header-line {
-    width: 100%;
-    border-top: solid 1px gray;
     position: absolute;
     left: 0;
+    width: 100%;
+    border-top: $border-style-default;
     overflow: hidden;
   }
   .user-header {
@@ -149,19 +153,18 @@
       background-color: white;
       overflow: hidden;
       .cover-img {
-        object-fit: cover;
         width: 100%;
         height: 100%;
+        object-fit: cover;
         -ms-filter: blur(6px);
         filter: blur(6px);
       }
     }
     &__content {
-      display: flex;
-      align-items: center;  
-      padding-left: 16px;
+      @include  up-down-center;
       position: relative;
       height: 50%;
+      padding-left: 16px;
       .user-img-form {
         position: absolute;
         margin-top: -30px;
@@ -169,7 +172,7 @@
           position: relative;
           &:hover {
             .delete-img-btn {
-              opacity: 0.8;
+              opacity: $hover-opacity;
             }
           }
         .delete-img-btn {
@@ -184,21 +187,20 @@
           }  
         }
         .user-icon {
-          cursor: pointer;
+          @include up-down-center;
           width: 98px;
           height: 98px;
           padding: 4px;
-          border: solid 1px lightgray;
+          border: $border-style-inner;
           border-radius: 6px;
-          display: flex;
-          align-items: center;
+          cursor: pointer;
           .user-icon-img {
-            object-fit: cover;
+            position: relative;
             width: 88px;
             height: 88px;
+            object-fit: cover;
             margin: 0 auto;
             border-radius: 4px;
-            position: relative;
           }
         }
         .img-field {
@@ -206,47 +208,43 @@
         }
       }
       .content-wrap{
+        @include  up-down-center;
+        justify-content: space-between;
         width: 100%;
         margin-left: 128px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         .user-name {
           font-weight: bold;
         }
         .user-nav-bar {
-          display: flex;
-          align-items: center;
+          @include  up-down-center;
           .user-nav {
+            @include  up-down-center;
+            position: relative;
             width: 96px;
             height: 64px;
-            position: relative;
             cursor: pointer;
-            display: flex;
-            align-items: center;
             &:before {
               content: '';
+              display: inline-block;
               position: absolute;
               top: 50%;
               right: -1px;
-              display: inline-block;
-              width: 1px;/*線の長さ*/
               height: 2.2em;/*線の太さ*/
+              width: 1px;/*線の長さ*/
               margin-top: -1.1em;
               background-color: lightgray;/*線の色*/
             }
             .user-nav-link {
-              height: 64px;
+              @include  up-down-center;
               width: 96px;
-              font-size: 14px;
-              color: gray;  
+              height: 64px;
+              color: gray; 
+              font-size: $fSize-h5;
               text-align: center;
-              display: flex;
-              align-items: center;
             & a {
                 vertical-align: middle;
-                text-decoration: none;
                 color: gray;
+                text-decoration: none;
               }
               .user-nav-name {
                 display: table-cell;
@@ -264,7 +262,7 @@
               }
             }
             &:hover a {
-              color: orange;
+              color: $link-color-hover;
             }
           }
           .first-nav {
@@ -285,46 +283,45 @@
     }
   }
   .user-body {
+    display: flex;
+    justify-content: space-around;
     height: 100%;
     margin: 32px 0;
     padding: 32px 32px;
-    display: flex;
-    justify-content: space-around;
     background-color: oldlace;
     .user-self-intro {
-      height: 240px;
       width: 60%;
+      height: 240px;
       padding: 16px;
-      white-space: pre-wrap;
+      border: $border-style-inner;
       background-color: white;
-      border: solid 1px lightgray;
+      white-space: pre-wrap;
     }
     .user-action-info {
-      padding: 16px;
       width: 32%;
-      font-size: 12px;
+      padding: 16px;
+      border: $border-style-inner;
       background-color: white;
-      border: solid 1px lightgray;
+      font-size: 12px;
       .user-action-wrap {
-        height: 36px;
-        display: flex;
+        @include  up-down-center;
         justify-content: space-between;
-        align-items: center;
         position: relative;
+        height: 36px;
         border-bottom: dotted 1px lightgray;
       }
     }
   }
 }
 .devise-alert {  
-  margin-bottom: 8px;
-  padding: 12px;
-  font-size: 12px;
-  color: red;
-  background-color: mistyrose;
-  border-radius: 4px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 12px;
+  border-radius: 4px;
+  background-color: mistyrose;
+  color: $color-error;
+  font-size: 12px;
   .error-close-btn {
     cursor: pointer;
   }

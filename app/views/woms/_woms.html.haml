@@ -11,7 +11,7 @@
         - if user_signed_in? && wom.user_id == current_user.id
           .user-action
             = link_to '編集', edit_shop_wom_path(wom.shop_id, wom.id)
-            = link_to '削除', shop_wom_path(wom.shop_id, wom.id), method: :delete, id: 'item-delete-btn'
+            = link_to '削除', shop_wom_path(wom.shop_id, wom.id), method: :delete, id: 'item-delete-btn', data: {confirm: "削除しますか？"} 
       .woms-box__rate
         .rate-container
           .visit_type
@@ -32,8 +32,8 @@
             });
       .woms-box__body
         .content-visit-date
-          = wom_visit_date(wom)
+          %span= wom_visit_date(wom)
         .content-title
-          = wom.title
-        .content-text
-          = wom.content
+          %span= wom.title
+        .content-text<>
+          %span= wom.content
