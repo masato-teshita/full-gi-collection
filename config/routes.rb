@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   get 'readies/show'
 
-  # devise_for :users, controllers: {
-  #   registrations: 'users/registrations'
-  # }
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    confirmations: 'users/confirmations',
+    passwords: 'users/passwords',
+    sessions: 'users/passwords',
+    unlocks: 'users/passwords'
+  }
   devise_scope :user do
     get 'users/thanks' => 'users/registrations#thanks'
   end
