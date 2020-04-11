@@ -83,6 +83,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  # database: furugi-navi_production
-  # username: furugi-navi
-  # password: <%= ENV['FURUGI-NAVI_DATABASE_PASSWORD'] %>
+  database: furugi-navi_production
+  username: furugi-navi
+  password: <%= ENV['FURUGI-NAVI_DATABASE_PASSWORD'] %>
