@@ -15,6 +15,11 @@
       clear: both;
       content: "";
     }
+    .user-delete-link {
+      height: 50px;
+      margin-top: 20px;
+      text-align: right;
+    }
   }
 
   .account-page__header {
@@ -182,7 +187,7 @@
           }  
         }
         .user-icon {
-          @include  up-down-center;
+          @include up-down-center;
           width: 98px;
           height: 98px;
           padding: 4px;
