@@ -1,10 +1,10 @@
 .home-main {
   .home-wrapper {
     margin: 0 auto;
-  }  
+  }
 }
 .home-header {
-  max-width: $wrapper-max-width; 
+  max-width: $wrapper-max-width;
   min-width: $wrapper-min-width;
   width: 100%;
   height: 600px;
@@ -20,9 +20,12 @@
     width: 100%;
     height: 80px;
     padding: 10px;
-    .app-icon {
-      color: $menu-color-white;
-      font-size: 50px;
+    .app-icon-box {
+      padding-top: 12px;
+      #top-icon {
+        height: 68px;
+        object-fit: cover;
+      }  
     }
     .menu {
       .menu-list {
@@ -87,8 +90,8 @@
               }
             }
           }
-        } 
-      }  
+        }
+      }
     }
   }
   .top-message-box {
@@ -264,7 +267,7 @@
             height: 28px;
             padding-left: 12px;
             font-size: $fSize-content;
-            cursor: pointer;            
+            cursor: pointer;
           }
           .all-area:before {
             position: absolute;
@@ -336,7 +339,7 @@
               box-shadow: $shadow-content;
               color: $link-color-content;
               font-size: $fSize-content;
-              white-space: nowrap;  
+              white-space: nowrap;
               cursor: pointer;
             }
           }

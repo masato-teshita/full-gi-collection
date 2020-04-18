@@ -2,11 +2,8 @@ Rails.application.routes.draw do
   get 'readies/show'
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'devise/registrations',
   }
-  devise_scope :user do
-    get 'users/thanks' => 'users/registrations#thanks'
-  end
   
   def devise_scope(scope)
     constraint = lambda do |request|

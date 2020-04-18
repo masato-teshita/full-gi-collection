@@ -2,18 +2,19 @@
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
-    %title FurugiNavi
+    %title Full-Collection
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    = favicon_link_tag('/assets/favicon.ico')
   %body
     .home-main
       .home-wrapper
         .home-header
           .home-header-content
             .home-header-top
-              %p.app-icon
-                %span 古着navi
+              .app-icon-box
+                = image_tag '/assets/full-colle-icon--white.png', id: 'top-icon'
               .menu
                 %ul.menu-list
                   -if user_signed_in?
@@ -40,7 +41,7 @@
                     %li.menu-option
                       = link_to 'ログイン', new_user_session_path
             .top-message-box
-              古着屋探しは「古着navi」
+              古着屋探しは「古コレ」
             .search-form
               .form-explanation
                 %h2 エリア・キーワードから探す

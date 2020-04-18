@@ -1,5 +1,5 @@
 crumb :root do
-  link "古着navi", root_path
+  link "古コレ", root_path
 end
 
 # shop#index

@@ -18,16 +18,17 @@
           .bottom-info
             .bottom-info-left
               .bottom-info-left__top-cover
-                = image_tag shop.image.url, alt: 'no image', class: 'top-cover-img'
-              %ul.bottom-info-left__items
-                %li.cover-item
-                  = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
-                %li.cover-item
-                  = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
-                %li.cover-item
-                  = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
-                %li.cover-item
-                  = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
+                = image_present?(shop)
+              -# 画像投稿機能実装後に使用する
+              -# %ul.bottom-info-left__items
+              -#   %li.cover-item
+              -#     = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
+              -#   %li.cover-item
+              -#     = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
+              -#   %li.cover-item
+              -#     = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
+              -#   %li.cover-item
+              -#     = image_tag shop.image.url, alt: 'no image', class: 'cover-item-img'
             .bottom-info-right
               .bottom-info-right__overview
                 = shop.outline

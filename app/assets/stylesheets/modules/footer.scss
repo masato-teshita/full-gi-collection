@@ -36,8 +36,11 @@
       justify-content: space-between;
       height: 50%;
       color: $menu-color-gray;
-      .servise-icon {
-        font-size: 20px;
+      .servise-icon-box {
+        #footer-icon {
+          height: 50px;
+          object-fit: cover;
+        }  
       }
       .copylight {
         font-size: 10px;
