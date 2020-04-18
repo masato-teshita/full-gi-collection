@@ -23,4 +23,12 @@ module ShopsHelper
     end
   end
 
+  def image_present?(shop)
+    if shop.image.present?
+      image_tag shop.image, class: 'top-cover-img shop-img'
+    else
+      image_tag '/assets/no-image.png', class: 'top-cover-img shop-img'
+    end
+  end
+
 end
