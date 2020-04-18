@@ -18,7 +18,7 @@
           %span.shop-menu-name 地図
     .shop-content
       .shop-content__top
-        = image_tag @shop.image.url, class: 'shop-img'
+        = image_present?(@shop)
         .shop-outline
           = @shop.outline
       .shop-content__items
