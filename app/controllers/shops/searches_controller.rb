@@ -1,4 +1,5 @@
 class Shops::SearchesController < ApplicationController
+  require 'will_paginate/array'
   skip_before_action :authenticate_user!
   def index
     area_id = params[:area_id]
@@ -7,29 +8,35 @@ class Shops::SearchesController < ApplicationController
     @searched_word = params[:keyword]
     @area = params[:area]
     if area_id.present?
-      @shops = Shop.where(area_id: area_id)
+      return_shops = Shop.where(area_id: area_id)
+      @shops = return_shops.paginate(page: params[:page], per_page: 5)
       @keyword = "#{Area.find(area_id).name} の古着屋"
-      @result = "#{@keyword} #{@shops.count}件"
+      @result = "#{@keyword} #{return_shops.count}件"
     elsif genre_id.present?
-      @shops = Shop.includes(:genres).where(genres: { id: genre_id})
+      return_shops = Shop.includes(:genres).where(genres: { id: genre_id})
+      @shops = return_shops.paginate(page: params[:page], per_page: 5)
       @keyword = "#{Genre.find(genre_id).name} の古着屋"
-      @result = "#{@keyword} #{@shops.count}件"
+      @result = "#{@keyword} #{return_shops.count}件"
     elsif brand_id.present?
-      @shops = Shop.includes(:brands).where(brands: { id: brand_id})
+      return_shops = Shop.includes(:brands).where(brands: { id: brand_id})
+      @shops = return_shops.paginate(page: params[:page], per_page: 5)
       @keyword = "#{Brand.find(brand_id).name} を取り扱う古着屋"
-      @result = "#{@keyword} #{@shops.count}件"
+      @result = "#{@keyword} #{return_shops.count}件"
     elsif @searched_word.present? && @area.present?
-      @shops = Shop.search(@area, @searched_word)
+      return_shops = Shop.search(@area, @searched_word)
+      @shops = return_shops.paginate(page: params[:page], per_page: 5)
       @keyword = "'#{@area}'の'#{@searched_word}' を含む古着屋"
-      @result = "#{@keyword} #{@shops.count}件"
+      @result = "#{@keyword} #{return_shops.count}件"
     elsif @area.present?
-      @shops = Shop.search(@area, @searched_word)
+      return_shops = Shop.search(@area, @searched_word)
+      @shops = return_shops.paginate(page: params[:page], per_page: 5)
       @keyword = "'#{@area}'の古着屋"
-      @result = "#{@keyword} #{@shops.count}件"
+      @result = "#{@keyword} #{return_shops.count}件"
     elsif @searched_word.present?
-      @shops = Shop.search(@area, @searched_word)
+      return_shops = Shop.search(@area, @searched_word)
+      @shops = return_shops.paginate(page: params[:page], per_page: 5)
       @keyword = "'#{@searched_word}' を含む古着屋"
-      @result = "#{@keyword} #{@shops.count}件"
+      @result = "#{@keyword} #{return_shops.count}件"
     else
       redirect_to shops_path
     end
