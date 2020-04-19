@@ -13,7 +13,8 @@ class Shop < ApplicationRecord
 
   validates :name, presence: true
 
-  mount_uploader :image, ImageUploader
+  # S3へ連携したら下記を使用する
+  # mount_uploader :image, ImageUploader
 
   scope :shop_includes, -> do
     includes(:area).includes(:genres).includes(:brands)
