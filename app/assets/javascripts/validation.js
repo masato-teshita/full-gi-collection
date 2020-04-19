@@ -25,7 +25,7 @@ $(function() {
             error_msg = error_msg + "\n・口コミのタイトルを入力してください。"
             break;
           case 3:
-            error_msg = error_msg + "\n・口コミ本文を選択してください。"
+            error_msg = error_msg + "\n・口コミ本文を入力してください。"
             break;
         }
       }
