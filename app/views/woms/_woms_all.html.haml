@@ -35,5 +35,5 @@
       %i 全
       %i.num= "#{@all_woms.count}"
       %i 件
-    = paginate(@woms)
+    = will_paginate @woms, renderer: WillPaginate::ActionView::LinkRenderer
   = render 'woms/woms', woms: @woms
