@@ -1,6 +1,10 @@
+// ページネーション
+.shop-paginate {
+  margin: 16px 0;
+  font-size: $fSize-content;
+}
 // Shop一覧
 .shop-list {
-  padding-top: 24px;
   .shop {
     &:hover a .top-info__name {
       color: $color-action;
