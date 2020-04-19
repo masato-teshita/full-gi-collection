@@ -9,6 +9,16 @@ $(function() {
   var box_left_top = form_title_width + 64;
   var form_width = areaSearchField.outerWidth() *2;
 
+  $(window).resize(function() {
+    var form_title_width = $('.form-explanation').width();
+    var box_left_top = form_title_width + 64;
+    var areaSearchField = $('#area-search-field');
+    var form_width = areaSearchField.outerWidth() *2;
+  
+    SearchResult.css({ 'margin-left': box_left_top});
+    SearchResult.width(form_width);
+  });
+
   function addArea(area) {
     var html = `
       <div class='candidate type-area' data-area-id="${area.id}" data-area-name="${area.name}">
