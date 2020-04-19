@@ -4,7 +4,6 @@
   }
 }
 .home-header {
-  max-width: $wrapper-max-width;
   min-width: $wrapper-min-width;
   width: 100%;
   height: 600px;
@@ -20,7 +19,7 @@
     width: 100%;
     height: 80px;
     padding: 10px;
-    .app-icon-box {
+    .top-app-icon-box {
       padding-top: 12px;
       #top-icon {
         height: 68px;
