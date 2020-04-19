@@ -5,7 +5,7 @@ $(function() {
   var keywordFieldHd = $('#keyword-field-hd')
   var candidateList = $('.candidate-list');
 
-  var form_title_width = $('.app-icon').width();
+  var form_title_width = $('.app-icon-box').width();
   var box_left_top = form_title_width;
   var form_width = areaSearchFieldHd.outerWidth() *2;
 
