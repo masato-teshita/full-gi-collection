@@ -5,9 +5,13 @@ $(function() {
   var keywordFieldHd = $('#keyword-field-hd')
   var candidateList = $('.candidate-list');
 
-  var form_title_width = $('.app-icon-box').width();
-  var box_left_top = form_title_width;
   var form_width = areaSearchFieldHd.outerWidth() *2;
+
+  $(window).resize(function() {
+    var areaSearchFieldHd = $('#area-search-field-hd');
+    var form_width = areaSearchFieldHd.outerWidth() *2;
+    SearchResultHd.width(form_width);
+  });
 
   function addArea(area) {
     var html = `
@@ -16,7 +20,6 @@ $(function() {
       </div>
     `
     SearchResultHd.show();
-    SearchResultHd.css({ 'margin-left': box_left_top});
     SearchResultHd.width(form_width);
     candidateList.append(html);
   }
@@ -28,7 +31,6 @@ $(function() {
       </div>
     `
     SearchResultHd.show();
-    SearchResultHd.css({ 'margin-left': box_left_top});
     SearchResultHd.width(form_width);
     candidateList.append(html);
   }
