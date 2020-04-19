@@ -13,7 +13,7 @@ $(function() {
     user_id = $('#clip-post').find('.clip-path').val();
     shop_id = $('#clip-post').find('.shop-id').val();
     url = `/users/${user_id}/clips`
-    shop_url = `/shops/${shop_id}`
+    shop_url = location.href
 
     console.log(url)
 
