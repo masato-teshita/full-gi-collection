@@ -3,7 +3,7 @@ class ShopsController < ApplicationController
   before_action :move_to_root, except: [:index, :show]
 
   def index
-    @shops = Shop.all.order(created_at: "DESC").page(params[:page]).per(10)
+    @shops = Shop.paginate(page: params[:page], per_page: 5)
     if params[:user_id].presence
       @user = User.find(params[:user_id])
       render "users/shops"
