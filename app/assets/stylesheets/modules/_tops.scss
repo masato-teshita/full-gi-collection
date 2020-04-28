@@ -109,19 +109,18 @@
     min-width: 960px;
     width: 100%;
     height: 96px;
+    margin: 0 auto;
     padding: 0 40px 0;
     background-color: white;
     font-size: 0;
     .form-explanation {
-      min-width: 154px;
-      max-width: 216px;
-      width: 20%;
+      width: 216px;
       margin-right: 24px;
       font-size: $fSize-default;
     }
     .search-box {
       position: relative;
-      width: calc(100% - 104px);
+      width: calc(100% - 240px);
       height: 56px;
       border: $border-style-default;
       border-radius: 6px;
@@ -130,7 +129,7 @@
         border-right: $border-style-inner;
       }
       &__content {
-        width: calc((100% - 96px)/2);
+        width: calc((100% - 120px)/2);
         height: 54px;
         padding: 0 8px;
         border: none;
