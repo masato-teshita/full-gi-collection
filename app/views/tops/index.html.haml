@@ -1,12 +1,6 @@
 !!!
 %html
-  %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
-    %title Full-Collection
-    = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
-    = favicon_link_tag('/assets/favicon.ico')
+  = render partial: 'layouts/head'
   %body
     .home-main
       .home-wrapper
@@ -41,7 +35,7 @@
                     %li.menu-option
                       = link_to 'ログイン', new_user_session_path
             .top-message-box
-              古着屋探しは「古コレ」
+              %h1 古着屋探しは「古コレ」
             .search-form
               .form-explanation
                 %h2 エリア・キーワードから探す
