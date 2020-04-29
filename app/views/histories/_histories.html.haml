@@ -10,7 +10,7 @@
           .top-info__action
             .action-icon.action-icon-left
               %i{ class: "fas fa-user-check fa-lg user-count-#{history.shop.show_user_woms(current_user)}"}
-              - if history.shop.show_user_woms(current_user) != 0
+              - if history.shop.show_user_woms(current_user) != 0 && user_signed_in?
                 %span= history.shop.show_user_woms(current_user)
             .action-icon
               %i{ class: "fas fa-bookmark fa-lg clip-count-#{history.shop.show_user_clips(current_user)}"}
