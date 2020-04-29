@@ -1,13 +1,13 @@
 .header {
   width: 100%;
   height: 96px;
-  border-bottom: $border-style-inner;
   background-color: white;
   .header-wrapper {
-    max-width: 1600px;
-    min-width: 1280px;
+    max-width: $wrapper-max-width;
+    min-width: $wrapper-min-width;
     margin: 0 auto;
     padding: 0 240px 0;
+    border-bottom: $border-style-inner;
     &__top {
       @include up-down-center;
       justify-content: space-between;

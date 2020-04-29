@@ -141,7 +141,8 @@
   .user-header-line {
     position: absolute;
     left: 0;
-    width: 100%;
+    max-width: $wrapper-max-width;
+    min-width: $wrapper-min-width;
     border-top: $border-style-default;
     overflow: hidden;
   }
