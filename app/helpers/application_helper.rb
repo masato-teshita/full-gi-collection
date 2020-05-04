@@ -18,7 +18,7 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         url: request.original_url,
-        image: 'https://res.cloudinary.com/hr4swzmyj/image/upload/v1588573399/default-icon_gnwdpb.png',
+        image: 'https://res.cloudinary.com/hr4swzmyj/image/upload/v1588573804/favicon_wkqtvl.png',
         locale: 'ja_JP',
       },
       twitter: {
