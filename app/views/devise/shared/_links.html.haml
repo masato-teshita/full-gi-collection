@@ -1,9 +1,21 @@
 - if controller_name != 'sessions'
   = link_to "ログイン", new_session_path(resource_name), class: 'btn'
   %br/
+  .test-login
+    %span ※アカウント登録せずに機能を試したい方は
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.hidden_field :email, value: 'test-user@teshita.jp'
+      = f.hidden_field :password, value: '123456'
+      = f.submit 'こちら', class: 'test-login__btn'
 - if devise_mapping.registerable? && controller_name != 'registrations'
   = link_to "初めてご利用の方（新規会員登録）", new_registration_path(resource_name), class: 'btn'
   %br/
+  .test-login
+    %span ※アカウント登録せずに機能を試したい方は
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.hidden_field :email, value: 'test-user@teshita.jp'
+      = f.hidden_field :password, value: '123456'
+      = f.submit 'こちら', class: 'test-login__btn'
 -# - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
 -#   = link_to "パスワードをお忘れの方", new_password_path(resource_name), class: 'btn'
 -#   %br/

@@ -1,57 +1,4 @@
 .account-page {
-  .account-page__inner {
-    margin: 60px auto;
-    padding: 40px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-
-    .account-page__inner--left, .account-page__inner--right {
-      float: left;
-      width: 50%;
-    }
-    &:after {
-      display: block;
-      clear: both;
-      content: "";
-    }
-    .user-delete-link {
-      height: 50px;
-      margin-top: 20px;
-      text-align: right;
-    }
-  }
-
-  .account-page__header {
-    h2 {
-      margin-bottom: 10px;
-      letter-spacing: 3px;
-      font-size: 24px;
-      font-weight: 200;
-
-      &:after {
-        display: block;
-        width: 60px;
-        margin-top: 5px;
-        border-bottom: $border-style-btn;
-        content: '';
-      }
-    }
-
-    h5 {
-      margin-bottom: 20px;
-      font-size: $fSize-h5;
-      font-weight: 200;
-    }
-
-    .btn {
-      margin-top: 20px;
-      color: #fff;
-      background-color: #ccc;
-      font-size: $fSize-h5;
-    }
-  }
-
   .field {
     margin-bottom: 10px;
 
@@ -132,6 +79,73 @@
         bottom: 0;
         width: 5px;
         background-color: $color-error;
+      }
+    }
+  }
+  .account-page__inner {
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    .account-page__inner--left, .account-page__inner--right {
+      float: left;
+      width: 50%;
+    }
+    &:after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+    .user-delete-link {
+      height: 50px;
+      margin-top: 20px;
+      text-align: right;
+    }
+  }
+
+  .account-page__header {
+    h2 {
+      margin-bottom: 10px;
+      letter-spacing: 3px;
+      font-size: 24px;
+      font-weight: 200;
+
+      &:after {
+        display: block;
+        width: 60px;
+        margin-top: 5px;
+        border-bottom: $border-style-btn;
+        content: '';
+      }
+    }
+
+    h5 {
+      margin-bottom: 20px;
+      font-size: $fSize-h5;
+      font-weight: 200;
+    }
+
+    .btn {
+      margin-top: 20px;
+      color: #fff;
+      background-color: #ccc;
+      font-size: $fSize-h5;
+    }
+
+    .test-login {
+      margin-top: 20px;
+      font-size: $fSize-h5;
+      &__btn {
+        margin-top: 0;
+        border: none;
+        background-color: white;
+        color: $link-color;
+        &:hover {
+          color: $link-color-hover;
+          cursor: pointer;
+        }
       }
     }
   }
