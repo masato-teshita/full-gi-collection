@@ -1,13 +1,13 @@
 .header {
   width: 100%;
   height: 96px;
-  border-bottom: $border-style-inner;
   background-color: white;
   .header-wrapper {
-    max-width: 1600px;
-    min-width: 1280px;
+    max-width: $wrapper-max-width;
+    min-width: $wrapper-min-width;
     margin: 0 auto;
     padding: 0 240px 0;
+    border-bottom: $border-style-inner;
     &__top {
       @include up-down-center;
       justify-content: space-between;
@@ -85,7 +85,8 @@
         justify-content: space-between;
         width: 100%;
         font-size: $fSize-content;
-        .app-icon-box {
+        #app-icon-box {
+          width: 160px;
           #header-icon {
             height: 56px;
             object-fit: cover;
@@ -146,7 +147,7 @@
       display: none;
       position: relative;
       z-index: 2;
-      margin: -13px 0 0 0;
+      margin: -6px 0 0 160px;
       border: $border-style-inner;
       box-shadow: 2px 2px 2px lightgray;
       background-color: white;
@@ -166,8 +167,8 @@
           }
         }
         .no-result {
-          margin: 0 8px;
-          padding: 6px 12px;
+          margin: 4px 8px;
+          padding: 6px 8px;
           border: $border-style-candidate;
           background-color: whitesmoke;
           font-size: 8px;

@@ -10,23 +10,23 @@
           .top-info__action
             .action-icon.action-icon-left
               %i{ class: "fas fa-user-check fa-lg user-count-#{history.shop.show_user_woms(current_user)}"}
-              - if history.shop.show_user_woms(current_user) != 0
+              - if history.shop.show_user_woms(current_user) != 0 && user_signed_in?
                 %span= history.shop.show_user_woms(current_user)
             .action-icon
               %i{ class: "fas fa-bookmark fa-lg clip-count-#{history.shop.show_user_clips(current_user)}"}
         .bottom-info
           .bottom-info-left
             .bottom-info-left__top-cover
-              = image_tag history.shop.image.url, alt: 'no image', class: 'top-cover-img'
-            %ul.bottom-info-left__items
-              %li.cover-item
-                = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
-              %li.cover-item
-                = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
-              %li.cover-item
-                = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
-              %li.cover-item
-                = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
+              = image_tag history.shop.image, alt: 'no image', class: 'top-cover-img'
+            -# %ul.bottom-info-left__items
+              -# %li.cover-item
+              -#   = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
+              -# %li.cover-item
+              -#   = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
+              -# %li.cover-item
+              -#   = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
+              -# %li.cover-item
+              -#   = image_tag history.shop.image.url, alt: 'no image', class: 'cover-item-img'
           .bottom-info-right
             .bottom-info-right__overview
               = history.shop.outline

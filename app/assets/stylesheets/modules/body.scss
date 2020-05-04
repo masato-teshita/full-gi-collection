@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'メイリオ', 'Meiryo', 'ＭＳ ゴシック','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -10,8 +11,8 @@ body {
   overflow-x: scroll;
   .main {
     .wrapper {
-      max-width: 1600px;
-      min-width: 1280px;
+      max-width: $wrapper-max-width;
+      min-width: $wrapper-min-width;
       width: 100%;
       margin: 0 auto;
       padding: 0 240px 0;

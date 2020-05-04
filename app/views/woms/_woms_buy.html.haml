@@ -30,10 +30,4 @@
             = button_tag type: 'submit', class: 'wom-search-btn' do
               %i.fas.fa-yen-sign
               %span 売却の口コミ
-  .woms-paginate
-    .woms-count
-      %i 全
-      %i.num= "#{@all_woms.count}"
-      %i 件
-    = paginate(@woms)
-  = render 'woms/woms', woms: @woms
+  = render 'woms/woms', woms: @woms, all_woms: @all_woms

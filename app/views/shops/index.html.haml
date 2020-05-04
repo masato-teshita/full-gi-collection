@@ -1,3 +1,7 @@
 - breadcrumb :shops
 = render "layouts/breadcrumbs"
+.shop-paginate
+  = will_paginate @shops, renderer: WillPaginate::ActionView::LinkRenderer
 = render 'shop', shops: @shops
+.shop-paginate
+  = will_paginate @shops, renderer: WillPaginate::ActionView::LinkRenderer

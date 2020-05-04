@@ -97,3 +97,7 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
+  will_paginate:
+    previous_label: '&lt 前へ'
+    next_label: '次へ &gt'
+    page_gap: …

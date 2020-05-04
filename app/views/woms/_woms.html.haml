@@ -1,3 +1,9 @@
+.woms-paginate
+  .woms-count
+    %i 全
+    %i.num= "#{@all_woms.count}"
+    %i 件
+  = will_paginate woms, renderer: WillPaginate::ActionView::LinkRenderer
 .woms-list
   - woms.each do |wom|
     .woms-box
