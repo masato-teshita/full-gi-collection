@@ -47,13 +47,14 @@ end
 
 # shop#edit
 crumb :edit_shop do |shop|
-  link "Edit #{shop.name}", edit_shop_path(shop)
+  link "店舗情報編集", edit_shop_path(shop)
   parent :show_shop, shop
 end
 
-# shop#new
-crumb :new_shop do
-  link "New shop", new_shop_path
+# shops#new
+crumb :new_shop do 
+  link "新規店舗登録", new_shop_path
+  parent :root
 end
 
 # user#new
