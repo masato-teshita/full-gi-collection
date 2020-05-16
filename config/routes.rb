@@ -29,9 +29,9 @@ Rails.application.routes.draw do
     resources :histories, only: [:index, :create]
     resources :clips, only: [:index, :create, :destroy]
   end
-  resources :shops, only: [:index, :show, :new, :create] do
+  resources :shops do
     resources :woms
-    resources :maps, only: [:index]
+    get 'map', to: 'shops#map'
   end
   resources :areas, only: :index
   resources :genres, only: :index
