@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200405123926) do
+ActiveRecord::Schema.define(version: 20200516070449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 20200405123926) do
     t.index ["user_id"], name: "index_histories_on_user_id", using: :btree
   end
 
+  create_table "maps", force: :cascade do |t|
+    t.integer  "shop_id"
+    t.string   "address",    null: false
+    t.float    "latitude",   null: false
+    t.float    "longitude",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_maps_on_shop_id", using: :btree
+  end
+
   create_table "shop_brands", force: :cascade do |t|
     t.integer "shop_id"
     t.integer "brand_id"
@@ -85,7 +95,6 @@ ActiveRecord::Schema.define(version: 20200405123926) do
     t.index ["area_id"], name: "index_shops_on_area_id", using: :btree
     t.index ["genre_id"], name: "index_shops_on_genre_id", using: :btree
     t.index ["image"], name: "index_shops_on_image", unique: true, using: :btree
-    t.index ["name"], name: "index_shops_on_name", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -125,6 +134,7 @@ ActiveRecord::Schema.define(version: 20200405123926) do
   add_foreign_key "clips", "users"
   add_foreign_key "histories", "shops"
   add_foreign_key "histories", "users"
+  add_foreign_key "maps", "shops"
   add_foreign_key "shop_brands", "brands"
   add_foreign_key "shop_brands", "shops"
   add_foreign_key "shop_genres", "genres"
