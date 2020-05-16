@@ -1,8 +1,6 @@
 class Shop < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :area, optional: true
-  has_one :map, dependent: :destroy
-  accepts_nested_attributes_for :map, allow_destroy: true
   has_many :historis
   has_many :clips
   has_many :woms
