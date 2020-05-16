@@ -1,9 +1,4 @@
 - breadcrumb :new_shop
-
-= form_for @shop do |f|
-  = f.text_field :name, placeholder: 'ショップ名'
-  = f.text_area :outline, placeholder: 'ショップ紹介'
-  = f.label :image, class: 'image' do
-    = icon('far', 'image', class: 'image-icon fa-lg')
-    = f.file_field :image, class: 'image-file'
-  = f.submit '登録', class: 'send-btn'
+= render "layouts/breadcrumbs"
+.shop-wrapper
+  = render "form"
