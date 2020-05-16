@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   end
   resources :shops, only: [:index, :show, :new, :create] do
     resources :woms
+    resources :maps, only: [:index]
   end
   resources :areas, only: :index
   resources :genres, only: :index
