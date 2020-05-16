@@ -14,7 +14,7 @@
         = link_to(shop_woms_path(@shop.id), class: 'shop-menu-link') do
           %span.shop-menu-name 口コミ
       %li.shop-menu
-        = link_to(readies_path, class: 'shop-menu-link') do
+        = link_to(shop_map_path(@shop.id), class: 'shop-menu-link') do
           %span.shop-menu-name 地図
     .shop-content
       - if @visit_type == "購入"
