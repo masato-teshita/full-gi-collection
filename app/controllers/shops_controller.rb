@@ -36,6 +36,12 @@ class ShopsController < ApplicationController
     @shop.update(shop_params) ? (redirect_to shop_path(@shop)) : (render :edit)
   end
 
+  def map
+    @shop = Shop.find(params[:shop_id])
+    @woms = @shop.woms
+    @clips = @shop.clips
+  end
+
   private
   def shop_params
     params.require(:shop).permit(:name, :image, :outline, :address)
