@@ -1,0 +1,52 @@
+- breadcrumb :shop_woms, @shop
+= render "layouts/breadcrumbs"
+.shop-wrapper
+  = render "shops/header"
+  .shop-body
+    %ul.shop-menu-bar
+      %li.shop-menu
+        = link_to(shop_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 店舗トップ
+      %li.shop-menu
+        = link_to(readies_path, class: 'shop-menu-link') do
+          %span.shop-menu-name 取扱商品
+      %li.shop-menu
+        = link_to(shop_woms_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 口コミ
+      %li.shop-menu#selected-menu
+        = link_to(shop_map_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 地図
+    .shop-content
+      .shop-content__address
+        = @shop.address
+      .shop-content__map
+        %div{id: 'map', style: 'height: 480px; width: 60%;'}
+
+        = javascript_include_tag src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyD--M3xKlY-ZQ39ykGnvFhYEuW8zLAnkQE&callback=initMap", async: true, defer: true
+
+        :javascript
+          function initMap() {
+            var test ={ lat: parseFloat("#{@shop.latitude}"), lng: parseFloat("#{@shop.longitude}") };
+            console.log(test)
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 16,
+              center: test
+            });
+            var transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap(map);
+
+            var contentString = "住所：#{@shop.address} ";
+            var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+
+            var marker = new google.maps.Marker({
+              position:test,
+              map: map,
+              title: contentString
+            });
+
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+          }
