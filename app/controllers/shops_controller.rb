@@ -26,7 +26,11 @@ class ShopsController < ApplicationController
     @clip = Clip.find_by(user_id: current_user, shop_id: @shop.id)
     @clips = @shop.clips
   end
-  
+
+  def edit
+    @shop = Shop.find(params[:id])
+  end
+
   private
   def shop_params
     params.require(:shop).permit(:name, :image, :outline, :address)
