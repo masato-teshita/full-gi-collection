@@ -14,11 +14,20 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
+    @shop.shop_images.new
   end
 
   def create
+    binding.pry
     @shop = Shop.new(shop_params)
-    @shop.save! ? (redirect_to root_path) : (render :new)
+    if @shop.save
+      params[:shop_shop_images][:shop_image].each do |image|
+        @shop.shop_images.create(shop_image: image, shop_id: @shop.id)
+      end
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -51,7 +60,18 @@ class ShopsController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop).permit(:name, :image, :outline, :address, :latitude, :longitude)
+    params.require(:shop).permit(
+      :name,
+      :image,
+      :outline,
+      :address,
+      :latitude,
+      :longitude,
+      shop_images_attributes: [
+        :id,
+        :shop_image
+      ]
+    )
   end
 
   def move_to_root    
