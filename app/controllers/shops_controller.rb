@@ -18,10 +18,9 @@ class ShopsController < ApplicationController
   end
 
   def create
-    binding.pry
     @shop = Shop.new(shop_params)
     if @shop.save
-      params[:shop_shop_images][:shop_image].each do |image|
+      params[:shop][:shop_image].each do |image|
         @shop.shop_images.create(shop_image: image, shop_id: @shop.id)
       end
       redirect_to root_path
@@ -67,11 +66,8 @@ class ShopsController < ApplicationController
       :address,
       :latitude,
       :longitude,
-      shop_images_attributes: [
-        :id,
-        :shop_image
-      ]
-    )
+      genre_ids: [],
+    ).merge(area_id: params[:shop][:area_id]  )
   end
 
   def move_to_root    
