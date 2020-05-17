@@ -12,6 +12,8 @@ class Shop < ApplicationRecord
   has_many :users, through: :shop_users
   geocoded_by :address
   after_validation :geocode
+  has_many :shop_images
+  accepts_nested_attributes_for :shop_images
 
   validates :name, presence: true
 
