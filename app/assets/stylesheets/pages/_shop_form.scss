@@ -1,5 +1,8 @@
 .shop-form {
   padding: 12px;
+  &__title {
+    font-size: $fSize-h2;
+  }
   .field {
     display: flex;
     margin: 12px 0;
@@ -8,8 +11,17 @@
     }
     &__input {
       width: 640px;
-      input {
+      &--text-type {
         width: 100%;
+      }
+      &--textarea {
+        width: 100%;
+        height: 120px;
+        border: $border-style-default;
+        outline: none;
+      }
+      &--checkbox {
+        display: inline;
       }
     }
   }
