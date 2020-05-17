@@ -4,8 +4,12 @@
       %span 保存しました！
 .shop-header
   .info-wrap
-    .shop-name
-      = @shop.name
+    .shop-controller
+      .shop-name
+        = @shop.name
+      - if user_signed_in? && current_user.admin == true
+        .shop-edit
+          = link_to '編集', edit_shop_path(@shop.id)
     .shop-top-info
       .shop-top-info__rate
         %div{ id: "star-rate-#{@shop.id}", class: 'star-rating'}
