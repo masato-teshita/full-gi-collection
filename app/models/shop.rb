@@ -10,10 +10,10 @@ class Shop < ApplicationRecord
   has_many :genres, through: :shop_genres
   has_many :brands, through: :shop_brands
   has_many :users, through: :shop_users
-  geocoded_by :address
-  after_validation :geocode
   has_many :shop_images
   accepts_nested_attributes_for :shop_images
+  geocoded_by :address
+  after_validation :geocode
 
   validates :name, presence: true
 
