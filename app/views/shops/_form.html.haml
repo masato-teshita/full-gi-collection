@@ -1,25 +1,41 @@
 = form_for @shop do |f|
   .field
-    = f.label :name, '店舗名'
-    = f.text_field :name, placeholder: '店舗名'
+    .field__label
+      = f.label :name, '店舗名'
+    .field__input
+      = f.text_field :name, placeholder: '店舗名'
   .field
-    = f.label :outline, '店舗紹介'
-    = f.text_area :outline, placeholder: '店舗紹介'
+    .field__label
+      = f.label :outline, '店舗紹介'
+    .field__input
+      = f.text_area :outline, placeholder: '店舗紹介'
   .field
-    = f.label :image, '店舗画像', class: 'image' do
-      = icon('far', 'image', class: 'image-icon fa-lg')
-      = f.file_field :image, class: 'image-file'
+    .field__label
+      = f.label :image, '店舗画像', class: 'image'
+    .field__input
+      #image-box
+        .shop-num-0#image-box__container
+          = f.fields_for :shop_images do |i|
+            %div{class: "input-area", tabindex: 0}
+              = i.file_field :shop_image, type: 'file', class: "img-file", name: "shop_shop_images[shop_image][]", value:"", style: "display:none", required: "required", multiple: :true
+              %label{for: "shop_shop_images_attributes_0_shop_image", class: "input-area__label"}
+                %i.fas.fa-camera
   .field
-    = f.label :address, '住所'
-    = f.text_field :address
+    .field__label
+      = f.label :address, '住所'
+    .field__input
+      = f.text_field :address
   .field
-    = f.label :phone, '電話番号'
+    .field__label
+      = f.label :phone, '電話番号'
     -# = f.text_field :phone
   .field
-    = f.label :area_id, 'エリア'
+    .field__label
+      = f.label :area_id, 'エリア'
     -# = f.collection_select :area_id
   .field
-    = f.label :genre_id, 'ジャンル'
+    .field__label
+      = f.label :genre_id, 'ジャンル'
 
   .field
     = f.submit '登録', class: 'send-btn'
