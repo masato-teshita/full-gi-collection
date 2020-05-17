@@ -51,7 +51,7 @@ class ShopsController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop).permit(:name, :image, :outline, :address)
+    params.require(:shop).permit(:name, :image, :outline, :address, :latitude, :longitude)
   end
 
   def move_to_root    
