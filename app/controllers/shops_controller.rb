@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :move_to_root, except: [:index, :show]
+  before_action :move_to_root, except: [:index, :show, :map]
   before_action :set_shop, only: [:edit, :update]
   before_action :set_shop_info, only: [:show, :map]
 
