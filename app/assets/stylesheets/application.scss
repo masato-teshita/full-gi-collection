@@ -3,10 +3,10 @@
 @import "config/mixin";
 @import "modules/header";
 @import "modules/body";
-@import "modules/tops";
-@import "modules/users";
-@import "modules/shops";
-@import "modules/woms";
 @import "modules/footer";
+@import "pages/tops";
+@import "pages/users";
+@import "pages/shops";
+@import "pages/woms";
 @import "font-awesome-sprockets";
 @import "font-awesome";

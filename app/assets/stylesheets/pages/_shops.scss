@@ -163,9 +163,16 @@
     border-top: $border-style-inner;
     .info-wrap {
       width: 100%;
-      .shop-name {
-        font-size: $fSize-h2;
-        font-weight: bold;
+      .shop-controller {
+        display: flex;
+        align-items: center;
+        .shop-name {
+          font-size: $fSize-h2;
+          font-weight: bold;
+        }
+        .shop-edit {
+          margin-left: 12px;
+        }  
       }
       .shop-top-info {
         @include up-down-center;
