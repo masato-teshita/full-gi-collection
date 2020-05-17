@@ -31,6 +31,13 @@ crumb :shop_woms do |shop|
   parent :show_shop, shop
 end
 
+# shop#map
+crumb :shop_map do |shop|
+  shop = Shop.find(params[:shop_id])
+  link "#{shop.name} の地図", shop_map_path(shop)
+  parent :show_shop, shop
+end
+
 # shop/woms#new
 crumb :shop_wom_new do |shop|
   shop = Shop.find(params[:shop_id])
@@ -47,13 +54,14 @@ end
 
 # shop#edit
 crumb :edit_shop do |shop|
-  link "Edit #{shop.name}", edit_shop_path(shop)
+  link "店舗情報編集", edit_shop_path(shop)
   parent :show_shop, shop
 end
 
-# shop#new
-crumb :new_shop do
-  link "New shop", new_shop_path
+# shops#new
+crumb :new_shop do 
+  link "新規店舗登録", new_shop_path
+  parent :root
 end
 
 # user#new

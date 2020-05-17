@@ -1,0 +1,25 @@
+= form_for @shop do |f|
+  .field
+    = f.label :name, '店舗名'
+    = f.text_field :name, placeholder: '店舗名'
+  .field
+    = f.label :outline, '店舗紹介'
+    = f.text_area :outline, placeholder: '店舗紹介'
+  .field
+    = f.label :image, '店舗画像', class: 'image' do
+      = icon('far', 'image', class: 'image-icon fa-lg')
+      = f.file_field :image, class: 'image-file'
+  .field
+    = f.label :address, '住所'
+    = f.text_field :address
+  .field
+    = f.label :phone, '電話番号'
+    -# = f.text_field :phone
+  .field
+    = f.label :area_id, 'エリア'
+    -# = f.collection_select :area_id
+  .field
+    = f.label :genre_id, 'ジャンル'
+
+  .field
+    = f.submit '登録', class: 'send-btn'

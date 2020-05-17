@@ -10,6 +10,8 @@ class Shop < ApplicationRecord
   has_many :genres, through: :shop_genres
   has_many :brands, through: :shop_brands
   has_many :users, through: :shop_users
+  geocoded_by :address
+  after_validation :geocode
 
   validates :name, presence: true
 
@@ -84,5 +86,4 @@ class Shop < ApplicationRecord
       shop_genres << genre.name
     end
   end
-
 end
