@@ -325,6 +325,80 @@ $(function(){
 });
 
 // ----------------------------------
+// ブランドのインクリメンタルサーチ
+// ----------------------------------
+$(function() {
+  const SearchResult = $('#brand-search-result');
+  const brandSerchField = $('#brand-search-field')
+  const shopBrands = $('#shop-brands')
+
+  function addBrand(brand) {
+    const html = `
+      <div class="shop-brand">
+        <p class="shop-brand__name js-add-btn" data-brand-id="${brand.id}" data-brand-name="${brand.name}">${brand.name}</p>
+      </div>
+    `
+    SearchResult.append(html);
+  }
+
+  // 選択したエリア名を、入力フォームに転記
+  function addShopBrand(brandName, brandId){
+    const html = `
+      <div class="shop-brands__selected" data-brand-id="${brandId}" data-brand-name="${brandName}">
+        <input name="shop[brand_ids][]" type="hidden", value="${brandId}">
+        <p class="shop-brands__selected__name">${brandName}</p>
+        <i class="far fa-times-circle shop-brands__selected__btn js-remove-btn"></i>
+      </div>
+    `
+    // <div class="brand-search-remove shop-brand__btn shop-brand__btn--remove js-remove-btn">削除</div>
+
+    shopBrands.append(html);
+  }
+
+  brandSerchField.on('keyup', function() {
+    const input = brandSerchField.val();
+    $.ajax({
+      type: 'GET',
+      url: '/brands',
+      data: { keyword: input },
+      dataType: 'json',
+    })
+    .done(function(brands) {
+      SearchResult.empty();
+      
+      if(brands.length !== 0){
+        SearchResult.show();
+        brands.forEach(function(brand){
+          if ($('div .shop-brands__selected').data('brand-id') != brand.id) {
+            addBrand(brand);
+          }
+        });
+      } else if (input == "") {
+        return false;
+      } else {
+        SearchResult.hide();
+        return false;
+      }
+    })
+    .fail(function() {
+      alert("ブランド検索に失敗しました")
+    })
+  });
+
+  $(document).on('click', '.js-add-btn', function(){
+    const brandName = $(this).data('brand-name');
+    const branddId = $(this).data('brand-id');
+    $(this).parent().remove();
+    addShopBrand(brandName, branddId)
+  });
+
+  $(document).on('click', '.js-remove-btn', function(){
+    $(this).parent().remove();
+    const brand = {id: $(this).parent().data('brand-id'), name: $(this).parent().data('brand-name')}
+    addBrand(brand)
+  });
+});
+// ----------------------------------
 //郵便番号を入力することで住所自動入力
 // ----------------------------------
 $(function(){
