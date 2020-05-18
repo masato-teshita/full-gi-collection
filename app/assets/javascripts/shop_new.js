@@ -159,7 +159,7 @@ $(function(){
       <div class='shop-image' data-image="${filename}" data-index="${i}">
         <div class='shop-image__content'>
           <div class='shop-image__content--icon'>
-            <img src=${src} width="114" height="80" index="${i}">
+            <img src=${src} width="118" height="80" index="${i}">
           </div>
         </div>
         <div class='shop-image__operation'>
@@ -321,5 +321,15 @@ $(function(){
     $('#image-box__container').attr('class', `shop-num-${num}`)
     
     errorCheckOnDel(num);
+  });
+});
+
+// ----------------------------------
+//郵便番号を入力することで住所自動入力
+// ----------------------------------
+$(function(){
+  $("#shop-postal-code").jpostal({
+    postcode : [ "#shop-postal-code" ],
+    address  : {"#shop-address" : "%3%4%5"}
   });
 });
