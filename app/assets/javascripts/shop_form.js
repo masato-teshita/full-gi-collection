@@ -369,9 +369,19 @@ $(function() {
       if(brands.length !== 0){
         SearchResult.show();
         brands.forEach(function(brand){
-          if ($('div .shop-brands__selected').data('brand-id') != brand.id) {
-            addBrand(brand);
-          }
+          // let brandFlag = true;
+          // if ($('.shop-brands__selected').length == 0) {
+          //   addBrand(brand);
+          // } else {
+          //   $('.shop-brands__selected').each(function(e) {
+          //     if ($('.shop-brands__selected').eq(e).data('brand-id') == brand.id) {
+          //       brandFlag = false;
+          //     }
+          //   });
+          //   if (brandFlag) {
+              addBrand(brand);
+          //   }  
+          // }
         });
       } else if (input == "") {
         return false;
