@@ -14,17 +14,39 @@
       = f.label :image, '店舗画像', class: 'image'
     .field__input
       #image-box
-        .shop-num-0#image-box__container
+        - if @shop.persisted? && @shop.shop_images.count > 0
+          - @shop.shop_images.each_with_index do |image, i|
+            %div{class: "shop-image", data:{ image: image.shop_image.filename, index: i}}
+              .shop-image__content
+                .shop-image__content--icon
+                  = image_tag image.shop_image.url, data: { index: i }, width: "118", height: '80'
+              .shop-image__operation
+                .shop-image__operation--delete 削除
           = f.fields_for :shop_images do |i|
+            = i.file_field :shop_image, type: 'file', class: "img-file", name: "shop[shop_image][]", value:"", style: "display:none", multiple: :true
+            = i.check_box :_destroy, data: {index: i.index}, class: 'hidden-destroy'
+          %div{class: "shop-num-#{@shop.shop_images.count} drag-area", id: "image-box__container"}
             %div{class: "input-area", tabindex: 0}
-              = i.file_field :shop_image, type: 'file', class: "img-file", name: "shop[shop_image][]", value:"", style: "display:none", required: "required", multiple: :true
-              %label{for: "shop_shop_images_attributes_0_shop_image", class: "input-area__label"}
+              = file_field_tag :shop_image, name: "shop[shop_image][]",value:"", style: "display:none", multiple: :true
+              %label{for: "shop[shop_image][]", class: "input-area__label"}
                 %i.fas.fa-camera
+        - else
+          .shop-num-0.drag-area#image-box__container
+            = f.fields_for :shop_images do |i|
+              %div{class: "input-area", tabindex: 0}
+                = i.file_field :shop_image, type: 'file', class: "img-file", name: "shop[shop_image][]", value:"", style: "display:none", required: "required", multiple: :true
+                %label{for: "shop[shop_image][]", class: "input-area__label"}
+                  %i.fas.fa-camera
+  .field
+    .field__label
+      = f.label :postal_code, '郵便番号'
+    .field__input
+      = f.text_field :postal_code, placeholder: '郵便番号', id: 'shop-postal-code'
   .field
     .field__label
       = f.label :address, '住所'
     .field__input
-      = f.text_field :address, placeholder: '郵便番号なし。番地は半角', class: 'field__input--text-type'
+      = f.text_field :address, placeholder: '番地は半角', id: 'shop-address', class: 'field__input--text-type'
   .field
     .field__label
       = f.label :phone_number, '電話番号'
@@ -35,7 +57,10 @@
       = f.label :area_id, 'エリア'
     .field__input
       = f.fields_for :area_id do |i|
-        = i.select :area_id, Area.all.collect {|p| [p.name, p.id]},{prompt: "選択してください"},{class: 'field__input--checkbox', name: "shop[area_id][]"}
+        - if @shop.persisted?
+          = i.select :area_id, Area.all.collect {|p| [p.name, p.id]},{},{class: 'field__input--checkbox', name: "shop[area_id]", value: "#{@shop.area_id}"}
+        - else
+          = i.select :area_id, Area.all.collect {|p| [p.name, p.id]},{prompt: "選択してください"},{class: 'field__input--checkbox', name: "shop[area_id]"}
   .field
     .field__label
       = f.label :genre_id, 'ジャンル'
@@ -43,5 +68,18 @@
       = f.collection_check_boxes :genre_ids, Genre.all, :id, :name, include_hidden: false do |b|
         = b.check_box
         = b.label { b.text }          
+  .field
+    .field__label
+      = f.label :genre_id, '取り扱いブランド'
+    .field__input
+      %input#brand-search-field{placeholder: '追加したいブランド名を入力', type: 'text', class: 'field__input--text-type'}
+      #brand-search-result
+      #shop-brands.js-add-brand
+        %h3.shop-brand-title 選択済みブランド
+        - @shop.brands.each do |brand|
+          %div{class: "shop-brands__selected", data: {brand: {id: "#{brand.id}", name: "#{brand.name}"}}}
+            %input{name: "shop[brand_ids][]", type: "hidden", value: brand.id}
+            %p.shop-brands__selected__name= brand.name
+            %i.far.fa-times-circle.shop-brands__selected__btn.js-remove-btn
   .field
     = f.submit '登録', class: 'send-btn'
