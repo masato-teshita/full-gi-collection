@@ -202,6 +202,7 @@ $(function(){
     const currentNum = $('.shop-image').length
     const add_files_length = file_field.files.length
     const inputNum = currentNum + add_files_length
+    fileIndex = currentNum
 
     $.each(this.files, function(i, file){
       var fileReader = new FileReader();
@@ -237,21 +238,20 @@ $(function(){
     dropArea.addEventListener("dragover", function(e){
       e.preventDefault();
       //ドロップエリアに影がつく
-      $(this).children('#image-box__container').css({'border': '1px solid rgb(204, 204, 204)','box-shadow': '0px 0px 4px'})
+      $(this).children('.drag-area').css({'border': '1px solid rgb(204, 204, 204)','box-shadow': '0px 0px 4px'})
     },false);
 
     //ドラッグした要素がドロップターゲットから離れた時に発火するイベント
     dropArea.addEventListener("dragleave", function(e){
       e.preventDefault();
     //ドロップエリアの影が消える
-      $(this).children('#image-box__container').css({'border': 'none','box-shadow': '0px 0px 0px'})      
+      $(this).children('.drag-area').css({'border': 'none','box-shadow': '0px 0px 0px'})      
     },false);
 
     //ドラッグした要素をドロップした時に発火するイベント
     dropArea.addEventListener("drop", function(e) {
-
       e.preventDefault();
-      $(this).children('#image-box__container').css({'border': 'none','box-shadow': '0px 0px 0px'});
+      $(this).children('.drag-area').css({'border': 'none','box-shadow': '0px 0px 0px'});
 
       errorCheckOnAdd();
 
@@ -295,9 +295,10 @@ $(function(){
     const target_image = $(this).parent().parent()
     //削除を押されたプレビューimageのindexを取得
     const targetIndex = $(target_image).data('index')
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
     //プレビューがひとつだけの場合、file_fieldをクリア
     const images = $('.shop-image');
-    console.log(dataBox)
     if (images.length==1) {
       //inputタグに入ったファイルを削除
       $('input[type=file]').val(null)
