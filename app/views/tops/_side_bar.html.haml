@@ -38,7 +38,7 @@
           - current_user.clips.each do |clip|
             %li.bookmark-store
               = link_to(shop_path(clip.shop_id), class: 'clip-shop-link') do
-                = image_tag clip.shop.image, class: 'clip-shop-img'
+                = clip_image_present?(clip.shop)
                 .clip-shop-data
                   .clip-shop-data__name
                     %span.on-dec= clip.shop.name
