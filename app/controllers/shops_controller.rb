@@ -14,21 +14,39 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
+    @shop.shop_images.new
   end
 
   def create
     @shop = Shop.new(shop_params)
-    @shop.save! ? (redirect_to root_path) : (render :new)
+    if @shop.save
+      params[:shop][:shop_image].each do |image|
+        @shop.shop_images.create(shop_image: image, shop_id: @shop.id)
+      end
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
   end
 
   def edit
+    @shop.shop_images.new unless @shop.shop_images.present?
   end
 
   def update
-    @shop.update(shop_params) ? (redirect_to shop_path(@shop)) : (render :edit)
+    if @shop.update(shop_params)
+      if add_shop_images = params[:shop][:shop_image]
+        add_shop_images.each do |image|
+          @shop.shop_images.create(shop_image: image, shop_id: @shop.id)
+        end
+      end
+      redirect_to shop_path(@shop)
+    else
+      render :edit
+    end
   end
 
   def map
@@ -51,7 +69,20 @@ class ShopsController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop).permit(:name, :image, :outline, :address, :latitude, :longitude)
+    params.require(:shop).permit(
+      :name,
+      :image,
+      :outline,
+      :phone_number,
+      :postal_code,
+      :address,
+      :latitude,
+      :longitude,
+      :area_id,
+      genre_ids: [],
+      brand_ids: [],
+      shop_images_attributes: [:_destroy, :id]
+    ).merge(area_id: params[:shop][:area_id])
   end
 
   def move_to_root    

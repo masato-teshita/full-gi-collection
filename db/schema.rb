@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200516160300) do
+ActiveRecord::Schema.define(version: 20200518154354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(version: 20200516160300) do
     t.index ["shop_id"], name: "index_shop_genres_on_shop_id", using: :btree
   end
 
+  create_table "shop_images", force: :cascade do |t|
+    t.string   "shop_image"
+    t.integer  "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_shop_images_on_shop_id", using: :btree
+  end
+
   create_table "shop_users", force: :cascade do |t|
     t.integer "shop_id"
     t.integer "user_id"
@@ -75,19 +83,17 @@ ActiveRecord::Schema.define(version: 20200516160300) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "image"
+    t.string   "name",         null: false
     t.text     "outline"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "area_id"
-    t.integer  "genre_id"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "phone_number"
+    t.string   "postal_code"
     t.index ["area_id"], name: "index_shops_on_area_id", using: :btree
-    t.index ["genre_id"], name: "index_shops_on_genre_id", using: :btree
-    t.index ["image"], name: "index_shops_on_image", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -131,10 +137,10 @@ ActiveRecord::Schema.define(version: 20200516160300) do
   add_foreign_key "shop_brands", "shops"
   add_foreign_key "shop_genres", "genres"
   add_foreign_key "shop_genres", "shops"
+  add_foreign_key "shop_images", "shops"
   add_foreign_key "shop_users", "shops"
   add_foreign_key "shop_users", "users"
   add_foreign_key "shops", "areas"
-  add_foreign_key "shops", "genres"
   add_foreign_key "woms", "shops"
   add_foreign_key "woms", "users"
 end

@@ -10,10 +10,15 @@ class Shop < ApplicationRecord
   has_many :genres, through: :shop_genres
   has_many :brands, through: :shop_brands
   has_many :users, through: :shop_users
+  has_many :shop_images
+  accepts_nested_attributes_for :shop_images, allow_destroy: true
   geocoded_by :address
   after_validation :geocode
 
-  validates :name, presence: true
+  with_options presence: true do
+    validates :name
+    validates :area_id
+  end
 
   # S3へ連携したら下記を使用する
   # mount_uploader :image, ImageUploader

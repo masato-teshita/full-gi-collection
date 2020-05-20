@@ -1,0 +1,167 @@
+.shop-form {
+  padding: 12px;
+  &__title {
+    font-size: $fSize-h2;
+  }
+  .field {
+    display: flex;
+    margin: 12px 0;
+    &__label {
+      width: 240px;
+    }
+    &__input {
+      width: 640px;
+      &--text-type {
+        width: 100%;
+      }
+      &--textarea {
+        width: 100%;
+        height: 120px;
+        border: $border-style-default;
+        outline: none;
+        font-size: $fSize-content;
+      }
+      &--checkbox {
+        display: inline;
+      }
+    }
+  }
+  #image-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    .drag-area {
+      height: 160px;
+    }
+    .input-area {
+      width: 100%;
+      height: 160px;
+      border: dashed 1px lightgray;
+      background-color: whitesmoke;
+      &__label {
+        display: block;
+        width: 100%;
+        height: 160px;
+        line-height: 160px;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+    .shop-image {
+      height: 160px;
+      margin: 0 10px 10px 0;
+      background-color: whitesmoke;
+      &__content {
+        border-bottom: solid 1px lightgray;
+        &--icon {
+          margin: 24px 0;
+          img {
+            object-fit: cover;
+          }
+        }
+      }
+      &__operation {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: skyblue;
+        &--delete {
+          margin: 0 auto;
+          cursor: pointer;
+        }
+      }
+    }
+  }  
+}
+
+.hidden-destroy {
+  display: none;
+}
+
+#brand-search-result {
+  display: none;
+  position: relative;
+  z-index: 2;
+  border: $border-style-inner;
+  box-shadow: 2px 2px 2px lightgray;
+  background-color: white;
+  .shop-brand {
+    margin: 4px;
+    &__name {
+      width: 100%;
+      padding: 4px;
+      cursor: pointer;
+      &:hover {
+        background-color: $color-btn;
+        color: white;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+#shop-brands {
+  margin-top: 16px;
+  padding-top: 8px;
+  background-color: $color-area-back;
+  .shop-brand-title {
+    font-weight: bold;
+  }
+  .shop-brands__selected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px;
+    &__btn {
+      margin-right: 16px;
+      color: gray;
+    }
+  }
+}
+
+
+p.error {
+  margin-top: 4px;
+  border: none;
+  font-size: 12px;
+  color: red;
+}
+
+.shop-num-0{
+  width: 100%;
+}
+.shop-num-1{
+  width: 512px;
+}
+.shop-num-2{
+  width: 384px;
+}
+.shop-num-3{
+  width: 256px;
+}
+.shop-num-4{
+  width: 128px;
+}
+//下段のfile_field
+.shop-num-5{
+  width: 100%;
+}
+.shop-num-6{
+  width: 512px;
+}
+.shop-num-7{
+  width: 384px;
+}
+.shop-num-8{
+  width: 256px;
+}
+.shop-num-9{
+  width: 128px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}

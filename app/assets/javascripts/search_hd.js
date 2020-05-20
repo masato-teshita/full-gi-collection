@@ -116,7 +116,7 @@ $(function() {
 
     $.ajax({
       type: 'GET',
-      url: '/brands',
+      url: '/genres',
       data: { keyword: input },
       dataType: 'json',
     })
