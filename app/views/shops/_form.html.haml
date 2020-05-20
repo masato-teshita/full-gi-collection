@@ -2,8 +2,9 @@
   .field
     .field__label
       = f.label :name, '店舗名'
+      %span.require *
     .field__input
-      = f.text_field :name, placeholder: '店舗名', class: 'field__input--text-type'
+      = f.text_field :name, placeholder: '店舗名', class: 'field__input--text-type', required: :true
   .field
     .field__label
       = f.label :outline, '店舗紹介'
@@ -12,6 +13,7 @@
   .field
     .field__label
       = f.label :image, '店舗画像', class: 'image'
+      %span.require *
     .field__input
       #image-box
         - if @shop.persisted? && @shop.shop_images.count > 0
@@ -34,7 +36,7 @@
           .shop-num-0.drag-area#image-box__container
             = f.fields_for :shop_images do |i|
               %div{class: "input-area", tabindex: 0}
-                = i.file_field :shop_image, type: 'file', class: "img-file", name: "shop[shop_image][]", value:"", style: "display:none", required: "required", multiple: :true
+                = i.file_field :shop_image, type: 'file', class: "img-file", name: "shop[shop_image][]", value:"", style: "display:none", multiple: :true
                 %label{for: "shop[shop_image][]", class: "input-area__label"}
                   %i.fas.fa-camera
   .field
@@ -55,19 +57,22 @@
   .field
     .field__label
       = f.label :area_id, 'エリア'
+      %span.require *
     .field__input
       = f.fields_for :area_id do |i|
         - if @shop.persisted?
-          = i.select :area_id, Area.all.collect {|p| [p.name, p.id]},{},{class: 'field__input--checkbox', name: "shop[area_id]", value: "#{@shop.area_id}"}
+          = i.select :area_id, Area.all.collect {|p| [p.name, p.id]},{},{class: 'field__input--checkbox', name: "shop[area_id]", value: "#{@shop.area_id}", required: :true}
         - else
-          = i.select :area_id, Area.all.collect {|p| [p.name, p.id]},{prompt: "選択してください"},{class: 'field__input--checkbox', name: "shop[area_id]"}
+          = i.select :area_id, Area.all.collect {|p| [p.name, p.id]},{prompt: "選択してください"},{class: 'field__input--checkbox', name: "shop[area_id]", required: :true}
   .field
     .field__label
       = f.label :genre_id, 'ジャンル'
+      %span.require *
     .field__input
-      = f.collection_check_boxes :genre_ids, Genre.all, :id, :name, include_hidden: false do |b|
-        = b.check_box
-        = b.label { b.text }          
+      #genre-field
+        = f.collection_check_boxes :genre_ids, Genre.all, :id, :name, include_hidden: false do |b|
+          = b.check_box class: 'genre-check-box'
+          = b.label { b.text }          
   .field
     .field__label
       = f.label :genre_id, '取り扱いブランド'
