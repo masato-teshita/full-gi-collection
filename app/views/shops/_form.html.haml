@@ -60,10 +60,7 @@
       %span.require *
     .field__input
       = f.fields_for :area_id do |i|
-        - if @shop.persisted?
-          = i.select :area_id, Area.all.collect {|p| [p.name, p.id]},{},{class: 'field__input--checkbox', name: "shop[area_id]", value: "#{@shop.area_id}", required: :true}
-        - else
-          = i.select :area_id, Area.all.collect {|p| [p.name, p.id]},{prompt: "選択してください"},{class: 'field__input--checkbox', name: "shop[area_id]", required: :true}
+        = i.select :area_id, Area.all.collect {|p| [p.name, p.id]},{include_blank: "選択してください", selected: "#{@shop.area_id}"},{class: 'field__input--checkbox', name: "shop[area_id]", value: "#{@shop.area_id}", required: :true}
   .field
     .field__label
       = f.label :genre_id, 'ジャンル'
