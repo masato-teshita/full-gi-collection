@@ -5,10 +5,10 @@ class WomsController < ApplicationController
   before_action :set_wom, only: [:edit, :destroy]
   before_action :set_woms, only: [:index, :new, :create, :edit]
   before_action :set_all_woms, only: [:index, :new, :create, :edit]
+  before_action :set_clip_user_and_shop, only: [:index, :new]
   before_action :set_clips, only: [:index, :new, :create, :edit]
 
   def index
-    @clip = Clip.where(user_id: current_user).where(shop_id: @shop.id)
     render template: 'shops/woms'
   end
 
@@ -18,7 +18,7 @@ class WomsController < ApplicationController
   def create
     @wom = Wom.new(wom_params)
     if @wom.save
-      if History.where.not(user_id: params[:user_id]).where.not(shop_id: params[:shop_id])
+      if History.where(user_id: current_user.id).where(shop_id: params[:shop_id]) == []
         History.create!(user_id: current_user.id, shop_id: params[:shop_id])
       end
       redirect_to shop_woms_path(params[:shop_id])
@@ -68,6 +68,10 @@ class WomsController < ApplicationController
 
   def set_all_woms
     @all_woms = @shop.woms.where.not(rate: nil)
+  end
+
+  def set_clip_user_and_shop
+    @clip = Clip.where(user_id: current_user).where(shop_id: @shop.id)
   end
 
   def set_clips

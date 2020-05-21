@@ -17,7 +17,7 @@
         .bottom-info
           .bottom-info-left
             .bottom-info-left__top-cover
-              = image_tag clip.shop.image, alt: 'no image', class: 'top-cover-img'
+              = image_present?(clip.shop)
             -# %ul.bottom-info-left__items
             -#   %li.cover-item
             -#     = image_tag clip.shop.image.url, alt: 'no image', class: 'cover-item-img'
