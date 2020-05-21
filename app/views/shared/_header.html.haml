@@ -1,47 +1,48 @@
 .header
-  .header-wrapper
-    .header-wrapper__top
-      .page-name
-      .menu
-        -if user_signed_in?
-          %ul.menu-list
-            -if current_user.admin == true
+  .header__border
+    .header-wrapper
+      .header-wrapper__top
+        .page-name
+        .menu
+          -if user_signed_in?
+            %ul.menu-list
+              -if current_user.admin == true
+                %li.menu-option
+                  = link_to '新規店舗登録', new_shop_path
               %li.menu-option
-                = link_to '新規店舗登録', new_shop_path
-            %li.menu-option
-              = link_to '行ったお店', user_histories_path(current_user)
-            %li.menu-option
-              = link_to '保存済み', user_clips_path(current_user)
-            %li.menu-option
-              = link_to 'マイページ', user_path(current_user)
-          .user-nav.js-user-nav
-            = user_icon_present?(current_user)
-            %ul.user-nav-popup
-              %li.user-nav-option
-                = link_to(edit_user_registration_path, class: 'option-link') do
-                  %span.option-link-name 設定
-              %li.user-nav-option
-                = link_to(destroy_user_session_path, method: :delete, class: 'option-link') do
-                  %span.option-link-name ログアウト
-        - else
-          %ul.menu-list
-            %li.menu-option
-              = link_to '行ったお店', new_user_session_path
-            %li.menu-option
-              = link_to '保存済み', new_user_session_path
-            %li.menu-option
-              = link_to 'ログイン', new_user_session_path
-    .header-wrapper__bottom
-      .search-form
-        #app-icon-box
-          = link_to root_path do
-            = image_tag '/assets/full-colle-icon--black.png', id: 'header-icon'
-        .search-box
-          = form_tag(shops_searches_path, method: :get) do
-            .search-container
-              = text_field_tag :area, "", placeholder: 'エリア[例：下北沢]', autocomplete: :off, value: @area, class: 'search-content search-container__area', id: 'area-search-field-hd' 
-              = text_field_tag :keyword, "", placeholder: 'キーワード[例：yohji yamamoto]', value: @searched_word, autocomplete: :off, class: 'search-content search-container__keyword', id: 'keyword-field-hd'
-              = button_tag type: 'submit', class: 'search-container__submit', id: 'search-submit-btn-hd' do
-                %i.fas.fa-search.fa-2x
-    #search-result-hd
-      .candidate-list
+                = link_to '行ったお店', user_histories_path(current_user)
+              %li.menu-option
+                = link_to '保存済み', user_clips_path(current_user)
+              %li.menu-option
+                = link_to 'マイページ', user_path(current_user)
+            .user-nav.js-user-nav
+              = user_icon_present?(current_user)
+              %ul.user-nav-popup
+                %li.user-nav-option
+                  = link_to(edit_user_registration_path, class: 'option-link') do
+                    %span.option-link-name 設定
+                %li.user-nav-option
+                  = link_to(destroy_user_session_path, method: :delete, class: 'option-link') do
+                    %span.option-link-name ログアウト
+          - else
+            %ul.menu-list
+              %li.menu-option
+                = link_to '行ったお店', new_user_session_path
+              %li.menu-option
+                = link_to '保存済み', new_user_session_path
+              %li.menu-option
+                = link_to 'ログイン', new_user_session_path
+      .header-wrapper__bottom
+        .search-form
+          #app-icon-box
+            = link_to root_path do
+              = image_tag '/assets/full-colle-icon--black.png', id: 'header-icon'
+          .search-box
+            = form_tag(shops_searches_path, method: :get) do
+              .search-container
+                = text_field_tag :area, "", placeholder: 'エリア[例：下北沢]', autocomplete: :off, value: @area, class: 'search-content search-container__area', id: 'area-search-field-hd' 
+                = text_field_tag :keyword, "", placeholder: 'キーワード[例：yohji yamamoto]', value: @searched_word, autocomplete: :off, class: 'search-content search-container__keyword', id: 'keyword-field-hd'
+                = button_tag type: 'submit', class: 'search-container__submit', id: 'search-submit-btn-hd' do
+                  %i.fas.fa-search.fa-2x
+      #search-result-hd
+        .candidate-list
