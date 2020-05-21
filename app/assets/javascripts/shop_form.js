@@ -115,7 +115,7 @@ $(function() {
   // });
 
   // 出品ボタン押下時の処理
-  $('.send-btn').click(function(e) {
+  $('.shop-send-btn').click(function(e) {
     e.preventDefault();
     let flag = true;
     let genreFlag = false;
@@ -241,61 +241,62 @@ $(function(){
   // 画像ドラック時の動作
   $(window).on('load', function(e){
     const dropArea = document.getElementById("image-box");
+    if (dropArea) {
+      //ドラッグした要素がドロップターゲットの上にある時にイベントが発火
+      dropArea.addEventListener("dragover", function(e){
+        e.preventDefault();
+        //ドロップエリアに影がつく
+        $(this).children('.drag-area').css({'border': '1px solid rgb(204, 204, 204)','box-shadow': '0px 0px 4px'})
+      },false);
 
-    //ドラッグした要素がドロップターゲットの上にある時にイベントが発火
-    dropArea.addEventListener("dragover", function(e){
-      e.preventDefault();
-      //ドロップエリアに影がつく
-      $(this).children('.drag-area').css({'border': '1px solid rgb(204, 204, 204)','box-shadow': '0px 0px 4px'})
-    },false);
+      //ドラッグした要素がドロップターゲットから離れた時に発火するイベント
+      dropArea.addEventListener("dragleave", function(e){
+        e.preventDefault();
+      //ドロップエリアの影が消える
+        $(this).children('.drag-area').css({'border': 'none','box-shadow': '0px 0px 0px'})      
+      },false);
 
-    //ドラッグした要素がドロップターゲットから離れた時に発火するイベント
-    dropArea.addEventListener("dragleave", function(e){
-      e.preventDefault();
-    //ドロップエリアの影が消える
-      $(this).children('.drag-area').css({'border': 'none','box-shadow': '0px 0px 0px'})      
-    },false);
+      //ドラッグした要素をドロップした時に発火するイベント
+      dropArea.addEventListener("drop", function(e) {
+        e.preventDefault();
+        $(this).children('.drag-area').css({'border': 'none','box-shadow': '0px 0px 0px'});
 
-    //ドラッグした要素をドロップした時に発火するイベント
-    dropArea.addEventListener("drop", function(e) {
-      e.preventDefault();
-      $(this).children('.drag-area').css({'border': 'none','box-shadow': '0px 0px 0px'});
+        errorCheckOnAdd();
 
-      errorCheckOnAdd();
+        const files = e.dataTransfer.files;
+        const add_files_length = files.length;
 
-      const files = e.dataTransfer.files;
-      const add_files_length = files.length;
-
-      //ドラッグアンドドロップで取得したデータについて、プレビューを表示
-      $.each(files, function(i,file){
-        //アップロードされた画像を元に新しくfilereaderオブジェクトを生成
-        const fileReader = new FileReader();
-        //dataTransferオブジェクトに値を追加
-        dataBox.items.add(file)
-        file_field.files = dataBox.files
-        //lengthでイベントが発火した時点での要素(image)の数に、追加するファイルの数を足す
-        const inputNum = $('.shop-image').length + add_files_length
-        const num = $('.shop-image').length + i + 1
-        //指定されたファイルを読み込む
-        fileReader.readAsDataURL(file);
-        // 10枚プレビューを出したらドロップボックスが消える
-        if (num==10){
-          $('#image-box__container').css('display', 'none')
+        //ドラッグアンドドロップで取得したデータについて、プレビューを表示
+        $.each(files, function(i,file){
+          //アップロードされた画像を元に新しくfilereaderオブジェクトを生成
+          const fileReader = new FileReader();
+          //dataTransferオブジェクトに値を追加
+          dataBox.items.add(file)
+          file_field.files = dataBox.files
+          //lengthでイベントが発火した時点での要素(image)の数に、追加するファイルの数を足す
+          const inputNum = $('.shop-image').length + add_files_length
+          const num = $('.shop-image').length + i + 1
+          //指定されたファイルを読み込む
+          fileReader.readAsDataURL(file);
+          // 10枚プレビューを出したらドロップボックスが消える
+          if (num==10){
+            $('#image-box__container').css('display', 'none')
+            fileReader.onloadend = function() {
+              fileIndex += 1;
+              const src = fileReader.result
+              imagePreview(src, file.name, fileIndex, inputNum)
+            };  
+            return false;
+          }
+          //image fileがロードされた時に発火するイベント
           fileReader.onloadend = function() {
             fileIndex += 1;
             const src = fileReader.result
             imagePreview(src, file.name, fileIndex, inputNum)
-          };  
-          return false;
-        }
-        //image fileがロードされた時に発火するイベント
-        fileReader.onloadend = function() {
-          fileIndex += 1;
-          const src = fileReader.result
-          imagePreview(src, file.name, fileIndex, inputNum)
-        };
+          };
+        })
       })
-    })
+    }
   });
   //削除ボタンをクリック時の動作
   $(document).on("click", '.shop-image__operation--delete', function(){
