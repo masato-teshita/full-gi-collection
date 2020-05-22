@@ -15,5 +15,10 @@
     .footer-wrap__bottom
       .servise-icon-box
         = image_tag '/assets/full-colle-icon--black.png', id: 'footer-icon'
+      .sitemap
+        .sitemap__link.first-link
+          = link_to 'プライバシーポリシー', "https://www.masato-tanaka.tech/privacy.html"
+        .sitemap__link
+          = link_to 'お問い合わせ', "mailto:t68.tanaka.masato@gmail.com"
       .copylight
         %span Copyright ©︎ masato_teshita All Rights Reserved.
