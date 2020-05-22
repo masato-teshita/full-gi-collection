@@ -42,6 +42,17 @@
           object-fit: cover;
         }  
       }
+      .sitemap {
+        display: flex;
+        margin: 0 auto;
+        &__link {
+          padding: 0 8px;
+          font-size: $fSize-content;
+          a {
+            color: $color-no-action;
+          }
+        }
+      }      
       .copylight {
         font-size: 10px;
         text-align: right;
