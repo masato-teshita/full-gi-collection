@@ -5,11 +5,12 @@
     - if user_signed_in? && @user.id == current_user.id
       .user-img-form
         = form_for @user do |f|
-          = f.submit value: '削除', name: 'delete_img', data: { confirm: 'アイコンを削除しますか？'}, class: 'delete-img-btn' if @user.image.present?
+          = f.submit value: '削除', name: 'delete_img', class: 'delete-img-btn' if @user.image.present?
           = f.label :image, class: 'user-icon-label' do
             .user-icon
               = user_image_present?(@user)
           = f.file_field :image, class: 'img-field', id: 'user-img'
+          %input{name: 'user-image-path', type: 'hidden', value: current_user.id, class: 'user-image-path'}
     - else
       .user-img-form
         .user-icon
