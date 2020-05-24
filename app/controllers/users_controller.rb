@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     if params[:delete_img]
       @user.image = nil
       @user.save!
-      render :show
-      return
+    elsif params[:user][:image]
+      @user.update(user_params)
     else
       @user.update(user_params)
       redirect_to user_path(@user)

@@ -10,12 +10,10 @@ $(function() {
   $('#clip-post').on('click', function(e){
     e.preventDefault(); 
     
-    user_id = $('#clip-post').find('.clip-path').val();
-    shop_id = $('#clip-post').find('.shop-id').val();
-    url = `/users/${user_id}/clips`
-    shop_url = location.href
-
-    console.log(url)
+    const user_id = $('#clip-post').find('.clip-path').val();
+    const shop_id = $('#clip-post').find('.shop-id').val();
+    const url = `/users/${user_id}/clips`
+    const shop_url = location.href
 
     if (url !== '') {
       $('body').append('<div id="modalWrap" />');
