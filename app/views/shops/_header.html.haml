@@ -42,31 +42,42 @@
             %li
               = link_to(genre.name, shops_searches_path(genre_id: genre.id), class: 'shop-bottom-info-show')
   .action-wrap
-    - if user_signed_in?
-      %div{ id: "woms-count-#{@shop.show_user_woms(current_user)}", class: "action-btn wom-post-btn" }
-        = link_to(new_shop_wom_path(@shop.id), class: 'action-link') do
-          %i.fas.fa-user-check.fa-lg
-          - if @shop.show_user_woms(current_user) != 0
-            %span= @shop.show_user_woms(current_user)
-          %span.action-name 行った
-      - if @clip.present?
-        #clip-count-1.action-btn.bookmark-btn
-          = link_to(user_clip_path(current_user, @clip, shop_id: @shop.id), method: :delete, class: 'action-link', id: 'clip-delete') do
-            %i.fas.fa-bookmark.fa-lg
-            %span.action-name 保存
+    .action-wrap__app
+      - if user_signed_in?
+        %div{ id: "woms-count-#{@shop.show_user_woms(current_user)}", class: "action-btn wom-post-btn" }
+          = link_to(new_shop_wom_path(@shop.id), class: 'action-link') do
+            %i.fas.fa-user-check.fa-lg
+            - if @shop.show_user_woms(current_user) != 0
+              %span= @shop.show_user_woms(current_user)
+            %span.action-name 行った
+        - if @clip.present?
+          #clip-count-1.action-btn.bookmark-btn
+            = link_to(user_clip_path(current_user, @clip, shop_id: @shop.id), method: :delete, class: 'action-link', id: 'clip-delete') do
+              %i.fas.fa-bookmark.fa-lg
+              %span.action-name 保存
+        - else
+          #clip-count-0.action-btn.bookmark-btn
+            = link_to('', method: :post, class: 'action-link', id: 'clip-post') do
+              %i.fas.fa-bookmark.fa-lg
+              %span.action-name 保存
+              %input{name: 'clip-path', type: 'hidden', value: current_user.id, class: 'clip-path'}
+              %input{name: 'shop-id', type: 'hidden', value: @shop.id, class: 'shop-id'}
       - else
-        #clip-count-0.action-btn.bookmark-btn
-          = link_to('', method: :post, class: 'action-link', id: 'clip-post') do
+        #woms-count-0.action-btn
+          = link_to(new_user_session_path, class: 'action-link') do
+            %i.fas.fa-user-check.fa-lg
+            %span.action-name 行った
+        #clip-count-0.action-btn
+          = link_to(new_user_session_path, class: 'action-link') do
             %i.fas.fa-bookmark.fa-lg
             %span.action-name 保存
-            %input{name: 'clip-path', type: 'hidden', value: current_user.id, class: 'clip-path'}
-            %input{name: 'shop-id', type: 'hidden', value: @shop.id, class: 'shop-id'}
-    - else
-      #woms-count-0.action-btn
-        = link_to(new_user_session_path, class: 'action-link') do
-          %i.fas.fa-user-check.fa-lg
-          %span.action-name 行った
-      #clip-count-0.action-btn
-        = link_to(new_user_session_path, class: 'action-link') do
-          %i.fas.fa-bookmark.fa-lg
-          %span.action-name 保存
+    .action-wrap__share
+      .action-wrap__share__btn#facebook-share
+        %a{href: "https://www.facebook.com/share.php?url=#{request.url}", rel: "nofollow", target: "_blank"} 
+          %i.fab.fa-facebook-square.fa-lg
+      .action-wrap__share__btn#twitter-share
+        %a{href: "https://twitter.com/share?url=#{request.url}&text=%E5%8F%A4%E7%9D%80%E5%B1%8B%E6%8E%A2%E3%81%97%E3%81%AF%E3%80%8C%E5%8F%A4%E3%82%B3%E3%83%AC%E3%80%8D%0D%0A%E3%81%84%E3%81%84%E5%8F%A4%E7%9D%80%E5%B1%8B%E8%A6%8B%E3%81%A4%E3%81%91%E3%81%BE%E3%81%97%E3%81%9F%EF%BC%81%EF%BC%81%0D%0A#{@shop.name}", rel: "nofollow", target: "_blank"}
+          %i.fab.fa-twitter-square.fa-lg
+      .action-wrap__share__btn#line-share
+        %a{href: "http://line.me/R/msg/text/?https://syncer.jp"}
+          %i.fab.fa-line.fa-lg
