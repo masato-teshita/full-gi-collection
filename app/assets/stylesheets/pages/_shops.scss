@@ -215,16 +215,32 @@
       }
     }
     .action-wrap {
-      @include up-down-center;
-      padding: 8px 16px;
+      padding: 12px 16px 8px 16px;
       background-color: ivory;
+      &__app {
+        @include up-down-center;
+      }
+      &__share {
+        &__btn {
+          margin: 4px;
+        }
+        @include up-down-center;
+        .fa-facebook-square {
+          color: #305097;
+        }
+        .fa-twitter-square {
+          color: #00aced ; 
+        }
+        .fa-line {
+          color: #5ae628;
+        }
+      }
       #woms-count-0 {
         border: $border-style-inner;
         color: $color-no-action;
         cursor: pointer;
         @include content-hover;
         @include action-link;
-
       }
       #clip-count-0 {
         border: $border-style-inner;
