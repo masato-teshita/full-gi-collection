@@ -4,7 +4,7 @@
 # You can define all roles on a single server, or split them:
 
 server '18.181.56.83', user: 'masato', roles: %w{app db web}
-set :ssh_options, keys: '~/.ssh/full-colle_key_rsa' 
+# set :ssh_options, keys: '~/.ssh/full-colle_key_rsa' 
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
