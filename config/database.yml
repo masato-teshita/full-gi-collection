@@ -83,6 +83,7 @@ production:
   adapter: mysql2
   encoding: utf8
   pool: 5
-  # database: furugi-navi_production
-  # username: furugi-navi
-  # password: <%= ENV['FURUGI-NAVI_DATABASE_PASSWORD'] %>
+  database: furugi-navi_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
