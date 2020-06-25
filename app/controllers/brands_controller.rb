@@ -3,7 +3,7 @@ class BrandsController < ApplicationController
   def index
     keyword = params[:keyword]
     return nil if keyword == ""
-    @brands = Brand.where(['name ilike ?', "%#{keyword}%"]).order(:name).limit(10)
+    @brands = Brand.where(['name like ?', "%#{keyword}%"]).order(:name).limit(10)
     respond_to do |format|
       format.json
     end
