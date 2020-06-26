@@ -3,7 +3,7 @@ module UsersHelper
     if user.image.present?
       image_tag user.image.url, class: 'user-icon-img'
     else
-      image_tag asset_path('no-image.png'), class: 'user-icon-img'
+      image_tag 'no-image.png', class: 'user-icon-img'
     end
   end
 
@@ -11,7 +11,7 @@ module UsersHelper
     if user.image.present?
       image_tag user.image.url, class: 'user-nav-icon js-user-nav'
     else
-      image_tag asset_path('default-icon.png'), class: 'user-nav-icon js-user-nav'
+      image_tag 'default-icon.png', class: 'user-nav-icon js-user-nav'
     end
   end
 
@@ -19,7 +19,7 @@ module UsersHelper
     if user.cover_image.present?
       image_tag user.cover_image, id: 'user-cover-img-prev'
     else
-      image_tag asset_path('furugi-top.jpeg'), id: 'user-cover-img-prev'
+      image_tag 'furugi-top.jpeg', id: 'user-cover-img-prev'
     end
   end
 
@@ -27,7 +27,7 @@ module UsersHelper
     if user.cover_image.present?
       image_tag user.cover_image, class: 'cover-img'
     else
-      image_tag asset_path('furugi-top.jpeg'), class: 'cover-img'
+      image_tag 'furugi-top.jpeg', class: 'cover-img'
     end
   end
 end
