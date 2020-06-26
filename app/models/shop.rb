@@ -12,7 +12,7 @@ class Shop < ApplicationRecord
   has_many :users, through: :shop_users
   has_many :shop_images
   accepts_nested_attributes_for :shop_images, allow_destroy: true
-  geocoded_by :address
+  geocoded_by :address, latitude: :latitude, longitude: :longitude
   after_validation :geocode
 
   with_options presence: true do
@@ -32,27 +32,27 @@ class Shop < ApplicationRecord
     splid_words = search.split(/[[:blank:]]+/)
     if splid_words.length == 0
       keyword_shops = Shop.shop_includes
-                      .where('shops.name ilike ? OR shops.outline ilike ?', "%#{search}%", "%#{search}%")
-                      .where('areas.name ilike ?', "%#{area}%").references(:area)
+                      .where('shops.name like ? OR shops.outline like ?', "%#{search}%", "%#{search}%")
+                      .where('areas.name like ?', "%#{area}%").references(:area)
       brand_shops = Shop.shop_includes
-                      .where('brands.name ilike ?', "%#{search}%").references(:brands)
-                      .where('areas.name ilike ?', "%#{area}%").references(:area)
+                      .where('brands.name like ?', "%#{search}%").references(:brands)
+                      .where('areas.name like ?', "%#{area}%").references(:area)
       genre_shops = Shop.shop_includes
-                      .where('genres.name ilike ?', "%#{search}%").references(:genres)
-                      .where('areas.name ilike ?', "%#{area}%").references(:area)
+                      .where('genres.name like ?', "%#{search}%").references(:genres)
+                      .where('areas.name like ?', "%#{area}%").references(:area)
       shops.concat(keyword_shops).concat(brand_shops).concat(genre_shops)
     else
       splid_words.each do |search|
         next if search == ""
         keyword_shops = Shop.shop_includes
-                        .where('shops.name ilike ? OR shops.outline ilike ?', "%#{search}%", "%#{search}%")
-                        .where('areas.name ilike ?', "%#{area}%").references(:area)
+                        .where('shops.name like ? OR shops.outline like ?', "%#{search}%", "%#{search}%")
+                        .where('areas.name like ?', "%#{area}%").references(:area)
         brand_shops = Shop.shop_includes
-                        .where('brands.name ilike ?', "%#{search}%").references(:brands)
-                        .where('areas.name ilike ?', "%#{area}%").references(:area)
+                        .where('brands.name like ?', "%#{search}%").references(:brands)
+                        .where('areas.name like ?', "%#{area}%").references(:area)
         genre_shops = Shop.shop_includes
-                        .where('genres.name ilike ?', "%#{search}%").references(:genres)
-                        .where('areas.name ilike ?', "%#{area}%").references(:area)
+                        .where('genres.name like ?', "%#{search}%").references(:genres)
+                        .where('areas.name like ?', "%#{area}%").references(:area)
         shops += shops.concat(keyword_shops).concat(brand_shops).concat(genre_shops)
       end
     end
