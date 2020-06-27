@@ -28,7 +28,7 @@
         - @top_genres.each do |top_genre|
           %li.top-genre
             = link_to(shops_searches_path(genre_id: top_genre.id), class: 'top-genre-link') do
-              = image_tag top_genre.image, class: 'top-genre__img'
+              = image_tag asset_path(top_genre.image), class: 'top-genre__img'
               .top-genre__name
                 %span= top_genre.name
               .top-genre__store-count
@@ -48,7 +48,7 @@
         - @top_brands.each do |top_brand|
           %li.top-brand
             = link_to(shops_searches_path(brand_id: top_brand.id), class: 'top-brand-link') do
-              = image_tag top_brand.image, class: 'top-brand__img'
+              = image_tag asset_path(top_brand.image), class: 'top-brand__img'
       %ul.brand-list.clearfix
         - @brands.each do |brand|
           %li.all-brand
