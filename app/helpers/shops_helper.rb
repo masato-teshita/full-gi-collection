@@ -27,7 +27,7 @@ module ShopsHelper
     if shop.shop_images.present?
       image_tag "#{shop.shop_images[0].shop_image}", class: 'top-cover-img shop-img'
     else
-      image_tag '/assets/no-image.png', class: 'top-cover-img shop-img'
+      image_tag asset_path('no-image.png'), class: 'top-cover-img shop-img'
     end
   end
 
@@ -35,7 +35,7 @@ module ShopsHelper
     if shop.shop_images.present?
       image_tag "#{shop.shop_images[0].shop_image}", class: 'clip-shop-img'
     else
-      image_tag '/assets/no-image.png', class: 'clip-shop-img'
+      image_tag asset_path('no-image.png'), class: 'clip-shop-img'
     end
   end
 end

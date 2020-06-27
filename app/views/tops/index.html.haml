@@ -8,7 +8,7 @@
           .home-header-content
             .home-header-top
               .top-app-icon-box
-                = image_tag '/assets/full-colle-icon--white.png', id: 'top-icon'
+                = image_tag asset_path('full-colle-icon--white.png'), id: 'top-icon'
               .menu
                 %ul.menu-list
                   -if user_signed_in?
