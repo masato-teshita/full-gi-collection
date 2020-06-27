@@ -12,7 +12,7 @@ gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -50,10 +50,11 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 end
 
 group :production do
@@ -77,3 +78,4 @@ gem 'meta-tags'
 gem 'cloudinary'
 gem 'geocoder'
 gem 'fog-aws'
+gem 'listen', '~> 3.0.5'

@@ -18,4 +18,3 @@
 
 public/uploads/*
 config/cloudinary.yml
-.env

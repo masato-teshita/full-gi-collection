@@ -36,7 +36,7 @@
         .search-form
           #app-icon-box
             = link_to root_path do
-              = image_tag '/assets/full-colle-icon--black.png', id: 'header-icon'
+              = image_tag asset_path('full-colle-icon--black.png'), id: 'header-icon'
           .search-box
             = form_tag(shops_searches_path, method: :get) do
               .search-container
