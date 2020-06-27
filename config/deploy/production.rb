@@ -3,7 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server '13.114.59.25', user: 'ec2-user', roles: %w{app db web}
+server '54.238.17.32', user: 'ec2-user', roles: %w{app db web}
 # set :ssh_options, keys: '~/.ssh/full-colle_key_rsa' 
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
