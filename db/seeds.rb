@@ -59,7 +59,7 @@ brands = Brand.create([
   {name: 'XLARGE', image: 'brands/brand-XLARGE.gif'},
   {name: "Y's", image: 'brands/brand-ys.png'},
   {name: 'YAECA', image: 'brands/brand-YAECA.png'},
-  {name: '3.1 Phillip Lim', image: 'brands/brand-31PhillipLim.png'},
+  {name: '3.1 Phillip Lim', image: 'brands/brand-31PhillipLim.jpg'},
 ])
 
 genres = Genre.create([
