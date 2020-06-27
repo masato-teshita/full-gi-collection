@@ -1,7 +1,6 @@
 # 古着コレクション
-都内の古着屋の情報を掲載し、口コミを誰でも簡単に投稿できるサイトです。
-
-下記ページで公開中です。
+都内の古着屋の情報を掲載し、口コミを誰でも簡単に投稿できるサイトです。  
+下記ページで公開中です。  
 https://www.full-colle.com/
 
 ## アプリ概要
@@ -10,7 +9,7 @@ https://www.full-colle.com/
 ・買取、売却の口コミを点数付きで投稿する機能を実装
 ・行ったお店、気になるお店をマイページで管理できる機能を実装
 
-作成した背景や想いなど、より詳細な情報は下記をご覧ください。
+作成した背景や想いなど、より詳細な情報は下記をご覧ください。  
 [ポートフォリオ解説](https://qiita.com/masato-teshita/private/f1b6dc272c4c92681739)
 
 ## 機能
@@ -42,10 +41,10 @@ $ rails db:seed
 ```
 
 ## その他
-現在も開発を継続しており、順次実装予定です。
-実装予定の機能はIssuesよりご確認いただけます。
+現在も開発を継続しており、順次実装予定です。  
+実装予定の機能はIssuesよりご確認いただけます。  
 https://github.com/masato-teshita/full-gi-collection/issues
 
 ## 作者
-[田中 壮渡：Twitter](https://twitter.com/masato_teshita)
+[田中 壮渡：Twitter](https://twitter.com/masato_teshita)  
 mail to: [t68.tanaka.masato@gmail.com](mailto:t68.tanaka.masato@gmail.com)
