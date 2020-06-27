@@ -45,7 +45,6 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'faker', "~> 2.8"
   gem 'capybara'
-  gem 'pg'
 end
 
 group :development do
@@ -58,7 +57,7 @@ group :development do
 end
 
 group :production do
-  gem 'unicorn'
+  gem 'unicorn', '5.4.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -76,6 +75,5 @@ gem 'rename'
 gem 'will_paginate'
 gem 'meta-tags'
 gem 'cloudinary'
-gem 'dotenv-rails'
 gem 'geocoder'
 gem 'fog-aws'
