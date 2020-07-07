@@ -18,3 +18,4 @@
 
 public/uploads/*
 config/cloudinary.yml
+.DS_Store
