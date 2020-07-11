@@ -7,6 +7,8 @@ class Wom < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
+  scope :wom_includes, -> {includes(:user)}
+
   def self.search(visit_type, shop_id)
     if visit_type != ""
       Wom.where('(visit_type = ?) AND (shop_id = ?)', "#{visit_type}", "#{shop_id}")
