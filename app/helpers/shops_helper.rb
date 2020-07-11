@@ -39,18 +39,34 @@ module ShopsHelper
     end
   end
 
-  def search_result_word(genre, brand, area_keyword, searched_word)
-    if searched_word.present? && area_keyword.present?
-      "'#{area_keyword}'の'#{searched_word}' を含む古着屋"
-    elsif searched_word.present?
-      "'#{searched_word}' を含む古着屋"
-    elsif brand.present?
-      "#{brand.name} を取り扱う古着屋"
-    elsif genre.present?
-      "#{genre.name} の古着屋"
-    elsif area_keyword.present?
-      "#{area_keyword} の古着屋"
+  def search_result_word(genre, brand, area_keyword, searched_word, rate_range)
+    if rate_range.present?
+      if searched_word.present? && area_keyword.present?
+        "'#{area_keyword}'の'#{searched_word}' を含む 古着屋(#{rate_range.name})"
+      elsif searched_word.present?
+        "'#{searched_word}' を含む古着屋(#{rate_range.name})"
+      elsif brand.present?
+        "#{brand.name} を取り扱う古着屋(#{rate_range.name})"
+      elsif genre.present?
+        "#{genre.name} の古着屋(#{rate_range.name})"
+      elsif area_keyword.present?
+        "#{area_keyword} の古着屋(#{rate_range.name})"
+      else
+        "評価#{rate_range.name} の古着屋"
+      end
     else
+      if searched_word.present? && area_keyword.present?
+        "'#{area_keyword}'の'#{searched_word}' を含む古着屋"
+      elsif searched_word.present?
+        "'#{searched_word}' を含む古着屋"
+      elsif brand.present?
+        "#{brand.name} を取り扱う古着屋"
+      elsif genre.present?
+        "#{genre.name} の古着屋"
+      elsif area_keyword.present?
+        "#{area_keyword} の古着屋"
+      else
+      end
     end
   end
 end
