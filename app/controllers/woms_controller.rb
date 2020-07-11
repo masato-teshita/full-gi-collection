@@ -67,7 +67,7 @@ class WomsController < ApplicationController
   end
 
   def set_all_woms
-    @all_woms = @shop.woms.where.not(rate: nil)
+    @all_woms = @shop.woms.wom_includes.where.not(rate: nil)
   end
 
   def set_clip_user_and_shop
