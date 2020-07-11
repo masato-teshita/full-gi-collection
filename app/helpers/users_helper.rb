@@ -17,7 +17,7 @@ module UsersHelper
 
   def user_cover_image_present?(user)
     if user.cover_image.present?
-      image_tag user.cover_image, id: 'user-cover-img-prev'
+      image_tag user.cover_image.url, id: 'user-cover-img-prev'
     else
       image_tag asset_path('furugi-top.jpeg'), id: 'user-cover-img-prev'
     end
@@ -25,7 +25,7 @@ module UsersHelper
 
   def user_cover_icon_present?(user)
     if user.cover_image.present?
-      image_tag user.cover_image, class: 'cover-img'
+      image_tag user.cover_image.url, class: 'cover-img'
     else
       image_tag asset_path('furugi-top.jpeg'), class: 'cover-img'
     end
