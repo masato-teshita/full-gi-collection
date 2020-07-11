@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+  require 'will_paginate/array'
   skip_before_action :authenticate_user!
   before_action :move_to_root, except: [:index, :show, :map, :search]
   before_action :set_shop_search_query
@@ -54,11 +55,17 @@ class ShopsController < ApplicationController
   end
 
   def search
-    binding.pry
-    @area_keyword = params.require(:q)[:area_cont]
-    sort = params[:sort] || "created_at DESC" 
+    genre = Genre.find_by(name: params.require(:q)[:genres_name_eq])
+    brand = Brand.find_by(name: params.require(:q)[:brands_name_eq])
+    @area_keyword = params.require(:q)[:area_name_cont]
+    @searched_word = params.require(:q)[:name_or_outline_or_brands_name_or_genres_name_cont]
+    @keyword = view_context.search_result_word(genre, brand, @area_keyword, @searched_word)
+    #検索ワードがなければ、店舗一覧にリダイレクト
+    redirect_to shops_path if @keyword == nil
+
+    sort = params[:sort] || "created_at DESC"
     @q = Shop.shop_includes.search(search_params)
-    @items = @q.result(distinct: true).order(sort)
+    @shops = @q.result(distinct: true).order(sort).paginate(page: params[:page], per_page: 5)
   end
 
   private
