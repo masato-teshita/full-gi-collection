@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_host
+  before_action :set_shop_search_query
 
   def set_host
     Rails.application.routes.default_url_options[:host] = request.host_with_port
@@ -19,6 +20,11 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || mypage_root_path
+  end
+
+  def set_shop_search_query
+    @q = Shop.ransack(params[:q])
+    @shops = @q.result(distinct: true)
   end
 
   private

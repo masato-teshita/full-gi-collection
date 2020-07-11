@@ -62,12 +62,12 @@ class WomsController < ApplicationController
   end
 
   def set_woms
-    woms = @shop.woms.where.not(rate: nil).order('created_at DESC')
+    woms = @shop.woms.wom_includes.where.not(rate: nil).order('created_at DESC')
     @woms = woms.paginate(page: params[:page], per_page: 5)
   end
 
   def set_all_woms
-    @all_woms = @shop.woms.where.not(rate: nil)
+    @all_woms = @shop.woms.wom_includes.where.not(rate: nil)
   end
 
   def set_clip_user_and_shop

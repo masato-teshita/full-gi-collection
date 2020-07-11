@@ -50,6 +50,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'bullet'
 end
 
 group :development do
@@ -84,3 +85,5 @@ gem 'cloudinary'
 gem 'geocoder'
 gem 'fog-aws'
 gem 'listen', '~> 3.0.5'
+gem 'ransack'
+gem 'active_hash'

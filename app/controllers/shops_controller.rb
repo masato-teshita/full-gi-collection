@@ -1,11 +1,12 @@
 class ShopsController < ApplicationController
+  require 'will_paginate/array'
   skip_before_action :authenticate_user!
-  before_action :move_to_root, except: [:index, :show, :map]
+  before_action :move_to_root, except: [:index, :show, :map, :search]
   before_action :set_shop, only: [:edit, :update]
   before_action :set_shop_info, only: [:show, :map]
 
   def index
-    @shops = Shop.paginate(page: params[:page], per_page: 5)
+    @shops = Shop.shop_includes.paginate(page: params[:page], per_page: 5)
     if params[:user_id].presence
       @user = User.find(params[:user_id])
       render "users/shops"
@@ -52,6 +53,28 @@ class ShopsController < ApplicationController
   def map
   end
 
+  def search
+    genre = Genre.find_by(name: params.require(:q)[:genres_name_eq])
+    brand = Brand.find_by(name: params.require(:q)[:brands_name_eq])
+    @rate_range = RateRange.find_by(id: params[:rate_range])
+    area_keyword = params.require(:q)[:area_name_cont]
+    searched_word = params.require(:q)[:name_or_outline_or_brands_name_or_genres_name_cont]
+    @keyword = view_context.search_result_word(genre, brand, area_keyword, searched_word, @rate_range)
+    #検索ワードがなければ、店舗一覧にリダイレクト
+    redirect_to shops_path if @keyword == nil && @rate_range == nil
+
+    sort = params[:sort] || "created_at DESC"
+    @q = Shop.shop_includes.search(search_params)
+    if @rate_range.present?
+      # @shops = @q.result(distinct: true).where('rating_average >= ?', rate_range.min).order(sort).paginate(page: params[:page], per_page: 5)
+      @shops = @q.result(distinct: true).select('shops.*', 'sum(woms.rate) AS rate_sum').select('shops.*', 'count(woms.id) AS rate_count').left_joins(:woms).group('shops.id').having('rate_sum/rate_count >=?', @rate_range.min).order(sort).paginate(page: params[:page], per_page: 5)
+      @result = @shops.length
+    else
+      @shops = @q.result(distinct: true).order(sort).paginate(page: params[:page], per_page: 5)
+      @result = @shops.count
+    end
+  end
+
   private
   def set_shop
     @shop = Shop.find(params[:id])
@@ -83,6 +106,10 @@ class ShopsController < ApplicationController
       brand_ids: [],
       shop_images_attributes: [:_destroy, :id]
     ).merge(area_id: params[:shop][:area_id])
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 
   def move_to_root    

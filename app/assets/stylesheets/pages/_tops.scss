@@ -127,10 +127,14 @@
       border-radius: 6px;
       .left-content {
         border-radius: 6px 0 0 6px;
+        // border-right: $border-style-inner;
+      }
+      .center-content {
+        border-left: $border-style-inner;
         border-right: $border-style-inner;
       }
       &__content {
-        width: calc((100% - 120px)/2);
+        width: calc((100% - 240px)/2);
         height: 54px;
         padding: 0 8px;
         border: none;
@@ -139,6 +143,9 @@
         &:focus {
           border-bottom: solid 3px gray;
         }
+      }
+      .right-content {
+        width: 120px;
       }
       &__submit {
         position: absolute;

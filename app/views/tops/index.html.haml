@@ -43,10 +43,11 @@
               .form-explanation
                 %h2 エリア・キーワードから探す
               .search-box
-                = form_tag(shops_searches_path, method: :get) do
-                  = text_field_tag :area, "", placeholder: "エリア[例：下北沢]", autocomplete: :off, class: "search-box__content left-content", id: 'area-search-field'
-                  = text_field_tag :keyword, "", placeholder: "キーワード[例：yohji yamamoto]", autocomplete: :off, class: "search-box__content", id: 'keyword-field'
-                  = button_tag '検 索', type: 'submit', class: 'search-box__submit', id: 'search-submit-btn'
+                = search_form_for(@q, url: shops_search_path) do |f|
+                  = f.text_field :area_name_cont, placeholder: 'エリア[例：下北沢]', autocomplete: :off, class: 'search-box__content left-content', id: 'area-search-field' 
+                  = f.text_field :name_or_outline_or_brands_name_or_genres_name_cont, placeholder: 'キーワード[例：yohji yamamoto]', autocomplete: :off, class: 'search-box__content center-content', id: 'keyword-field'
+                  = select_tag :rate_range, options_from_collection_for_select(RateRange.all, :id, :name), { prompt: "評価", class: 'search-box__content right-content', id: 'rate-field'}
+                  = f.submit '検 索', class: 'search-box__submit', id: 'search-submit-btn'
             #search-result
               .candidate-list
         .top-wrapper

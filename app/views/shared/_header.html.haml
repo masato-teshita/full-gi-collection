@@ -38,10 +38,14 @@
             = link_to root_path do
               = image_tag asset_path('full-colle-icon--black.png'), id: 'header-icon'
           .search-box
-            = form_tag(shops_searches_path, method: :get) do
+            = search_form_for(@q, url: shops_search_path) do |f|
               .search-container
-                = text_field_tag :area, "", placeholder: 'エリア[例：下北沢]', autocomplete: :off, value: @area, class: 'search-content search-container__area', id: 'area-search-field-hd' 
-                = text_field_tag :keyword, "", placeholder: 'キーワード[例：yohji yamamoto]', value: @searched_word, autocomplete: :off, class: 'search-content search-container__keyword', id: 'keyword-field-hd'
+                = f.text_field :area_name_cont, placeholder: 'エリア[例：下北沢]', autocomplete: :off, class: 'search-content search-container__area', id: 'area-search-field-hd' 
+                = f.text_field :name_or_outline_or_brands_name_or_genres_name_cont, placeholder: 'キーワード[例：yohji yamamoto]', autocomplete: :off, class: 'search-content search-container__keyword', id: 'keyword-field-hd'
+                - if @rate_range.present?
+                  = select_tag :rate_range, options_from_collection_for_select(RateRange.all, :id, :name, {selected: @rate_range.id}), { prompt: "評価", class: 'search-content hd_search_rate', id: 'rate-field-hd'}
+                - else
+                  = select_tag :rate_range, options_from_collection_for_select(RateRange.all, :id, :name), { prompt: "評価", class: 'search-content hd_search_rate', id: 'rate-field-hd'}
                 = button_tag type: 'submit', class: 'search-container__submit', id: 'search-submit-btn-hd' do
                   %i.fas.fa-search.fa-2x
       #search-result-hd

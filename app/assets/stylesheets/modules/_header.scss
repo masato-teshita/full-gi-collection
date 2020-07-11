@@ -105,7 +105,6 @@
           .search-container {
             @include up-down-center;
             min-width: 640px;
-            width: 100%;
             margin: 0 auto;
             border: $border-style-default;
             border-radius: 4px;
@@ -116,7 +115,7 @@
               border-right: none;
             }
             .search-content {
-              width: calc((100% - 56px)/2);
+              width: calc((100% - 120px)/2);
               height: 36px;
               padding: 0 8px;
               border-top: none;
@@ -127,6 +126,9 @@
               &:focus {
                 border-bottom: solid 2px gray;
               }  
+            }
+            .hd_search_rate {
+              width: 96px;
             }
             &__submit {
               width: 56px;

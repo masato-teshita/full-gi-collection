@@ -23,41 +23,7 @@ class Shop < ApplicationRecord
   # S3へ連携したら下記を使用する
   # mount_uploader :image, ImageUploader
 
-  scope :shop_includes, -> do
-    includes(:area).includes(:genres).includes(:brands)
-  end
-
-  def self.search(area, search)
-    shops = []
-    splid_words = search.split(/[[:blank:]]+/)
-    if splid_words.length == 0
-      keyword_shops = Shop.shop_includes
-                      .where('shops.name like ? OR shops.outline like ?', "%#{search}%", "%#{search}%")
-                      .where('areas.name like ?', "%#{area}%").references(:area)
-      brand_shops = Shop.shop_includes
-                      .where('brands.name like ?', "%#{search}%").references(:brands)
-                      .where('areas.name like ?', "%#{area}%").references(:area)
-      genre_shops = Shop.shop_includes
-                      .where('genres.name like ?', "%#{search}%").references(:genres)
-                      .where('areas.name like ?', "%#{area}%").references(:area)
-      shops.concat(keyword_shops).concat(brand_shops).concat(genre_shops)
-    else
-      splid_words.each do |search|
-        next if search == ""
-        keyword_shops = Shop.shop_includes
-                        .where('shops.name like ? OR shops.outline like ?', "%#{search}%", "%#{search}%")
-                        .where('areas.name like ?', "%#{area}%").references(:area)
-        brand_shops = Shop.shop_includes
-                        .where('brands.name like ?', "%#{search}%").references(:brands)
-                        .where('areas.name like ?', "%#{area}%").references(:area)
-        genre_shops = Shop.shop_includes
-                        .where('genres.name like ?', "%#{search}%").references(:genres)
-                        .where('areas.name like ?', "%#{area}%").references(:area)
-        shops += shops.concat(keyword_shops).concat(brand_shops).concat(genre_shops)
-      end
-    end
-    shops.uniq
-  end
+  scope :shop_includes, -> {includes(:area).includes(:genres).includes(:shop_images)}
 
   def show_user_woms(user)
     if user.present?

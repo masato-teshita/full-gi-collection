@@ -1,6 +1,6 @@
 - breadcrumb :search_shops, @keyword
 = render "layouts/breadcrumbs"
-= @result
+= "#{@keyword} ：#{@result}件"
 .shop-paginate
   = will_paginate @shops, renderer: WillPaginate::ActionView::LinkRenderer
 = render "shops/shop", shops: @shops

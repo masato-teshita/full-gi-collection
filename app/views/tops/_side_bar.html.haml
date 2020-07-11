@@ -35,7 +35,7 @@
       .user-bookmark-store
         %h4.user-bookmark-store__title 保存したお店
         %ul.bookmark-stores
-          - current_user.clips.each do |clip|
+          - current_user.clips.top_clip_includes.each do |clip|
             %li.bookmark-store
               = link_to(shop_path(clip.shop_id), class: 'clip-shop-link') do
                 = clip_image_present?(clip.shop)

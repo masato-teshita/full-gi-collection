@@ -1,9 +1,9 @@
 //////////////////// エリアフィールド ////////////////////
 $(function() {
-  var SearchResult = $('#search-result');
-  var areaSearchField = $('#area-search-field');
-  var keywordField = $('#keyword-field')
-  var candidateList = $('.candidate-list');
+  const SearchResult = $('#search-result');
+  const areaSearchField = $('#area-search-field');
+  const keywordField = $('#keyword-field');
+  const candidateList = $('.candidate-list');
 
   var form_title_width = $('.form-explanation').width();
   var box_left_top = form_title_width + 64;
@@ -93,6 +93,7 @@ $(function() {
 $(function() {
   var SearchResult = $('#search-result');
   var keywordField = $('#keyword-field')
+  const rateField = $('#rate-field');
   var candidateList = $('.candidate-list');
   var submitBtn = $('#search-submit-btn')
 
@@ -116,7 +117,7 @@ $(function() {
   function addInput(keywordName, keywordId){
     keywordField.val([keywordName]);
     SearchResult.hide();
-    submitBtn.focus();
+    rateField.focus();
   }
 
   keywordField.on('keyup', function() {
