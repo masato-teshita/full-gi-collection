@@ -40,8 +40,8 @@
           .search-box
             = search_form_for(@q, url: shops_search_path) do |f|
               .search-container
-                = f.text_field :area_cont, placeholder: 'エリア[例：下北沢]', autocomplete: :off, value: @area, class: 'search-content search-container__area', id: 'area-search-field-hd' 
-                = f.text_field :name_or_outline_cont_any, placeholder: 'キーワード[例：yohji yamamoto]', value: @searched_word, autocomplete: :off, class: 'search-content search-container__keyword', id: 'keyword-field-hd'
+                = f.text_field :area_name_cont, placeholder: 'エリア[例：下北沢]', autocomplete: :off, value: @area_keyword, class: 'search-content search-container__area', id: 'area-search-field-hd' 
+                = f.text_field :name_or_outline_or_brands_name_or_genres_name_cont, placeholder: 'キーワード[例：yohji yamamoto]', value: @searched_word, autocomplete: :off, class: 'search-content search-container__keyword', id: 'keyword-field-hd'
                 = button_tag type: 'submit', class: 'search-container__submit', id: 'search-submit-btn-hd' do
                   %i.fas.fa-search.fa-2x
       #search-result-hd
