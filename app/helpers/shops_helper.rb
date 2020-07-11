@@ -38,4 +38,19 @@ module ShopsHelper
       image_tag asset_path('no-image.png'), class: 'clip-shop-img'
     end
   end
+
+  def search_result_word(genre, brand, area_keyword, searched_word)
+    if searched_word.present? && area_keyword.present?
+      "'#{area_keyword}'の'#{searched_word}' を含む古着屋"
+    elsif searched_word.present?
+      "'#{searched_word}' を含む古着屋"
+    elsif brand.present?
+      "#{brand.name} を取り扱う古着屋"
+    elsif genre.present?
+      "#{genre.name} の古着屋"
+    elsif area_keyword.present?
+      "#{area_keyword} の古着屋"
+    else
+    end
+  end
 end
