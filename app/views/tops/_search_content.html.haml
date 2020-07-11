@@ -11,14 +11,14 @@
       %ul.top-areas
         - @top_areas.each do |top_area|
           %li.top-area
-            = link_to(shops_searches_path(area_id: top_area.id), class: 'top-area-link') do
+            = link_to(shops_search_path(@q, 'q[area_name_cont]': top_area.name), class: 'top-area-link') do
               .top-area-box
                 %span.top-area-name= top_area.name
                 %span.top-area-shop-count= "#{top_area.shops.count}件"
       %ul.area-list.clearfix
         - @areas.each do |area|
           %li.all-area
-            = link_to(shops_searches_path(area_id: area.id), class: 'area-link') do
+            = link_to(shops_search_path(@q, 'q[area_name_cont]': area.name), class: 'area-link') do
               %span= area.name
   .search-genre
     %h2.search-genre__title
@@ -27,7 +27,7 @@
       %ul.top-genres
         - @top_genres.each do |top_genre|
           %li.top-genre
-            = link_to(shops_searches_path(genre_id: top_genre.id), class: 'top-genre-link') do
+            = link_to(shops_search_path(@q, 'q[genres_name_eq]': top_genre.name), class: 'top-genre-link') do
               = image_tag asset_path(top_genre.image), class: 'top-genre__img'
               .top-genre__name
                 %span= top_genre.name
@@ -36,7 +36,7 @@
       %ul.genre-list.clearfix
         - @genres.each do |genre|
           %li.all-genre
-            = link_to(shops_searches_path(genre_id: genre.id), class: 'genre-link') do
+            = link_to(shops_search_path(@q, 'q[genres_name_eq]': genre.name), class: 'genre-link') do
               %span= genre.name
     .search-genre__all
       -# = link_to 'ジャンル一覧へ', genres_path, class: 'genre-all-link'
@@ -47,12 +47,12 @@
       %ul.top-brands
         - @top_brands.each do |top_brand|
           %li.top-brand
-            = link_to(shops_searches_path(brand_id: top_brand.id), class: 'top-brand-link') do
+            = link_to(shops_search_path(@q, 'q[brands_name_eq]': top_brand.name), class: 'top-brand-link') do
               = image_tag asset_path(top_brand.image), class: 'top-brand__img'
       %ul.brand-list.clearfix
         - @brands.each do |brand|
           %li.all-brand
-            = link_to(shops_searches_path(brand_id: brand.id), class: 'brand-link') do
+            = link_to(shops_search_path(@q, 'q[brands_name_eq]': brand.name), class: 'brand-link') do
               %span= brand.name
     .search-brand__all
       -# = link_to 'ブランド一覧へ', brands_path, class: 'brand-all-link'
