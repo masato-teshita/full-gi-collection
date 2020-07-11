@@ -34,13 +34,13 @@
         = "#{@clips.count} 件"
     .shop-bottom-info
       %span エリア：
-      = link_to(@shop.area.name, shops_searches_path(area_id: @shop.area.id), class: 'shop-bottom-info-show')
+      = link_to(@shop.area.name, shops_search_path(@q, 'q[area_name_cont]': @shop.area.name), class: 'shop-bottom-info-show')
       %span ジャンル：
       .shop-genre
         %ul.genre-list
           - @shop.get_genres.each do |genre|
             %li
-              = link_to(genre.name, shops_searches_path(genre_id: genre.id), class: 'shop-bottom-info-show')
+              = link_to(genre.name, shops_search_path(@q, 'q[genres_name_eq]': genre.name), class: 'shop-bottom-info-show')
   .action-wrap
     .action-wrap__app
       - if user_signed_in?
