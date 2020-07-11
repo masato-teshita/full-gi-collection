@@ -1,8 +1,0 @@
-- breadcrumb :search_shops, @keyword
-= render "layouts/breadcrumbs"
-= @result
-.shop-paginate
-  = will_paginate @shops, renderer: WillPaginate::ActionView::LinkRenderer
-= render "shops/shop", shops: @shops
-.shop-paginate
-  = will_paginate @shops, renderer: WillPaginate::ActionView::LinkRenderer
