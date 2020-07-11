@@ -21,6 +21,11 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || mypage_root_path
   end
 
+  def set_shop_search_query
+    @q = Shop.ransack(params[:q])
+    @shops = @q.result(distinct: true)
+  end
+
   private
   def store_current_location
     store_location_for(:user, request.url)
