@@ -1,5 +1,7 @@
 class TopsController < ApplicationController
   skip_before_action :authenticate_user!
+  before_action :set_shop_search_query
+
   def index
     @shops = Shop.all.order(:id)
     @woms = Wom.all
