@@ -7,7 +7,7 @@ class ShopsController < ApplicationController
   before_action :set_shop_info, only: [:show, :map]
 
   def index
-    @shops = Shop.paginate(page: params[:page], per_page: 5)
+    @shops = Shop.shop_includes.paginate(page: params[:page], per_page: 5)
     if params[:user_id].presence
       @user = User.find(params[:user_id])
       render "users/shops"
