@@ -3,8 +3,7 @@ class ClipsController < ApplicationController
   
   def index
     @user = User.find(params[:user_id])
-    clips = Clip.where(user_id: @user).order(created_at: "DESC")
-    @clips = clips.paginate(page: params[:page], per_page: 5)
+    @clips = Clip.clip_includes.where(user_id: @user).order(created_at: "DESC").paginate(page: params[:page], per_page: 5)
   end
 
   def create
