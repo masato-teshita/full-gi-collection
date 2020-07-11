@@ -87,6 +87,8 @@ $(function() {
   var keywordFieldHd = $('#keyword-field-hd')
   var candidateList = $('.candidate-list');
   var submitBtn = $('#search-submit-btn-hd')
+  const rateField = $('#rate-field-hd');
+
 
   var form_title_width = $('.app-icon').width();
   var box_left_top = form_title_width;
@@ -108,7 +110,7 @@ $(function() {
   function addInput(keywordName, keywordId){
     keywordFieldHd.val([keywordName]);
     SearchResultHd.hide();
-    submitBtn.focus();
+    rateField.focus();
   }
 
   keywordFieldHd.on('keyup', function() {
