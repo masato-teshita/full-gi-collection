@@ -1,6 +1,7 @@
 class ShopsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :move_to_root, except: [:index, :show, :map]
+  before_action :move_to_root, except: [:index, :show, :map, :search]
+  before_action :set_shop_search_query
   before_action :set_shop, only: [:edit, :update]
   before_action :set_shop_info, only: [:show, :map]
 
@@ -52,6 +53,14 @@ class ShopsController < ApplicationController
   def map
   end
 
+  def search
+    binding.pry
+    @area_keyword = params.require(:q)[:area_cont]
+    sort = params[:sort] || "created_at DESC" 
+    @q = Shop.shop_includes.search(search_params)
+    @items = @q.result(distinct: true).order(sort)
+  end
+
   private
   def set_shop
     @shop = Shop.find(params[:id])
@@ -83,6 +92,10 @@ class ShopsController < ApplicationController
       brand_ids: [],
       shop_images_attributes: [:_destroy, :id]
     ).merge(area_id: params[:shop][:area_id])
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 
   def move_to_root    
