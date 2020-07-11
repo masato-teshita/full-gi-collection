@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   root "tops#index"
   namespace :shops do
     get 'search'
-    # resources :searches, only: [:index]
   end
   namespace :woms do
     resources :searches, only: [:index]
