@@ -23,9 +23,7 @@ class Shop < ApplicationRecord
   # S3へ連携したら下記を使用する
   # mount_uploader :image, ImageUploader
 
-  scope :shop_includes, -> do
-    includes(:area).includes(:genres).includes(:brands)
-  end
+  scope :shop_includes, -> {includes(:area).includes(:genres).includes(:brands)}
 
   def self.search(area, search)
     shops = []
