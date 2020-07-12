@@ -7,11 +7,11 @@ $(function() {
     // value属性の値により、ページ遷移先の分岐
 
     switch (sort_order) {
-      case 'woms-desc': html = "&sort=woms_count_desc"; break;
       case 'rate-desc': html = "&sort=rate_desc"; break;
-      case 'rate-asc': html = "&sort=rate_asc"; break;
-      case 'created_at-desc': html = "&sort=created_at+desc"; break;
+      case 'woms-desc': html = "&sort=woms_count_desc"; break;
+      case 'clips-desc': html = "&sort=clips_count_desc"; break;
       case 'created_at-asc': html = "&sort=created_at+asc"; break;
+      case 'created_at-desc': html = "&sort=created_at+desc"; break;
       default: html = "&sort=created_at+desc"; 
     }
     // 現在の表示ページ
@@ -38,11 +38,11 @@ $(function() {
       const selected_option = location['href'].match(/&sort=*.+/)[0].replace('&sort=', '');
 
       switch (selected_option) {
-        case "woms_count_desc": var sort = 1; break;
-        case "rate_desc": var sort = 2; break;
-        case "rate_asc": var sort = 3; break;
-        case "created_at+desc": var sort = 4; break;
-        case "created_at+asc": var sort = 5; break;
+        case "rate_desc": var sort = 1; break;
+        case "woms_count_desc": var sort = 2; break;
+        case "clips_count_desc": var sort = 3; break;
+        case "created_at+asc": var sort = 4; break;
+        case "created_at+desc": var sort = 5; break;
         default: var sort = 0
       }
       const add_selected = $('select[name=sort_order]').children()[sort]
