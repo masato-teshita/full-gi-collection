@@ -24,10 +24,9 @@ $(function() {
     if (location['href'].match(/&sort=*.+/) != null) {
       var remove = location['href'].match(/&sort=*.+/)[0]
       current_html = current_html.replace(remove, '')
-      redirect_html = current_html + html
     };
     // ページ遷移
-    window.location.href = redirect_html
+    window.location.href = current_html + html
   });
   // ページ遷移後の挙動
   $(function () {
