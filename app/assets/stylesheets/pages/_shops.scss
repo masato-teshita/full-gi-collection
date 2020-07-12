@@ -15,23 +15,26 @@
     }
     .top-info {
       @include up-down-center;
-      position: relative;
+      justify-content: space-between;
       height: 50px;
-      padding: 0 16px;
+      padding-left: 16px;
       border-top: solid 2px gray;
       border-bottom: $border-style-default;
-      &__name {
-        font-weight: bold;
-      }
-      &__area-genre {
-        margin-left: 12px;
-        color: $color-default;
-        font-size: $fSize-content;
+      &__name_and_area {
+        @include up-down-center;
+        &__name {
+          font-weight: bold;
+        }
+        &__area {
+          margin-left: 12px;
+          color: $color-default;
+          font-size: $fSize-content;
+          word-wrap: break-word;
+        }  
       }
       &__action {
         @include up-down-center;
-        position: absolute;
-        right: 0;
+        width: 96px;
         color: $color-action;
         .action-icon {
           width: 48px;

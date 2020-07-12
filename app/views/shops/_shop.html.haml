@@ -4,10 +4,11 @@
       .shop
         = link_to shop_path(shop.id) do
           .top-info
-            .top-info__name
-              = shop.name
-            .top-info__area-genre
-              = "#{shop.area.name} ／ #{shop.show_genres}"
+            .top-info__name_and_area
+              .top-info__name_and_area__name
+                = shop.name
+              .top-info__name_and_area__area
+                = "#{shop.area.name} ／ #{shop.show_genres}"
             .top-info__action
               .action-icon.action-icon-left
                 %i{ class: "fas fa-user-check fa-lg user-count-#{shop.show_user_woms(current_user)}"}
