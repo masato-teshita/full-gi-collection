@@ -7,6 +7,10 @@ class ShopsController < ApplicationController
 
   def index
     @shops = Shop.shop_includes.paginate(page: params[:page], per_page: 5)
+    @result = @shops.count
+    @keyword = "全ての古着屋"
+    sort = params[:sort] || "created_at DESC"
+    shop_sort(sort)
     if params[:user_id].presence
       @user = User.find(params[:user_id])
       render "users/shops"
@@ -60,19 +64,27 @@ class ShopsController < ApplicationController
     area_keyword = params.require(:q)[:area_name_cont]
     searched_word = params.require(:q)[:name_or_outline_or_brands_name_or_genres_name_cont]
     @keyword = view_context.search_result_word(genre, brand, area_keyword, searched_word, @rate_range)
-    #検索ワードがなければ、店舗一覧にリダイレクト
-    redirect_to shops_path if @keyword == nil && @rate_range == nil
+    # 検索ワードがなければ、店舗一覧にリダイレクト
 
-    sort = params[:sort] || "created_at DESC"
     @q = Shop.shop_includes.search(search_params)
     if @rate_range.present?
       # @shops = @q.result(distinct: true).where('rating_average >= ?', rate_range.min).order(sort).paginate(page: params[:page], per_page: 5)
-      @shops = @q.result(distinct: true).select('shops.*', 'sum(woms.rate) AS rate_sum').select('shops.*', 'count(woms.id) AS rate_count').left_joins(:woms).group('shops.id').having('rate_sum/rate_count >=?', @rate_range.min).order(sort).paginate(page: params[:page], per_page: 5)
+      @shops = @q.result(distinct: true)
+        .select('shops.*', 'sum(woms.rate) AS rate_sum')
+        .select('shops.*', 'count(woms.id) AS rate_count')
+        .left_joins(:woms)
+        .group('shops.id')
+        .having('rate_sum/rate_count >=?', @rate_range.min)
       @result = @shops.length
     else
-      @shops = @q.result(distinct: true).order(sort).paginate(page: params[:page], per_page: 5)
+      @shops = @q.result(distinct: true)
       @result = @shops.count
     end
+
+    # ソートを判定
+    sort = params[:sort] || "created_at DESC"
+    shop_sort(sort)
+    redirect_to shops_path(sort: sort) if @keyword == nil && @rate_range == nil
   end
 
   private
@@ -114,5 +126,31 @@ class ShopsController < ApplicationController
 
   def move_to_root    
     redirect_to root_path unless user_signed_in? && current_user.admin?
+  end
+
+  def shop_sort(sort)
+    # ソートを判定
+    case sort
+    when "rate_desc" then
+      @shops = @shops
+        .joins("left join woms on shops.id=woms.shop_id")
+        .group("shops.id")
+        .order("sum(woms.rate)/count(woms.id) desc")
+        .paginate(page: params[:page], per_page: 5)
+    when "woms_count_desc" then
+      @shops = @shops.select('shops.*', 'count(woms.id) AS woms')
+        .left_joins(:woms)
+        .group('shops.id')
+        .order('woms DESC')
+        .paginate(page: params[:page], per_page: 5)
+    when "clips_count_desc" then
+      @shops = @shops.select('shops.*', 'count(clips.id) AS clips')
+        .left_joins(:clips)
+        .group('shops.id')
+        .order('clips DESC')
+        .paginate(page: params[:page], per_page: 5)
+    else
+      @shops = @shops.order(sort).paginate(page: params[:page], per_page: 5)
+    end
   end
 end
