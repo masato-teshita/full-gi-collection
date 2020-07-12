@@ -3,6 +3,28 @@
   margin: 16px 0;
   font-size: $fSize-content;
 }
+// 並び替え
+.searched_heading-box {
+  @include up-down-center;
+  justify-content: space-between;
+  &__result {
+    &__keyword {
+      font-size: $fSize-h2;
+    }
+  }
+  &__sort {
+    & select {
+      height: 48px;
+      padding: 4px;
+      font-size: $fSize-content;
+      &:focus {
+        border: $border-style-hover;
+        border-radius: 3px;
+        outline: 0;
+      }
+    }
+  }
+}
 // Shop一覧
 .shop-list {
   .shop {
