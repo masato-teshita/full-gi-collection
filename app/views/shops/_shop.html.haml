@@ -47,9 +47,12 @@
                     readOnly: true,
                     score: "#{shop.woms.average(:rate).to_f.round(2)}",
                   });
-                .shop-wom-count
+                .shop-count
                   %i.fas.fa-comment-dots<>
                   = "#{shop.woms.where.not(rate: nil).count}件"
+                .shop-count
+                  %i.fas.fa-bookmark.fa-lg<>
+                  = "#{shop.clips.count}件"
               .bottom-info-right__top-wom
                 .wom-info
                   .wom-info__title
