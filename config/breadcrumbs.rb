@@ -4,7 +4,7 @@ end
 
 # shop#index
 crumb :shops do
-  link "Shop一覧", shops_path
+  link "全ての古着屋", shops_path
   parent :root
 end
 
