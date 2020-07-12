@@ -131,23 +131,23 @@ class ShopsController < ApplicationController
   def shop_sort(sort)
     # ソートを判定
     case sort
-    when "woms_count_desc" then
-      @shops = @shops.select('shops.*', 'count(woms.id) AS woms')
-        .left_joins(:woms)
-        .group('shops.id')
-        .order('woms DESC')
-        .paginate(page: params[:page], per_page: 5)
     when "rate_desc" then
       @shops = @shops
         .joins("left join woms on shops.id=woms.shop_id")
         .group("shops.id")
         .order("sum(woms.rate)/count(woms.id) desc")
         .paginate(page: params[:page], per_page: 5)
-    when "rate_asc" then
-      @shops = @shops
-        .joins("left join woms on shops.id=woms.shop_id")
-        .group("shops.id")
-        .order("sum(woms.rate)/count(woms.id) asc")
+    when "woms_count_desc" then
+      @shops = @shops.select('shops.*', 'count(woms.id) AS woms')
+        .left_joins(:woms)
+        .group('shops.id')
+        .order('woms DESC')
+        .paginate(page: params[:page], per_page: 5)
+    when "clips_count_desc" then
+      @shops = @shops.select('shops.*', 'count(clips.id) AS clips')
+        .left_joins(:clips)
+        .group('shops.id')
+        .order('clips DESC')
         .paginate(page: params[:page], per_page: 5)
     else
       @shops = @shops.order(sort).paginate(page: params[:page], per_page: 5)
