@@ -4,14 +4,15 @@
   }
 }
 .home-header {
-  min-width: $wrapper-min-width;
   width: 100%;
   height: 600px;
-  padding: 0 64px 0;
   background-image: image-url("furugi-top.jpeg");
   background-size: cover;
   .home-header-content {
+    max-width: $wrapper-max-width;
+    min-width: $wrapper-min-width;
     margin: 0 auto;
+    padding: 0 64px 0;
   }
   .home-header-top {
     @include up-down-center;
@@ -207,6 +208,7 @@
 
 .top-wrapper {
   display: flex;
+  justify-content: space-between;
   max-width: $wrapper-max-width;
   min-width: $wrapper-min-width;
   margin: 0 auto;
