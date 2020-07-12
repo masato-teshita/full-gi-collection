@@ -270,7 +270,7 @@ shop_images = ShopImage.create([
   {shop_id: 42, shop_image: open("#{Rails.root}/db/fixtures/Dron-pa.jpeg")},
   {shop_id: 43, shop_image: open("#{Rails.root}/db/fixtures/たんぽぽ.jpeg")},
   {shop_id: 44, shop_image: open("#{Rails.root}/db/fixtures/リサイクルブティックＡＢＣ中野店.jpg")},
-  {shop_id: 45, shop_image: open("#{Rails.root}/db/fixtures/リサイクルショップティファナ東中野店.jpg")},
+  {shop_id: 45, shop_image: open("#{Rails.root}/db/fixtures/tifana.jpg")},
 ])
 
 shop_brands = ShopBrand.create([
