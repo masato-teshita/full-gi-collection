@@ -19,13 +19,15 @@ $(function() {
     if (location['href'].match(/search=*.+/) == null) {
       current_html = "shops/search?q%5Barea_name_cont%5D="
     }
+    console.log(current_html)
     // ソート機能の重複防止 
     if (location['href'].match(/&sort=*.+/) != null) {
       var remove = location['href'].match(/&sort=*.+/)[0]
       current_html = current_html.replace(remove, '')
+      redirect_html = current_html + html
     };
     // ページ遷移
-    window.location.href = current_html + html
+    window.location.href = redirect_html
   });
   // ページ遷移後の挙動
   $(function () {
