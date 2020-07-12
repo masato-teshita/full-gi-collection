@@ -1,10 +1,13 @@
 .footer {
   min-width: 1280px;
   width: 100%;
-  padding: 0 240px 0;
   background-color: $menu-color-whitesmoke;
   .footer-wrap {
     height: 128px;
+    max-width: $wrapper-max-width;
+    min-width: $wrapper-min-width;
+    margin: 0 auto;
+    padding: 0 240px 0;
     &__top {
       @include up-down-center;
       height: 50%;
