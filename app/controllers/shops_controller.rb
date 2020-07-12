@@ -7,6 +7,10 @@ class ShopsController < ApplicationController
 
   def index
     @shops = Shop.shop_includes.paginate(page: params[:page], per_page: 5)
+    @result = @shops.count
+    @keyword = "全ての古着屋"
+    sort = params[:sort] || "created_at DESC"
+    shop_sort(sort)
     if params[:user_id].presence
       @user = User.find(params[:user_id])
       render "users/shops"
