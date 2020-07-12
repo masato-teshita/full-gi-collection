@@ -3,10 +3,11 @@
     .shop
       = link_to shop_path(history.shop_id) do
         .top-info
-          .top-info__name
-            = history.shop.name
-          .top-info__area-genre
-            = "#{history.shop.area.name} ／ #{history.shop.show_genres}"
+          .top-info__name_and_area
+            .top-info__name_and_area__name
+              = history.shop.name
+            .top-info__name_and_area__area
+              = "#{history.shop.area.name} ／ #{history.shop.show_genres}"
           .top-info__action
             .action-icon.action-icon-left
               %i{ class: "fas fa-user-check fa-lg user-count-#{history.shop.show_user_woms(current_user)}"}
@@ -44,9 +45,12 @@
                   readOnly: true,
                   score: "#{history.shop.woms.average(:rate).to_f.round(2)}",
                 });
-              .shop-wom-count
+              .shop-count
                 %i.fas.fa-comment-dots<>
                 = "#{history.shop.woms.where.not(rate: nil).count}件"
+              .shop-count
+                %i.fas.fa-bookmark.fa-lg<>
+                = "#{history.shop.clips.count}件"
             .bottom-info-right__top-wom
               .wom-info
                 .wom-info__title
