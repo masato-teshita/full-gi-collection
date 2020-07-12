@@ -1,249 +1,85 @@
-shops = Shop.create([
-  {
-    name: 'BAZZSTORE原宿キャットストリート北ウイング店（バズストア）',
-    postal_code: '',
-    address: '東京都渋谷区神宮前4丁目26−5' ,
-    area_id: '4',
-    outline: '【BAZZSTORE（バズストア）】は、口コミや人との繋がりを意識して、古着やアクセサリーのリユースを大切にしているショップ。
-    ショップの店名は、クチコミという意味を持つ『buzz』と、全てを含むことを示す『az』が組み合わされた造語です。
-    そのため、思い出がありながらも着られなくなった服を、その気持ちと一緒に、誰かのワードローブに伝わっていく、そんなコンセプトを大切にしているそう。',
-  },
-  {
-    name: 'A-1 CLOTHING（エーワンクロージング）',
-    postal_code: '150-0001',
-    address: '東京都渋谷区神宮前5-28-7 1F',
-    area_id: '4',
-    outline: '【A-1 CLOTHING（エーワンクロージング）】は、外国のインポートブランドを中心に、ヴィンテージアイテム、ファッション小物、雑貨を扱っているショップです。
-    取り扱いブランドは、ショップのオリジナルアイテムに、誰でも知っているADIDAS、NIKE、NEWBALANCEといったスポーツブランド、ファッション性の高いブランド、日本ではあまり見かけないブランドなど、とても幅広く扱っています。
-    アイテムは、メンズを中心にアウター、トップスからボトムスまで並んでいて、特にウェアの種類が豊富です。その他には、キャップやニット帽などの帽子、グローブやリュックなどのミリタリーやアウトドア系のアイテムも扱っています。ヴィンテージアイテムには、アメカジ系のウェアを中心に、アクセサリー、アメリカ雑誌、雑貨なども扱っているのです。古着のテイストは、くたびれた雰囲気があり、古着ならではの味があるものが多いみたい。
-    アクセスは、JR各線『渋谷駅』から徒歩10分、JR『原宿駅』から徒歩10分。営業時間は、12:00～20:00。',
-  },
-  {
-    name: 'BRAND COLLECT原宿竹下通り店（ブランドコレクト）',
-    postal_code: '',
-    address: '東京都渋谷区神宮前1-8-5',
-    area_id: '4',
-    outline: '【BRAND COLLECT（ブランドコレクト）】は、ブランド古着の買取と販売を行っているショップ。
-    店舗は、この原宿竹下通り店と、原宿店の2店舗があります。各ショップで、扱っているブランドアイテムのコンセプトが異なっているんです。
-    こちらの原宿竹下通り店では、インポートアイテムを中心に取り扱っており、特にヨーロッパやアメリカテイストを重視した幅広いジャンルが豊富！
-    他店にも置いてあるような、高級感のあるブランドも扱っていますが、その他にも、モード系や日本のドメスティックブランドの扱いにも力を入れていますよ。
-    アイテムは、メンズとレディースをともに扱っています。メンズの買取で力を入れているのは、A.P.C、BURBERRY、COMME des GARCONS、Dior HOMME、Martin Margiela、N.HOOLYWOOD、THOM BROWNE、Visvim、YAECA、Y’sといったジャンルです。
-    また、レディースでは、CHLOE、CHANEL、HERMES、KATE SPADE、 LOUIS VUITTON、MARNI、MUVEIL、MM6、PRADA、といったブランドのアイテムの買取に力を入れています。
-    アクセスは、JR『原宿駅』竹下口から徒歩4分。営業時間は、11:00～20:00で、休日は8月2日のみです。',
-  },
-  {
-    name: 'Santa Monica原宿店（サンタモニカ）',
-    postal_code: '150-0001',
-    address: '東京都渋谷区神宮前４-２５−５',
-    area_id: '4',
-    outline: '【Santa Monica（サンタモニカ）】は、原宿の表参道で、1979年にオープンした老舗の古着ショップです。原宿店は、2011年にオープンしました。
-    主に、ヴィンテージ&古着アイテムを中心に取り扱っていて、他にも海外の人気ブランドの新品まで揃えています。原宿店の他には、表参道店、渋谷店、ラフォーレ原宿店、吉祥寺店があります。原宿店は、白や水色を基調とした開放的な外観が目印になっています。
-    アイテムは、レディースとメンズを両方扱っていて、ウェア、バッグ、シューズ、帽子や、小物類やアクセサリーまで並んでいます。
-    特に人気があるアイテムは、ヘインズVネックシャツ、ミラータンクトップ、ディッキーズチノパン、ベンデイビスワークパンツ等だそうです。
-    “サンタモニカ”という店名から、アメリカの開放的なイメージに繋がりやすいのか、リゾートやカジュアルな感じのアイテムに人気が高いようですね。アメカジのアイテムが多いのですが、色や素材にはふんわりとした柔らかさがあります。
-    アクセスは、東京メトロ『明治神宮前駅』から徒歩7分です。',
-  },
-  {
-    name: 'VALON（バロン）',
-    postal_code: '',
-    address: '東京都世田谷区北沢2丁目25−8',
-    area_id: '1',
-    outline: '『VALON（バロン）』は、アメリカ・ヨーロッパの、ユーズド、ビンテージ、レギュラー古着を取り扱うショップです。メンズとレディースの商品を扱っていて、メンズは、トップス、パンツ、革靴などが並び、レディースはワンピース、スカートの種類が豊富で、トップス、パンツもあり、その他にもバッグ、シューズ、アクセサリー、バッジなどの小物類も充実しています。古いもので1930年代からのアイテムもあり、デッドストックから新品まで並んでいるようです。
-    お店の様子は、ホワイトの壁やディスプレイ用の家具に、ヨーロッパ調でレトロな雰囲気があり、ショップのテーマに沿った世界観が広がっています。小規模なショップですが、並んでいる小物も種類が豊富でブーツやスニーカー、レディスシューズ、帽子や雑貨等があります。
-    全体的に、並んでいる商品は状態がよく、風合いや色、柄においても、ショップ全体に統一感があり、店主のショップコンセプトへのこだわりがみられます。
-    アクセスは、小田急線、京王井の頭線『下北沢駅』西口から徒歩2分にある、東洋百貨店内ブース２３です。営業時間は、12:00～20：30。',
-  },
-  {
-    name: 'USED CLOTHING ANTON（ユーズドクロージングアントン）',
-    postal_code: '',
-    address: '東京都世田谷区北沢2-31-1',
-    area_id: '1',
-    outline: '『USED CLOTHING ANTON（ユーズドクロージングアントン）』は、セレクト古着が並ぶ隠れ家的なショップです。扱っている商品は、USED古着、ブランド古着といった現代古着が多く、状態がよく古着らしさを感じさせないアイテムが並びます。古着アイテム以外にも、新品のセレクトアイテムを扱っていて、全体的には、モノトーンカラーやモード感のある商品で統一されています。アウター、シャツ、パンツの他、バッグやシューズ、アクセサリーなどの小物類も揃っていて、全体的にメンズ商品の扱いが多いようですが、レディースも扱っています。定番アイテムから、一点ものの個性的なアイテムが並んでいて、こじんまりとしたショップの規模ながら、豊富なアイテムがぎっしりと並びます。商品によってはユニセックスなデザインも多く、性別を意識させない個性的なファッションアイテムが多いようです。
-    アクセスは、小田急線、京王井の頭線『下北沢駅』南口から徒歩2分。営業時間は、13:00~20:00で、定休日は毎週水曜日（水曜日が祝日にあたる場合は営業）。',
-  },
-  {
-    name: 'NEW YORK JOE EXCHANGE下北沢店（ニューヨークジョーエクスチェンジ）',
-    postal_code: '',
-    address: '東京都世田谷区北沢3-26-4',
-    area_id: '1',
-    outline: '銭湯を改装したため、それが店名『ニューヨーク ジョー（入浴場） エクスチェンジ』となっているお店で、お店に入った瞬間、開放的な空間が広がり、もと銭湯だった空間に、多数のアイテムが並べられているという不思議で面白い内装です。
-    アイテムを売りに来た場合、商品と交換（トレード）できるスタイルが魅力的ですが、店内の商品が全体的にリーズナブルなのも魅力です。
-    商品はインポート、ユーズド、ノーブランドに関わらず洋服からバッグや靴、帽子、アクセサリーなどを扱ってますが、特に、Vivienne westwood、Dr.Martens、MARC BY MARC JACOBS、adidasなど、現行のブランド品は、他店のリサイクルショップと比較してもかなりの低価格となっています。
-    毎月第一日曜日には、全商品半額セール「The First Sunday SALE」が開催され、行列ができる程の盛況ぶりになります。スタッフの方は、皆さん明るくて元気がよく、店内は常に活気が溢れていることもあり、アイテムを売りに来た方も買いにきた方も、どなたでも楽しめるお店です。',
-  },
-  {
-    name: 'FLAMINGO下北沢マバタキ店（フラミンゴ）',
-    postal_code: '',
-    address: '東京都世田谷区北沢2-37-2 ',
-    area_id: '1',
-    outline: '店舗に訪れると、フラミンゴ店におなじみのフラミンゴネオンサインが飾られており、フラミンゴがマバタキをします。店内に入ると、目の前にディスプレイの巨大な鳥カゴがあり、内装は海外で買い付けたアンティーク家具や雑貨品をおしゃれに使っているため、店舗全体に手作りのアンティーク感がある雰囲気です。インテリアには、無機質ではなく体温があるような空間つくりを目指しているようで、奇抜な商品が置いてあるにも関わらず、居心地がいい店内です。扱っている古着は、個性的なアイテムや奇抜なアイテムが多く、その他にもショップオリジナルのリメイクブランド「Tippi Rag Made」や、新品小物もあり、商品数はかなり充実した品揃えです。その他、服飾雑貨には、ボタン、糸、食器、古い鍵、マッチまで、リメイク用品からインテリア雑貨まで幅広く取り揃えています。
-    入り口のフラミンゴネオンが目に付き、スタッフの方もとても気さくに対応してくれるので、フラッと立ち寄りやすいお店です。',
-  },
-  {
-    name: 'HIGH＆LOW（ハイアンドロウ）',
-    postal_code: '',
-    address: '東京都世田谷区代沢2丁目29-9',
-    area_id: '1',
-    outline: 'HIGH&LOW（ハイアンドロウ）は、大人のための古着ファッションを提供しているショップです。
-    店主の意向で、レディースは「遊ぶ女」、メンズは「働く男」をコンセプトにした、大人が着れる古着を意識されています。扱っている商品は、メンズ、レディースの、靴、バック、小物、アクセサリーなどのヴィンテージの古着アイテムや、食器、服飾雑貨等のアンティーク雑貨をセレクトしています。商品は、バイヤーがアメリカで買い付けており、全体的に保存状態の良いものが多く、クオリティの高いものを1つ1つ厳選して買い付けているそうです。買い付けされた商品は、全体的にはカジュアルなものが多いのですが、プリントの柄や生地の手触り、個性的なボタン、ヨーロッパを中心とした他国文化の情緒を感じさせる刺繍等、こだわりを持って厳選されたのが伺えます。
-    アクセスは、小田急線、京王井の頭線『下北沢』駅南口から徒歩3分。営業時間は、月曜から土曜が13時～22時、日曜が12時～20時。',
-  },
-  {
-    name: 'RAGTAG下北沢店（ラグタグ）',
-    postal_code: '',
-    address: '東京都世田谷区北沢2丁目34−12',
-    area_id: '1',
-    outline: 'RAGTAG 下北沢店は、ブランド古着やブランドバッグの買取・販売・通販を行うユーズドセレクトショップである。
-    モードブランド、ストリートブランド、スーパーブランドなど多彩なブランドが揃っており、好みのブランドからセレクト可能である。
-    古着はその性質上、汚れや匂いが気になるところだが、このショップでは全商品クリーニングしてから販売しているので安心感がある。',
-  },
-  {
-    name: 'BAZZSTORE高円寺パル商店街店（バズストア）',
-    postal_code: '',
-    address: '東京都杉並区高円寺南3-58-22 ARISTO高円寺 2F',
-    area_id: '3',
-    outline: 'BAZZSTOREの13号店として高円寺パル商店街店が2019年12月20日オープン。「高円寺駅」南口より徒歩2分の好立地でアクセス抜群。取扱商品は販売・買取ともに幅広く、カジュアルブランドやファストファッション、ノーブランド品も買取対象としていて使いやすいお店です。
-
-    定休日は年中無休。営業時間は12：00〜22：00で、買取受付時間は12：00～21：30と閉店の30分前まで受付可能になっています。',
-  },
-  {
-    name: 'Antler(アントラー)',
-    postal_code: '',
-    address: '東京都杉並区高円寺南2-50-10',
-    area_id: '3',
-    outline: 'Antler [アントラー]は、高円寺pal商店街を抜けてすぐにあるお店です。ビンテージ古着をアメリカからオーナー自らが厳選して仕入れているそうです。商品はペイントが施されているもの、ダメージが入っているものなどグランジテイストなアイテムが数多く揃っています。
-    また一癖あるようなアイテムや、ドレッシーなアイテムなど年代に縛られず格好良いものだけがセレクトしてあり、商品一つ一つのクオリティーが高いお店です。店内は白を基調とし、アンティーク什器で落ち着いた雰囲気を演出しており、商品がとても見やすいお店でした。',
-  },
-  {
-    name: 'Kissmet（キスメット）',
-    postal_code: '',
-    address: '東京都杉並区高円寺南3-56-1 藤和高円寺コープ101',
-    area_id: '3',
-    outline: 'レディース、メンズともにヴィンテージ、ブランド物を多く取り扱う古着屋です。特にハイブランドの品揃えが良くディオールやコムデギャルソン、ランバン、ジルサンダーといった一流ブランドのアイテムはかなり多いです。
-    状態も厳選してあるため綺麗なものばかりで新品で買うとかなりのお値段のものも手に入れやすい価格になっています。個人的にはここに寄った時にはシューズは特に注目して見ています。シューツリーをしっかり入れてあったり綺麗な状態で保存してありますし、なかなかお目にかかれないような掘り出し物も見つかることがあるのでオススメです。
-    店内も壁と木目調の床と白で統一されているので凄く清潔感があります。古着屋の独特な雰囲気が苦手という方でも見やすいと思います。',
-  },
-  {
-    name: '突撃洋服店',
-    postal_code: '',
-    address: '東京都渋谷区神南1-14-8 南部ビル203号',
-    area_id: '2',
-    outline: '渋谷にある突撃洋服店は、神戸発の歴史ある古着ショップだ。
-    インポート品をメインとしたモードスタイルの洋服をはじめとした個性的なアイテムが多く揃えられている。
-    様々なスタイルの洋服があるので価格もピンからキリまであるが、春夏物などは5000円前後から購入することが出来る。
-    メンズ物もレディース物も豊富に取り扱われており、男女ともに絶大な人気を誇る古着ショップとなっている。',
-  },
-  {
-    name: 'RAGTAG渋谷店（ラグタグ）',
-    postal_code: '',
-    address: '東京都渋谷区神南1-17-7',
-    area_id: '2',
-    outline: '渋谷区神南にあるRAGTAG（ラグタグ）渋谷店は、地下１階～２階まで３フロアにわたって、レディース・メンズをバランス良く取り揃えている。
-    それに加え、キッズやインテリアまで扱っている、大型のブランド古着の専門店である。
-    カジュアルブランドからストリートブランド、スーパーブランドなど幅広いジャンルを取り扱っている。',
-  },
-  {
-    name: 'OFO（オーエフオー）',
-    postal_code: '',
-    address: '東京都渋谷区神南１－１４－１　コーポナポリ２階２０１',
-    area_id: '2',
-    outline: 'OFOは、渋谷神南エリアに２０１６年にオープンしたショップ。ユニセックスのUSAヴィンテージを中心に、若い方から大人の方まで幅広く楽しめる品ぞろえ。渋谷の中では比較的リーズナブルな価格帯で、安心してショッピングができる。',
-  },
-  {
-    name: 'qosmos（コスモス）',
-    postal_code: '',
-    address: '東京都渋谷区神南1-10-7　テルス神南　501',
-    area_id: '2',
-    outline: '渋谷駅から神南方面に歩いた、ファイヤー通りにあるビンテージ＆アンティークウェアのショップ。場所はシダックスの向かい側なので、わかりやすい場所にあるが、雑居ビルの5階にあるため、注意しないと一度通り過ぎてしまう。
-    入り口や内装、インテリアは凝っており、雑居ビルというよりデザイナーズビルのような雰囲気を感じる。隠れ家のようなアパレルショップである。',
-  },
-  {
-    name: 'RAGTAG吉祥寺店（ラグタグ）',
-    postal_code: '180-0003 ',
-    address: '東京都武蔵野市吉祥寺南町１丁目８−６ カーサカルム吉祥寺',
-    area_id: '6',
-    outline: 'いろんな場所にあったり、ウェブでの展開もある有名なブランド古着屋さんですが、正直ブックオフと一緒でその街に住む人たちの雰囲気によって置いてるものがかなり左右されると思いますが、そういう意味で吉祥寺は当たりの店舗だと思います。
-    状態が綺麗で、20代から30代くらいの世代の方たちが気軽に着られるブランド古着が安価に手に入ります。結構いつも混んでいるので商品の回転もはやく、ほしいものはその時買わないとすぐにでも無くなってしまいますが、その分いつ覗きにいっても新しい発見があるので吉祥寺に行くときは必ず寄らせてもらってます。
-    立地条件も良く、他の古着屋が何件か集まる、駅から井の頭公園に抜ける小さな路地にあり、古着を探しに行くときはまとめて見て回る事ができて楽ちんです。',
-  },
-  {
-    name: 'セカンドストリート吉祥寺サンロード店（旧称：JUMBLE STORE ジャンブルストア）',
-    postal_code: '180-0004',
-    address: '東京都武蔵野市吉祥寺本町１丁目１２−１',
-    area_id: '6',
-    outline: 'サンロード商店街にありますが、駅からはちょっと離れたところです。でも駅から遠すぎるというほどではありません。「古着屋さん」というよりも、「日本全国にある典型的なリサイクルショップ」といった感じで、店内は蛍光灯が使用され、吉祥寺店といえど、おしゃれな雰囲気などいっさい感じられませんでした。商品のコンディションは悪くありません。セレクトショップ系、アウトドアブランドなどで気に入ったものが見つかれば買ってもいいと思いました。
-    時間のあるに頑張って探してみたいと思わせます。興味のある方、安く手に入れたい方は、すぐに見つかることはあまり期待せずに行ってみたらいいと思います。',
-  },
-  {
-    name: 'Santa Monica吉祥寺店（サンタモニカ）',
-    postal_code: '',
-    address: '東京都武蔵野市吉祥寺南町1-16-11',
-    area_id: '6',
-    outline: '駅から井の頭公園に抜ける、オシャレなお店が集まっている路地の少し入ったところにあるお店です。古着のみならず、新品の取り扱いも少しだけあり、店前の露天部分にはレディースの商品が並んでいるので、コアな古着屋さんにちょっと入りにくいという初心者女子にも、気軽に覗ける陳列スタイルになっています。アーミーな取り扱いもあるので、吉祥寺で軍モノを見つけたい時に行くと面白い掘り出し物に出会えたりします。小さいながらもこだわり抜かれた商品が並んでる感じがするので見応えは十分で、ついつい時間を忘れて吟味してしまうこと間違いなしです。また、店員さんが気さくな感じなので古着についてもいろいろ教えてくれたりして楽しい時間を過ごす事ができます。
-    表参道に本店を構える古着屋の吉祥寺店です。
-    
-    古着屋としての歴史も古くこの吉祥寺店も1980年オープンということで30年以上も営業している老舗中の老舗です。',
-  },
-  {
-    name: 'Kindal新宿店ANNEX（カインドオル）',
-    postal_code: '',
-    address: '東京都新宿区新宿3-28-2 ルナージュ新宿6F',
-    area_id: '7',
-    outline: 'WEBサイト：http://www.kind.co.jp/shinjuku/
-    https://www.instagram.com/kind_shinjuku/',
-  },
-  {
-    name: 'RINKAN新宿店（リンカン）',
-    postal_code: '',
-    address: '東京都新宿区新宿3-34-13 三経ビルB1F',
-    area_id: '7',
-    outline: 'WEBサイト：https://www.gsc-rinkan.com/company/shinjuku_pc.html
-    https://www.instagram.com/rinkan_shinjuku/
-    ',
-  },
-  {
-    name: 'RED CLOUD（レッド クラウド）',
-    postal_code: '',
-    address: '東京都豊島区東池袋1-43-10-102',
-    area_id: '8',
-    outline: '主にアメリカの古着を取り扱うお店で、古着の買い取りやリペアも行っているんだとか。
-    Ralph Lauren（ラルフ ローレン）のポロシャツやストリートファッションとして知られるSTUSSY（ステューシー）のTシャツなどの古着の定番アイテムから、アメリカで買い付けたエッジの効いたノンブランドものまで幅広く揃うお店です。',
-  },
-  {
-    name: 'Dron-pa（ドロンパ）',
-    postal_code: '',
-    address: '東京都豊島区西池袋1-2-3',
-    area_id: '8',
-    outline: '強いこだわりのもと仕入れられた古着はどれも個性的。
-
-    アメリカのプロバスケットボールチームや、アメリカのプロ野球チームのユニホームをはじめ、シンプソンズやディズニーのキャラがプリントされたTシャツに、アメリカのオートバイメーカーとして世界的に有名なハーレーダビッドソンのパーカーなど、アメリカから買い付けてきたことがダイレクトに伝わってくる古着が揃っています！
-    またこちらの古着屋さんが立ち上げたオリジナルブランド、「ROYAL KHAKI（ロイヤル カーキ）」のアイテムも見逃せません。
-    この「ROYAL KHAKI」のアイテム、生地やデザインにこだわったものばかりでどれも魅力的なものばかり！',
-  },
-  {
-    name: 'たんぽぽハウス 高田馬場店',
-    postal_code: '',
-    address: '東京都新宿区高田馬場2-8-3',
-    area_id: '8',
-    outline: 'たんぽぽハウス 高田馬場店は高田馬場駅から徒歩3分と近く、「噂の都内最安店」として有名な古着屋です。紳士服や婦人服を始め、バッグやシューズなど、幅広い品揃えと安い価格がおすすめポイントです。',
-  },
-  {
-    name: 'リサイクルブティックＡＢＣ 中野店',
-    postal_code: '',
-    address: '東京都中野区中央5-51-3',
-    area_id: '9',
-    outline: 'お店は中野駅北口から出て早稲田通り沿い、中野区立商工会館のほぼ向かいにあります。中央線沿いには系列店も含めて11軒の店があり、中野店はABCの中でも一番小さい店ですが、有名ブランドの洋服やバッグ・靴・小物まで幅広いアイテムを取り扱う店です。',
-  },
-  {
-    name: 'リサイクルショップ ティファナ 東中野店',
-    postal_code: '',
-    address: '東京都中野区東中野3-9-10',
-    area_id: '9',
-    outline: 'JR東中野駅あるいは大江戸線東中野駅から北西に約600m続く東中野銀座商店街にあるリサイクルショップです。明るい雰囲気の店内にはハイブランドのバッグやアクセサリー・洋服・食器・靴など、幅広いアイテムを揃えています。未使用品も多くあるので、ユーズドは敬遠しがちな人にもおすすめです。都内・埼玉・台湾に15店舗の店があります。',
-  },
+areas = Area.create([
+  {name: '下北沢'},
+  {name: '渋谷'},
+  {name: '高円寺'},
+  {name: '原宿'},
+  {name: '中目黒'},
+  {name: '吉祥寺・三鷹'},
+  {name: '新宿・代々木・新大久保'},
+  {name: '高田馬場・池袋'},
+  {name: '中野'}
 ])
 
+genres = Genre.create([
+  {name: 'ブランド古着', image: 'genres/genre_brand-furugi.jpg'},
+  {name: '80s90s', image: 'genres/genre_80s90s-furugi.jpg'},
+  {name: 'ミリタリー古着', image: 'genres/genre_military-furugi.jpg'},
+  {name: 'ノーブランド古着', image: 'genres/genre_no-brand-furugi.jpg'},
+  {name: 'リユースショップ', image: 'genres/genre_reuse-shop-furugi.jpg'},
+  {name: 'ヴィンテージ古着', image: 'genres/genre_vintage-furugi.jpeg'},
+])
+
+users = User.create([
+  {name: '壮', admin: 'true', email: 'paru.koaremina2928@gmail.com', password: '111111', password_confirmation: '111111'},
+  {name: 'テストユーザ', admin: 'false', email: 'test-user@teshita.jp', password: '123456', password_confirmation: '123456'},
+])
+
+require "csv"
+
+# ブランドデータ投入
+CSV.foreach('db/csv/seed_brands.csv', headers: true) do |row|
+  Brand.create(
+    name: row['name'],
+    image: row['image'],
+  )
+end
+
+# 店舗データ投入
+CSV.foreach('db/csv/seed_shops.csv', headers: true) do |row|
+  Shop.create(
+    name: row['name'],
+    area_id: row['area_id'],
+    address: row['address'],
+    postal_code: row['postal_code'],
+    outline: row['outline'],
+  )
+end
+
+# 店舗ーブランド中間データ投入
+CSV.foreach('db/csv/seed_shop_brands.csv', headers: true) do |row|
+  ShopBrand.create(
+    shop_id: row['shop_id'],
+    brand_id: row['brand_id'],
+  )
+end
+
+# 店舗ージャンル中間データ投入
+CSV.foreach('db/csv/seed_shop_genres.csv', headers: true) do |row|
+  ShopGenre.create(
+    shop_id: row['shop_id'],
+    genre_id: row['genre_id'],
+  )
+end
+
 shop_images = ShopImage.create([
+  {shop_id: 1, shop_image: open("#{Rails.root}/db/fixtures/buzzstore_simokita_north.jpg")},
+  {shop_id: 2, shop_image: open("#{Rails.root}/db/fixtures/buzzstore_simokita_sourth.jpg")},
+  {shop_id: 3, shop_image: open("#{Rails.root}/db/fixtures/KILLvintageclothing.jpg")},
+  {shop_id: 4, shop_image: open("#{Rails.root}/db/fixtures/buzzstore_shibuya.jpg")},
+  {shop_id: 5, shop_image: open("#{Rails.root}/db/fixtures/2nd-street_shibuya.jpg")},
+  {shop_id: 6, shop_image: open("#{Rails.root}/db/fixtures/gate-1.jpg")},
+  {shop_id: 7, shop_image: open("#{Rails.root}/db/fixtures/play-back.jpg")},
+  {shop_id: 8, shop_image: open("#{Rails.root}/db/fixtures/santonibunnoichi.jpeg")},
+  {shop_id: 9, shop_image: open("#{Rails.root}/db/fixtures/replay.jpg")},
+  {shop_id: 10, shop_image: open("#{Rails.root}/db/fixtures/dondondown_koenji.jpg")},
+  {shop_id: 11, shop_image: open("#{Rails.root}/db/fixtures/2nd-street_koenji.jpg")},
+  {shop_id: 12, shop_image: open("#{Rails.root}/db/fixtures/hosu.jpg")},
+  {shop_id: 13, shop_image: open("#{Rails.root}/db/fixtures/中目黒THEVINTAGEHOOK.jpg")},
+  {shop_id: 14, shop_image: open("#{Rails.root}/db/fixtures/buzzstore_mitaka.jpg")},
+  {shop_id: 15, shop_image: open("#{Rails.root}/db/fixtures/原宿CHICAGO吉祥寺店.jpg")},
+  {shop_id: 16, shop_image: open("#{Rails.root}/db/fixtures/RAGTAG_shinjuku.jpg")},
+  {shop_id: 17, shop_image: open("#{Rails.root}/db/fixtures/buzzstore_takadanobaba.jpg")},
+  {shop_id: 18, shop_image: open("#{Rails.root}/db/fixtures/bazzstore_numabukuro.jpg")},
   {shop_id: 19, shop_image: open("#{Rails.root}/db/fixtures/buzzstore_harajuku.jpg")},
   {shop_id: 20, shop_image: open("#{Rails.root}/db/fixtures/A-1CLOTHING.jpg")},
   {shop_id: 21, shop_image: open("#{Rails.root}/db/fixtures/BRANDCOLLECT原宿竹下通り店.jpg")},
@@ -271,262 +107,4 @@ shop_images = ShopImage.create([
   {shop_id: 43, shop_image: open("#{Rails.root}/db/fixtures/たんぽぽ.jpeg")},
   {shop_id: 44, shop_image: open("#{Rails.root}/db/fixtures/リサイクルブティックＡＢＣ中野店.jpg")},
   {shop_id: 45, shop_image: open("#{Rails.root}/db/fixtures/tifana.jpg")},
-])
-
-shop_brands = ShopBrand.create([
-  {shop_id: 19, brand_id: 1},
-  {shop_id: 19, brand_id: 2},
-  {shop_id: 19, brand_id: 4},
-  {shop_id: 19, brand_id: 5},
-  {shop_id: 19, brand_id: 7},
-  {shop_id: 19, brand_id: 8},
-  {shop_id: 19, brand_id: 9},
-  {shop_id: 19, brand_id: 10},
-  {shop_id: 19, brand_id: 11},
-  {shop_id: 19, brand_id: 12},
-  {shop_id: 19, brand_id: 14},
-  {shop_id: 19, brand_id: 39},
-  {shop_id: 19, brand_id: 38},
-  {shop_id: 19, brand_id: 19},
-  {shop_id: 19, brand_id: 20},
-  {shop_id: 19, brand_id: 21},
-  {shop_id: 20, brand_id: 1},
-  {shop_id: 20, brand_id: 2},
-  {shop_id: 20, brand_id: 4},
-  {shop_id: 20, brand_id: 6},
-  {shop_id: 20, brand_id: 7},
-  {shop_id: 20, brand_id: 8},
-  {shop_id: 20, brand_id: 49},
-  {shop_id: 20, brand_id: 41},
-  {shop_id: 20, brand_id: 40},
-  {shop_id: 20, brand_id: 13},
-  {shop_id: 20, brand_id: 14},
-  {shop_id: 20, brand_id: 15},
-  {shop_id: 20, brand_id: 17},
-  {shop_id: 20, brand_id: 18},
-  {shop_id: 20, brand_id: 19},
-  {shop_id: 20, brand_id: 20},
-  {shop_id: 20, brand_id: 21},
-  {shop_id: 21, brand_id: 1},
-  {shop_id: 21, brand_id: 2},
-  {shop_id: 21, brand_id: 3},
-  {shop_id: 21, brand_id: 5},
-  {shop_id: 21, brand_id: 7},
-  {shop_id: 21, brand_id: 8},
-  {shop_id: 21, brand_id: 9},
-  {shop_id: 21, brand_id: 10},
-  {shop_id: 21, brand_id: 11},
-  {shop_id: 21, brand_id: 12},
-  {shop_id: 21, brand_id: 14},
-  {shop_id: 21, brand_id: 16},
-  {shop_id: 21, brand_id: 17},
-  {shop_id: 21, brand_id: 18},
-  {shop_id: 21, brand_id: 19},
-  {shop_id: 21, brand_id: 20},
-  {shop_id: 21, brand_id: 21},
-  {shop_id: 23, brand_id: 22},
-  {shop_id: 23, brand_id: 23},
-  {shop_id: 23, brand_id: 24},
-  {shop_id: 23, brand_id: 25},
-  {shop_id: 23, brand_id: 26},
-  {shop_id: 23, brand_id: 27},
-  {shop_id: 23, brand_id: 28},
-  {shop_id: 23, brand_id: 29},
-  {shop_id: 23, brand_id: 30},
-  {shop_id: 23, brand_id: 31},
-  {shop_id: 24, brand_id: 32},
-  {shop_id: 24, brand_id: 33},
-  {shop_id: 24, brand_id: 34},
-  {shop_id: 24, brand_id: 35},
-  {shop_id: 24, brand_id: 36},
-  {shop_id: 24, brand_id: 37},
-  {shop_id: 24, brand_id: 38},
-  {shop_id: 24, brand_id: 39},
-  {shop_id: 25, brand_id: 40},
-  {shop_id: 25, brand_id: 41},
-  {shop_id: 25, brand_id: 42},
-  {shop_id: 25, brand_id: 43},
-  {shop_id: 25, brand_id: 44},
-  {shop_id: 25, brand_id: 45},
-  {shop_id: 25, brand_id: 46},
-  {shop_id: 25, brand_id: 47},
-  {shop_id: 25, brand_id: 48},
-  {shop_id: 25, brand_id: 49},
-  {shop_id: 25, brand_id: 1},
-  {shop_id: 25, brand_id: 2},
-  {shop_id: 27, brand_id: 3},
-  {shop_id: 27, brand_id: 4},
-  {shop_id: 27, brand_id: 5},
-  {shop_id: 27, brand_id: 6},
-  {shop_id: 27, brand_id: 7},
-  {shop_id: 27, brand_id: 8},
-  {shop_id: 27, brand_id: 9},
-  {shop_id: 28, brand_id: 5},
-  {shop_id: 28, brand_id: 7},
-  {shop_id: 28, brand_id: 8},
-  {shop_id: 28, brand_id: 9},
-  {shop_id: 28, brand_id: 10},
-  {shop_id: 28, brand_id: 11},
-  {shop_id: 28, brand_id: 12},
-  {shop_id: 28, brand_id: 14},
-  {shop_id: 28, brand_id: 16},
-  {shop_id: 28, brand_id: 17},
-  {shop_id: 28, brand_id: 18},
-  {shop_id: 28, brand_id: 19},
-  {shop_id: 28, brand_id: 20},
-  {shop_id: 28, brand_id: 21},
-  {shop_id: 28, brand_id: 1},
-  {shop_id: 28, brand_id: 2},
-  {shop_id: 28, brand_id: 3},
-  {shop_id: 28, brand_id: 4},
-  {shop_id: 29, brand_id: 23},
-  {shop_id: 29, brand_id: 25},
-  {shop_id: 29, brand_id: 27},
-  {shop_id: 29, brand_id: 29},
-  {shop_id: 29, brand_id: 31},
-  {shop_id: 29, brand_id: 33},
-  {shop_id: 29, brand_id: 35},
-  {shop_id: 29, brand_id: 37},
-  {shop_id: 29, brand_id: 39},
-  {shop_id: 29, brand_id: 41},
-  {shop_id: 29, brand_id: 43},
-  {shop_id: 29, brand_id: 45},
-  {shop_id: 29, brand_id: 47},
-  {shop_id: 30, brand_id: 24},
-  {shop_id: 30, brand_id: 26},
-  {shop_id: 30, brand_id: 28},
-  {shop_id: 30, brand_id: 30},
-  {shop_id: 30, brand_id: 32},
-  {shop_id: 30, brand_id: 34},
-  {shop_id: 31, brand_id: 1},
-  {shop_id: 31, brand_id: 15},
-  {shop_id: 31, brand_id: 22},
-  {shop_id: 31, brand_id: 23},
-  {shop_id: 31, brand_id: 24},
-  {shop_id: 31, brand_id: 25},
-  {shop_id: 31, brand_id: 26},
-  {shop_id: 31, brand_id: 27},
-  {shop_id: 31, brand_id: 28},
-  {shop_id: 33, brand_id: 29},
-  {shop_id: 33, brand_id: 30},
-  {shop_id: 33, brand_id: 31},
-  {shop_id: 33, brand_id: 32},
-  {shop_id: 33, brand_id: 33},
-  {shop_id: 33, brand_id: 34},
-  {shop_id: 33, brand_id: 35},
-  {shop_id: 33, brand_id: 36},
-  {shop_id: 33, brand_id: 37},
-  {shop_id: 33, brand_id: 38},
-  {shop_id: 33, brand_id: 39},
-  {shop_id: 33, brand_id: 40},
-  {shop_id: 36, brand_id: 41},
-  {shop_id: 36, brand_id: 42},
-  {shop_id: 36, brand_id: 43},
-  {shop_id: 36, brand_id: 44},
-  {shop_id: 36, brand_id: 45},
-  {shop_id: 36, brand_id: 46},
-  {shop_id: 36, brand_id: 47},
-  {shop_id: 36, brand_id: 48},
-  {shop_id: 36, brand_id: 49},
-  {shop_id: 36, brand_id: 1},
-  {shop_id: 36, brand_id: 2},
-  {shop_id: 36, brand_id: 3},
-  {shop_id: 36, brand_id: 4},
-  {shop_id: 36, brand_id: 5},
-  {shop_id: 36, brand_id: 6},
-  {shop_id: 36, brand_id: 7},
-  {shop_id: 37, brand_id: 8},
-  {shop_id: 37, brand_id: 9},
-  {shop_id: 37, brand_id: 10},
-  {shop_id: 37, brand_id: 11},
-  {shop_id: 37, brand_id: 12},
-  {shop_id: 37, brand_id: 13},
-  {shop_id: 37, brand_id: 14},
-  {shop_id: 37, brand_id: 15},
-  {shop_id: 37, brand_id: 16},
-  {shop_id: 37, brand_id: 17},
-  {shop_id: 37, brand_id: 18},
-  {shop_id: 37, brand_id: 19},
-  {shop_id: 37, brand_id: 20},
-  {shop_id: 37, brand_id: 21},
-  {shop_id: 37, brand_id: 22},
-  {shop_id: 37, brand_id: 23},
-  {shop_id: 37, brand_id: 24},
-  {shop_id: 37, brand_id: 25},
-  {shop_id: 37, brand_id: 26},
-  {shop_id: 39, brand_id: 27},
-  {shop_id: 39, brand_id: 28},
-  {shop_id: 39, brand_id: 29},
-  {shop_id: 39, brand_id: 30},
-  {shop_id: 39, brand_id: 31},
-  {shop_id: 39, brand_id: 32},
-  {shop_id: 39, brand_id: 33},
-  {shop_id: 39, brand_id: 34},
-  {shop_id: 39, brand_id: 35},
-  {shop_id: 39, brand_id: 36},
-  {shop_id: 39, brand_id: 37},
-  {shop_id: 39, brand_id: 38},
-  {shop_id: 39, brand_id: 39},
-  {shop_id: 39, brand_id: 40},
-  {shop_id: 39, brand_id: 41},
-  {shop_id: 39, brand_id: 42},
-  {shop_id: 39, brand_id: 43},
-  {shop_id: 39, brand_id: 44},
-  {shop_id: 39, brand_id: 45},
-  {shop_id: 40, brand_id: 46},
-  {shop_id: 40, brand_id: 47},
-  {shop_id: 40, brand_id: 48},
-  {shop_id: 40, brand_id: 49},
-])
-
-shop_genres = ShopGenre.create([
-  {shop_id: 19, genre_id: 1},
-  {shop_id: 19, genre_id: 5},
-  {shop_id: 20, genre_id: 1},
-  {shop_id: 20, genre_id: 5},
-  {shop_id: 20, genre_id: 6},
-  {shop_id: 21, genre_id: 1},
-  {shop_id: 21, genre_id: 5},
-  {shop_id: 22, genre_id: 2},
-  {shop_id: 23, genre_id: 1},
-  {shop_id: 23, genre_id: 5},
-  {shop_id: 23, genre_id: 6},
-  {shop_id: 24, genre_id: 1},
-  {shop_id: 24, genre_id: 6},
-  {shop_id: 25, genre_id: 1},
-  {shop_id: 25, genre_id: 2},
-  {shop_id: 25, genre_id: 3},
-  {shop_id: 25, genre_id: 4},
-  {shop_id: 25, genre_id: 6},
-  {shop_id: 26, genre_id: 2},
-  {shop_id: 26, genre_id: 6},
-  {shop_id: 27, genre_id: 6},
-  {shop_id: 28, genre_id: 1},
-  {shop_id: 29, genre_id: 1},
-  {shop_id: 29, genre_id: 4},
-  {shop_id: 29, genre_id: 5},
-  {shop_id: 30, genre_id: 6},
-  {shop_id: 31, genre_id: 1},
-  {shop_id: 31, genre_id: 6},
-  {shop_id: 32, genre_id: 6},
-  {shop_id: 33, genre_id: 1},
-  {shop_id: 34, genre_id: 6},
-  {shop_id: 35, genre_id: 6},
-  {shop_id: 36, genre_id: 1},
-  {shop_id: 37, genre_id: 1},
-  {shop_id: 37, genre_id: 4},
-  {shop_id: 37, genre_id: 5},
-  {shop_id: 38, genre_id: 2},
-  {shop_id: 39, genre_id: 1},
-  {shop_id: 39, genre_id: 6},
-  {shop_id: 40, genre_id: 6},
-  {shop_id: 41, genre_id: 2},
-  {shop_id: 41, genre_id: 6},
-  {shop_id: 42, genre_id: 3},
-  {shop_id: 42, genre_id: 6},
-  {shop_id: 43, genre_id: 5},
-  {shop_id: 44, genre_id: 5},
-  {shop_id: 45, genre_id: 5},
-  {shop_id: 44, genre_id: 1},
-  {shop_id: 45, genre_id: 1},
 ])
