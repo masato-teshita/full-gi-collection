@@ -41,6 +41,9 @@ $ rails db:migrate
 $ rails db:seed
 ```
 
+## ER図
+https://i.gyazo.com/2e8d2d31681b91618abe1d39c60ed404.png
+
 ## その他
 現在も開発を継続しており、順次実装予定です。  
 実装予定の機能はIssuesよりご確認いただけます。  
