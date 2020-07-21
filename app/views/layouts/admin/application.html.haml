@@ -1,0 +1,18 @@
+!!!
+%html
+  %body
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "NOODP", :name => "ROBOTS"}/
+    %meta{:content => "initial-scale=1", :name => "viewport"}/
+    %title
+      = content_for(:title)
+      \- #{application_title}
+    = render "stylesheet"
+    = csrf_meta_tags
+    = render "icons"
+    .app-container
+      = render "navigation"
+      %main.main-content{:role => "main"}
+        = render "flashes"
+        = yield
+    = render "javascript"
