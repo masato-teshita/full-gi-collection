@@ -51,6 +51,7 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'bullet'
+  gem 'bundle_outdated_formatter'
 end
 
 group :development do
