@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+    resources :areas
+    resources :brands
+    resources :clips
+    resources :genres
+    resources :histories
+    resources :shops
+    resources :shop_brands
+    resources :shop_genres
+    resources :shop_images
+    resources :shop_users
+    resources :woms
+
+    root to: "users#index"
+  end
+
   get 'readies/show'
 
   devise_for :users, controllers: {
