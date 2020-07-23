@@ -43,7 +43,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  gem 'faker', "~> 2.8"
+  gem 'faker'
   gem 'capybara'
   gem 'capistrano'
   gem 'capistrano-rbenv'
@@ -55,10 +55,10 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
 end
@@ -84,6 +84,6 @@ gem 'meta-tags'
 gem 'cloudinary'
 gem 'geocoder'
 gem 'fog-aws'
-gem 'listen', '~> 3.0.5'
+gem 'listen'
 gem 'ransack'
 gem 'active_hash'
