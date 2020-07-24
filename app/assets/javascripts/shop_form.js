@@ -24,59 +24,6 @@ $(function() {
       input.removeClass('error');
       next.remove();
     }
-
-    // 金額入力の入力チェック
-    if (input.is('#sell-price-input')) {
-      if (value == "" || value < 300 || value >= 10000000) {
-        if (!priceNext.hasClass('error')) {
-          input.parent().parent().after(`<p class='error price-error'>300以上10,000,000未満で入力してください</p>`);
-        }
-      } else if (priceNext.hasClass('error')) {
-        priceNext.remove();
-      } else {
-        ;
-      }
-    }
-  }
-  // // keyup時の動作
-  // function fieldKeyup(input) {
-  //   value = input.val();
-  //   next = input.next();
-  //   priceNext = input.parent().parent().next();
-  //   if (value != "") {
-  //     input.removeClass('error');
-  //     if (input.is('#sell-price-input')) {
-  //       ;
-  //     } else {
-  //       next.remove();
-  //     }
-  //   }
-  //   // 金額入力の入力チェック
-  //   if (input.is('#sell-price-input')) {
-  //     if (value >= 300 && value < 10000000) {
-  //       if (priceNext.hasClass('error')) {
-  //         priceNext.remove();
-  //       }
-  //     } else if (!priceNext.hasClass('error')) {
-  //       input.parent().parent().after(`<p class='error price-error'>300以上10,000,000未満で入力してください</p>`);
-  //     } else {
-  //       ;
-  //     }
-  //   }
-  // }
-
-  // 画像の入力チェック
-  function imageCheck(num) {
-    const imageNext = $('#image-box').next();
-    if (num == 0) {
-      if (!imageNext.hasClass('error')) {
-        $('#image-box').after(`<p class='error'>画像がありません</p>`);
-      }
-    } else {
-      if (imageNext.hasClass('error')) {
-        imageNext.remove();
-      }
-    }
   }
 
   // ジャンルの入力チェック
@@ -94,33 +41,24 @@ $(function() {
     }
   }
 
-  // $('#new_item input:required').on('blur', function() {
-  //   fieldBlur($(this));
-  // });
-
-  // $('#new_item input:required').on('keyup', function() {
-  //   fieldKeyup($(this));
-  // });
-
-  // $('#new_item textarea').on('blur', function() {
-  //   fieldBlur($(this));
-  // });
-
-  // $('#new_item textarea').on('keyup', function() {
-  //   fieldKeyup($(this));
-  // });
-
-  // $('#new_item select').on('blur change', function() {
-  //   fieldBlur($(this));
-  // });
-
-  // 出品ボタン押下時の処理
+  // 店舗登録ボタン押下時の処理
   $('.shop-send-btn').click(function(e) {
     e.preventDefault();
     let flag = true;
     let genreFlag = false;
+    const imageNext = $('#image-box').next();
     const num = $('.shop-image').length
-    imageCheck(num);
+
+    if (num == 0) {
+      flag = false;
+      if (!imageNext.hasClass('error')) {
+        $('#image-box').after(`<p class='error'>画像がありません</p>`);
+      }
+    } else {
+      if (imageNext.hasClass('error')) {
+        imageNext.remove();
+      }
+    }
 
     $('input:required').each(function(e) {
       if ($('input:required').eq(e).val() === "") {
@@ -129,7 +67,7 @@ $(function() {
       }
     });
     $('select').each(function(e) {
-      if ($('select').eq(e).val() === "") {
+      if ($('select').eq(e).val() === "" && $('select').eq(e).attr('name') != "rate_range") {
         fieldBlur($('select').eq(e));
         flag = false;
       }
