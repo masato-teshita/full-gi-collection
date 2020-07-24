@@ -16,7 +16,7 @@ genres = Genre.create([
   {name: 'ミリタリー古着', image: 'genres/genre_military-furugi.jpg'},
   {name: 'ノーブランド古着', image: 'genres/genre_no-brand-furugi.jpg'},
   {name: 'リユースショップ', image: 'genres/genre_reuse-shop-furugi.jpg'},
-  {name: 'ヴィンテージ古着', image: 'genres/genre_vintage-furugi.jpeg'},
+  {name: 'ヴィンテージ古着', image: 'genres/genre_vintage-furugi.png'},
 ])
 
 users = User.create([
