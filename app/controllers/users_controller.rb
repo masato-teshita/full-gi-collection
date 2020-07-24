@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user)
+    @user = User.find(current_user.id)
     if params[:delete_img]
       @user.image = nil
       @user.save!
