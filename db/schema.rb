@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 2020_07_25_064100) do
     t.integer "shop_id", null: false
     t.string "name"
     t.text "explanation"
-    t.string "delivery_charge_flag", null: false
     t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
