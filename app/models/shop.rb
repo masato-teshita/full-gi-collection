@@ -11,6 +11,7 @@ class Shop < ApplicationRecord
   has_many :brands, through: :shop_brands
   has_many :users, through: :shop_users
   has_many :shop_images
+  has_many :items
   accepts_nested_attributes_for :shop_images, allow_destroy: true
   geocoded_by :address, latitude: :latitude, longitude: :longitude
   after_validation :geocode
