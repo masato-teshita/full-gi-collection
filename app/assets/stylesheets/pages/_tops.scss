@@ -554,3 +554,38 @@ a {
     color: $link_color_hover;
   }
 }
+.top-brands {
+  display: flex;
+  .top-brand {
+    position: relative;
+    width: 136px;
+    margin: 8px 8px 8px 0;
+    cursor: pointer;
+    &__img {
+      height: 136px;
+      width: 136px;
+      object-fit: cover;
+    }
+    &__img:hover {
+      opacity: 0.5;
+    }
+  }
+}
+.brand-list {
+  width: 100%;
+  .all-brand {
+    @include content-link;
+    .brand-link {
+      float: left;
+      margin: 4px 8px 4px 0;
+      padding: 6px 16px;
+      border: $border_style_inner;
+      border-radius: 4px;
+      box-shadow: $shadow_content;
+      color: $link_color_content;
+      font-size: $fSize_content;
+      white-space:nowrap;
+      cursor: pointer;
+    }
+  }
+}
