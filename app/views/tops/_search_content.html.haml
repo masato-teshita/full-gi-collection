@@ -44,16 +44,7 @@
     %h2.search-brand__title
       %span ブランドから探す
     .search-brand__area
-      %ul.top-brands
-        - @top_brands.each do |top_brand|
-          %li.top-brand
-            = link_to(shops_search_path(@q, 'q[brands_name_eq]': top_brand.name), class: 'top-brand-link') do
-              = image_tag asset_path(top_brand.image), class: 'top-brand__img'
-      %ul.brand-list.clearfix
-        - @brands.each do |brand|
-          %li.all-brand
-            = link_to(shops_search_path(@q, 'q[brands_name_eq]': brand.name), class: 'brand-link') do
-              %span= brand.name
+      = render 'brands/brands'
     .search-brand__all
       -# = link_to 'ブランド一覧へ', brands_path, class: 'brand-all-link'
 

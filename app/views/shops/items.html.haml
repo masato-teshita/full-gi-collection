@@ -21,3 +21,8 @@
         .brands_area
           .brands_area__heading
             %span 取扱ブランド
+          .brands_area__list
+            - if @brands.count != 0
+              = render 'brands/brands'
+            - else
+            %span 取扱ブランドはまだ登録されていません
