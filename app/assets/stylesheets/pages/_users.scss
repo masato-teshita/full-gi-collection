@@ -10,12 +10,12 @@
       font-weight: 200;
 
       i {
-        font-size: $fSize-content;
+        font-size: $fSize_content;
       }
     }
 
     .field-input {
-      font-size: $fSize-content;
+      font-size: $fSize_content;
       input {
         width: 100%;
         padding: 4px 8px;
@@ -55,14 +55,14 @@
   input[type='submit'] {
     float: left;
     margin-top: 20px;
-    background-color: $color-btn;
+    background-color: $color_btn;
     color: #fff;
   }
 
   .field-label {
     .field_with_errors {
       display: inline-block;
-      color: $color-error;
+      color: $color_error;
       font-weight: 400;
     }
   }
@@ -78,7 +78,7 @@
         right: 0;
         bottom: 0;
         width: 5px;
-        background-color: $color-error;
+        background-color: $color_error;
       }
     }
   }
@@ -116,14 +116,14 @@
         display: block;
         width: 60px;
         margin-top: 5px;
-        border-bottom: $border-style-btn;
+        border-bottom: $border_style_btn;
         content: '';
       }
     }
 
     h5 {
       margin-bottom: 20px;
-      font-size: $fSize-h5;
+      font-size: $fSize_h5;
       font-weight: 200;
     }
 
@@ -131,19 +131,19 @@
       margin-top: 20px;
       color: #fff;
       background-color: #ccc;
-      font-size: $fSize-h5;
+      font-size: $fSize_h5;
     }
 
     .test-login {
       margin-top: 20px;
-      font-size: $fSize-h5;
+      font-size: $fSize_h5;
       &__btn {
         margin-top: 0;
         border: none;
         background-color: white;
-        color: $link-color;
+        color: $link_color;
         &:hover {
-          color: $link-color-hover;
+          color: $link_color_hover;
           cursor: pointer;
         }
       }
@@ -157,8 +157,8 @@
     position: absolute;
     left: 0;
     width: 100%;
-    min-width: $wrapper-min-width;
-    border-top: $border-style-default;
+    min-width: $wrapper_min_width;
+    border-top: $border_style_default;
     overflow: hidden;
   }
   .user-header {
@@ -188,7 +188,7 @@
           position: relative;
           &:hover {
             .delete-img-btn {
-              opacity: $hover-opacity;
+              opacity: $hover_opacity;
             }
           }
         .delete-img-btn {
@@ -207,7 +207,7 @@
           width: 98px;
           height: 98px;
           padding: 4px;
-          border: $border-style-inner;
+          border: $border_style_inner;
           border-radius: 6px;
           cursor: pointer;
           .user-icon-img {
@@ -255,7 +255,7 @@
               width: 96px;
               height: 64px;
               color: gray; 
-              font-size: $fSize-h5;
+              font-size: $fSize_h5;
               text-align: center;
             & a {
                 vertical-align: middle;
@@ -278,7 +278,7 @@
               }
             }
             &:hover a {
-              color: $link-color-hover;
+              color: $link_color_hover;
             }
           }
           .first-nav {
@@ -309,14 +309,14 @@
       width: 60%;
       height: 240px;
       padding: 16px;
-      border: $border-style-inner;
+      border: $border_style_inner;
       background-color: white;
       white-space: pre-wrap;
     }
     .user-action-info {
       width: 32%;
       padding: 16px;
-      border: $border-style-inner;
+      border: $border_style_inner;
       background-color: white;
       font-size: 12px;
       .user-action-wrap {
@@ -336,7 +336,7 @@
   padding: 12px;
   border-radius: 4px;
   background-color: mistyrose;
-  color: $color-error;
+  color: $color_error;
   font-size: 12px;
   .error-close-btn {
     cursor: pointer;

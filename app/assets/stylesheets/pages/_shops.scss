@@ -1,7 +1,7 @@
 // ページネーション
 .shop-paginate {
   margin: 16px 0;
-  font-size: $fSize-content;
+  font-size: $fSize_content;
 }
 // 並び替え
 .searched_heading-box {
@@ -9,16 +9,16 @@
   justify-content: space-between;
   &__result {
     &__keyword {
-      font-size: $fSize-h2;
+      font-size: $fSize_h2;
     }
   }
   &__sort {
     & select {
       height: 48px;
       padding: 4px;
-      font-size: $fSize-content;
+      font-size: $fSize_content;
       &:focus {
-        border: $border-style-hover;
+        border: $border_style_hover;
         border-radius: 3px;
         outline: 0;
       }
@@ -29,11 +29,11 @@
 .shop-list {
   .shop {
     &:hover a .top-info__name {
-      color: $color-action;
+      color: $color_action;
       text-decoration: underline;
     }
     &:hover div .bottom-info-left__top-cover {
-      border: $border-style-hover;
+      border: $border_style_hover;
     }
     .top-info {
       @include up-down-center;
@@ -41,7 +41,7 @@
       height: 50px;
       padding-left: 16px;
       border-top: solid 2px gray;
-      border-bottom: $border-style-default;
+      border-bottom: $border_style_default;
       &__name_and_area {
         @include up-down-center;
         &__name {
@@ -49,52 +49,52 @@
         }
         &__area {
           margin-left: 12px;
-          color: $color-default;
-          font-size: $fSize-content;
+          color: $color_default;
+          font-size: $fSize_content;
           word-wrap: break-word;
         }  
       }
       &__action {
         @include up-down-center;
         width: 96px;
-        color: $color-action;
+        color: $color_action;
         .action-icon {
           width: 48px;
           height: 32px;
           line-height: 36px;
           text-align: center;
           & span {
-            font-size: $fSize-content;
+            font-size: $fSize_content;
           }
           .user-count-0 {
-            color: $color-no-action;
+            color: $color_no_action;
           }
           .clip-count-0 {
-            color: $color-no-action;
+            color: $color_no_action;
           }
         }
         .action-icon-left {
-          border-right: $border-style-inner;
+          border-right: $border_style_inner;
         }
       }
     }
     .bottom-info {
       display: flex;
       padding: 16px;
-      color: $color-default;
+      color: $color_default;
       .bottom-info-left {
         &__top-cover {
           width: 146px;
           height: 146px;
           padding: 4px;
-          border: $border-style-default;
+          border: $border_style_default;
           .top-cover-img {
             width: 136px;
             height: 136px;
             object-fit: cover;
             margin: 0 auto;
             &:hover {
-              opacity: $hover-opacity;
+              opacity: $hover_opacity;
             }
           }
         }
@@ -116,7 +116,7 @@
       }
       .bottom-info-right {
         padding: 8px 16px;
-        font-size: $fSize-content;
+        font-size: $fSize_content;
         &__overview {
           display: -webkit-box;
           -webkit-box-orient: vertical;
@@ -133,13 +133,13 @@
           }
           .shop-rating {
             padding: 0 8px;
-            color: $color-rate;
+            color: $color_rate;
             font-size: 20px;
             font-weight: bold;
           }
           .shop-count {
             margin-left: 8px;
-            color: $color-no-action;
+            color: $color_no_action;
             text-decoration: underline;
             i {
               margin-right: 4px;
@@ -157,13 +157,13 @@
               font-weight: bold;
             }
             &__user {
-              color: $color-no-action;
+              color: $color_no_action;
               font-size: 9px;
             }
           }
           .wom-content {
             padding: 8px 0;
-            color: $color-no-action;
+            color: $color_no_action;
           }
         }
       }
@@ -185,14 +185,14 @@
     @include up-down-center;
     justify-content: space-between;
     padding: 8px 0;
-    border-top: $border-style-inner;
+    border-top: $border_style_inner;
     .info-wrap {
       width: 100%;
       .shop-controller {
         display: flex;
         align-items: center;
         .shop-name {
-          font-size: $fSize-h2;
+          font-size: $fSize_h2;
           font-weight: bold;
         }
         .shop-edit {
@@ -202,18 +202,18 @@
       .shop-top-info {
         @include up-down-center;
         border-bottom: dotted 1px lightgray;
-        color: $color-no-action;
-        font-size: $fSize-content;
+        color: $color_no_action;
+        font-size: $fSize_content;
         &__rate {
           @include up-down-center;
           .star-rating {
             color: #ffcc33;
-            font-size: $fSize-h2;
+            font-size: $fSize_h2;
           }
           .shop-rating {
             padding: 0 8px;
-            color: $color-rate;
-            font-size: $fSize-h2;
+            color: $color_rate;
+            font-size: $fSize_h2;
             font-weight: bold;
           }
         }
@@ -226,9 +226,9 @@
       }
       .shop-bottom-info {
         padding: 8px 0;
-        font-size: $fSize-content;
+        font-size: $fSize_content;
         .shop-bottom-info-show {
-          color: $color-no-action;
+          color: $color_no_action;
           margin-right: 16px;
         }
         .shop-genre {
@@ -261,15 +261,15 @@
         }
       }
       #woms-count-0 {
-        border: $border-style-inner;
-        color: $color-no-action;
+        border: $border_style_inner;
+        color: $color_no_action;
         cursor: pointer;
         @include content-hover;
         @include action-link;
       }
       #clip-count-0 {
-        border: $border-style-inner;
-        color: $color-no-action;
+        border: $border_style_inner;
+        color: $color_no_action;
         cursor: pointer;
         @include content-hover;
         @include action-link;
@@ -278,17 +278,17 @@
         width: 96px;
         height: 32px;
         margin: 4px;
-        border: $border-style-hover;
+        border: $border_style_hover;
         border-radius: 4px;
         background-color: white;
-        color: $color-action;
+        color: $color_action;
         font-size: 14px;
         text-align: center;
         cursor: pointer;
         @include content-hover;
         a {
           text-decoration: none;
-          color: $color-action;
+          color: $color_action;
         }
         .action-link {
           @include up-down-center;
@@ -309,13 +309,13 @@
   .shop-body {
     .shop-menu-bar {
       display: flex;
-      border-top: $border-style-inner;
-      border-bottom: $border-style-inner;
-      border-right: $border-style-inner;
+      border-top: $border_style_inner;
+      border-bottom: $border_style_inner;
+      border-right: $border_style_inner;
       .shop-menu {
         width: 25%;
         height: 48px;
-        border-left: $border-style-inner;
+        border-left: $border_style_inner;
         cursor: pointer;
         background: -moz-linear-gradient(bottom, whitesmoke, #FFF);
         background: -webkit-linear-gradient(bottom, whitesmoke, #FFF);
@@ -329,7 +329,7 @@
           @include up-down-center;
           width: 100%;
           height: 48px;
-          color: $color-default;  
+          color: $color_default;  
           text-align: center;
           text-decoration: none;
           .shop-menu-name {
