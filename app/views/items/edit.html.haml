@@ -1,0 +1,21 @@
+- breadcrumb :show_shop, @shop
+= render "layouts/breadcrumbs"
+.shop-wrapper
+  = render "shops/header"
+  .shop-body
+    %ul.shop-menu-bar
+      %li.shop-menu
+        = link_to(shop_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 店舗トップ
+      %li.shop-menu#selected-menu
+        = link_to(shop_items_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 取扱商品
+      %li.shop-menu
+        = link_to(shop_woms_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 口コミ
+      %li.shop-menu
+        = link_to(shop_map_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 地図
+    .shop-content
+      %h2 商品編集
+      = render 'items/form'
