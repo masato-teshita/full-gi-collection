@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_154109) do
+ActiveRecord::Schema.define(version: 2020_07_27_141529) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,19 @@ ActiveRecord::Schema.define(version: 2020_07_23_154109) do
     t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
+  create_table "items", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.string "name"
+    t.integer "item_status_id"
+    t.text "explanation"
+    t.integer "price", null: false
+    t.string "size"
+    t.text "size_detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_items_on_shop_id"
+  end
+
   create_table "shop_brands", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "shop_id"
     t.integer "brand_id"
@@ -111,6 +124,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_154109) do
     t.string "postal_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "shop_admin_id"
     t.index ["area_id"], name: "index_shops_on_area_id"
   end
 
@@ -152,6 +166,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_154109) do
   add_foreign_key "clips", "users"
   add_foreign_key "histories", "shops"
   add_foreign_key "histories", "users"
+  add_foreign_key "items", "shops"
   add_foreign_key "shop_brands", "brands"
   add_foreign_key "shop_brands", "shops"
   add_foreign_key "shop_genres", "genres"

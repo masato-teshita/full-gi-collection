@@ -1,0 +1,66 @@
+- breadcrumb :show_shop, @shop
+= render "layouts/breadcrumbs"
+.shop-wrapper
+  = render "shops/header"
+  .shop-body
+    %ul.shop-menu-bar
+      %li.shop-menu
+        = link_to(shop_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 店舗トップ
+      %li.shop-menu#selected-menu
+        = link_to(shop_items_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 取扱商品
+      %li.shop-menu
+        = link_to(shop_woms_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 口コミ
+      %li.shop-menu
+        = link_to(shop_map_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 地図
+    .shop-content
+      .items_wrapper
+        .item_box
+          .item_box__left
+            .item_box__left__image_container
+              %ul.item_box__left__image_container__slider#slider_images
+                - @item.images.each_with_index do |image, i|
+                  %li.item_box__left__image_container__slider__box.slider_image
+                    = image_tag image
+              -# %ul.item_box__left__image_container__thumb#thumb_images
+              -#   - if @item.images.count > 1
+              -#     - @item.images.each_with_index do |image, i|
+              -#       %li.item_box__left__image_container__thumb__box.thumb_image
+              -#         = image_tag image
+          .item_box__right
+            .item_box__right__heading
+              .item_box__right__heading__item_name
+                %span= @item.name
+              - if user_signed_in? 
+                - if @shop.shop_admin == current_user or current_user.admin?
+                  %ul.item_box__right__heading__action
+                    %li.item_box__right__heading__action--option
+                      = link_to '編集', edit_shop_item_path(@shop, @item.id)
+                    %li.item_box__right__heading__action--option
+                      = link_to '削除', shop_item_path(@shop, @item.id), method: :delete, data: { confirm: '本当に削除して良いですか?',cancel: 'やめる',commit: '削除する',disable_with: "処理中..."}, title: '削除確認'
+            .item_box__right__price
+              %span.item_box__right__price--body= show_price(@item)
+              %span (税込)
+            .item_box__right__detail
+              %ul.item_box__right__detail__title
+                %li.item_box__right__detail__title--tab#item_explanation_tab.selected_tab
+                  %span アイテム説明
+                %li.item_box__right__detail__title--tab#item_size_tab
+                  %span サイズ詳細
+              .item_box__right__detail__box#item_explanation_box.active_box
+                .item_box__right__detail__box--top
+                  %span= show_status(@item)
+                .item_box__right__detail__box--bottom
+                  %span 店舗スタッフコメント：
+                  %div
+                    %span= @item.explanation
+              .item_box__right__detail__box#item_size_box
+                .item_box__right__detail__box--top
+                  %span= show_size(@item)
+                .item_box__right__detail__box--bottom
+                  %span サイズ詳細：
+                  %div
+                    %span= @item.size_detail

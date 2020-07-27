@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :redirect_to_root, only: [:render_404]
   before_action :store_current_location, unless: :devise_controller?
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -25,6 +26,14 @@ class ApplicationController < ActionController::Base
   def set_shop_search_query
     @q = Shop.ransack(params[:q])
     @shops = @q.result(distinct: true)
+  end
+
+  def admin_check(shop)
+    redirect_to root_path unless current_user.admin? || shop.shop_admin == current_user
+  end
+
+  def redirect_to_root
+    redirect_to root_path
   end
 
   private

@@ -18,10 +18,10 @@ class WomsController < ApplicationController
   def create
     @wom = Wom.new(wom_params)
     if @wom.save
-      if History.where(user_id: current_user.id).where(shop_id: params[:shop_id]) == []
-        History.create!(user_id: current_user.id, shop_id: params[:shop_id])
+      if History.where(user_id: current_user.id).where(shop_id: @wom.shop_id) == []
+        History.create!(user_id: current_user.id, shop_id: @wom.shop_id)
       end
-      redirect_to shop_woms_path(params[:shop_id])
+      redirect_to shop_woms_path(@wom.shop_id)
     else
       render :new
     end
@@ -33,15 +33,11 @@ class WomsController < ApplicationController
   def update
     wom = Wom.find(params[:id])
     wom.update(wom_params)
-    redirect_to shop_woms_path(params[:shop_id])
+    redirect_to shop_woms_path(wom.shop_id)
   end
 
   def destroy
-    if @wom.destroy
-      redirect_to shop_woms_path(params[:shop_id])
-    else
-      render :index
-    end
+    @wom.destroy ? (redirect_to shop_woms_path(@wom.shop_id)):(render :index)
   end
 
   private

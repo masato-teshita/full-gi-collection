@@ -1,24 +1,24 @@
 .footer {
   min-width: 1280px;
   width: 100%;
-  background-color: $menu-color-whitesmoke;
+  background-color: $menu_color_whitesmoke;
   .footer-wrap {
     height: 128px;
-    max-width: $wrapper-max-width;
-    min-width: $wrapper-min-width;
+    max-width: $wrapper_max_width;
+    min-width: $wrapper_min_width;
     margin: 0 auto;
     padding: 0 240px 0;
     &__top {
       @include up-down-center;
       height: 50%;
-      border-bottom: $border-style-inner;
+      border-bottom: $border_style_inner;
       text-align: center;
       .languege-list {
         @include up-down-center;
         width: 320px;
         margin: 0 auto;
-        color: $menu-color-gray;
-        font-size: $fSize-content;
+        color: $menu_color_gray;
+        font-size: $fSize_content;
         .languege-title {
           width: 16%;
         }  
@@ -38,7 +38,7 @@
       @include up-down-center;
       justify-content: space-between;
       height: 50%;
-      color: $menu-color-gray;
+      color: $menu_color_gray;
       .servise-icon-box {
         #footer-icon {
           height: 50px;
@@ -50,9 +50,9 @@
         margin: 0 auto;
         &__link {
           padding: 0 8px;
-          font-size: $fSize-content;
+          font-size: $fSize_content;
           a {
-            color: $color-no-action;
+            color: $color_no_action;
           }
         }
       }      

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   end
   resources :shops do
     resources :woms
+    resources :items
     get 'map', to: 'shops#map'
   end
   resources :areas, only: :index

@@ -7,20 +7,20 @@
       width: 120px;
       height: 40px;
       padding: 1em 2em;
-      border: $border-style-btn;
+      border: $border_style_btn;
       border-radius: 4px;
-      box-shadow: $shadow-btn-box;
-      background: $color-btn;
+      box-shadow: $shadow_btn_box;
+      background: $color_btn;
       color: #FFF;
-      font-size: $fSize-content;
+      font-size: $fSize_content;
       text-decoration: none;
-      text-shadow: $shadow-btn-text;
+      text-shadow: $shadow_btn_text;
     }
   }
   .woms-search-form {
-    border: $border-style-inner;
-    background-color: $menu-color-whitesmoke;
-    font-size: $fSize-content;
+    border: $border_style_inner;
+    background-color: $menu_color_whitesmoke;
+    font-size: $fSize_content;
     .search-form-title {
       padding: 8px 16px;
     }
@@ -31,8 +31,8 @@
         @include up-down-center;
         height: 48px;
         width: 24%;
-        border-top: $border-style-inner;
-        border-right: $border-style-inner;
+        border-top: $border_style_inner;
+        border-right: $border_style_inner;
         .wom-type {
           width: 100%;
           margin: 0 auto;
@@ -49,49 +49,49 @@
         } 
       }
       .first-type {
-        border-left: $border-style-inner;
+        border-left: $border_style_inner;
         &:hover {
-          border-top: $border-style-hover;
+          border-top: $border_style_hover;
           & span {
-            color: $color-action;
+            color: $color_action;
           }
         }
       }
       .buy-type {
         &:hover {
-          border-top: $border-style-buy;
+          border-top: $border_style_buy;
           & span {
-            color: $color-buy;
+            color: $color_buy;
           }
         }
       }
       .sell-type {
         &:hover {
-          border-top: $border-style-sell;
+          border-top: $border_style_sell;
           & span {
-            color: $color-sell;
+            color: $color_sell;
           }
         } 
       }
       .selected-all {
         background-color: white;
-        border-top: $border-style-hover;
+        border-top: $border_style_hover;
       & span {
-          color: $color-action;
+          color: $color_action;
         }
       }
       .selected-buy {
         background-color: white;
-        border-top: $border-style-buy;
+        border-top: $border_style_buy;
       & span {
-          color: $color-buy;
+          color: $color_buy;
         }
       }
       .selected-sell {
         background-color: white;
-        border-top: $border-style-sell;
+        border-top: $border_style_sell;
       & span {
-          color: $color-sell;
+          color: $color_sell;
         }
       }
     }
@@ -100,17 +100,17 @@
     @include up-down-center;
     justify-content: space-between;
     margin-top: 12px;
-    font-size: $fSize-content;
+    font-size: $fSize_content;
     .woms-count {
       .num {
-        font-size: $fSize-default;
+        font-size: $fSize_default;
       }
     }
   }
   .woms-list {
     .woms-box {
       margin: 16px 0;
-      border: $border-style-inner;
+      border: $border_style_inner;
       border-radius: 6px;
       &__wom-info {
         display: flex;
@@ -126,7 +126,7 @@
             border-radius: 4px;
           }
           .user-name {
-            font-size: $fSize-content;
+            font-size: $fSize_content;
             a {
               color: gray;
               text-decoration: none;
@@ -137,27 +137,27 @@
           }
         }
         .user-action {
-          font-size: $fSize-content;
+          font-size: $fSize_content;
           a {
-            color: $color-no-action;
+            color: $color_no_action;
             text-decoration: none;
           }
         }
       }
       &__rate {
         padding: 0 12px;
-        border-bottom: $border-style-orNot;
+        border-bottom: $border_style_orNot;
         .rate-container {
           display: flex;
           padding: 8px 0;
-          border-top: $border-style-orNot;
+          border-top: $border_style_orNot;
           font-size: 20px;
           .star-rating {
             margin-left: 12px;
           }
           .wom-rate {
             margin-left: 8px;
-            color: $color-rate;
+            color: $color_rate;
             font-weight: bold;
           }
         }
@@ -166,7 +166,7 @@
         padding: 12px;
         .content-visit-date {
           margin-bottom: 8px;
-          font-size: $fSize-content;
+          font-size: $fSize_content;
         }
         .content-title {
           display: inline-block;
@@ -181,30 +181,30 @@
     }
   }
   .pagination {
-    font-size: $fSize-content;
+    font-size: $fSize_content;
     text-align: right;
   }
 }
 .fa-tshirt {
-  color: $color-buy;
+  color: $color_buy;
 }
 .fa-yen-sign {
-  color: $color-sell;
+  color: $color_sell;
 }
 
 //投稿ページ
 .wom-post-form {
   padding: 0 24px;
   .form-box {
-    border: $border-style-inner;
+    border: $border_style_inner;
     .wom-form-header {
       height: 4vh;
       padding: 4px 8px;
-      border-bottom: $border-style-inner;
-      background-color: $menu-color-whitesmoke;
+      border-bottom: $border_style_inner;
+      background-color: $menu_color_whitesmoke;
       .form-title {
         margin-left: 16px;
-        font-size: $fSize-content;
+        font-size: $fSize_content;
       }
     }
     .wom-form-body {
@@ -212,10 +212,10 @@
       text-align: center;
       .visit-type-select {
         padding: 16px 0;
-        border-bottom: $border-style-inner;
+        border-bottom: $border_style_inner;
         .select-msg {
           margin-bottom: 8px;
-          font-size: $fSize-content;
+          font-size: $fSize_content;
         }
         .select-form {
           @include up-down-center;
@@ -230,21 +230,21 @@
             }
             .radio-btn-buy {
               &:checked + .select-box__buy {
-                border: 2px solid $color-buy;
-                color: $color-buy;
+                border: 2px solid $color_buy;
+                color: $color_buy;
               }
             }
             .radio-btn-sell {
               &:checked + .select-box__sell {
-                border: 2px solid $color-sell;
-                color: $color-sell;
+                border: 2px solid $color_sell;
+                color: $color_sell;
               }
             }
             &__buy {
               display: inline-block;
               width: 80px;
               padding: 4px;
-              border: $border-style-option;
+              border: $border_style_option;
               border-radius: 4px;
               .btn-label {
                 cursor: pointer;
@@ -259,7 +259,7 @@
               width: 80px;
               margin: 0px 4px;
               padding: 4px;
-              border: $border-style-option;
+              border: $border_style_option;
               border-radius: 4px;
               .btn-label {
                 cursor: pointer;
@@ -282,27 +282,27 @@
           height: 48px;
           padding: 0 4px;
           border-radius: 4px;
-          border: $border-style-field;
+          border: $border_style_field;
           outline: none;
           font-size: 18px;
           &:focus {
-            border: solid 3px $color-buy;
-            box-shadow: 0 0 3px $color-buy;
+            border: solid 3px $color_buy;
+            box-shadow: 0 0 3px $color_buy;
           }
         }
       }
       .wom-content {
         .wom-content-field {
-          font-size: $fSize-content;
+          font-size: $fSize_content;
           width: 100%;
           height: 160px;
           padding: 4px 4px;
           border-radius: 4px;
-          border: $border-style-field;
+          border: $border_style_field;
           outline: none;
           &:focus {
-            border: solid 3px $color-buy;
-            box-shadow: 0 0 3px $color-buy;
+            border: solid 3px $color_buy;
+            box-shadow: 0 0 3px $color_buy;
           }
         }
       }
@@ -315,7 +315,7 @@
       border-radius: 0 0 6px 6px;
       background-color: ivory;
       .visit-date {
-        font-size: $fSize-content;
+        font-size: $fSize_content;
       }
       .send-btn {
         margin-left: 22%;
@@ -323,14 +323,14 @@
           width: 120px;
           height: 40px;
           padding: 0.25em 0.5em;
-          border: $border-style-btn;
+          border: $border_style_btn;
           border-radius: 4px;
           color: #FFF;
-          font-size: $fSize-content;
-          box-shadow: $shadow-btn-box;
-          background: $color-btn;
+          font-size: $fSize_content;
+          box-shadow: $shadow_btn_box;
+          background: $color_btn;
           text-decoration: none;
-          text-shadow: $shadow-btn-text;
+          text-shadow: $shadow_btn_text;
         }  
       }
     }
@@ -342,7 +342,7 @@
   margin: 12px auto;
   border: solid 1px beige;
   background-color: ivory;
-  color: $color-error;
+  color: $color_error;
   text-align: left;
   ul {
     list-style-type: disc;

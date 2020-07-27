@@ -1,5 +1,6 @@
 class Shop < ApplicationRecord
   belongs_to :user, optional: true
+  belongs_to :shop_admin, class_name: "User"
   belongs_to :area, optional: true
   has_many :historis
   has_many :clips
@@ -11,6 +12,7 @@ class Shop < ApplicationRecord
   has_many :brands, through: :shop_brands
   has_many :users, through: :shop_users
   has_many :shop_images
+  has_many :items
   accepts_nested_attributes_for :shop_images, allow_destroy: true
   geocoded_by :address, latitude: :latitude, longitude: :longitude
   after_validation :geocode
