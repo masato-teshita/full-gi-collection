@@ -35,7 +35,7 @@
               .item_box__right__heading__item_name
                 %span= @item.name
               - if user_signed_in? 
-                - if @shop.shop_admin == current_user or current_user.admin == true
+                - if @shop.shop_admin == current_user or current_user.admin?
                   %ul.item_box__right__heading__action
                     %li.item_box__right__heading__action--option
                       = link_to '編集', edit_shop_item_path(@shop, @item.id)
