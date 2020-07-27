@@ -1,5 +1,6 @@
 class Shop < ApplicationRecord
   belongs_to :user, optional: true
+  belongs_to :shop_admin, class_name: "User"
   belongs_to :area, optional: true
   has_many :historis
   has_many :clips
