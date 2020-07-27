@@ -89,3 +89,4 @@ gem 'listen'
 gem 'ransack'
 gem 'active_hash'
 gem 'aws-sdk-s3'
+gem 'bootsnap', require: false
