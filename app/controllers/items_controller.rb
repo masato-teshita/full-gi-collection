@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_shop, only: [:index, :new, :create, :show, :edit, :destroy]
-  before_action :set_item, only: [:show, :edit, :destroy]
+  before_action :set_shop
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_items, only: [:index, :new, :create, :edit]
   # before_action :set_all_woms, only: [:index, :new, :create, :edit]
   before_action :set_clip_user_and_shop, only: [:index, :new]
@@ -30,9 +30,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    # wom = Wom.find(params[:id])
-    # wom.update(wom_params)
-    # redirect_to shop_woms_path(params[:shop_id])
+    @item.update(item_params) ? (redirect_to shop_items_path(@shop.id)):(render :edit)
   end
 
   def destroy
