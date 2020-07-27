@@ -28,10 +28,10 @@
       .shop-top-info__woms
         = link_to(shop_woms_path(@shop.id)) do
           %i.fas.fa-comment-dots<>
-          = "#{@woms.where.not(rate: nil).count} 件"
+          = "#{@shop.woms.where.not(rate: nil).count} 件"
       .shop-top-info__bookmarks
         %i.fas.fa-bookmark.fa-lg<>
-        = "#{@clips.count} 件"
+        = "#{@shop.clips.count} 件"
     .shop-bottom-info
       %span エリア：
       = link_to(@shop.area.name, shops_search_path(@q, 'q[area_name_cont]': @shop.area.name), class: 'shop-bottom-info-show')
