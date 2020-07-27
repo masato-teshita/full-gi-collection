@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_shop
+  before_action -> {
+    admin_check(@shop)
+  }, only: [:new, :edit, :update, :delete]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_items, only: [:index, :new, :create, :edit]
   # before_action :set_all_woms, only: [:index, :new, :create, :edit]

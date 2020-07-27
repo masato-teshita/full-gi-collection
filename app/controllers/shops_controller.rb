@@ -1,8 +1,10 @@
 class ShopsController < ApplicationController
   require 'will_paginate/array'
   skip_before_action :authenticate_user!
-  before_action :move_to_root, except: [:index, :show, :map, :search]
-  before_action :set_shop, only: [:edit, :update]
+  before_action :set_shop, only: [:edit, :update, :delete]
+  before_action :new_shop, only: [:new]
+  before_action -> {
+    admin_check(@shop) }, only: [:new, :edit, :update, :delete]
   before_action :set_shop_info, only: [:show, :map]
 
   def index
@@ -18,7 +20,6 @@ class ShopsController < ApplicationController
   end
 
   def new
-    @shop = Shop.new
     @shop.shop_images.new
   end
 
@@ -92,6 +93,10 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
   end
 
+  def new_shop
+    @shop = Shop.new
+  end
+
   def set_shop_info
     if params[:id].present? 
       @shop = Shop.find(params[:id])
@@ -122,10 +127,6 @@ class ShopsController < ApplicationController
 
   def search_params
     params.require(:q).permit!
-  end
-
-  def move_to_root    
-    redirect_to root_path unless user_signed_in? && current_user.admin?
   end
 
   def shop_sort(sort)
