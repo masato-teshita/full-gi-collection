@@ -6,6 +6,8 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.integer :item_status_id, null: :false
       t.text :explanation
       t.integer :price, null: false
+      t.string :size
+      t.text :size_detail
       t.timestamps
     end
   end
