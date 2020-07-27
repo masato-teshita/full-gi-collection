@@ -15,6 +15,9 @@
                     -if current_user.admin?
                       %li.menu-option
                         = link_to '新規店舗登録', new_shop_path
+                    -if @shop.present?
+                      %li.menu-option
+                        = link_to 'My店舗', shop_path(@shop)
                     %li.menu-option
                       = link_to '行った古着屋', user_histories_path(current_user)
                     %li.menu-option
