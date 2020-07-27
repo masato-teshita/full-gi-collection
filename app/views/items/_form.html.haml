@@ -1,0 +1,40 @@
+.item_form
+  = form_with model: [@shop, @item], local: true do |f|
+    .field
+      .field__label
+        = f.label :images, '商品画像', class: 'image'
+        %span.require *
+      .field__input
+        = f.file_field :images, multiple: true
+    .field
+      .field__label
+        = f.label :name, '商品名'
+      .field__input
+        = f.text_field :name
+    .field
+      .field__label
+        = f.label :item_status, '商品状態'
+      .field__input
+        = f.collection_select :item_status_id, ItemStatus.all, :id, :name, prompt: "選択してください", required: :true
+    .field
+      .field__label
+        = f.label :explanation, '商品説明'
+      .field__input
+        = f.text_area :explanation
+    .field
+      .field__label
+        = f.label :size, 'サイズ'
+      .field__input
+        = f.text_field :size
+    .field
+      .field__label
+        = f.label :size_detail, 'サイズ詳細'
+      .field__input
+        = f.text_area :size_detail
+    .field
+      .field__label
+        = f.label :price, '商品価格'
+      .field__input
+        = f.number_field :price
+    .field
+      = f.submit '投稿', class: ''
