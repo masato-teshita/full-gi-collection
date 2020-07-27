@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
     @shops = @q.result(distinct: true)
   end
 
+  def admin_check(shop)
+    redirect_to root_path unless current_user.admin? || shop.shop_admin == current_user
+  end
+
   def redirect_to_root
     redirect_to root_path
   end
