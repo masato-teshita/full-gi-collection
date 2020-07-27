@@ -38,4 +38,5 @@ Rails.application.routes.draw do
   resources :genres, only: :index
   resources :brands, only: :index
   resources :readies, only: :index
+  get '*path', to: 'application#render_404'
 end

@@ -1,10 +1,20 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :redirect_to_root, only: [:render_404]
   before_action :store_current_location, unless: :devise_controller?
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_host
   before_action :set_shop_search_query
+
+
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  rescue_from ActionController::RoutingError, with: :render_404
+  rescue_from StandardError, with: :render_404
+  
+  def render_404
+    redirect_to root_path
+  end
 
   def set_host
     Rails.application.routes.default_url_options[:host] = request.host_with_port
@@ -25,6 +35,10 @@ class ApplicationController < ActionController::Base
   def set_shop_search_query
     @q = Shop.ransack(params[:q])
     @shops = @q.result(distinct: true)
+  end
+
+  def redirect_to_root
+    redirect_to root_path
   end
 
   private
