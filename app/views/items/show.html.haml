@@ -34,11 +34,13 @@
             .item_box__right__heading
               .item_box__right__heading__item_name
                 %span= @item.name
-              %ul.item_box__right__heading__action
-                %li.item_box__right__heading__action--option
-                  = link_to '編集', edit_shop_item_path(@shop, @item.id)
-                %li.item_box__right__heading__action--option
-                  = link_to '削除', shop_item_path(@shop, @item.id), method: :delete, data: { confirm: '本当に削除して良いですか?',cancel: 'やめる',commit: '削除する',disable_with: "処理中..."}, title: '削除確認'
+              - if user_signed_in? 
+                - if @shop.shop_admin == current_user or current_user.admin == true
+                  %ul.item_box__right__heading__action
+                    %li.item_box__right__heading__action--option
+                      = link_to '編集', edit_shop_item_path(@shop, @item.id)
+                    %li.item_box__right__heading__action--option
+                      = link_to '削除', shop_item_path(@shop, @item.id), method: :delete, data: { confirm: '本当に削除して良いですか?',cancel: 'やめる',commit: '削除する',disable_with: "処理中..."}, title: '削除確認'
             .item_box__right__price
               %span.item_box__right__price--body= show_price(@item)
               %span (税込)
