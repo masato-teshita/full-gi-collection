@@ -25,4 +25,32 @@
             - if @brands.count != 0
               = render 'brands/brands'
             - else
-            %span 取扱ブランドはまだ登録されていません
+              %span.no_register 取扱ブランドはまだ登録されていません
+        .items_area
+          .items_area__heading
+            %span 取扱商品
+          %ul.items_area__list
+            - if @items.count != 0
+              - @items.each do |item|
+                = link_to shop_item_path(@shop, item.id) do
+                  %li.items_area__list__item
+                    .items_area__list__item__image
+                      = image_tag item.images[0]
+                    .items_area__list__item__info
+                      .items_area__list__item__info--name
+                        %span= item.name
+                      .items_area__list__item__info--price
+                        %span= "#{show_price(item)} (税込)／"
+                        %span= item.item_status.name
+                      .items_area__list__item__info--explanation
+                        %span= "商品説明：#{item.explanation.truncate(10, omission: '...')}"
+                    %ul.items_area__list__item__action
+                      %li.items_area__list__item__action--option
+                        = link_to '編集', edit_shop_item_path(@shop, item.id)
+                      %li.items_area__list__item__action--option
+                        = link_to '削除', shop_item_path(@shop, item.id), method: :delete, data: { confirm: '本当に削除して良いですか?',cancel: 'やめる',commit: '削除する',disable_with: "処理中..."}, title: '削除確認'
+            - else
+              %span.no_register 取扱商品はまだ登録されていません
+        .item_post
+          = link_to(new_shop_item_path, class: 'item_post__btn') do
+            %span 新規商品投稿
