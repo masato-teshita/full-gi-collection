@@ -1,0 +1,50 @@
+- breadcrumb :show_shop, @shop
+= render "layouts/breadcrumbs"
+.shop-wrapper
+  = render "shops/header"
+  .shop-body
+    %ul.shop-menu-bar
+      %li.shop-menu
+        = link_to(shop_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 店舗トップ
+      %li.shop-menu#selected-menu
+        = link_to(shop_items_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 取扱商品
+      %li.shop-menu
+        = link_to(shop_woms_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 口コミ
+      %li.shop-menu
+        = link_to(shop_map_path(@shop.id), class: 'shop-menu-link') do
+          %span.shop-menu-name 地図
+    .shop-content
+      .items_wrapper
+        .item_box
+          .item_box__left
+            .item_box__left__image_container
+              %ul.item_box__left__image_container__slider#slider_images
+                - @item.images.each_with_index do |image, i|
+                  %li.item_box__left__image_container__slider__box.slider_image
+                    = image_tag image
+              -# %ul.item_box__left__image_container__thumb#thumb_images
+              -#   - if @item.images.count > 1
+              -#     - @item.images.each_with_index do |image, i|
+              -#       %li.item_box__left__image_container__thumb__box.thumb_image
+              -#         = image_tag image
+          .item_box__right
+            .item_box__right__name
+              %span= @item.name
+            .item_box__right__price
+              %span.item_box__right__price--body= show_price(@item)
+              %span (税込)
+            .item_box__right__detail
+              %ul.item_box__right__detail__title
+                %li.item_box__right__detail__title--tab.selected_detail
+                  %span アイテム説明
+                %li.item_box__right__detail__title--tab
+                  %span サイズ詳細
+              .item_box__right__detail__condition
+                %span= show_status(@item)
+              .item_box__right__detail__explanation
+                %span 店舗スタッフコメント：
+                %div
+                  %span= @item.explanation
