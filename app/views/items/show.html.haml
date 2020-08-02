@@ -25,11 +25,11 @@
                 - @item.images.each_with_index do |image, i|
                   %li.item_box__left__image_container__slider__box.slider_image
                     = image_tag image
-              -# %ul.item_box__left__image_container__thumb#thumb_images
-              -#   - if @item.images.count > 1
-              -#     - @item.images.each_with_index do |image, i|
-              -#       %li.item_box__left__image_container__thumb__box.thumb_image
-              -#         = image_tag image
+              %ul.item_box__left__image_container__thumb#thumb_images
+                - if @item.images.count > 1
+                  - @item.images.each_with_index do |image, i|
+                    %li.item_box__left__image_container__thumb__box.thumb_image
+                      = image_tag image
           .item_box__right
             .item_box__right__heading
               .item_box__right__heading__item_name
