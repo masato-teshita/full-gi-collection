@@ -6,7 +6,12 @@
           %span= @shops.count
         .data-count__unit
           %span 店舗
-      %li.data-count.data-count-right
+      %li.data-count
+        .data-count__items
+          %span= @items.count
+        .data-count__unit
+          %span 商品
+      %li.data-count.data_count_center
         .data-count__wom
           %span= @woms.count
         .data-count__unit
