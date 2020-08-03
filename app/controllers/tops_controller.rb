@@ -12,6 +12,7 @@ class TopsController < ApplicationController
     @genres = Genre.all.order(:id)
     @top_brands = Brand.limit(5).order_by_shops
     @brands = Brand.all.order(:name)
+    @items = Item.all
     render layout: false
   end
 end
