@@ -64,3 +64,11 @@
                   %span サイズ詳細：
                   %div
                     %span= @item.size_detail
+  %div{ id: "item-modal__content", data: { modal: "content"}}
+    .item-modal__times
+      %i.fas.fa-times.fa-lg.js_modal_close
+    %ul.item-modal__slider#slider_images_modal
+      - @item.images.each_with_index do |image, i|
+        %li.item-modal__slider__box.slider_image
+          = image_tag image
+  %div{ id: "item-modal__overlay", data: { modal: "overlay"}}
