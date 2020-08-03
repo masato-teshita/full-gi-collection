@@ -372,8 +372,9 @@
       .data-counts {
         display: flex;
         margin: 0 auto;
-        .data-count-right {
+        .data_count_center {
           border-left: $border_style_inner;
+          border-right: $border_style_inner;
         }
         .data-count {
           padding: 0 24px;
