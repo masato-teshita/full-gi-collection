@@ -25,11 +25,11 @@
                 - @item.images.each_with_index do |image, i|
                   %li.item_box__left__image_container__slider__box.slider_image
                     = image_tag image
-              -# %ul.item_box__left__image_container__thumb#thumb_images
-              -#   - if @item.images.count > 1
-              -#     - @item.images.each_with_index do |image, i|
-              -#       %li.item_box__left__image_container__thumb__box.thumb_image
-              -#         = image_tag image
+              %ul.item_box__left__image_container__thumb#thumb_images
+                - if @item.images.count > 1
+                  - @item.images.each_with_index do |image, i|
+                    %li.item_box__left__image_container__thumb__box.thumb_image
+                      = image_tag image
           .item_box__right
             .item_box__right__heading
               .item_box__right__heading__item_name
@@ -64,3 +64,11 @@
                   %span サイズ詳細：
                   %div
                     %span= @item.size_detail
+  %div{ id: "item-modal__content", data: { modal: "content"}}
+    .item-modal__times
+      %i.fas.fa-times.fa-lg.js_modal_close
+    %ul.item-modal__slider#slider_images_modal
+      - @item.images.each_with_index do |image, i|
+        %li.item-modal__slider__box.slider_image
+          = image_tag image
+  %div{ id: "item-modal__overlay", data: { modal: "overlay"}}
