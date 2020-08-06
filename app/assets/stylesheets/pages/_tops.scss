@@ -5,6 +5,7 @@
 }
 .home-header {
   width: 100%;
+  min-width: $wrapper_min_width;
   height: 600px;
   background-image: image-url("furugi-top.jpeg");
   background-size: cover;
@@ -100,8 +101,12 @@
     height: 300px;
     margin: 48px 0px 48px 128px ;
     background-color: rgba(255, 255, 255, 0.5);
+    color: black;
     font-size: 70px;
     text-align: center;
+    & h1 {
+      line-height: 104px;
+    }
   }
 
   .search-form {
@@ -308,6 +313,7 @@
             }
             .top-genre-link {
               position: relative;
+              display: block;
               width: 136px;
               margin: 8px 8px 8px 0;
               color: white;
