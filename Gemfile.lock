@@ -49,6 +49,8 @@ GEM
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (9.0.0)
+    autoprefixer-rails (9.8.6.1)
+      execjs
     aws-eventstream (1.1.0)
     aws-partitions (1.345.0)
     aws-sdk-core (3.104.3)
@@ -71,6 +73,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.7)
       msgpack (~> 1.0)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     builder (3.2.4)
     bullet (6.1.0)
       activesupport (>= 3.0.0)
@@ -124,6 +129,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    data-confirm-modal (1.6.3)
+      railties (>= 3.0)
     devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -411,6 +418,7 @@ DEPENDENCIES
   aws-sdk-s3
   bcrypt_pbkdf
   bootsnap
+  bootstrap-sass
   bullet
   bundle_outdated_formatter
   byebug
@@ -423,6 +431,7 @@ DEPENDENCIES
   carrierwave
   cloudinary
   coffee-rails (~> 4.2)
+  data-confirm-modal
   devise
   devise-i18n
   devise-i18n-views
