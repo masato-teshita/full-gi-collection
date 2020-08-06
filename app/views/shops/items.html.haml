@@ -53,6 +53,7 @@
                             = link_to '削除', shop_item_path(@shop, item.id), method: :delete, data: { confirm: '本当に削除して良いですか?',cancel: 'やめる',commit: '削除する',disable_with: "処理中..."}, title: '削除確認'
             - else
               %span.no_register 取扱商品はまだ登録されていません
+          = will_paginate @items, renderer: BootstrapPagination::Rails
         - if user_signed_in? 
           - if @shop.shop_admin == current_user or current_user.admin?
             .item_post
