@@ -31,7 +31,9 @@ Rails.application.routes.draw do
   end
   resources :shops do
     resources :woms
-    resources :items
+    resources :items do
+      collection { post :import }
+    end
     get 'map', to: 'shops#map'
   end
   resources :areas, only: :index
