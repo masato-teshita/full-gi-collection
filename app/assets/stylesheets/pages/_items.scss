@@ -41,13 +41,14 @@
     }
     &__list {
       display: flex;
+      flex-wrap: wrap;
       & a {
         color: $color_default;
         text-decoration: none;
       }
       &__item {
         max-width: 180px;
-        margin: 0 8px;
+        margin: 8px;
         border: $border_style_menu;
         box-shadow: $shadow_content;
         &:hover {

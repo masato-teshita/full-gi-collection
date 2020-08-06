@@ -6,9 +6,7 @@ class ItemsController < ApplicationController
   }, only: [:new, :edit, :update, :delete]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_items, only: [:index, :new, :create, :edit]
-  # before_action :set_all_woms, only: [:index, :new, :create, :edit]
   before_action :set_clip_user_and_shop, only: [:index, :new]
-  # before_action :set_clips, only: [:index, :new, :create, :edit]
 
   def index
     @top_brands = @shop.brands.limit(5)
@@ -40,6 +38,11 @@ class ItemsController < ApplicationController
     @item.destroy ? (redirect_to shop_items_path(@shop.id)):(render :index)
   end
 
+  def import
+    Item.import(params[:file], @shop.id)
+    redirect_to shop_items_path(@shop.id)
+  end
+
   private
   def set_shop
     @shop = Shop.find(params[:shop_id])
@@ -50,7 +53,7 @@ class ItemsController < ApplicationController
   end
 
   def set_items
-    @items = @shop.items.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+    @items = @shop.items.paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
 
   def item_params
