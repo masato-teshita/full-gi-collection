@@ -92,3 +92,4 @@ gem 'aws-sdk-s3'
 gem 'bootsnap', require: false
 gem 'bootstrap-sass'
 gem 'data-confirm-modal'
+gem 'roo'
