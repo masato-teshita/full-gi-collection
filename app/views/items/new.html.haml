@@ -17,5 +17,10 @@
         = link_to(shop_map_path(@shop.id), class: 'shop-menu-link') do
           %span.shop-menu-name 地図
     .shop-content
-      %h2 新規商品投稿
-      = render 'items/form'
+      #new_item_form
+        %h2 新規商品投稿
+        = render 'items/form'
+        .item_import_form
+          = form_with url: import_shop_items_path, multipart: true do |f|
+            = f.file_field :file
+            = f.submit 'インポート', class: 'btn btn-primary'
