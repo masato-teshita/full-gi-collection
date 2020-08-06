@@ -93,3 +93,4 @@ gem 'bootsnap', require: false
 gem 'bootstrap-sass'
 gem 'data-confirm-modal'
 gem 'roo'
+gem 'will_paginate-bootstrap'
