@@ -512,8 +512,9 @@
                   font-size: 10px;
                 }
                 &__rate {
+                  line-height: 14px;
                   color: $color_rate;
-                  font-size: 14px;
+                  font-size: $fSize_h5;
                   font-weight: bold;
                   .star-rating {
                     vertical-align: bottom;
