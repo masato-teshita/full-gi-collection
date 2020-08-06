@@ -118,16 +118,19 @@
           background-color: $menu_color_whitesmoke;
           font-size: 60px;
           color: lightgray;
+          & .slick-list {
+            margin: 0 auto;
+          }
           &__box {
             @include up-down-center;
+            margin: 0 auto;
             &:focus {
               outline: none;
               border: none;
             }
             & img {
               margin: 0 auto;
-              width: 100%;
-              max-width: 320px;
+              width: 324px;
               max-height: 320px;
               object-fit: contain;  
               cursor: pointer;
