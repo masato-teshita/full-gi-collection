@@ -30,13 +30,14 @@ $(function() {
   });
   // ページ遷移後の挙動
   $(function () {
-    if (location['href'].match(/&sort=*.+/) != null) {
+    if (location['href'].match(/sort=*.+/) != null) {
       // option[selected: 'selected']を削除
       if ($('select option[selected=selected]')) {
         $('select option:first').prop('selected', false);
       }
 
-      const selected_option = location['href'].match(/&sort=*.+/)[0].replace('&sort=', '');
+      const selected_option = location['href'].match(/sort=*.+/)[0].replace('sort=', '');
+      console.log(selected_option)
 
       switch (selected_option) {
         case "rate_desc": var sort = 1; break;
