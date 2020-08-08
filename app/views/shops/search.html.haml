@@ -2,7 +2,7 @@
 = render "layouts/breadcrumbs"
 = render "shops/searched_heading"
 .shop-paginate
-  = will_paginate @shops, renderer: WillPaginate::ActionView::LinkRenderer
+  = will_paginate @shops, renderer: BootstrapPagination::Rails
 = render "shops/shop", shops: @shops
 .shop-paginate
-  = will_paginate @shops, renderer: WillPaginate::ActionView::LinkRenderer
+  = will_paginate @shops, renderer: BootstrapPagination::Rails
