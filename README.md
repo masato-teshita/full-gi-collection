@@ -11,7 +11,7 @@ https://www.full-colle.com/
 Ruby on Railsで制作しました。
 
 作成した背景や想いなど、より詳細な情報は下記をご覧ください。  
-[ポートフォリオ解説](https://qiita.com/masato-teshita/private/f1b6dc272c4c92681739)
+[ポートフォリオ解説](https://qiita.com/sew_sou19/private/f1b6dc272c4c92681739)
 
 ## 機能
 Ruby on Railsで制作したアプリです。
@@ -50,5 +50,5 @@ https://i.gyazo.com/2e8d2d31681b91618abe1d39c60ed404.png
 https://github.com/masato-teshita/full-gi-collection/issues
 
 ## 作者
-[田中 壮渡：Twitter](https://twitter.com/masato_teshita)  
+[田中 壮渡：Twitter](https://twitter.com/sew_sou19)  
 mail to: [t68.tanaka.masato@gmail.com](mailto:t68.tanaka.masato@gmail.com)
