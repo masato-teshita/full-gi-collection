@@ -33,7 +33,7 @@ Ruby on Railsで制作したアプリです。
 
 ## ローカル環境へのインストール方法
 ```
-$ git clone https://github.com/masato-teshita/full-gi-collection.git
+$ git clone https://github.com/sew-sou19/full-gi-collection.git
 $ cd full-gi-collection
 $ bundle install
 $ rails db:create
@@ -47,7 +47,7 @@ https://i.gyazo.com/2e8d2d31681b91618abe1d39c60ed404.png
 ## その他
 現在も開発を継続しており、順次実装予定です。  
 実装予定の機能はIssuesよりご確認いただけます。  
-https://github.com/masato-teshita/full-gi-collection/issues
+https://github.com/sew-sou19/full-gi-collection/issues
 
 ## 作者
 [田中 壮渡：Twitter](https://twitter.com/sew_sou19)  
