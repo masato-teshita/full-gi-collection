@@ -50,5 +50,5 @@ https://i.gyazo.com/2e8d2d31681b91618abe1d39c60ed404.png
 https://github.com/sew-sou19/full-gi-collection/issues
 
 ## 作者
-[田中 壮渡：Twitter](https://twitter.com/sew_sou19)  
+[：Twitter](https://twitter.com/sew_sou19)  
 mail to: [t68.tanaka.masato@gmail.com](mailto:t68.tanaka.masato@gmail.com)
